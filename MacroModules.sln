@@ -5,7 +5,7 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MacroModules.MacroLibrary", "src\MacroModules.MacroLibrary\MacroModules.MacroLibrary.csproj", "{C06F008B-35B0-4E12-B603-9883B317BE19}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MacroModules.TempTest", "src\MacroModules.TempTest\MacroModules.TempTest.csproj", "{E1466FDC-BD4A-460A-B1BA-AA6440394AF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MacroModules.MacroLibrary.Sandbox", "src\MacroModules.TempTest\MacroModules.MacroLibrary.Sandbox.csproj", "{E1466FDC-BD4A-460A-B1BA-AA6440394AF5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MacroLibrary.UnitTests", "tests\MacroLibrary.UnitTests\MacroLibrary.UnitTests.csproj", "{32DA7B92-FBD7-4083-A0CB-E47D0881C971}"
 EndProject

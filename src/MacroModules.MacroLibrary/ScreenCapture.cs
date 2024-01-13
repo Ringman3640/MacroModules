@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Drawing.Imaging;
 using MacroModules.MacroLibrary.Types;
 using static MacroModules.MacroLibrary.WinApi.ScreenCaptureApi;
 
@@ -15,18 +16,17 @@ namespace MacroModules.MacroLibrary
                 return null;
             }
 
-            IntPtr screenContext = GetDC(IntPtr.Zero);
-            IntPtr targetContext = CreateCompatibleDC(screenContext);
-            IntPtr screenBmp = CreateCompatibleBitmap(screenContext, width, height);
-            IntPtr oldBmp = SelectObject(targetContext, screenBmp);
-            BitBlt(targetContext, 0, 0, width, height, screenContext, topLeft.X, topLeft.Y, SRCCOPY);
-            SelectObject(targetContext, oldBmp);
-            DeleteDC(targetContext);
-            ReleaseDC(IntPtr.Zero, screenContext);
-            Bitmap bitmap = Image.FromHbitmap(screenBmp);
-            DeleteObject(screenBmp);
+            Bitmap screenshot = new(width, height, PixelFormat.Format32bppArgb);
+            Graphics screenGraphic = Graphics.FromImage(screenshot);
+            screenGraphic.CopyFromScreen(
+                sourceX: topLeft.X,
+                sourceY: topLeft.Y,
+                destinationX: 0,
+                destinationY: 0,
+                blockRegionSize: new Size(width, height),
+                copyPixelOperation: CopyPixelOperation.SourceCopy);
 
-            return bitmap;
+            return screenshot;
         }
 
         public static uint GetPixelColor(Position pixelPos)
@@ -43,7 +43,5 @@ namespace MacroModules.MacroLibrary
             ReleaseDC(IntPtr.Zero, screenContext);
             return formattedColor;
         }
-
-        private static readonly uint SRCCOPY = 0xCC0020;
     }
 }

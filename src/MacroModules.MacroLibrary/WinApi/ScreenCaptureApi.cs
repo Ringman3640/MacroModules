@@ -2,7 +2,7 @@
 
 namespace MacroModules.MacroLibrary.WinApi
 {
-    public class ScreenCaptureApi
+    internal class ScreenCaptureApi
     {
         [DllImport("User32.dll")]
         public static extern IntPtr GetDC(IntPtr hWnd);

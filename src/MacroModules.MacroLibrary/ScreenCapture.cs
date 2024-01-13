@@ -1,34 +1,37 @@
-﻿using MacroModules.MacroLibrary.Types;
+﻿using System.Drawing;
+using MacroModules.MacroLibrary.Types;
 using static MacroModules.MacroLibrary.WinApi.ScreenCaptureApi;
 
 namespace MacroModules.MacroLibrary
 {
-    public class ScreenCapture : IDisposable
+    public static class ScreenCapture
     {
-        ~ScreenCapture()
+        public static Bitmap? GetScreenshot(Position topLeft, Position bottomRight)
         {
-            Dispose();
+            int width = bottomRight.X - topLeft.X + 1;
+            int height = bottomRight.Y - topLeft.Y + 1;
+            if (width <= 0 || height <= 0)
+            {
+                return null;
+            }
+
+            IntPtr screenContext = GetDC(IntPtr.Zero);
+            IntPtr targetContext = CreateCompatibleDC(screenContext);
+            IntPtr screenBmp = CreateCompatibleBitmap(screenContext, width, height);
+            IntPtr oldBmp = SelectObject(targetContext, screenBmp);
+            BitBlt(targetContext, 0, 0, width, height, screenContext, topLeft.X, topLeft.Y, SRCCOPY);
+            SelectObject(targetContext, oldBmp);
+            DeleteDC(targetContext);
+            ReleaseDC(IntPtr.Zero, screenContext);
+            Bitmap bitmap = Image.FromHbitmap(screenBmp);
+            DeleteObject(screenBmp);
+
+            return bitmap;
         }
 
-        public void Dispose()
+        public static uint GetPixelColor(Position pixelPos)
         {
-            Dispose(disposing: true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            _ = ReleaseDC(IntPtr.Zero, screenContext);
-        }
-
-        public void GetScreenshot()
-        {
-            // stub
-            // todo
-        }
-
-        public uint GetPixelColor(Position pixelPos)
-        {
+            IntPtr screenContext = GetDC(IntPtr.Zero);
             uint rawColor = GetPixel(screenContext, pixelPos.X, pixelPos.Y);
 
             // The return value of GetPixel() is the BGR color of the pixel. The high two hex values
@@ -36,9 +39,11 @@ namespace MacroModules.MacroLibrary
             uint formattedColor = (rawColor & 0x0000FF) << 16;  // Red
             formattedColor += rawColor & 0x00FF00;              // Green
             formattedColor += (rawColor & 0xFF0000) >>> 16;     // Blue
+
+            ReleaseDC(IntPtr.Zero, screenContext);
             return formattedColor;
         }
 
-        private readonly IntPtr screenContext = GetDC(IntPtr.Zero);
+        private static readonly uint SRCCOPY = 0xCC0020;
     }
 }

@@ -11,7 +11,7 @@ namespace MacroModules.MacroLibrary.Types
     public class SystemDisplayData : IEquatable<SystemDisplayData>
     {
         /// <summary>
-        /// Width in pixels of the primary display screen.
+        /// Width in pixels of the primary display screen.w
         /// </summary>
         public int PrimaryScreenWidth { get; private set; }
 
@@ -126,6 +126,29 @@ namespace MacroModules.MacroLibrary.Types
                 + VirtualScreenHeight << 12
                 + VirtualScreenOrigin.X << 16
                 + VirtualScreenOrigin.Y << 20;
+        }
+
+        /// <summary>
+        /// Custom constructor. Create a SystemDisplayData object using custom defined values.
+        /// </summary>
+        /// <remarks>
+        /// This constructor is only for testing purposes. DO NOT USE FOR LIBRARY IMPLEMENTATION.
+        /// </remarks>
+        internal SystemDisplayData(
+            int primaryScreenWidth,
+            int primaryScreenHeight,
+            Position virtualScreenOrigin,
+            int virtualScreenWidth,
+            int virtualScreenHeight,
+            HashSet<DisplayData> displays)
+        {
+            PrimaryScreenWidth = primaryScreenWidth;
+            PrimaryScreenHeight = primaryScreenHeight;
+            VirtualScreenOrigin = virtualScreenOrigin;
+            VirtualScreenWidth = virtualScreenWidth;
+            VirtualScreenHeight = virtualScreenHeight;
+            Displays = displays;
+            DisplayCount = displays.Count;
         }
 
         /// <summary>

@@ -37,4 +37,15 @@ namespace MacroModules.MacroLibrary.WinApi
         MouseButtonX1 = 0x05,
         MouseButtonX2 = 0x06
     }
+
+    internal enum Metric : int
+    {
+        PrimaryScreenWidth = 0,
+        PrimaryScreenHeight = 1,
+        VirtualScreenPosX = 76,
+        VirtualScreenPosY = 77,
+        VirtualScreenWidth = 78,
+        VirtualScreenHeight = 79,
+        MonitorCount = 80,
+    }
 }

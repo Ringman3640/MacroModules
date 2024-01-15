@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
 using MacroModules.MacroLibrary.Types;
+using static MacroModules.MacroLibrary.DisplayPositionTranslator;
 using static MacroModules.MacroLibrary.WinApi.ScreenCaptureApi;
 
 namespace MacroModules.MacroLibrary
@@ -9,6 +10,8 @@ namespace MacroModules.MacroLibrary
     {
         public static Bitmap? GetScreenshot(Position topLeft, Position bottomRight)
         {
+            Translate(ref topLeft);
+            Translate(ref bottomRight);
             int width = bottomRight.X - topLeft.X + 1;
             int height = bottomRight.Y - topLeft.Y + 1;
             if (width <= 0 || height <= 0)
@@ -31,6 +34,7 @@ namespace MacroModules.MacroLibrary
 
         public static uint GetPixelColor(Position pixelPos)
         {
+            Translate(ref pixelPos);
             IntPtr screenContext = GetDC(IntPtr.Zero);
             uint rawColor = GetPixel(screenContext, pixelPos.X, pixelPos.Y);
 

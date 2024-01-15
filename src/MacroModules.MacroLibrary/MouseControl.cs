@@ -1,6 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using MacroModules.MacroLibrary.Types;
 using MacroModules.MacroLibrary.WinApi;
+using static MacroModules.MacroLibrary.DisplayPositionTranslator;
 using static MacroModules.MacroLibrary.WinApi.SendInputApi;
 
 namespace MacroModules.MacroLibrary
@@ -43,6 +44,7 @@ namespace MacroModules.MacroLibrary
         /// <returns>A bool indicating if the move was successful.</returns>
         public static bool MoveCursor(Position coordinate)
         {
+            Translate(ref coordinate);
             return SetCursorPos(coordinate.X, coordinate.Y);
         }
 
@@ -79,6 +81,7 @@ namespace MacroModules.MacroLibrary
         public static void TraceMousePath()
         {
             // stub
+            // todo
         }
 
         /// <summary>

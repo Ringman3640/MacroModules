@@ -78,12 +78,6 @@ namespace MacroModules.MacroLibrary
             return currPos;
         }
 
-        public static void TraceMousePath()
-        {
-            // stub
-            // todo
-        }
-
         /// <summary>
         /// Send a vertical scroll input at the current cursor position.
         /// </summary>

@@ -98,7 +98,7 @@ namespace MacroModules.MacroLibrary
         /// Set the input handler that receives input events from the input monitor.
         /// </summary>
         /// <param name="handler">The input handler that receives input events.</param>
-        public void SetInputHandler(Func<InputData, bool> handler)
+        public static void SetInputHandler(Func<InputData, bool> handler)
         {
             inputHandler = handler;
         }
@@ -121,8 +121,8 @@ namespace MacroModules.MacroLibrary
         /// <seealso cref="Uninstall"/>
         public void Install()
         {
-            keyboardHookHandle = SetWindowsHookExA(WH_KEYBOARD_LL, KeyboardHookProc, IntPtr.Zero, 0);
-            mouseHookHandle = SetWindowsHookExA(WH_MOUSE_LL, MouseHookProc, IntPtr.Zero, 0);
+            keyboardHookHandle = SetWindowsHookExA(WH_KEYBOARD_LL, keyboardProc, IntPtr.Zero, 0);
+            mouseHookHandle = SetWindowsHookExA(WH_MOUSE_LL, mouseHookProc, IntPtr.Zero, 0);
         }
 
         /// <summary>
@@ -154,12 +154,15 @@ namespace MacroModules.MacroLibrary
         /// User-provided handler that is called when a mouse or keyboard input is received from the
         /// monitor.
         /// </summary>
-        private Func<InputData, bool>? inputHandler = null;
+        private static Func<InputData, bool>? inputHandler = null;
 
         private IntPtr keyboardHookHandle = IntPtr.Zero;
         private IntPtr mouseHookHandle = IntPtr.Zero;
 
-        private int KeyboardHookProc(int nCode, int wParam, ref KeyboardHookStruct lParam)
+        private static KeyboardHookProc keyboardProc = KeyboardHookProc;
+        private static MouseHookProc mouseHookProc = MouseHookProc;
+
+        private static int KeyboardHookProc(int nCode, int wParam, ref KeyboardHookStruct lParam)
         {
             // Default ignores
             if (!active || nCode < 0 || inputHandler == null)
@@ -181,7 +184,7 @@ namespace MacroModules.MacroLibrary
             return CallNextHookEx(IntPtr.Zero, nCode, wParam, ref lParam);
         }
 
-        private int MouseHookProc(int nCode, int wParam, ref MouseHookStruct lParam)
+        private static int MouseHookProc(int nCode, int wParam, ref MouseHookStruct lParam)
         {
             // Default ignores
             if (!active || nCode < 0 || inputHandler == null)

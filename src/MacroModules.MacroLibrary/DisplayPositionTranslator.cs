@@ -133,6 +133,18 @@ namespace MacroModules.MacroLibrary
             position.Y = (int)((float)position.Y * yScale);
         }
 
+        /// <summary>
+        /// Set the current system data to a custom system for testing.
+        /// </summary>
+        /// <remarks>
+        /// This method is only for testing purposes. DO NOT USE FOR LIBRARY IMPLEMENTATION.
+        /// </remarks>
+        internal static void SetCurrentSystemForTesting(SystemDisplayData systemData)
+        {
+            currentSystemData = systemData;
+            translationNeeded = currentSystemData == nativeSystemData;
+        }
+
         private static SystemDisplayData currentSystemData = new();
         private static SystemDisplayData? nativeSystemData = null;
         private static bool translationNeeded = false;

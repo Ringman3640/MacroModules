@@ -7,7 +7,7 @@ using static MacroModules.MacroLibrary.WinApi.MessageLoopApi;
 
 namespace MacroModules.MacroLibrary
 {
-    public class InputMonitor
+    public static class InputMonitor
     {
         /// <summary>
         /// Indicates if the input monitor should filter out mouse movement inputs.
@@ -31,16 +31,6 @@ namespace MacroModules.MacroLibrary
         {
             get { return filterInjectedInputs; }
             set { filterInjectedInputs = value; }
-        }
-
-        public InputMonitor()
-        {
-
-        }
-
-        ~InputMonitor()
-        {
-            Uninstall();
         }
 
         /// <summary>
@@ -110,8 +100,7 @@ namespace MacroModules.MacroLibrary
         /// <para>
         ///     Calling <c>Install</c> will set two global low-level hooks into the system, which
         ///     takes up system resources. It is important to call <c>Uninstall</c> to free these
-        ///     resources. <c>Uninstall</c> will be automatically called when the object is garbage
-        ///     collected.
+        ///     resources.
         /// </para>
         /// <para>
         ///     The thread calling this method is responsible for handling system messages collected
@@ -119,17 +108,24 @@ namespace MacroModules.MacroLibrary
         /// </para>
         /// </remarks>
         /// <seealso cref="Uninstall"/>
-        public void Install()
+        public static void Install()
         {
-            keyboardHookHandle = SetWindowsHookExA(WH_KEYBOARD_LL, keyboardProc, IntPtr.Zero, 0);
-            mouseHookHandle = SetWindowsHookExA(WH_MOUSE_LL, mouseHookProc, IntPtr.Zero, 0);
+            if (keyboardHookHandle == IntPtr.Zero)
+            {
+                keyboardHookHandle = SetWindowsHookExA(WH_KEYBOARD_LL, keyboardProc, IntPtr.Zero, 0);
+
+            }
+            if (mouseHookHandle == IntPtr.Zero)
+            {
+                mouseHookHandle = SetWindowsHookExA(WH_MOUSE_LL, mouseHookProc, IntPtr.Zero, 0);
+            }
         }
 
         /// <summary>
         /// Uninstall the input monitoring hooks that were set from <c>Install</c>.
         /// </summary>
         /// <seealso cref="Install"/>
-        public void Uninstall()
+        public static void Uninstall()
         {
             if (keyboardHookHandle != IntPtr.Zero)
             {
@@ -156,8 +152,8 @@ namespace MacroModules.MacroLibrary
         /// </summary>
         private static Func<InputData, bool>? inputHandler = null;
 
-        private IntPtr keyboardHookHandle = IntPtr.Zero;
-        private IntPtr mouseHookHandle = IntPtr.Zero;
+        private static IntPtr keyboardHookHandle = IntPtr.Zero;
+        private static IntPtr mouseHookHandle = IntPtr.Zero;
 
         private static KeyboardHookProc keyboardProc = KeyboardHookProc;
         private static MouseHookProc mouseHookProc = MouseHookProc;

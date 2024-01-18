@@ -78,7 +78,10 @@ namespace MacroModules.MacroLibrary
         /// <param name="handler">The input handler that receives input events.</param>
         public static void SetInputHandler(Func<InputData, bool> handler)
         {
-            inputHandler = handler;
+            lock (mutex)
+            {
+                inputHandler = handler;
+            }
         }
 
         /// <summary>
@@ -98,14 +101,17 @@ namespace MacroModules.MacroLibrary
         /// <seealso cref="Uninstall"/>
         public static void Install()
         {
-            if (keyboardHookHandle == IntPtr.Zero)
+            lock (mutex)
             {
-                keyboardHookHandle = SetWindowsHookExA(WH_KEYBOARD_LL, keyboardProc, IntPtr.Zero, 0);
+                if (keyboardHookHandle == IntPtr.Zero)
+                {
+                    keyboardHookHandle = SetWindowsHookExA(WH_KEYBOARD_LL, keyboardProc, IntPtr.Zero, 0);
 
-            }
-            if (mouseHookHandle == IntPtr.Zero)
-            {
-                mouseHookHandle = SetWindowsHookExA(WH_MOUSE_LL, mouseHookProc, IntPtr.Zero, 0);
+                }
+                if (mouseHookHandle == IntPtr.Zero)
+                {
+                    mouseHookHandle = SetWindowsHookExA(WH_MOUSE_LL, mouseHookProc, IntPtr.Zero, 0);
+                }
             }
         }
 
@@ -115,15 +121,18 @@ namespace MacroModules.MacroLibrary
         /// <seealso cref="Install"/>
         public static void Uninstall()
         {
-            if (keyboardHookHandle != IntPtr.Zero)
+            lock (mutex)
             {
-                _ = UnhookWindowsHookEx(keyboardHookHandle);
-                keyboardHookHandle = IntPtr.Zero;
-            }
-            if (mouseHookHandle != IntPtr.Zero)
-            {
-                _ = UnhookWindowsHookEx(mouseHookHandle);
-                mouseHookHandle = IntPtr.Zero;
+                if (keyboardHookHandle != IntPtr.Zero)
+                {
+                    _ = UnhookWindowsHookEx(keyboardHookHandle);
+                    keyboardHookHandle = IntPtr.Zero;
+                }
+                if (mouseHookHandle != IntPtr.Zero)
+                {
+                    _ = UnhookWindowsHookEx(mouseHookHandle);
+                    mouseHookHandle = IntPtr.Zero;
+                }
             }
         }
 
@@ -136,6 +145,9 @@ namespace MacroModules.MacroLibrary
         // or change memory locations by the CLR. This is very dangerous when calling the Win32 API.
         private static KeyboardHookProc keyboardProc = KeyboardHookProc;
         private static MouseHookProc mouseHookProc = MouseHookProc;
+
+        // General mutex for accessing the class data
+        private static object mutex = new();
 
         // Bool flags
         private static volatile bool collect = false;
@@ -154,52 +166,58 @@ namespace MacroModules.MacroLibrary
 
         private static int KeyboardHookProc(int nCode, int wParam, ref KeyboardHookStruct lParam)
         {
-            // Default ignores
-            if (!collect || nCode < 0 || inputHandler == null)
+            lock (mutex)
             {
+                // Default ignores
+                if (!collect || nCode < 0 || inputHandler == null)
+                {
+                    return CallNextHookEx(IntPtr.Zero, nCode, wParam, ref lParam);
+                }
+
+                // Check 4th flag bit to see if event is injected
+                if (filterInjectedInputs && (lParam.flags & 8) != 0)
+                {
+                    return CallNextHookEx(IntPtr.Zero, nCode, wParam, ref lParam);
+                }
+
+                if (!inputHandler(new InputData((KeyboardMessage)wParam, lParam)))
+                {
+                    return 1;
+                }
+
                 return CallNextHookEx(IntPtr.Zero, nCode, wParam, ref lParam);
             }
-
-            // Check 4th flag bit to see if event is injected
-            if (filterInjectedInputs && (lParam.flags & 8) != 0)
-            {
-                return CallNextHookEx(IntPtr.Zero, nCode, wParam, ref lParam);
-            }
-
-            if (!inputHandler(new InputData((KeyboardMessage)wParam, lParam)))
-            {
-                return 1;
-            }
-
-            return CallNextHookEx(IntPtr.Zero, nCode, wParam, ref lParam);
         }
 
         private static int MouseHookProc(int nCode, int wParam, ref MouseHookStruct lParam)
         {
-            // Default ignores
-            if (!collect || nCode < 0 || inputHandler == null)
+            lock (mutex)
             {
+                // Default ignores
+                if (!collect || nCode < 0 || inputHandler == null)
+                {
+                    return CallNextHookEx(IntPtr.Zero, nCode, wParam, ref lParam);
+                }
+
+                // Ignore mouse movements if filter is on
+                if (filterMouseMovements && wParam == (int)MouseMessage.Move)
+                {
+                    return CallNextHookEx(IntPtr.Zero, nCode, wParam, ref lParam);
+                }
+
+                // Check 4th flag bit to see if event is injected
+                if (filterInjectedInputs && (lParam.flags & 8) != 0)
+                {
+                    return CallNextHookEx(IntPtr.Zero, nCode, wParam, ref lParam);
+                }
+
+                if (!inputHandler(new InputData((MouseMessage)wParam, lParam)))
+                {
+                    return 1;
+                }
+
                 return CallNextHookEx(IntPtr.Zero, nCode, wParam, ref lParam);
             }
-
-            // Ignore mouse movements if filter is on
-            if (filterMouseMovements && wParam == (int)MouseMessage.Move)
-            {
-                return CallNextHookEx(IntPtr.Zero, nCode, wParam, ref lParam);
-            }
-
-            // Check 4th flag bit to see if event is injected
-            if (filterInjectedInputs && (lParam.flags & 8) != 0)
-            {
-                return CallNextHookEx(IntPtr.Zero, nCode, wParam, ref lParam);
-            }
-
-            if (!inputHandler(new InputData((MouseMessage)wParam, lParam)))
-            {
-                return 1;
-            }
-
-            return CallNextHookEx(IntPtr.Zero, nCode, wParam, ref lParam);
         }
 
         [DllImport("User32.dll")]

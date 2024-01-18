@@ -10,6 +10,16 @@ namespace MacroModules.MacroLibrary
     public static class InputMonitor
     {
         /// <summary>
+        /// Indicates if the input monitor should collect inputs when installed. This value is
+        /// false be default. 
+        /// </summary>
+        public static bool CollectInput
+        {
+            get { return collect; }
+            set { collect = value; }
+        }
+
+        /// <summary>
         /// Indicates if the input monitor should filter out mouse movement inputs.
         /// </summary>
         public static bool FilterMouseMovements
@@ -60,28 +70,6 @@ namespace MacroModules.MacroLibrary
             // The value is only shift by 15 since the additional bits will be lost when casting
             // back to a short.
             return (short)(GetKeyState(inputCode) << 15) != 0;
-        }
-
-        /// <summary>
-        /// Starts collection of inputs from the input monitor.
-        /// </summary>
-        /// <remarks>
-        /// This method will activate the input monitor. When activated, the input monitor will
-        /// dispatch input events to the user-defined input handler. 
-        /// </remarks>
-        /// <seealso cref="Stop"/>
-        public static void Start()
-        {
-            active = true;
-        }
-
-        /// <summary>
-        /// Stops collection of inputs from the input monitor.
-        /// </summary>
-        /// <seealso cref="Stop"/>
-        public static void Stop()
-        {
-            active = false;
         }
 
         /// <summary>
@@ -139,10 +127,18 @@ namespace MacroModules.MacroLibrary
             }
         }
 
+        // Windows values to specify hook types
         private const int WH_KEYBOARD_LL = 13;
         private const int WH_MOUSE_LL = 14;
 
-        private static volatile bool active = false;
+        // Static references to the hook proceedures.
+        // A static reference is needed since any other delegate definition may be garbage collected
+        // or change memory locations by the CLR. This is very dangerous when calling the Win32 API.
+        private static KeyboardHookProc keyboardProc = KeyboardHookProc;
+        private static MouseHookProc mouseHookProc = MouseHookProc;
+
+        // Bool flags
+        private static volatile bool collect = false;
         private static volatile bool filterMouseMovements = false;
         private static volatile bool filterInjectedInputs = true;
 
@@ -152,16 +148,14 @@ namespace MacroModules.MacroLibrary
         /// </summary>
         private static Func<InputData, bool>? inputHandler = null;
 
+        // Handles to the Win32 hooks when installed.
         private static IntPtr keyboardHookHandle = IntPtr.Zero;
         private static IntPtr mouseHookHandle = IntPtr.Zero;
-
-        private static KeyboardHookProc keyboardProc = KeyboardHookProc;
-        private static MouseHookProc mouseHookProc = MouseHookProc;
 
         private static int KeyboardHookProc(int nCode, int wParam, ref KeyboardHookStruct lParam)
         {
             // Default ignores
-            if (!active || nCode < 0 || inputHandler == null)
+            if (!collect || nCode < 0 || inputHandler == null)
             {
                 return CallNextHookEx(IntPtr.Zero, nCode, wParam, ref lParam);
             }
@@ -183,7 +177,7 @@ namespace MacroModules.MacroLibrary
         private static int MouseHookProc(int nCode, int wParam, ref MouseHookStruct lParam)
         {
             // Default ignores
-            if (!active || nCode < 0 || inputHandler == null)
+            if (!collect || nCode < 0 || inputHandler == null)
             {
                 return CallNextHookEx(IntPtr.Zero, nCode, wParam, ref lParam);
             }

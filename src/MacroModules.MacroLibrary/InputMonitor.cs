@@ -3,6 +3,7 @@ using MacroModules.MacroLibrary.WinApi;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using static MacroModules.MacroLibrary.WinApi.HookingApi;
+using static MacroModules.MacroLibrary.WinApi.KeyStateApi;
 using static MacroModules.MacroLibrary.WinApi.MessageLoopApi;
 
 namespace MacroModules.MacroLibrary
@@ -219,8 +220,5 @@ namespace MacroModules.MacroLibrary
                 return CallNextHookEx(IntPtr.Zero, nCode, wParam, ref lParam);
             }
         }
-
-        [DllImport("User32.dll")]
-        private static extern short GetKeyState(int nVirtKey);
     }
 }

@@ -28,7 +28,7 @@ namespace MacroModules.MacroLibrary.WinApi
     {
         LeftMouseButton = 0x01,
         RightMouseButton = 0x02,
-        MiddleMouseButton = 0x03,
+        MiddleMouseButton = 0x04,
         MouseButtonX1 = 0x05,
         MouseButtonX2 = 0x06
     }

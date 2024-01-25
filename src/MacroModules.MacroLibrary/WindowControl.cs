@@ -33,6 +33,16 @@ namespace MacroModules.MacroLibrary
         }
 
         /// <summary>
+        /// Set the current focus to a specific window given its window handle.
+        /// </summary>
+        /// <param name="windowHandle">Handle to the window to focus.</param>
+        /// <inheritdoc cref="SetFocusWindow(string)" path="/returns"/>
+        public static bool SetFocusWindow(IntPtr windowHandle)
+        {
+            return SetForegroundWindow(windowHandle);
+        }
+
+        /// <summary>
         /// Class for sending and receiving search data for <c>EnumWindowHandler</c>.
         /// </summary>
         /// <seealso cref="EnumWindowHandler(nint, object)"/>

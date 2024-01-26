@@ -24,15 +24,6 @@ namespace MacroModules.MacroLibrary.WinApi
         HorizontalWheel = 0x020E
     }
 
-    internal enum VirtualKey : ushort
-    {
-        LeftMouseButton = 0x01,
-        RightMouseButton = 0x02,
-        MiddleMouseButton = 0x04,
-        MouseButtonX1 = 0x05,
-        MouseButtonX2 = 0x06
-    }
-
     internal enum Metric : int
     {
         PrimaryScreenWidth = 0,

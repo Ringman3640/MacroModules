@@ -96,27 +96,27 @@ namespace MacroModules.MacroLibrary.Types
                     return;
                 case MouseMessage.LeftButtonDown:
                     Type = InputType.MouseDown;
-                    InputKeyCode = (ushort)VirtualKey.LeftMouseButton;
+                    InputKeyCode = (ushort)InputCode.MouseLeft;
                     return;
                 case MouseMessage.LeftButtonUp:
                     Type = InputType.MouseUp;
-                    InputKeyCode = (ushort)VirtualKey.LeftMouseButton;
+                    InputKeyCode = (ushort)InputCode.MouseLeft;
                     return;
                 case MouseMessage.RightButtonDown:
                     Type = InputType.MouseDown;
-                    InputKeyCode = (ushort)VirtualKey.RightMouseButton;
+                    InputKeyCode = (ushort)InputCode.MouseRight;
                     return;
                 case MouseMessage.RightButtonUp:
                     Type = InputType.MouseUp;
-                    InputKeyCode = (ushort)VirtualKey.RightMouseButton;
+                    InputKeyCode = (ushort)InputCode.MouseRight;
                     return;
                 case MouseMessage.MiddleButtonDown:
                     Type = InputType.MouseDown;
-                    InputKeyCode = (ushort)VirtualKey.MiddleMouseButton;
+                    InputKeyCode = (ushort)InputCode.MouseMiddle;
                     return;
                 case MouseMessage.MiddleButtonUp:
                     Type = InputType.MouseUp;
-                    InputKeyCode = (ushort)VirtualKey.MiddleMouseButton;
+                    InputKeyCode = (ushort)InputCode.MouseMiddle;
                     return;
                 case MouseMessage.VerticalWheel:
                     Type = InputType.VerticalScroll;
@@ -125,11 +125,11 @@ namespace MacroModules.MacroLibrary.Types
                     return;
                 case MouseMessage.XButtonDown:
                     Type = InputType.MouseDown;
-                    InputKeyCode = (ushort)((short)(data.mouseData >>> 16) == 1 ? VirtualKey.MouseButtonX1 : VirtualKey.MouseButtonX1);
+                    InputKeyCode = (ushort)((short)(data.mouseData >>> 16) == 1 ? InputCode.MouseX1 : InputCode.MouseX1);
                     return;
                 case MouseMessage.XButtonUp:
                     Type = InputType.MouseUp;
-                    InputKeyCode = (ushort)((short)(data.mouseData >>> 16) == 1 ? VirtualKey.MouseButtonX1 : VirtualKey.MouseButtonX1);
+                    InputKeyCode = (ushort)((short)(data.mouseData >>> 16) == 1 ? InputCode.MouseX1 : InputCode.MouseX1);
                     return;
                 case MouseMessage.HorizontalWheel:
                     Type = InputType.HorizontalScroll;

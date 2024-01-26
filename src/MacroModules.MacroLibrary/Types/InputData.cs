@@ -125,11 +125,11 @@ namespace MacroModules.MacroLibrary.Types
                     return;
                 case MouseMessage.XButtonDown:
                     Type = InputType.MouseDown;
-                    InputKeyCode = (ushort)((short)(data.mouseData >>> 16) == 1 ? InputCode.MouseX1 : InputCode.MouseX1);
+                    InputKeyCode = (ushort)((short)(data.mouseData >>> 16) == 1 ? InputCode.MouseX1 : InputCode.MouseX2);
                     return;
                 case MouseMessage.XButtonUp:
                     Type = InputType.MouseUp;
-                    InputKeyCode = (ushort)((short)(data.mouseData >>> 16) == 1 ? InputCode.MouseX1 : InputCode.MouseX1);
+                    InputKeyCode = (ushort)((short)(data.mouseData >>> 16) == 1 ? InputCode.MouseX1 : InputCode.MouseX2);
                     return;
                 case MouseMessage.HorizontalWheel:
                     Type = InputType.HorizontalScroll;

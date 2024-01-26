@@ -141,10 +141,6 @@ namespace MacroModules.MacroLibrary.Types
             }
         }
 
-        private int VK_SHIFT = 0x10;
-        private int VK_CONTROL = 0x11;
-        private int VK_MENU = 0x12;
-
         private void SetModifierFlags()
         {
             // To check if an input is being held down, the high-order bit needs to be checked.
@@ -154,15 +150,15 @@ namespace MacroModules.MacroLibrary.Types
             // The return value of GetKeyState is a short, which is 16 bits. But we need to shift
             // by 31 bits since the short gets casted to an int (32 bits) when doing bit shifts.
 
-            if (GetKeyState(VK_SHIFT) >>> 31 == 1)
+            if (GetKeyState((int)InputCode.Shift) >>> 31 == 1)
             {
                 Modifiers |= InputModifiers.ShiftHeld;
             }
-            if (GetKeyState(VK_CONTROL) >>> 31 == 1)
+            if (GetKeyState((int)InputCode.Ctrl) >>> 31 == 1)
             {
                 Modifiers |= InputModifiers.CtrlHeld;
             }
-            if (GetKeyState(VK_MENU) >>> 31 == 1)
+            if (GetKeyState((int)InputCode.Alt) >>> 31 == 1)
             {
                 Modifiers |= InputModifiers.AltHeld;
             }

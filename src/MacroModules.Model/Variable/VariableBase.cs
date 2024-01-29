@@ -46,6 +46,28 @@ namespace MacroModules.Model.Variable
         public event NameChangedEventHandler? NameChanged;
 
         /// <summary>
+        /// Initializes the <see cref="VariableBase"/> values such that the runtime value becomes a
+        /// deep copy of the initial value.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        ///     This method must be implemented in a derived class that also implements the
+        ///     <see cref="IVariableValues{T}"/> interface. The purpose of this method is to
+        ///     initialize <see cref="IVariableValues{T}.RuntimeValue"/> with a copy of
+        ///     <see cref="IVariableValues{T}.InitialValue"/> so that any modifications to the
+        ///     runtime value do not affect the initial value.
+        /// </para>
+        /// <para>
+        ///     This method needs to be separated from <see cref="IVariableValues{T}"/> so that it
+        ///     can be called while iterating over a collection of <see cref="VariableBase"/>
+        ///     instances. Otherwise, each instance would need to be casted to a corresponding
+        ///     derived type since you cannot abstract down to a generic base class/interface
+        ///     without specifying the generic type. Sad :(
+        /// </para>
+        /// </remarks>
+        public abstract void InitializeRuntimeValue();
+
+        /// <summary>
         /// Indicate to the <see cref="VariableBase"/> and all listeners that the variable is
         /// deleted.
         /// </summary>

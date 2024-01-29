@@ -43,6 +43,24 @@
         }
 
         /// <summary>
+        /// Initializes all <see cref="VariableBase"/> instances in the store by calling
+        /// <see cref="VariableBase.InitializeRuntimeValue"/> on each instance.
+        /// </summary>
+        /// <remarks>
+        /// This method should be called right when macro runtime execution is started.
+        /// </remarks>
+        public void InitializeRuntimeVariables()
+        {
+            lock (store)
+            {
+                foreach (VariableBase variable in store.Values)
+                {
+                    variable.InitializeRuntimeValue();
+                }
+            }
+        }
+
+        /// <summary>
         /// Removes a stored <see cref="VariableBase"/> from the <see cref="VariableStore"/> given
         /// the variable's <see cref="VariableBase.Id"/>.
         /// </summary>

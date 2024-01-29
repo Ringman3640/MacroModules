@@ -1,4 +1,5 @@
 ﻿using MacroModules.Model.Module.ModuleResponse;
+using MacroModules.Model.Variable;
 
 namespace MacroModules.Model.Module
 {
@@ -28,6 +29,12 @@ namespace MacroModules.Model.Module
         /// </para>
         /// </remarks>
         public List<ExitPort> ExitPorts { get; protected set; } = [];
+
+        /// <summary>
+        /// The <see cref="VariableStore"/> object that is used as a context to get all necessary
+        /// <see cref="VariableBase"/> instances.
+        /// </summary>
+        public VariableStore? VariableContext { get; set; } = null;
 
         /// <summary>
         /// Initialize the <see cref="Module"/> object by generating a data object that may

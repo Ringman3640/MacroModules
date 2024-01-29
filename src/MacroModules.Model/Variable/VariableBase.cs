@@ -1,5 +1,4 @@
 ﻿using MacroModules.Model.Variable.Events;
-using System.Windows.Markup;
 
 namespace MacroModules.Model.Variable
 {

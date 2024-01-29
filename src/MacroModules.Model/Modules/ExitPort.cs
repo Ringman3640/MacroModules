@@ -1,4 +1,4 @@
-﻿namespace MacroModules.Model.Module
+﻿namespace MacroModules.Model.Modules
 {
     /// <summary>
     /// Defines a single exit port of a <see cref="Module"/>.

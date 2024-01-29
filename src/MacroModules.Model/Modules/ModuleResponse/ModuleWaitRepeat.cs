@@ -1,4 +1,4 @@
-﻿namespace MacroModules.Model.Module.ModuleResponse
+﻿namespace MacroModules.Model.Modules.ModuleResponse
 {
     /// <summary>
     /// Represents a return message from a <see cref="Module"/> that indicates that the caller

@@ -1,7 +1,7 @@
-﻿using MacroModules.Model.Module.ModuleResponse;
+﻿using MacroModules.Model.Modules.ModuleResponse;
 using MacroModules.Model.Variable;
 
-namespace MacroModules.Model.Module
+namespace MacroModules.Model.Modules
 {
     /// <summary>
     /// Represents a single executable process in a macro.

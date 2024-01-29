@@ -2,6 +2,9 @@
 
 namespace MacroModules.Model.Variable
 {
+    /// <summary>
+    /// Represents a macro variable. This base class is derived from all macro variable instances.
+    /// </summary>
     public abstract class VariableBase : INotifyVariableDeleted, INotifyNameChanged
     {
         /// <summary>

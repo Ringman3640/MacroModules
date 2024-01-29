@@ -1,4 +1,4 @@
-﻿using MacroModules.Model.Modules.ModuleResponse;
+﻿using MacroModules.Model.Modules.Responses;
 using MacroModules.Model.Variable;
 
 namespace MacroModules.Model.Modules

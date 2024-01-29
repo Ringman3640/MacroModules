@@ -1,4 +1,4 @@
-﻿namespace MacroModules.Model.Modules.ModuleResponse
+﻿namespace MacroModules.Model.Modules.Responses
 {
     public enum ModuleResponseType
     {

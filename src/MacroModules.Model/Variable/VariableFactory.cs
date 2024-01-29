@@ -29,7 +29,7 @@
         /// </summary>
         private static Dictionary<VariableType, Func<VariableBase>> variableFactories = new()
         {
-            { VariableType.String, () => new VariableTest() }
+            { VariableType.String, () => new StringVariable() }
         };
     }
 }

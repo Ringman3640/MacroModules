@@ -12,11 +12,11 @@
         /// <summary>
         /// Indicates the next MacroProcess the caller should execute.
         /// </summary>
-        public Module NextProcess { get; private set; }
+        public Module NextModule { get; private set; }
 
-        public ModuleNext(Module nextProcess)
+        public ModuleNext(Module nextModule)
         {
-            NextProcess = nextProcess;
+            NextModule = nextModule;
         }
     }
 }

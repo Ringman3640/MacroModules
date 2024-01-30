@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Execution\" />
+    <ProjectReference Include="..\MacroModules.MacroLibrary\MacroModules.MacroLibrary.csproj" />
   </ItemGroup>
 
 </Project>

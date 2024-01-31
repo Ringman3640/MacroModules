@@ -6,10 +6,20 @@ namespace MacroModules.Model.Modules
 {
     public class ModuleTest : Module
     {
+        public ModuleTest() { }
+
+        public ModuleTest(Position startingPos)
+        {
+            this.startingPos = startingPos;
+        }
+
         public override void Initialize(out object? processData)
         {
             processData = new ModuleTestData();
-            MouseControl.MoveCursor(((ModuleTestData)processData).CurrentPos);
+
+            var castedProcessData = (ModuleTestData)processData;
+            castedProcessData.CurrentPos = startingPos;
+            MouseControl.MoveCursor(castedProcessData.CurrentPos);
         }
 
         public override IModuleResponse Execute(ref object? processData)
@@ -26,14 +36,16 @@ namespace MacroModules.Model.Modules
             ++nextPos.Y;
             MouseControl.MoveCursor(nextPos);
             data.CurrentPos = nextPos;
-            return new ModuleWaitRepeat(new TimeSpan(0, 0, 0, 0, 10));
+            return new ModuleWaitRepeat(new TimeSpan(0, 0, 0, 0, 5));
         }
+
+        private Position startingPos = new(10, 10);
 
         private class ModuleTestData
         {
             public Position CurrentPos { get; set; } = new(10, 10);
 
-            public int StepsRemaining { get; set; } = 1000;
+            public int StepsRemaining { get; set; } = 100;
         }
     }
 }

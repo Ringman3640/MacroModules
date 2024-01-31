@@ -62,9 +62,11 @@ namespace MacroModules.Model.Execution
         /// <param name="macroInfo">
         /// A <see cref="MacroExecutionInfo"/> object that defines the macro.
         /// </param>
-        /// <returns><c>true</c> if the macro was successfully added. Otherwise <c>false</c>. This
-        /// method will return <c>false</c> if the <see cref="MacroDispatcher"/> already has a macro
-        /// mapped to the given <see cref="InputTrigger"/> value.</returns>
+        /// <returns>
+        /// <c>true</c> if the macro was successfully added. Otherwise <c>false</c>. This method
+        /// will return <c>false</c> if the <see cref="MacroDispatcher"/> already has a macro
+        /// mapped to the given <see cref="InputTrigger"/> value.
+        /// </returns>
         public bool AddMacro(MacroExecutionInfo macroInfo)
         {
             lock (dispatcherLock)

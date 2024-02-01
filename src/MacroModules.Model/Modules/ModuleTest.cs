@@ -27,7 +27,7 @@ namespace MacroModules.Model.Modules
             var data = (ModuleTestData)processData!;
             if (data.StepsRemaining <= 0)
             {
-                return new ModuleEnd();
+                return new EndResponse();
             }
             --data.StepsRemaining;
 
@@ -36,7 +36,7 @@ namespace MacroModules.Model.Modules
             ++nextPos.Y;
             MouseControl.MoveCursor(nextPos);
             data.CurrentPos = nextPos;
-            return new ModuleWaitRepeat(new TimeSpan(0, 0, 0, 0, 5));
+            return new WaitRepeatResponse(new TimeSpan(0, 0, 0, 0, 5));
         }
 
         private Position startingPos = new(10, 10);

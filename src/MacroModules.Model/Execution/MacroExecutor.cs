@@ -250,7 +250,7 @@ namespace MacroModules.Model.Execution
 
                 case ModuleResponseType.Next:
                     // Prepare execution of next module
-                    var responseNext = (ModuleNext)response;
+                    var responseNext = (NextResponse)response;
                     module = responseNext.NextModule;
                     moduleData = null;
                     initialized = false;
@@ -262,7 +262,7 @@ namespace MacroModules.Model.Execution
 
                 case ModuleResponseType.WaitRepeat:
                     // Wait on thread if request queue is empty
-                    var responseWaitRepeat = (ModuleWaitRepeat)response;
+                    var responseWaitRepeat = (WaitRepeatResponse)response;
                     int waitMs = (int)responseWaitRepeat.WaitTime.TotalMilliseconds;
                     lock (requestLock)
                     {

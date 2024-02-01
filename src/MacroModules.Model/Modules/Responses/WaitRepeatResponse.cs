@@ -5,7 +5,7 @@
     /// should wait for a specified amount of time and then repeat the current <see cref="Module"/>
     /// execution.
     /// </summary>
-    public class ModuleWaitRepeat : IModuleResponse
+    public class WaitRepeatResponse : IModuleResponse
     {
         /// <inheritdoc/>
         public ModuleResponseType Type { get; } = ModuleResponseType.WaitRepeat;
@@ -16,7 +16,7 @@
         /// </summary>
         public TimeSpan WaitTime { get; private set; }
 
-        public ModuleWaitRepeat(TimeSpan waitTime)
+        public WaitRepeatResponse(TimeSpan waitTime)
         {
             WaitTime = waitTime;
         }

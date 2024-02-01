@@ -4,7 +4,7 @@
     /// Represents a return message from a <see cref="Module"/> that indicates that the caller
     /// should execute the next indicated <see cref="Module"/>.
     /// </summary>
-    public class ModuleNext : IModuleResponse
+    public class NextResponse : IModuleResponse
     {
         /// <inheritdoc/>
         public ModuleResponseType Type { get; } = ModuleResponseType.Next;
@@ -14,7 +14,7 @@
         /// </summary>
         public Module NextModule { get; private set; }
 
-        public ModuleNext(Module nextModule)
+        public NextResponse(Module nextModule)
         {
             NextModule = nextModule;
         }

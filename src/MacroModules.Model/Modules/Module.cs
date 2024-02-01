@@ -33,13 +33,32 @@ namespace MacroModules.Model.Modules
         ///     position.
         /// </para>
         /// </remarks>
-        public List<ExitPort> ExitPorts { get; protected set; } = [];
+        public List<ExitPort> ExitPorts { get; protected set; };
 
         /// <summary>
         /// The <see cref="VariableStore"/> object that is used as a context to get all necessary
         /// <see cref="Variable"/> instances.
         /// </summary>
         public VariableStore? VariableContext { get; set; } = null;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Module"/> class that contains a single
+        /// default <see cref="ExitPort"/>.
+        /// </summary>
+        /// <remarks>
+        /// This constructor should only be called if the concrete <see cref="Module"/> being
+        /// created will use the default <see cref="ExitPort"/>. Do not call this constructor if
+        /// the concrete instance will define its own port or if it has no ports.
+        /// </remarks>
+        public Module()
+        {
+            ExitPorts =
+            [
+                new ExitPort(
+                    portName: "Next",
+                    description: "Activates when the Module is finished executing")
+            ];
+        }
 
         /// <summary>
         /// Initialize the <see cref="Module"/> object by generating a data object that may

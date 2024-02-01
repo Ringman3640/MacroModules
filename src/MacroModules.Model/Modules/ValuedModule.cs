@@ -16,6 +16,9 @@ namespace MacroModules.Model.Modules
         public abstract ValueType ReturnValueType { get; }
 
         /// <inheritdoc/>
+        public ValuedModule() : base() { }
+
+        /// <inheritdoc/>
         public abstract override IResponse Execute(ref object? processData);
     }
 }

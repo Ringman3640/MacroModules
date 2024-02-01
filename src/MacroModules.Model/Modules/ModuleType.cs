@@ -2,6 +2,7 @@
 {
     public enum ModuleType
     {
+        SendInput,
         MoveCursor,
         PathCursor,
         Scroll,

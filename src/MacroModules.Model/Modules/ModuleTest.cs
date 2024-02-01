@@ -6,6 +6,8 @@ namespace MacroModules.Model.Modules
 {
     public class ModuleTest : Module
     {
+        public override ModuleType Type { get; } = ModuleType.MoveCursor;
+
         public ModuleTest() { }
 
         public ModuleTest(Position startingPos)
@@ -27,7 +29,7 @@ namespace MacroModules.Model.Modules
             var data = (ModuleTestData)processData!;
             if (data.StepsRemaining <= 0)
             {
-                return new EndResponse();
+                return new ContinueResponse(null);
             }
             --data.StepsRemaining;
 

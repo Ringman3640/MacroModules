@@ -11,8 +11,4 @@
     <ProjectReference Include="..\MacroModules.MacroLibrary\MacroModules.MacroLibrary.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Modules\Concrete\" />
-  </ItemGroup>
-
 </Project>

@@ -3,7 +3,7 @@
     /// <summary>
     /// The set of Windows virtual key codes mapped to their corresponding key name.
     /// </summary>
-    public enum InputCode : int
+    public enum InputCode : ushort
     {
         MouseLeft = 0x01,
         MouseRight = 0x02,

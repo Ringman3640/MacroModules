@@ -9,9 +9,14 @@ namespace MacroModules.Model.Modules
     public abstract class Module
     {
         /// <summary>
-        /// Get the unique identifier for this <see cref="Module"/>.
+        /// Gets the unique identifier for this <see cref="Module"/>.
         /// </summary>
         public Guid Id { get; } = Guid.NewGuid();
+
+        /// <summary>
+        /// Gets the type of the <see cref="Module"/> as a <see cref="ModuleType"/> enum.
+        /// </summary>
+        public abstract ModuleType Type { get; }
 
         /// <summary>
         /// A list of all <see cref="ExitPort"/> objects that exist on this <see cref="Module"/>.

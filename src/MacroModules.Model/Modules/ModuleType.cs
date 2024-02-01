@@ -6,6 +6,7 @@
         MoveCursor,
         PathCursor,
         Scroll,
-        GetCursorPosition
+        GetCursorPosition,
+        OpenProgram
     }
 }

@@ -10,6 +10,9 @@ namespace MacroModules.Model.Modules.Concrete
         Release
     }
 
+    /// <summary>
+    /// Represents a <see cref="Module"/> that sends keyboard and mouse inputs to the system.
+    /// </summary>
     public class SendInputModule : Module
     {
         /// <summary>

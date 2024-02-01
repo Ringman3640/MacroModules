@@ -230,30 +230,28 @@ namespace MacroModules.Model.Execution
             IResponse response = module.Execute(ref moduleData);
             switch (response.Type)
             {
-                case ResponseType.End:
-                    // Invoke listenders of the ExecutionFinished event and restart if requested
-                    // Otherwise transition to Idle state
-                    ExecutionFinishedArgs args = new();
-                    ExecutionFinished?.Invoke(this, args);
-                    if (args.RestartExecution)
-                    {
-                        module = startupModule;
-                        moduleData = null;
-                        initialized = false;
-                    }
-                    else
-                    {
-                        module = null;
-                        State = MacroExecutorState.Idle;
-                    }
-                    break;
-
                 case ResponseType.Continue:
                     // Prepare execution of next module
-                    var responseNext = (ContinueResponse)response;
-                    module = responseNext.NextModule;
+                    var responseContinue = (ContinueResponse)response;
+                    module = responseContinue.NextModule;
                     moduleData = null;
                     initialized = false;
+                    if (module == null)
+                    {
+                        // If the next module is null, invoke the ExecutionFinished listeners
+                        // Restart macro if requested
+                        // Otherwise transition to idle state
+                        ExecutionFinishedArgs args = new();
+                        ExecutionFinished?.Invoke(this, args);
+                        if (args.RestartExecution)
+                        {
+                            module = startupModule;
+                        }
+                        else
+                        {
+                            State = MacroExecutorState.Idle;
+                        }
+                    }
                     break;
 
                 case ResponseType.Repeat:

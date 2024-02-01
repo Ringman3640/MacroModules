@@ -7,7 +7,7 @@ namespace MacroModules.Model.Modules.Responses
     /// <see cref="Value"/> and indicates that the caller should execute the next indicated
     /// <see cref="Module"/>.
     /// </summary>
-    public class ValuedContinueResponse : ContinueResponse, IResponseValue
+    public class ValuedContinueResponse : ContinueResponse, IValuedResponse
     {
         /// <inheritdoc/>
         public Value? ReturnValue { get; set; } = null;

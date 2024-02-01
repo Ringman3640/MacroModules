@@ -7,7 +7,7 @@ namespace MacroModules.Model.Modules.Responses
     /// <see cref="Value"/> and indicates that this is the last <see cref="Module"/> in the current
     /// execution thread.
     /// </summary>
-    public class ValuedEndResponse : EndResponse, IResponseValue
+    public class ValuedEndResponse : EndResponse, IValuedResponse
     {
         public Value? ReturnValue { get; set; } = null;
     }

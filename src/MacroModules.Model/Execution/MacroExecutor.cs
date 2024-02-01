@@ -248,9 +248,9 @@ namespace MacroModules.Model.Execution
                     }
                     break;
 
-                case ModuleResponseType.Next:
+                case ModuleResponseType.Continue:
                     // Prepare execution of next module
-                    var responseNext = (NextResponse)response;
+                    var responseNext = (ContinueResponse)response;
                     module = responseNext.NextModule;
                     moduleData = null;
                     initialized = false;

@@ -3,7 +3,7 @@
     public enum ModuleResponseType
     {
         End,
-        Next,
+        Continue,
         Repeat,
         WaitRepeat
     }

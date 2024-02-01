@@ -4,17 +4,17 @@
     /// Represents a return message from a <see cref="Module"/> that indicates that the caller
     /// should execute the next indicated <see cref="Module"/>.
     /// </summary>
-    public class NextResponse : IModuleResponse
+    public class ContinueResponse : IModuleResponse
     {
         /// <inheritdoc/>
-        public ModuleResponseType Type { get; } = ModuleResponseType.Next;
+        public ModuleResponseType Type { get; } = ModuleResponseType.Continue;
 
         /// <summary>
         /// Indicates the next MacroProcess the caller should execute.
         /// </summary>
         public Module NextModule { get; private set; }
 
-        public NextResponse(Module nextModule)
+        public ContinueResponse(Module nextModule)
         {
             NextModule = nextModule;
         }

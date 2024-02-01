@@ -76,12 +76,13 @@ namespace MacroModules.Model.Modules
         /// or <see cref="Initialize(out object?)"/>.
         /// </summary>
         /// <remarks>
-        /// <see cref="Restore(ref object?)"/> should only be called if the caller must stop
-        /// executing the process before <see cref="Execute(ref object?)"/> indicates that the
-        /// execution is done.
+        /// <see cref="Restore(ref object?)"/> should be called if the caller must stop executing
+        /// the <see cref="Module"/> before <see cref="Execute(ref object?)"/> indicates that the
+        /// execution is done. 
         /// </remarks>
         /// <param name="processData">
-        /// The execution state data object created from <see cref="Initialize(out object?)"/>.
+        /// The execution state data object created from <see cref="Initialize(out object?)"/>. This
+        /// value will be set to <c>null</c>.
         /// </param>
         /// <seealso cref="Initialize(out object?)"/>
         /// <seealso cref="Execute(ref object?)"/>

@@ -5,10 +5,10 @@
     /// should wait for a specified amount of time and then repeat the current <see cref="Module"/>
     /// execution.
     /// </summary>
-    public class WaitRepeatResponse : IModuleResponse
+    public class WaitRepeatResponse : IResponse
     {
         /// <inheritdoc/>
-        public ModuleResponseType Type { get; } = ModuleResponseType.WaitRepeat;
+        public ResponseType Type { get; } = ResponseType.WaitRepeat;
 
         /// <summary>
         /// Indicates the amount of time the caller should wait for before repeating the current

@@ -4,9 +4,9 @@
     /// Represents a return message from a <see cref="Module"/> that indicates that this is the
     /// last <see cref="Module"/> in the current execution thread.
     /// </summary>
-    public class EndResponse : IModuleResponse
+    public class EndResponse : IResponse
     {
         /// <inheritdoc/>
-        public ModuleResponseType Type { get; } = ModuleResponseType.End;
+        public ResponseType Type { get; } = ResponseType.End;
     }
 }

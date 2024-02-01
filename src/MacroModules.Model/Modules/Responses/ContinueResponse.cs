@@ -4,10 +4,10 @@
     /// Represents a return message from a <see cref="Module"/> that indicates that the caller
     /// should execute the next indicated <see cref="Module"/>.
     /// </summary>
-    public class ContinueResponse : IModuleResponse
+    public class ContinueResponse : IResponse
     {
         /// <inheritdoc/>
-        public ModuleResponseType Type { get; } = ModuleResponseType.Continue;
+        public ResponseType Type { get; } = ResponseType.Continue;
 
         /// <summary>
         /// Indicates the next <see cref="Module"/> the caller should execute.

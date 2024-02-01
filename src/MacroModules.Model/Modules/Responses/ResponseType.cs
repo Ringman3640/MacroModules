@@ -1,6 +1,6 @@
 ﻿namespace MacroModules.Model.Modules.Responses
 {
-    public enum ModuleResponseType
+    public enum ResponseType
     {
         End,
         Continue,

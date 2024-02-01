@@ -60,11 +60,11 @@ namespace MacroModules.Model.Modules
         /// The execution state data object created from <see cref="Initialize(out object?)"/>
         /// </param>
         /// <returns>
-        /// A <see cref="IModuleResponse"/> that indicates what the caller should do next.
+        /// A <see cref="IResponse"/> that indicates what the caller should do next.
         /// </returns>
         /// <seealso cref="Initialize(out object?)"/>
-        /// <seealso cref="IModuleResponse"/>
-        public abstract IModuleResponse Execute(ref object? processData);
+        /// <seealso cref="IResponse"/>
+        public abstract IResponse Execute(ref object? processData);
 
         /// <summary>
         /// Revert any system state changes that were set during <see cref="Execute(ref object?)"/>

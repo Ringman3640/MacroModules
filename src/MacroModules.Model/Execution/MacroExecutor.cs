@@ -227,10 +227,10 @@ namespace MacroModules.Model.Execution
                 initialized = true;
             }
 
-            IModuleResponse response = module.Execute(ref moduleData);
+            IResponse response = module.Execute(ref moduleData);
             switch (response.Type)
             {
-                case ModuleResponseType.End:
+                case ResponseType.End:
                     // Invoke listenders of the ExecutionFinished event and restart if requested
                     // Otherwise transition to Idle state
                     ExecutionFinishedArgs args = new();
@@ -248,7 +248,7 @@ namespace MacroModules.Model.Execution
                     }
                     break;
 
-                case ModuleResponseType.Continue:
+                case ResponseType.Continue:
                     // Prepare execution of next module
                     var responseNext = (ContinueResponse)response;
                     module = responseNext.NextModule;
@@ -256,11 +256,11 @@ namespace MacroModules.Model.Execution
                     initialized = false;
                     break;
 
-                case ModuleResponseType.Repeat:
+                case ResponseType.Repeat:
                     // Do nothing else, execution should repeat automatically
                     break;
 
-                case ModuleResponseType.WaitRepeat:
+                case ResponseType.WaitRepeat:
                     // Wait on thread if request queue is empty
                     var responseWaitRepeat = (WaitRepeatResponse)response;
                     int waitMs = (int)responseWaitRepeat.WaitTime.TotalMilliseconds;

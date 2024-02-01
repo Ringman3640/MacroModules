@@ -4,15 +4,15 @@
     /// Represents a return message from a <see cref="Module"/> that indicates what the caller
     /// should do next.
     /// </summary>
-    public interface IModuleResponse
+    public interface IResponse
     {
         /// <summary>
         /// Indicates the type of response that represents this object.
         /// </summary>
         /// <remarks>
-        /// Each <see cref="ModuleResponseType"/> corresponds to a specific
-        /// <see cref="IModuleResponse"/> implementation class.
+        /// Each <see cref="ResponseType"/> corresponds to a specific
+        /// <see cref="IResponse"/> implementation class.
         /// </remarks>
-        ModuleResponseType Type { get; }
+        ResponseType Type { get; }
     }
 }

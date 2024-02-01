@@ -22,7 +22,7 @@ namespace MacroModules.Model.Modules
             MouseControl.MoveCursor(castedProcessData.CurrentPos);
         }
 
-        public override IModuleResponse Execute(ref object? processData)
+        public override IResponse Execute(ref object? processData)
         {
             var data = (ModuleTestData)processData!;
             if (data.StepsRemaining <= 0)

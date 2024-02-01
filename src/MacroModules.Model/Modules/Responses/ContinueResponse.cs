@@ -10,7 +10,7 @@
         public ModuleResponseType Type { get; } = ModuleResponseType.Continue;
 
         /// <summary>
-        /// Indicates the next MacroProcess the caller should execute.
+        /// Indicates the next <see cref="Module"/> the caller should execute.
         /// </summary>
         public Module NextModule { get; private set; }
 

@@ -86,6 +86,9 @@ namespace MacroModules.Model.Modules
         /// </param>
         /// <seealso cref="Initialize(out object?)"/>
         /// <seealso cref="Execute(ref object?)"/>
-        public virtual void Restore(ref object? processData) { }
+        public virtual void Restore(ref object? processData)
+        {
+            processData = null;
+        }
     }
 }

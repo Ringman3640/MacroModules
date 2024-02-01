@@ -2,6 +2,7 @@
 {
     public enum ValueDataType
     {
+        Bool,
         Input,
         String,
         Number,

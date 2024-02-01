@@ -33,7 +33,7 @@ namespace MacroModules.Model.Modules
         ///     position.
         /// </para>
         /// </remarks>
-        public List<ExitPort> ExitPorts { get; protected set; };
+        public List<ExitPort> ExitPorts { get; protected set; }
 
         /// <summary>
         /// The <see cref="VariableStore"/> object that is used as a context to get all necessary

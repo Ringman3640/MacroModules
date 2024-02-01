@@ -12,6 +12,6 @@ namespace MacroModules.Model.Modules.Responses
         /// <inheritdoc/>
         public Value? ReturnValue { get; set; } = null;
 
-        public ValuedContinueResponse(Module nextModule) : base(nextModule) { }
+        public ValuedContinueResponse(Module? nextModule) : base(nextModule) { }
     }
 }

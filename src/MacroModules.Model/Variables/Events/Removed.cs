@@ -1,4 +1,4 @@
-﻿namespace MacroModules.Model.Variable.Events
+﻿namespace MacroModules.Model.Variables.Events
 {
     /// <summary>
     /// Defines an event to handle variable deletion.
@@ -15,7 +15,7 @@
     /// Represents the method that will handle the <see cref="INotifyVariableDeleted.Deleted"/> event raised when a
     /// variable is marked as deleted.
     /// </summary>
-    /// <param name="sender">The <see cref="VariableBase"/> that raised the event.</param>
+    /// <param name="sender">The <see cref="Variable"/> that raised the event.</param>
     /// <param name="e">An <see cref="EventArgs"/> instance that contains event data.</param>
     public delegate void DeletedEventHandler(object sender, EventArgs e);
 }

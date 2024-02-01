@@ -1,20 +1,22 @@
-﻿namespace MacroModules.Model.Variable
+﻿using MacroModules.Model.Values;
+
+namespace MacroModules.Model.Variables
 {
     public class VariableStore
     {
         /// <summary>
-        /// Creates a new <see cref="VariableBase"/> instance and adds it to the
+        /// Creates a new <see cref="Variable"/> instance and adds it to the
         /// <see cref="VariableStore"/>.
         /// </summary>
-        /// <param name="type">The type of <see cref="VariableBase"/> to create.</param>
+        /// <param name="type">The type of <see cref="Variable"/> to create.</param>
         /// <returns>
-        /// The <see cref="VariableBase"/> that was created and added to the
+        /// The <see cref="Variable"/> that was created and added to the
         /// <see cref="VariableStore"/>.
         /// </returns>
-        public VariableBase CreateVariable(VariableType type)
+        public Variable CreateVariable(ValueDataType type)
         {
-            
-            VariableBase variable = VariableFactory.Create(type);
+
+            Variable variable = new(type);
             lock (store)
             {
                 store.Add(variable.Id, variable);
@@ -23,28 +25,28 @@
         }
 
         /// <summary>
-        /// Gets a stored <see cref="VariableBase"/> from the <see cref="VariableStore"/> given the
-        /// variable's <see cref="VariableBase.Id"/>.
+        /// Gets a stored <see cref="Variable"/> from the <see cref="VariableStore"/> given the
+        /// variable's <see cref="Variable.Id"/>.
         /// </summary>
         /// <param name="variableId">
-        /// The <see cref="VariableBase.Id"/> of the variable to get.
+        /// The <see cref="Variable.Id"/> of the variable to get.
         /// </param>
         /// <returns>
         /// <c>null</c> if <paramref name="variableId"/> was not found in the store. Otherwise
-        /// returns the corresponding <see cref="VariableBase"/> instance.
+        /// returns the corresponding <see cref="Variable"/> instance.
         /// </returns>
-        public VariableBase? GetVariable(Guid variableId)
+        public Variable? GetVariable(Guid variableId)
         {
             lock (store)
             {
-                store.TryGetValue(variableId, out VariableBase? variable);
+                store.TryGetValue(variableId, out Variable? variable);
                 return variable;
             }
         }
 
         /// <summary>
-        /// Initializes all <see cref="VariableBase"/> instances in the store by calling
-        /// <see cref="VariableBase.InitializeRuntimeValue"/> on each instance.
+        /// Initializes all <see cref="Variable"/> instances in the store by calling
+        /// <see cref="Variable.InitializeRuntimeValue"/> on each instance.
         /// </summary>
         /// <remarks>
         /// This method should be called right when macro runtime execution is started.
@@ -53,7 +55,7 @@
         {
             lock (store)
             {
-                foreach (VariableBase variable in store.Values)
+                foreach (Variable variable in store.Values)
                 {
                     variable.InitializeRuntimeValue();
                 }
@@ -61,16 +63,16 @@
         }
 
         /// <summary>
-        /// Removes a stored <see cref="VariableBase"/> from the <see cref="VariableStore"/> given
-        /// the variable's <see cref="VariableBase.Id"/>.
+        /// Removes a stored <see cref="Variable"/> from the <see cref="VariableStore"/> given
+        /// the variable's <see cref="Variable.Id"/>.
         /// </summary>
         /// <remarks>
         /// Removing a variable from the store will mark the variable as deleted by calling
-        /// <see cref="VariableBase.IndicateDeleted"/>. This will notify all listeners of the
-        /// <see cref="VariableBase.Deleted"/> event.
+        /// <see cref="Variable.IndicateDeleted"/>. This will notify all listeners of the
+        /// <see cref="Variable.Deleted"/> event.
         /// </remarks>
         /// <param name="variableId">
-        /// The <see cref="VariableBase.Id"/> of the variable to remove.
+        /// The <see cref="Variable.Id"/> of the variable to remove.
         /// </param>
         /// <returns>
         /// <c>true</c> if the variable is successfully removed. Returns <c>false</c> if
@@ -80,7 +82,7 @@
         {
             lock (store)
             {
-                if (!store.TryGetValue(variableId, out VariableBase? variable))
+                if (!store.TryGetValue(variableId, out Variable? variable))
                 {
                     return false;
                 }
@@ -89,6 +91,6 @@
             }
         }
 
-        private readonly Dictionary<Guid, VariableBase> store = [];
+        private readonly Dictionary<Guid, Variable> store = [];
     }
 }

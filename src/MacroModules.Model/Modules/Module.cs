@@ -1,5 +1,5 @@
 ﻿using MacroModules.Model.Modules.Responses;
-using MacroModules.Model.Variable;
+using MacroModules.Model.Variables;
 
 namespace MacroModules.Model.Modules
 {
@@ -32,7 +32,7 @@ namespace MacroModules.Model.Modules
 
         /// <summary>
         /// The <see cref="VariableStore"/> object that is used as a context to get all necessary
-        /// <see cref="VariableBase"/> instances.
+        /// <see cref="Variable"/> instances.
         /// </summary>
         public VariableStore? VariableContext { get; set; } = null;
 

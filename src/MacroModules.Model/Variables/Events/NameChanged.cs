@@ -1,4 +1,4 @@
-﻿namespace MacroModules.Model.Variable.Events
+﻿namespace MacroModules.Model.Variables.Events
 {
     /// <summary>
     /// Defines an event to handle variable name changes.
@@ -17,7 +17,7 @@
     public class NameChangedArgs : EventArgs
     {
         /// <summary>
-        /// The previous name of the <see cref="VariableBase"/> before it was modified.
+        /// The previous name of the <see cref="Variable"/> before it was modified.
         /// </summary>
         public string PreviousName { get; private set; }
 
@@ -35,7 +35,7 @@
     /// Represents the method that will handle the <see cref="INotifyNameChanged.NameChanged"/>
     /// event raised when a variable name is modified.
     /// </summary>
-    /// <param name="sender">The <see cref="VariableBase"/> that raised the event.</param>
+    /// <param name="sender">The <see cref="Variable"/> that raised the event.</param>
     /// <param name="e">An <see cref="NameChangedArgs"/> instance that contains event data.</param>
     public delegate void NameChangedEventHandler(object sender, NameChangedArgs e);
 }

@@ -13,7 +13,7 @@ namespace MacroModules.Model.Modules
         /// Gets the <see cref="ValueType"/> of the <see cref="Value"/> returned by this object from
         /// <see cref="Execute(ref object?)"/>.
         /// </summary>
-        public abstract ValueType ReturnValueType { get; }
+        public abstract ValueDataType ReturnValueType { get; }
 
         /// <inheritdoc/>
         public ValuedModule() : base() { }

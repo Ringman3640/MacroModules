@@ -67,8 +67,9 @@ namespace MacroModules.Model.Modules.Concrete
             {
                 Process process = data.ProcessList[data.SearchIndex];
                 string searchTarget = (SearchComponent == ProgramSearchTarget.WindowTitle) ? process.MainWindowTitle : process.ProcessName;
+                bool match = searchTarget.IndexOf(SearchTerm, StringComparison.OrdinalIgnoreCase) >= 0;
 
-                if (searchTarget.Contains(SearchTerm) && !data.QueuedHandles.Contains(process.MainWindowHandle))
+                if (match && !data.QueuedHandles.Contains(process.MainWindowHandle))
                 {
                     data.FocusHandleQueue.Enqueue(process.MainWindowHandle);
                     data.QueuedHandles.Add(process.MainWindowHandle);

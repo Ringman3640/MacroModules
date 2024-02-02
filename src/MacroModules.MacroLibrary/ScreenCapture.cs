@@ -22,13 +22,20 @@ namespace MacroModules.MacroLibrary
             Bitmap screenshot = new(width, height, PixelFormat.Format32bppArgb);
             using (Graphics screenGraphic = Graphics.FromImage(screenshot))
             {
-                screenGraphic.CopyFromScreen(
-                    sourceX: topLeft.X,
-                    sourceY: topLeft.Y,
-                    destinationX: 0,
-                    destinationY: 0,
-                    blockRegionSize: new Size(width, height),
-                    copyPixelOperation: CopyPixelOperation.SourceCopy);
+                try
+                {
+                    screenGraphic.CopyFromScreen(
+                        sourceX: topLeft.X,
+                        sourceY: topLeft.Y,
+                        destinationX: 0,
+                        destinationY: 0,
+                        blockRegionSize: new Size(width, height),
+                        copyPixelOperation: CopyPixelOperation.SourceCopy);
+                }
+                catch
+                {
+                    return null;
+                }
             }
 
             return screenshot;

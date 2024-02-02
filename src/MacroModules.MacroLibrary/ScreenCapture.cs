@@ -20,14 +20,16 @@ namespace MacroModules.MacroLibrary
             }
 
             Bitmap screenshot = new(width, height, PixelFormat.Format32bppArgb);
-            Graphics screenGraphic = Graphics.FromImage(screenshot);
-            screenGraphic.CopyFromScreen(
-                sourceX: topLeft.X,
-                sourceY: topLeft.Y,
-                destinationX: 0,
-                destinationY: 0,
-                blockRegionSize: new Size(width, height),
-                copyPixelOperation: CopyPixelOperation.SourceCopy);
+            using (Graphics screenGraphic = Graphics.FromImage(screenshot))
+            {
+                screenGraphic.CopyFromScreen(
+                    sourceX: topLeft.X,
+                    sourceY: topLeft.Y,
+                    destinationX: 0,
+                    destinationY: 0,
+                    blockRegionSize: new Size(width, height),
+                    copyPixelOperation: CopyPixelOperation.SourceCopy);
+            }
 
             return screenshot;
         }

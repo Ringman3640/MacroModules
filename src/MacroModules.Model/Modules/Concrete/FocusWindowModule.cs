@@ -5,12 +5,6 @@ using System.Diagnostics;
 
 namespace MacroModules.Model.Modules.Concrete
 {
-    public enum ProgramSearchTarget
-    {
-        ProcessName,
-        WindowTitle
-    }
-
     /// <summary>
     /// Represents a <see cref="Module"/> that sets current foreground window.
     /// </summary>

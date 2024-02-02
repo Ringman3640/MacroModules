@@ -9,6 +9,6 @@
         Position,
         Duration,
         Color,
-        ScreenCapture
+        Snapshot
     }
 }

@@ -11,5 +11,6 @@
         OpenProgram,
         CloseProgram,
         FocusWindow,
+        Wait,
     }
 }

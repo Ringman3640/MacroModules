@@ -32,7 +32,7 @@ namespace MacroModules.Model.Modules.Concrete
                 result = InputMonitor.InputToggled(InputCode);
             }
 
-            return new ValuedContinueResponse(ExitPorts[0].Destination)
+            return new ContinueResponse(ExitPorts[0].Destination)
             {
                 ReturnValue = new BoolValue(result)
             };

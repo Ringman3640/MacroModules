@@ -42,7 +42,7 @@ namespace MacroModules.Model.Modules.Concrete
             // Exit if search term is empty
             if (SearchTerm == "")
             {
-                return new ValuedContinueResponse(ExitPorts[0].Destination)
+                return new ContinueResponse(ExitPorts[0].Destination)
                 {
                     ReturnValue = new BoolValue(false)
                 };
@@ -99,7 +99,7 @@ namespace MacroModules.Model.Modules.Concrete
                 }
             }
 
-            return new ValuedContinueResponse(ExitPorts[0].Destination)
+            return new ContinueResponse(ExitPorts[0].Destination)
             {
                 ReturnValue = new BoolValue(data.CloseSuccess)
             };

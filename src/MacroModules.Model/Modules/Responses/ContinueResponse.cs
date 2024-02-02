@@ -1,4 +1,6 @@
-﻿namespace MacroModules.Model.Modules.Responses
+﻿using MacroModules.Model.Values;
+
+namespace MacroModules.Model.Modules.Responses
 {
     /// <summary>
     /// Represents a return message from a <see cref="Module"/> that indicates that the caller
@@ -14,6 +16,12 @@
         /// Indicates the next <see cref="Module"/> the caller should execute.
         /// </summary>
         public Module? NextModule { get; private set; }
+
+        /// <summary>
+        /// Indicates an optional <see cref="Value"/> that is returned when a
+        /// <see cref="ValuedModule"/> completes execution.
+        /// </summary>
+        public Value? ReturnValue { get; set; } = null;
 
         public ContinueResponse(Module? nextModule)
         {

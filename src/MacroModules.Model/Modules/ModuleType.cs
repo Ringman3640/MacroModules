@@ -7,6 +7,8 @@
         PathCursor,
         Scroll,
         GetCursorPosition,
-        OpenProgram
+        OpenProgram,
+        CloseProgram,
+        FocusWindow,
     }
 }

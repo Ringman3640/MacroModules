@@ -98,9 +98,30 @@ namespace MacroModules.Model.Types
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Snapshot"/> class that contains the given
+        /// snapshot and has default filter values (none).
+        /// </summary>
+        /// <param name="snapshot"></param>
         public Snapshot(Bitmap snapshot)
         {
             originalSnapshot = snapshot;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Snapshot"/> class that is a deep copy of
+        /// another <see cref="Snapshot"/> instance.
+        /// </summary>
+        /// <param name="other"></param>
+        public Snapshot(Snapshot other)
+        {
+            originalSnapshot = new(other.originalSnapshot);
+            filterColorDepth = other.filterColorDepth;
+            filterResolutionScale = other.filterResolutionScale;
+            if (other.filteredSnapshot != null)
+            {
+                filteredSnapshot = new(other.filteredSnapshot);
+            }
         }
 
         /// <summary>
@@ -178,6 +199,6 @@ namespace MacroModules.Model.Types
         private Bitmap originalSnapshot;
         private Bitmap? filteredSnapshot = null;
         private ColorDepth filterColorDepth = ColorDepth.Color8Bit;
-        private double filterResolutionScale = 100;
+        private double filterResolutionScale = 1;
     }
 }

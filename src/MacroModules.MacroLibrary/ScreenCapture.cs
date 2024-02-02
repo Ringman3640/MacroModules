@@ -32,7 +32,7 @@ namespace MacroModules.MacroLibrary
             return screenshot;
         }
 
-        public static uint GetPixelColor(Position pixelPos)
+        public static Color GetPixelColor(Position pixelPos)
         {
             Translate(ref pixelPos);
             IntPtr screenContext = GetDC(IntPtr.Zero);
@@ -45,7 +45,7 @@ namespace MacroModules.MacroLibrary
             formattedColor += (rawColor & 0xFF0000) >>> 16;     // Blue
 
             ReleaseDC(IntPtr.Zero, screenContext);
-            return formattedColor;
+            return Color.FromArgb((int)formattedColor);
         }
     }
 }

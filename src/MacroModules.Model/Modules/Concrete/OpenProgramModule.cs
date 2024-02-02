@@ -41,10 +41,7 @@ namespace MacroModules.Model.Modules.Concrete
                 failed = true;
             }
 
-            return new ContinueResponse(ExitPorts[0].Destination)
-            {
-               ReturnValue = new BoolValue(failed)
-            };
+            return new ContinueResponse(new BoolValue(!failed));
         }
     }
 }

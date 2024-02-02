@@ -48,7 +48,7 @@ namespace MacroModules.Model.Modules.Concrete
                     break;
             }
 
-            return new ContinueResponse(ExitPorts[0].Destination);
+            return new ContinueResponse();
         }
     }
 }

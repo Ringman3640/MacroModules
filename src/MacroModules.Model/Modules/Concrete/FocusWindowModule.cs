@@ -46,10 +46,7 @@ namespace MacroModules.Model.Modules.Concrete
             // Exit if search term is empty
             if (SearchTerm == "")
             {
-                return new ContinueResponse(ExitPorts[0].Destination)
-                {
-                    ReturnValue = new BoolValue(false)
-                };
+                return new ContinueResponse(new BoolValue(false));
             }
 
             var data = (FocusWindowModuleData)processData!;
@@ -101,10 +98,7 @@ namespace MacroModules.Model.Modules.Concrete
                 }
             }
 
-            return new ContinueResponse(ExitPorts[0].Destination)
-            {
-                ReturnValue = new BoolValue(data.FocusSuccess)
-            };
+            return new ContinueResponse(new BoolValue(data.FocusSuccess));
         }
 
         private class FocusWindowModuleData

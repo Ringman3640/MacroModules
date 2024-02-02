@@ -39,7 +39,7 @@ namespace MacroModules.Model.Modules.Concrete
             if (elapsedTime >= TransitionTime)
             {
                 MouseControl.MoveCursor(TargetPosition);
-                return new ContinueResponse(ExitPorts[0].Destination);
+                return new ContinueResponse();
             }
 
             double transitionPercent = elapsedTime / TransitionTime;

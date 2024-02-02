@@ -233,7 +233,7 @@ namespace MacroModules.Model.Execution
                 case ResponseType.Continue:
                     // Prepare execution of next module
                     var responseContinue = (ContinueResponse)response;
-                    module = responseContinue.NextModule;
+                    module = GetNextModule(module, responseContinue.ContinuePort);
                     moduleData = null;
                     initialized = false;
                     if (module == null)
@@ -271,6 +271,23 @@ namespace MacroModules.Model.Execution
                     }
                     break;
             }
+        }
+
+        /// <summary>
+        /// Gets the next execution <see cref="Module"/> from the current <see cref="Module"/>'s
+        /// <see cref="Module.ExitPorts"/> list. Helper method for
+        /// <see cref="HandleModuleExecution(ref Module?, ref object?, ref bool)"/>.
+        /// </summary>
+        /// <param name="currentModule">The current <see cref="Module"/>.</param>
+        /// <param name="nextPort">The port index to access.</param>
+        /// <returns></returns>
+        private Module? GetNextModule(Module currentModule, int nextPort)
+        {
+            if (nextPort < 0 || nextPort >= currentModule.ExitPorts.Count)
+            {
+                return null;
+            }
+            return currentModule.ExitPorts[nextPort].Destination;
         }
     }
 }

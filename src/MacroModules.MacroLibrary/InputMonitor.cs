@@ -51,13 +51,13 @@ namespace MacroModules.MacroLibrary
         /// <returns>True if the input is being held down, otherwise false.</returns>
         public static bool InputHeld(ushort inputCode)
         {
-            // GetKeyState returns a short with the high-order-bit set if the key is being pressed.
-            // To check if the key is pressed, the return value is logically bit shift right until
-            // the high-order-bit is now at the position of the low-order-bit. Then just check if
-            // the value is 1.
+            // GetAsyncKeyState returns a short with the high-order-bit set if the key is being
+            // pressed. To check if the key is pressed, the return value is logically bit shift
+            // right until the high-order-bit is now at the position of the low-order-bit. Then just
+            // check if the value is 1.
             // The return value is bit shift 31 bits since there is not bi shift operator for short
             // types. The short gets automatically elevated to an int, which is 32 bits.
-            return (short)(GetKeyState(inputCode) >>> 31) == 1;
+            return (short)(GetAsyncKeyState(inputCode) >>> 31) == 1;
         }
 
         /// <summary>

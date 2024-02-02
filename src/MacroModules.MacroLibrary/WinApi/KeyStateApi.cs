@@ -6,5 +6,8 @@ namespace MacroModules.MacroLibrary.WinApi
     {
         [DllImport("User32.dll")]
         public static extern short GetKeyState(int nVirtKey);
+
+        [DllImport("User32.dll")]
+        public static extern short GetAsyncKeyState(int vKey);
     }
 }

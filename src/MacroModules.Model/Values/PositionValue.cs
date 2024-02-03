@@ -4,7 +4,7 @@ namespace MacroModules.Model.Values
 {
     public class PositionValue : Value, IValueData<Position>
     {
-        public override ValueDataType Type { get; } = ValueDataType.Position;
+        public override ValueDataType Type { get; protected set; } = ValueDataType.Position;
 
         public Position Data { get; set; }
 

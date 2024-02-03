@@ -4,7 +4,7 @@
     {
         public string Data { get; set; } = "";
 
-        public override ValueDataType Type { get; } = ValueDataType.String;
+        public override ValueDataType Type { get; protected set; } = ValueDataType.String;
 
         public StringValue() { }
 

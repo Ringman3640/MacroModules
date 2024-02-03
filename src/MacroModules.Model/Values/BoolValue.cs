@@ -2,7 +2,7 @@
 {
     public class BoolValue : Value, IValueData<bool>
     {
-        public override ValueDataType Type { get; } = ValueDataType.Bool;
+        public override ValueDataType Type { get; protected set; } = ValueDataType.Bool;
 
         public bool Data { get; set; }
 

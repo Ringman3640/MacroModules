@@ -2,7 +2,7 @@
 {
     internal class InvalidValue : Value
     {
-        public override ValueDataType Type { get; } = ValueDataType.Invalid;
+        public override ValueDataType Type { get; protected set; } = ValueDataType.Invalid;
 
         public override Value Clone()
         {

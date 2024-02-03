@@ -4,7 +4,7 @@ namespace MacroModules.Model.Values
 {
     public class ColorValue : Value, IValueData<Color>
     {
-        public override ValueDataType Type { get; } = ValueDataType.Color;
+        public override ValueDataType Type { get; protected set; } = ValueDataType.Color;
 
         public Color Data { get; set; } = Color.Empty;
 

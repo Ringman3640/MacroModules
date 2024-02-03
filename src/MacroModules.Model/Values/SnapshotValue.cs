@@ -16,5 +16,11 @@ namespace MacroModules.Model.Values
         {
             return new SnapshotValue(new Snapshot(Data));
         }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            Data.Dispose();
+        }
     }
 }

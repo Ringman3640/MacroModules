@@ -5,7 +5,7 @@ namespace MacroModules.Model.Values
     /// <summary>
     /// Represents a piece of data that is returned or used by a <see cref="Module"/>.
     /// </summary>
-    public abstract class Value
+    public abstract class Value : IDisposable
     {
         /// <summary>
         /// Gets the type of data this <see cref="Value"/> contians.
@@ -18,5 +18,7 @@ namespace MacroModules.Model.Values
         /// </summary>
         /// <returns></returns>
         public abstract Value Clone();
+
+        public virtual void Dispose() { }
     }
 }

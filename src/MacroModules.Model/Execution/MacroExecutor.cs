@@ -252,6 +252,8 @@ namespace MacroModules.Model.Execution
                             State = MacroExecutorState.Idle;
                         }
                     }
+                    // Dispose return value since its not used here
+                    responseContinue.ReturnValue?.Dispose();
                     break;
 
                 case ResponseType.Repeat:

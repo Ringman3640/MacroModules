@@ -6,7 +6,7 @@ namespace MacroModules.Model.Types
     /// <summary>
     /// Represents a <see cref="Bitmap"/> of a screen region that can be visually filtered.
     /// </summary>
-    public class Snapshot
+    public class Snapshot : IDisposable
     {
         /// <summary>
         /// Indicates the original <see cref="Bitmap"/> provided before any filtering is applied.
@@ -144,6 +144,16 @@ namespace MacroModules.Model.Types
 
                 cachedFilter = new(Filter);
                 return filteredSnapshot;
+            }
+        }
+
+        public void Dispose()
+        {
+            originalSnapshot.Dispose();
+            if (filteredSnapshot != null)
+            {
+                filteredSnapshot.Dispose();
+                filteredSnapshot = null;
             }
         }
 

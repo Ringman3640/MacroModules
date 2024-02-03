@@ -17,6 +17,10 @@ namespace MacroModules.Model.Modules.Concrete
         /// </summary>
         public Rectangle SnapshotRegion { get; set; }
 
+        /// <summary>
+        /// Indicates the <see cref="SnapshotFilter"/> that will be applied to the resulting
+        /// <see cref="Snapshot"/>.
+        /// </summary>
         public SnapshotFilter Filter { get; } = new();
 
         public override ValueDataType ReturnValueType { get; } = ValueDataType.Snapshot;

@@ -11,6 +11,8 @@
         OpenProgram,
         CloseProgram,
         FocusWindow,
+        GetSnapshot,
+        GetPixelColor,
         Wait,
     }
 }

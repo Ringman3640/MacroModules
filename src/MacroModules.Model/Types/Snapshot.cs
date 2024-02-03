@@ -164,14 +164,14 @@ namespace MacroModules.Model.Types
             }
 
             // The long ass comparison
-            // Idea to use Span<byte> from https://stackoverflow.com/a/48599119
+            // Idea to use ReadOnlySpan<byte> from https://stackoverflow.com/a/48599119
 
             ReadOnlySpan<byte> snapshot1Bytes;
             ReadOnlySpan<byte> snapshot2Bytes;
             using (var mstream = new MemoryStream())
             {
                 // The actual ImageFormat of the Bitmaps are MemoryBmp but Bmp needs to be used
-                // because Save() doesn't support MemoryBmp and throws an error is used but doesn't
+                // because Save() doesn't support MemoryBmp and throws an error if used but doesn't
                 // have that behavior documented; the method is literally unfinished what the fuck
                 // Microsoft
                 snapshot1.Save(mstream, ImageFormat.Bmp);

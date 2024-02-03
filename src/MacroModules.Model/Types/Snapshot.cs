@@ -3,14 +3,6 @@ using System.Drawing.Imaging;
 
 namespace MacroModules.Model.Types
 {
-    public enum ColorDepth
-    {
-        Color8Bit,
-        Color5Bit,
-        Color4Bit,
-        Color1Bit
-    }
-
     /// <summary>
     /// Represents a <see cref="Bitmap"/> of a screen region that can be visually filtered.
     /// </summary>
@@ -48,59 +40,14 @@ namespace MacroModules.Model.Types
         }
 
         /// <summary>
-        /// Indicates the <see cref="ColorDepth"/> filter value that is applied to
-        /// <see cref="FilteredSnapshot"/>.
+        /// Gets the <see cref="SnapshotFilter"/> instance that defines how the
+        /// <see cref="Snapshot"/> should be filtered.
         /// </summary>
-        public ColorDepth FilterColorDepth
-        {
-            get { return filterColorDepth; }
-            set
-            {
-                lock (snapshotLock)
-                {
-                    if (!value.Equals(filterColorDepth))
-                    {
-                        filterColorDepth = value;
-                        filteredSnapshot = null;
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Indicates the resolution scale that is applied to <see cref="FilteredSnapshot"/>.
-        /// </summary>
-        /// <remarks>
-        /// This value is a decimal from 0.1 to 1, where 1 represents the original resolution of
-        /// the snapshot. Any provided value is rounded to two decimal digits. 
-        /// </remarks>
-        public double FilterResolutionScale
-        {
-            get { return filterResolutionScale; }
-            set
-            {
-                lock (snapshotLock)
-                {
-                    // Round to nearest hundredth
-                    value = Double.Round(value, 2);
-
-                    // Lock to bounds
-                    value = Math.Min(value, 1);
-                    value = Math.Max(value, 0.01);
-
-                    // Set if not the same
-                    if (!value.Equals(filterResolutionScale))
-                    {
-                        filterResolutionScale = value;
-                        filteredSnapshot = null;
-                    }
-                }
-            }
-        }
+        public SnapshotFilter Filter { get; set; } = new();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Snapshot"/> class that contains the given
-        /// snapshot and has default filter values (none).
+        /// snapshot and has default <see cref="Filter"/> values.
         /// </summary>
         /// <param name="snapshot"></param>
         public Snapshot(Bitmap snapshot)
@@ -116,17 +63,20 @@ namespace MacroModules.Model.Types
         public Snapshot(Snapshot other)
         {
             originalSnapshot = new(other.originalSnapshot);
-            filterColorDepth = other.filterColorDepth;
-            filterResolutionScale = other.filterResolutionScale;
+            Filter = new(other.Filter);
             if (other.filteredSnapshot != null)
             {
                 filteredSnapshot = new(other.filteredSnapshot);
             }
+            if (other.cachedFilter != null)
+            {
+                cachedFilter = new(other.cachedFilter);
+            }
         }
 
         /// <summary>
-        /// Gets the filtered snapshot of <see cref="OriginalSnapshot"/> that has the custom filter
-        /// values applied.
+        /// Gets the filtered snapshot of <see cref="OriginalSnapshot"/> that has the custom
+        /// <see cref="Filter"/> values applied.
         /// </summary>
         /// <remarks>
         /// <para>
@@ -145,7 +95,7 @@ namespace MacroModules.Model.Types
         {
             lock (snapshotLock)
             {
-                if (filteredSnapshot != null)
+                if (filteredSnapshot != null && Filter.Equals(cachedFilter))
                 {
                     return filteredSnapshot;
                 }
@@ -153,7 +103,7 @@ namespace MacroModules.Model.Types
                 try
                 {
                     PixelFormat pixelFormat = PixelFormat.Format32bppArgb;
-                    switch (FilterColorDepth)
+                    switch (Filter.ColorDepth)
                     {
                         case ColorDepth.Color8Bit:
                             pixelFormat = PixelFormat.Format32bppArgb;
@@ -172,8 +122,8 @@ namespace MacroModules.Model.Types
                             break;
                     }
 
-                    int scaledWidth = (int)(originalSnapshot.Width * filterResolutionScale);
-                    int scaledHeight = (int)(originalSnapshot.Height * filterResolutionScale);
+                    int scaledWidth = (int)(originalSnapshot.Width * Filter.ResolutionScale);
+                    int scaledHeight = (int)(originalSnapshot.Height * Filter.ResolutionScale);
 
                     // Apply resolution scaling
                     using Bitmap scaledBitmap = (Bitmap)originalSnapshot.GetThumbnailImage(
@@ -189,16 +139,17 @@ namespace MacroModules.Model.Types
                 catch
                 {
                     filteredSnapshot = null;
+                    cachedFilter = null;
                 }
 
+                cachedFilter = new(Filter);
                 return filteredSnapshot;
             }
         }
 
-        private object snapshotLock = new();
+        private readonly object snapshotLock = new();
         private Bitmap originalSnapshot;
         private Bitmap? filteredSnapshot = null;
-        private ColorDepth filterColorDepth = ColorDepth.Color8Bit;
-        private double filterResolutionScale = 1;
+        private SnapshotFilter? cachedFilter = null;
     }
 }

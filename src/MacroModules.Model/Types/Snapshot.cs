@@ -1,12 +1,13 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 
 namespace MacroModules.Model.Types
 {
     /// <summary>
     /// Represents a <see cref="Bitmap"/> of a screen region that can be visually filtered.
     /// </summary>
-    public class Snapshot : IDisposable
+    public class Snapshot : IDisposable, IEquatable<Snapshot>
     {
         /// <summary>
         /// Indicates the original <see cref="Bitmap"/> provided before any filtering is applied.
@@ -145,6 +146,56 @@ namespace MacroModules.Model.Types
                 cachedFilter = new(Filter);
                 return filteredSnapshot;
             }
+        }
+
+        public bool Equals(Snapshot? other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            Bitmap snapshot1 = FilteredSnapshot;
+            Bitmap snapshot2 = other.FilteredSnapshot;
+
+            if (snapshot1.Size != snapshot2.Size || snapshot1.PixelFormat != snapshot2.PixelFormat)
+            {
+                return false;
+            }
+
+            // The long ass comparison
+            // Idea to use Span<byte> from https://stackoverflow.com/a/48599119
+
+            ReadOnlySpan<byte> snapshot1Bytes;
+            ReadOnlySpan<byte> snapshot2Bytes;
+            using (var mstream = new MemoryStream())
+            {
+                // The actual ImageFormat of the Bitmaps are MemoryBmp but Bmp needs to be used
+                // because Save() doesn't support MemoryBmp and throws an error is used but doesn't
+                // have that behavior documented; the method is literally unfinished what the fuck
+                // Microsoft
+                snapshot1.Save(mstream, ImageFormat.Bmp);
+                snapshot1Bytes = mstream.ToArray();
+            }
+            using (var mstream = new MemoryStream())
+            {
+                snapshot2.Save(mstream, ImageFormat.Bmp);
+                snapshot2Bytes = mstream.ToArray();
+            }
+
+            return snapshot1Bytes.SequenceEqual(snapshot2Bytes);
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Snapshot snapshotObj && Equals(snapshotObj);
+        }
+
+        public override int GetHashCode()
+        {
+            return Filter.GetHashCode()
+                + OriginalSnapshot.Width << 16
+                + OriginalSnapshot.Height << 24;
         }
 
         public void Dispose()

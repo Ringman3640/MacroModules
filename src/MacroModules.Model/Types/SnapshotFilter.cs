@@ -73,6 +73,16 @@ namespace MacroModules.Model.Types
                 && resolutionScale == other.resolutionScale;
         }
 
+        public override bool Equals(object? obj)
+        {
+            return obj is SnapshotFilter filterObj && Equals(filterObj);
+        }
+
+        public override int GetHashCode()
+        {
+            return (int)colorDepth + (int)(resolutionScale * 1000);
+        }
+
         private ColorDepth colorDepth = ColorDepth.Color8Bit;
         private double resolutionScale = 1;
     }

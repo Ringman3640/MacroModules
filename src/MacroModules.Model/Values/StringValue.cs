@@ -17,5 +17,12 @@
         {
             return new StringValue(Data);
         }
+
+        public override bool Equals(Value? other)
+        {
+            return base.Equals(other)
+                && other is StringValue otherString
+                && Data.Equals(otherString.Data);
+        }
     }
 }

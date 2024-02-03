@@ -19,5 +19,12 @@ namespace MacroModules.Model.Values
         {
             return new ColorValue(Data);
         }
+
+        public override bool Equals(Value? other)
+        {
+            return base.Equals(other)
+                && other is ColorValue otherColor
+                && Data.Equals(otherColor.Data);
+        }
     }
 }

@@ -17,6 +17,13 @@ namespace MacroModules.Model.Values
             return new SnapshotValue(new Snapshot(Data));
         }
 
+        public override bool Equals(Value? other)
+        {
+            return base.Equals(other)
+                && other is SnapshotValue otherSnapshot
+                && Data.Equals(otherSnapshot.Data);
+        }
+
         public override void Dispose()
         {
             base.Dispose();

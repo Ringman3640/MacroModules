@@ -19,5 +19,12 @@ namespace MacroModules.Model.Values
         {
             return new PositionValue(Data);
         }
+
+        public override bool Equals(Value? other)
+        {
+            return base.Equals(other)
+                && other is PositionValue otherPosition
+                && Data.Equals(otherPosition.Data);
+        }
     }
 }

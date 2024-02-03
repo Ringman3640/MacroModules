@@ -17,5 +17,12 @@
         {
             return new BoolValue(Data);
         }
+
+        public override bool Equals(Value? other)
+        {
+            return base.Equals(other)
+                && other is BoolValue otherBool
+                && otherBool.Data == Data;
+        }
     }
 }

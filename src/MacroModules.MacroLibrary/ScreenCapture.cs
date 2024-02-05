@@ -1,13 +1,22 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
 using MacroModules.MacroLibrary.Types;
+using MacroModules.MacroLibrary.WinApi;
 using static MacroModules.MacroLibrary.DisplayPositionTranslator;
 using static MacroModules.MacroLibrary.WinApi.ScreenCaptureApi;
+using static MacroModules.MacroLibrary.WinApi.SystemMetricsApi;
 
 namespace MacroModules.MacroLibrary
 {
     public static class ScreenCapture
     {
+        public static Bitmap? GetScreenshot()
+        {
+            int primaryScreenWidth = GetSystemMetrics((int)Metric.PrimaryScreenWidth);
+            int primaryScreenHeight = GetSystemMetrics((int)Metric.PrimaryScreenHeight);
+            return GetScreenshot(new(0, 0), new(primaryScreenWidth - 1, primaryScreenHeight - 1));
+        }
+
         public static Bitmap? GetScreenshot(Position topLeft, Position bottomRight)
         {
             Translate(ref topLeft);

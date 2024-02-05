@@ -14,5 +14,6 @@
         GetSnapshot,
         GetPixelColor,
         Wait,
+        PlaySound
     }
 }

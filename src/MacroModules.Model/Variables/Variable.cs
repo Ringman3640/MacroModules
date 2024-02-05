@@ -53,7 +53,43 @@ namespace MacroModules.Model.Variables
         /// Indicates the runtime <see cref="Value"/> that this <see cref="Variable"/> contains.
         /// This value will change during macro runtime as the variable is modified.
         /// </summary>
-        public Value RuntimeValue { get; set; }
+        /// <remarks>
+        /// <para>
+        ///     When getting <see cref="RuntimeValue"/>, a clone of the current runtime value is
+        ///     returned. This is done to prevent race conditions between multiple reading and
+        ///     writing threads.
+        /// </para>
+        /// <para>
+        ///     When setting <see cref="RuntimeValue"/>, a clone of the provided value will be
+        ///     stored. This is to prevent any modifications to the passed value affecting the
+        ///     stored runtime value.
+        /// </para>
+        /// </remarks>
+        public Value RuntimeValue
+        {
+            get
+            {
+                lock (runtimeAccessLock)
+                {
+                    return (runtimeValue != null) ? runtimeValue.Clone() : InitialValue.Clone();
+                }
+            }
+            set
+            {
+                lock (runtimeAccessLock)
+                {
+                    if (value.Type != this.Type)
+                    {
+                        return;
+                    }
+                    if (runtimeValue != null)
+                    {
+                        runtimeValue.Dispose();
+                    }
+                    runtimeValue = value.Clone();
+                }
+            }
+        }
 
         /// <inheritdoc/>
         public event DeletedEventHandler? Deleted;
@@ -64,7 +100,6 @@ namespace MacroModules.Model.Variables
         public Variable(ValueDataType type)
         {
             InitialValue = ValueFactory.Create(type);
-            RuntimeValue = ValueFactory.Create(type);
         }
 
         /// <summary>
@@ -73,7 +108,7 @@ namespace MacroModules.Model.Variables
         /// </summary>
         public void InitializeRuntimeValue()
         {
-            RuntimeValue = InitialValue.Clone();
+            runtimeValue = InitialValue.Clone();
         }
 
         /// <summary>
@@ -89,6 +124,8 @@ namespace MacroModules.Model.Variables
             }
         }
 
+        private object runtimeAccessLock = new();
+        private Value? runtimeValue;
         private string internalName = String.Empty;
         private readonly object eventLock = new();
     }

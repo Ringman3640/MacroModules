@@ -6,9 +6,12 @@ namespace MacroModules.Model.Values
     {
         public override ValueDataType Type { get; protected set; } = ValueDataType.Snapshot;
 
-        public Snapshot Data { get; set; } = new();
+        public Snapshot Data { get; set; }
 
-        public SnapshotValue() { }
+        public SnapshotValue()
+        {
+            Data = new();
+        }
 
         public SnapshotValue(Snapshot snapshotData)
         {

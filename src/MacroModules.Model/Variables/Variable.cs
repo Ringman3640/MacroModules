@@ -99,6 +99,7 @@ namespace MacroModules.Model.Variables
 
         public Variable(ValueDataType type)
         {
+            Type = type;
             InitialValue = ValueFactory.Create(type);
         }
 

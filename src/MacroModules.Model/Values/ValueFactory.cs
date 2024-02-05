@@ -29,7 +29,15 @@
         /// </summary>
         private static Dictionary<ValueDataType, Func<Value>> valueFactories = new()
         {
-            { ValueDataType.String, () => new StringValue() }
+            { ValueDataType.Invalid, () => new InvalidValue() },
+            { ValueDataType.Bool, () => new BoolValue() },
+            // TODO: InputValue
+            { ValueDataType.String, () => new StringValue() },
+            // TODO: Number
+            { ValueDataType.Position, () => new PositionValue() },
+            // TODO: Duration
+            { ValueDataType.Color, () => new ColorValue() },
+            { ValueDataType.Snapshot, () => new SnapshotValue() }
         };
     }
 }

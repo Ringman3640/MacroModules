@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using MacroModules.MacroLibrary;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 
@@ -45,6 +46,25 @@ namespace MacroModules.Model.Types
         /// <see cref="Snapshot"/> should be filtered.
         /// </summary>
         public SnapshotFilter Filter { get; set; } = new();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Snapshot"/> class that contains a
+        /// screenshot of the system's primary display, or a blank image.
+        /// </summary>
+        /// <remarks>
+        /// This default constructor will attempt to create a <see cref="Snapshot"/> containging a
+        /// screenshot of the system's primary display. If this fails, the constructor will create a
+        /// blank 10px by 10px Bitmap as a failsafe.
+        /// </remarks>
+        public Snapshot()
+        {
+            Bitmap? defaultSnapshot = ScreenCapture.GetScreenshot();
+            if (defaultSnapshot == null)
+            {
+                defaultSnapshot = new(10, 10);
+            }
+            originalSnapshot = defaultSnapshot;
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Snapshot"/> class that contains the given

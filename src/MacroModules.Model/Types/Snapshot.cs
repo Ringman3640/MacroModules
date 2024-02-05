@@ -63,11 +63,11 @@ namespace MacroModules.Model.Types
         /// <param name="other"></param>
         public Snapshot(Snapshot other)
         {
-            originalSnapshot = new(other.originalSnapshot);
+            originalSnapshot = (Bitmap)other.originalSnapshot.Clone();
             Filter = new(other.Filter);
             if (other.filteredSnapshot != null)
             {
-                filteredSnapshot = new(other.filteredSnapshot);
+                filteredSnapshot = (Bitmap)other.filteredSnapshot.Clone();
             }
             if (other.cachedFilter != null)
             {

@@ -41,7 +41,9 @@ namespace MacroModules.Model.Modules.Concrete
                 failed = true;
             }
 
-            return new ContinueResponse(new BoolValue(!failed));
+            Value returnValue = new BoolValue(!failed);
+            SetStoreVariable(returnValue);
+            return new ContinueResponse(returnValue);
         }
     }
 }

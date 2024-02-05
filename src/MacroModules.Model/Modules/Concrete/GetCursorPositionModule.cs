@@ -18,7 +18,10 @@ namespace MacroModules.Model.Modules.Concrete
         {
             InputMonitor.Uninstall();
             Position cursorPos = MouseControl.GetCursorPosition();
-            return new ContinueResponse(new PositionValue(cursorPos));
+
+            Value returnValue = new PositionValue(cursorPos);
+            SetStoreVariable(returnValue);
+            return new ContinueResponse(returnValue);
         }
     }
 }

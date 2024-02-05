@@ -51,6 +51,7 @@ namespace MacroModules.Model.Modules.Concrete
                 {
                     Filter = this.Filter
                 });
+                SetStoreVariable(returnValue);
             }
             return new ContinueResponse(returnValue);
         }

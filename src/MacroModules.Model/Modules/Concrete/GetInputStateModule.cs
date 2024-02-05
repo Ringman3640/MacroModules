@@ -32,7 +32,9 @@ namespace MacroModules.Model.Modules.Concrete
                 result = InputMonitor.InputToggled(InputCode);
             }
 
-            return new ContinueResponse(new BoolValue(result));
+            Value returnValue = new BoolValue(result);
+            SetStoreVariable(returnValue);
+            return new ContinueResponse(returnValue);
         }
     }
 }

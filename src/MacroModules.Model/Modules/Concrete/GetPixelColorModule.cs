@@ -17,7 +17,10 @@ namespace MacroModules.Model.Modules.Concrete
         public override IResponse Execute(ref object? processData)
         {
             Color pixelColor = ScreenCapture.GetPixelColor(PixelPosition);
-            return new ContinueResponse(new ColorValue(pixelColor));
+
+            Value returnValue = new ColorValue(pixelColor);
+            SetStoreVariable(returnValue);
+            return new ContinueResponse(returnValue);
         }
     }
 }

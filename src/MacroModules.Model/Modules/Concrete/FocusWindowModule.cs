@@ -98,7 +98,9 @@ namespace MacroModules.Model.Modules.Concrete
                 }
             }
 
-            return new ContinueResponse(new BoolValue(data.FocusSuccess));
+            Value returnValue = new BoolValue(data.FocusSuccess);
+            SetStoreVariable(returnValue);
+            return new ContinueResponse(returnValue);
         }
 
         private class FocusWindowModuleData

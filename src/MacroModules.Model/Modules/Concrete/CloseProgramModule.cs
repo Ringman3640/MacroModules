@@ -96,7 +96,9 @@ namespace MacroModules.Model.Modules.Concrete
                 }
             }
 
-            return new ContinueResponse(new BoolValue(data.CloseSuccess));
+            Value returnValue = new BoolValue(data.CloseSuccess);
+            SetStoreVariable(returnValue);
+            return new ContinueResponse(returnValue);
         }
 
         private class CloseProgramModuleData

@@ -24,6 +24,17 @@ namespace MacroModules.Model.Values
             return other != null && other.Type == Type;
         }
 
+        /// <summary>
+        /// Indicates whether the current <see cref="Value"/> is not equal to another
+        /// <see cref="Value"/> of the same type.
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns><c>true</c> if the current object is not equal to <paramref name="other"/>; otherwise, <c>false</c></returns>
+        public virtual bool NotEquals(Value? other)
+        {
+            return !Equals(other);
+        }
+
         public override bool Equals(object? obj)
         {
             return obj is Value valueObj && Equals(valueObj);

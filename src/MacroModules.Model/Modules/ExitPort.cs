@@ -8,7 +8,7 @@
         /// <summary>
         /// Descriptive name of the exit port.
         /// </summary>
-        public string Name { get; private set; }
+        public string? Name { get; private set; }
 
         /// <summary>
         /// Brief description of the exit port.
@@ -19,6 +19,11 @@
         /// The <see cref="Module"/> that this port leads to.
         /// </summary>
         public Module? Destination { get; set; } = null;
+
+        /// <summary>
+        /// Initializes a new <see cref="ExitPort"/> instance that has no name or description.
+        /// </summary>
+        public ExitPort() { }
 
         /// <summary>
         /// Initializes a new <see cref="ExitPort"/> instance with the given name value.

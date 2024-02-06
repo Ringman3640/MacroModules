@@ -13,7 +13,9 @@
         FocusWindow,
         GetSnapshot,
         GetPixelColor,
+        Branch,
         Wait,
+        WaitUntil,
         PlaySound
     }
 }

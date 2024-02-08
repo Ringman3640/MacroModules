@@ -11,9 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MacroLibrary.TestApp", "tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MacroModules.MacroLibrary", "src\MacroModules.MacroLibrary\MacroModules.MacroLibrary.csproj", "{9355E20A-7B77-486E-B48C-4195BDB8779B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MacroModules.Model", "src\MacroModules.Model\MacroModules.Model.csproj", "{AB939766-9D47-4596-987E-4C199791060B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MacroModules.Model", "src\MacroModules.Model\MacroModules.Model.csproj", "{AB939766-9D47-4596-987E-4C199791060B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MacroModules.Model.Sandbox", "sandbox\MacroModules.Model.Sandbox\MacroModules.Model.Sandbox.csproj", "{5A0B6E89-3466-4C15-8990-232561DE3E32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MacroModules.Model.Sandbox", "sandbox\MacroModules.Model.Sandbox\MacroModules.Model.Sandbox.csproj", "{5A0B6E89-3466-4C15-8990-232561DE3E32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MacroModules.App", "src\MacroModules.App\MacroModules.App.csproj", "{75075216-1F95-4918-A397-0DECF70EDD72}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{5A0B6E89-3466-4C15-8990-232561DE3E32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A0B6E89-3466-4C15-8990-232561DE3E32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A0B6E89-3466-4C15-8990-232561DE3E32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75075216-1F95-4918-A397-0DECF70EDD72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75075216-1F95-4918-A397-0DECF70EDD72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75075216-1F95-4918-A397-0DECF70EDD72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75075216-1F95-4918-A397-0DECF70EDD72}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

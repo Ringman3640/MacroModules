@@ -270,7 +270,7 @@ public sealed class MouseInteractionManager
                 // TEMPORARY
                 // This is just a way to spawn in modules
                 ModuleView moduleView = new();
-                ModuleBoardVM.AddModule((ModuleViewModel)moduleView.DataContext);
+                ModuleBoardVM.AddElement((ModuleViewModel)moduleView.DataContext);
                 break;
 
             case InteractionState.DraggingCanvas:

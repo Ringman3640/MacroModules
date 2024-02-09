@@ -7,7 +7,6 @@ namespace MacroModules.App.Views.Modules
     {
         public ModuleView()
         {
-            DataContext = new ModuleViewModel(this);
             InitializeComponent();
         }
     }

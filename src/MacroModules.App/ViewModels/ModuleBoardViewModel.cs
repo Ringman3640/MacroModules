@@ -72,28 +72,28 @@ public partial class ModuleBoardViewModel : ObservableObject
         Mouse.Capture(null);
     }
 
-    public void AddModule(ModuleViewModel module)
+    public void AddElement(BoardElementViewModel element)
     {
-        if (containedModules.Contains(module))
+        if (containedElements.Contains(element))
         {
             return;
         }
 
-        containedModules.Add(module);
-        ViewRef.GetBoardCanvas().Children.Add(module.ViewRef);
+        containedElements.Add(element);
+        ViewRef.GetBoardCanvas().Children.Add(element.ViewRef);
     }
 
-    public void RemoveModule(ModuleViewModel module)
+    public void RemoveElement(BoardElementViewModel element)
     {
-        if (containedModules.Remove(module))
+        if (containedElements.Remove(element))
         {
-            ViewRef.GetBoardCanvas().Children.Remove(module.ViewRef);
+            ViewRef.GetBoardCanvas().Children.Remove(element.ViewRef);
         }
     }
 
-    public bool ContainsModule(ModuleViewModel module)
+    public bool ContainsElement(BoardElementViewModel element)
     {
-        return containedModules.Contains(module);
+        return containedElements.Contains(element);
     }
 
     public void ZoomIn()
@@ -130,31 +130,31 @@ public partial class ModuleBoardViewModel : ObservableObject
         ViewRef.GetBoardCanvas().RenderTransform = canvasScaleTransform;
     }
 
-    public void Select(ModuleViewModel module)
+    public void Select(BoardElementViewModel element)
     {
-        selectedModules.Add(module);
+        selectedElements.Add(element);
     }
 
-    public void Unselect(ModuleViewModel module)
+    public void Unselect(BoardElementViewModel element)
     {
-        selectedModules.Remove(module);
+        selectedElements.Remove(element);
     }
 
     public void UnselectAll()
     {
-        selectedModules.Clear();
+        selectedElements.Clear();
     }
 
-    public bool IsSelected(ModuleViewModel module)
+    public bool IsSelected(BoardElementViewModel element)
     {
-        return selectedModules.Contains(module);
+        return selectedElements.Contains(element);
     }
 
     public void LockSelectedToMouse()
     {
-        foreach (var moduleVM in selectedModules)
+        foreach (var element in selectedElements)
         {
-            moduleVM.LockToMouse();
+            element.LockToMouse();
         }
     }
 
@@ -162,10 +162,10 @@ public partial class ModuleBoardViewModel : ObservableObject
     {
         Point mousePos = Mouse.GetPosition(ViewRef.GetBoardCanvas());
 
-        foreach (var moduleVM in selectedModules)
+        foreach (var element in selectedElements)
         {
-            moduleVM.PosX = mousePos.X;
-            moduleVM.PosY = mousePos.Y;
+            element.PositionX = mousePos.X;
+            element.PositionY = mousePos.Y;
         }
     }
 
@@ -201,25 +201,25 @@ public partial class ModuleBoardViewModel : ObservableObject
     public void ConfirmSelectBox()
     {
         double boardScale = canvasScaleTransform.ScaleX;
-        foreach (var module in containedModules)
+        foreach (var element in containedElements)
         {
-            double absolutePosX = (module.PosX * boardScale) + ModuleBoardPosX;
-            double absolutePosY = (module.PosY * boardScale) + ModuleBoardPosY;
-            double scaledWidth = module.ViewRef.ActualWidth * boardScale;
-            double scaledHeight = module.ViewRef.ActualHeight * boardScale;
+            double absolutePosX = (element.PositionX * boardScale) + ModuleBoardPosX;
+            double absolutePosY = (element.PositionY * boardScale) + ModuleBoardPosY;
+            double scaledWidth = element.Width * boardScale;
+            double scaledHeight = element.Height * boardScale;
 
-            Rect moduleBounds = new(absolutePosX, absolutePosY, scaledWidth, scaledHeight);
-            if (moduleBounds.IntersectsWith(SelectBoxRegion))
+            Rect elementBounds = new(absolutePosX, absolutePosY, scaledWidth, scaledHeight);
+            if (elementBounds.IntersectsWith(SelectBoxRegion))
             {
-                selectedModules.Add(module);
+                selectedElements.Add(element);
             }
         }
 
         SelectBoxVisibility = Visibility.Hidden;
     }
 
-    private HashSet<ModuleViewModel> containedModules = new();
-    private HashSet<ModuleViewModel> selectedModules = new();
+    private HashSet<BoardElementViewModel> containedElements = new();
+    private HashSet<BoardElementViewModel> selectedElements = new();
 
     private Point canvasOffsetFromMouse;
     private Point selectBoxPivot;

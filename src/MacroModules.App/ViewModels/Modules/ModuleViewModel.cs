@@ -1,54 +1,27 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 using MacroModules.App.Managers;
-using MacroModules.App.Views.Modules;
+using MacroModules.Model.Modules;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
 
 namespace MacroModules.App.ViewModels.Modules;
 
-public partial class ModuleViewModel : ObservableObject
+public abstract partial class ModuleViewModel : BoardElementViewModel
 {
-    public ModuleView ViewRef { get; private set; }
+    public override abstract FrameworkElement ViewRef { get; }
 
-    public double PosX
+    public abstract ModuleType Type { get; }
+
+    public Module ModuleModel { get; protected set; }
+
+    public ObservableCollection<ExitPortViewModel> ExitPorts { get; private set; } = new();
+
+    public ModuleViewModel()
     {
-        get { return _posX; }
-        set
-        {
-            _posX = value - offsetFromMouse.X;
-            OnPropertyChanged();
-        }
+        ModuleModel = ModuleFactory.Create(Type);
+        ViewRef.DataContext = this;
     }
-    private double _posX = 0;
-
-    public double PosY
-    {
-        get { return _posY; }
-        set
-        {
-            _posY = value - offsetFromMouse.Y;
-            OnPropertyChanged();
-        }
-    }
-    private double _posY = 0;
-
-    public ModuleViewModel(ModuleView viewRef)
-    {
-        ViewRef = viewRef;
-    }
-
-    public void LockToMouse()
-    {
-        offsetFromMouse = Mouse.GetPosition(ViewRef);
-    }
-
-    public void UnlockFromMouse()
-    {
-        offsetFromMouse = new(0, 0);
-    }
-
-    private Point offsetFromMouse;
 
     [RelayCommand]
     private void Body_LeftMouseDown(MouseButtonEventArgs e)

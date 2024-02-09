@@ -1,11 +1,14 @@
 ﻿namespace MacroModules.Model.Modules
 {
+    // Commented types are not implemented yet
+
     public enum ModuleType
     {
         SendInput,
+        // SendRawText,
         GetInputState,
         MoveCursor,
-        PathCursor,
+        //PathCursor,
         Scroll,
         GetCursorPosition,
         OpenProgram,
@@ -15,7 +18,7 @@
         GetPixelColor,
         Branch,
         Wait,
-        WaitUntil,
+        //WaitUntil,
         PlaySound
     }
 }

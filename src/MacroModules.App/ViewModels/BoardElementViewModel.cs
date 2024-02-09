@@ -1,54 +1,33 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using MacroModules.App.Behaviors;
 using System.Windows;
-using System.Windows.Input;
 
 namespace MacroModules.App.ViewModels;
 
-public abstract partial class BoardElementViewModel : ObservableObject
+public abstract partial class BoardElementViewModel : MouseAwareViewModel
 {
-    public abstract FrameworkElement ViewRef { get; }
-
-    public double PositionX
+    public Point Position
     {
-        get { return _positionX; }
-        set
-        {
-            _positionX = value - offsetFromMouse.X;
-            OnPropertyChanged();
-        }
+        get { return _position; }
+        set { SetProperty(ref _position, value - offsetFromMouse); }
     }
-    private double _positionX;
+    private Point _position;
 
-    public double PositionY
+    public void LockMouseOffset()
     {
-        get { return _positionY; }
-        set
-        {
-            _positionY = value - offsetFromMouse.Y;
-            OnPropertyChanged();
-        }
-    }
-    private double _positionY;
-
-    public double Width
-    {
-        get { return ViewRef.ActualWidth; }
+        offsetFromMouse = (Vector)MousePosition;
     }
 
-    public double Height
-    {
-        get { return ViewRef.ActualHeight; }
-    }
-
-    public void LockToMouse()
-    {
-        offsetFromMouse = (Vector)Mouse.GetPosition(ViewRef);
-    }
-
-    public void UnlockFromMouse()
+    public void UnlockMouseOffset()
     {
         offsetFromMouse = new(0, 0);
     }
 
+    public void MoveWithMouse()
+    {
+        Position += (Vector)MousePosition;
+    }
+
     protected Vector offsetFromMouse;
+
 }

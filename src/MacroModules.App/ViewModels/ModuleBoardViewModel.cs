@@ -1,23 +1,50 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MacroModules.App.Managers;
-using MacroModules.App.ViewModels.Modules;
 using MacroModules.App.Views;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
 namespace MacroModules.App.ViewModels;
 
-public partial class ModuleBoardViewModel : ObservableObject
+public partial class ModuleBoardViewModel : MouseAwareViewModel
 {
     public ModuleBoardView ViewRef { get; private set; }
+
+    [ObservableProperty]
+    private ObservableCollection<BoardElementViewModel> _elements = new();
+
+    [ObservableProperty]
+    private ScaleTransform _boardTransform = new();
 
     [ObservableProperty]
     private Visibility _selectBoxVisibility = Visibility.Hidden;
 
     [ObservableProperty]
     private Rect _selectBoxRegion;
+
+    public double BoardScale
+    {
+        get { return BoardTransform.ScaleX; }
+        set
+        {
+            if (value >= 0.1 && value <= 5)
+            {
+                BoardTransform.ScaleX = value;
+                BoardTransform.ScaleY = value;
+                OnPropertyChanged(nameof(BoardTransform));
+            }
+        }
+    }
+
+    public Point BoardPosition
+    {
+        get { return _boardPosition; }
+        set { SetProperty(ref _boardPosition, value - (Vector)boardOffsetFromMouse); }
+    }
+    private Point _boardPosition;
 
     public double MousePosX
     {
@@ -38,7 +65,7 @@ public partial class ModuleBoardViewModel : ObservableObject
         get { return _moduleBoardPosX; }
         set
         {
-            _moduleBoardPosX = value - canvasOffsetFromMouse.X * canvasScaleTransform.ScaleX;
+            _moduleBoardPosX = value - boardOffsetFromMouse.X * BoardScale;
             OnPropertyChanged();
         }
     }
@@ -49,7 +76,7 @@ public partial class ModuleBoardViewModel : ObservableObject
         get { return _moduleBoardPosY; }
         set
         {
-            _moduleBoardPosY = value - canvasOffsetFromMouse.Y * canvasScaleTransform.ScaleX;
+            _moduleBoardPosY = value - boardOffsetFromMouse.Y * BoardScale;
             OnPropertyChanged();
         }
     }
@@ -74,26 +101,22 @@ public partial class ModuleBoardViewModel : ObservableObject
 
     public void AddElement(BoardElementViewModel element)
     {
-        if (containedElements.Contains(element))
+        if (Elements.Contains(element))
         {
             return;
         }
 
-        containedElements.Add(element);
-        ViewRef.GetBoardCanvas().Children.Add(element.ViewRef);
+        Elements.Add(element);
     }
 
     public void RemoveElement(BoardElementViewModel element)
     {
-        if (containedElements.Remove(element))
-        {
-            ViewRef.GetBoardCanvas().Children.Remove(element.ViewRef);
-        }
+        Elements.Remove(element);
     }
 
     public bool ContainsElement(BoardElementViewModel element)
     {
-        return containedElements.Contains(element);
+        return Elements.Contains(element);
     }
 
     public void ZoomIn()
@@ -106,28 +129,18 @@ public partial class ModuleBoardViewModel : ObservableObject
         PerformZoom(0.75);
     }
 
-    private void PerformZoom(double zoomValue)
+    private void PerformZoom(double zoomFactor)
     {
         LockCanvasToMouse();
-
-        double scaleValue = canvasScaleTransform.ScaleX * zoomValue;
-        if (scaleValue < 0.1 || scaleValue > 5)
-        {
-            return;
-        }
-
-        canvasScaleTransform.ScaleX = scaleValue;
-        canvasScaleTransform.ScaleY = scaleValue;
-        ViewRef.GetBoardCanvas().RenderTransform = canvasScaleTransform;
-
+        BoardScale *= zoomFactor;
         MoveCanvasWithMouse();
     }
 
     public void ResetZoom()
     {
-        canvasScaleTransform.ScaleX = 1;
-        canvasScaleTransform.ScaleY = 1;
-        ViewRef.GetBoardCanvas().RenderTransform = canvasScaleTransform;
+        LockCanvasToMouse();
+        BoardScale = 1;
+        MoveCanvasWithMouse();
     }
 
     public void Select(BoardElementViewModel element)
@@ -154,36 +167,31 @@ public partial class ModuleBoardViewModel : ObservableObject
     {
         foreach (var element in selectedElements)
         {
-            element.LockToMouse();
+            element.LockMouseOffset();
         }
     }
 
     public void MoveSelectedWithMouse()
     {
-        Point mousePos = Mouse.GetPosition(ViewRef.GetBoardCanvas());
-
         foreach (var element in selectedElements)
         {
-            element.PositionX = mousePos.X;
-            element.PositionY = mousePos.Y;
+            element.MoveWithMouse();
         }
     }
 
     public void LockCanvasToMouse()
     {
-        canvasOffsetFromMouse = Mouse.GetPosition(ViewRef.GetBoardCanvas());
+        boardOffsetFromMouse = MousePosition - (Vector)BoardPosition;
     }
 
     public void MoveCanvasWithMouse()
     {
-        Point mousePos = Mouse.GetPosition(ViewRef.GetContainerCanvas());
-        ModuleBoardPosX = mousePos.X;
-        ModuleBoardPosY = mousePos.Y;
+        BoardPosition = MousePosition;
     }
 
     public void LockSelectBoxPivotToMouse()
     {
-        selectBoxPivot = Mouse.GetPosition(ViewRef.GetContainerCanvas());
+        selectBoxPivot = MousePosition;
     }
 
     public void StartSelectBox()
@@ -194,19 +202,19 @@ public partial class ModuleBoardViewModel : ObservableObject
 
     public void MoveSelectBoxWithMouse()
     {
-        Point mousePos = Mouse.GetPosition(ViewRef.GetContainerCanvas());
-        SelectBoxRegion = new(mousePos, selectBoxPivot);
+        SelectBoxRegion = new(MousePosition, selectBoxPivot);
     }
 
     public void ConfirmSelectBox()
     {
-        double boardScale = canvasScaleTransform.ScaleX;
-        foreach (var element in containedElements)
+        foreach (var element in Elements)
         {
-            double absolutePosX = (element.PositionX * boardScale) + ModuleBoardPosX;
-            double absolutePosY = (element.PositionY * boardScale) + ModuleBoardPosY;
-            double scaledWidth = element.Width * boardScale;
-            double scaledHeight = element.Height * boardScale;
+            double absolutePosX = (element.Position.X * BoardScale) + BoardPosition.X;
+            double absolutePosY = (element.Position.Y * BoardScale) + BoardPosition.Y;
+            //double scaledWidth = element.Width * BoardScale;
+            //double scaledHeight = element.Height * BoardScale;
+            double scaledWidth = 100 * BoardScale;
+            double scaledHeight = 100 * BoardScale;
 
             Rect elementBounds = new(absolutePosX, absolutePosY, scaledWidth, scaledHeight);
             if (elementBounds.IntersectsWith(SelectBoxRegion))
@@ -218,12 +226,10 @@ public partial class ModuleBoardViewModel : ObservableObject
         SelectBoxVisibility = Visibility.Hidden;
     }
 
-    private HashSet<BoardElementViewModel> containedElements = new();
     private HashSet<BoardElementViewModel> selectedElements = new();
 
-    private Point canvasOffsetFromMouse;
+    private Point boardOffsetFromMouse;
     private Point selectBoxPivot;
-    private readonly ScaleTransform canvasScaleTransform = new();
 
     [RelayCommand]
     private void Board_LeftMouseDown(MouseButtonEventArgs e)

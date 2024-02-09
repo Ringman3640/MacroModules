@@ -2,25 +2,21 @@
 using MacroModules.App.Managers;
 using MacroModules.Model.Modules;
 using System.Collections.ObjectModel;
-using System.Windows;
 using System.Windows.Input;
 
 namespace MacroModules.App.ViewModels.Modules;
 
-public abstract partial class ModuleViewModel : BoardElementViewModel
+public partial class ModuleViewModel : BoardElementViewModel
 {
-    public override abstract FrameworkElement ViewRef { get; }
+    public ModuleType Type { get; }
 
-    public abstract ModuleType Type { get; }
-
-    public Module ModuleModel { get; protected set; }
+    //public Module ModuleModel { get; protected set; }
 
     public ObservableCollection<ExitPortViewModel> ExitPorts { get; private set; } = new();
 
     public ModuleViewModel()
     {
-        ModuleModel = ModuleFactory.Create(Type);
-        ViewRef.DataContext = this;
+        //ModuleModel = ModuleFactory.Create(Type);
     }
 
     [RelayCommand]

@@ -7,10 +7,14 @@
              xmlns:local="clr-namespace:MacroModules.App.Views" 
              xmlns:viewmodels="clr-namespace:MacroModules.App.ViewModels" 
              xmlns:modules="clr-namespace:MacroModules.App.Views.Modules" 
+             xmlns:behaviors="clr-namespace:MacroModules.App.Behaviors" 
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=viewmodels:ModuleBoardViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Canvas x:Name="cvBoardContainer" Background="Transparent">
+        <i:Interaction.Behaviors>
+            <behaviors:MouseAwareBehavior MouseAwareBehaviorInstance="{Binding MouseAwareBehaviorConnector, Mode=OneWayToSource}" MousePosition="{Binding MousePosition, Mode=OneWayToSource}"/>
+        </i:Interaction.Behaviors>
         <i:Interaction.Triggers>
             <i:EventTrigger EventName="MouseRightButtonDown">
                 <i:InvokeCommandAction Command="{Binding Path=Board_RightMouseDownCommand}" PassEventArgsToCommand="True"/>
@@ -32,6 +36,24 @@
             </i:EventTrigger>
         </i:Interaction.Triggers>
 
+        <ItemsControl ItemsSource="{Binding Elements}" RenderTransform="{Binding BoardTransform}" Canvas.Left="{Binding BoardPosition.X}" Canvas.Top="{Binding BoardPosition.Y}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemContainerStyle>
+                <Style>
+                    <Setter Property="Canvas.Left" Value="{Binding Position.X}"/>
+                    <Setter Property="Canvas.Top" Value="{Binding Position.Y}"/>
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="viewmodels:ModuleViewModel">
+                    <modules:ModuleView/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
         <Canvas x:Name="cvModuleBoard" Canvas.Left="{Binding ModuleBoardPosX}" Canvas.Top="{Binding ModuleBoardPosY}"/>
 
         <Rectangle x:Name="rectSelectBox" IsHitTestVisible="False"

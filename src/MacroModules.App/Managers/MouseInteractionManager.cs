@@ -1,6 +1,5 @@
 ﻿using MacroModules.App.ViewModels;
 using MacroModules.App.ViewModels.Modules;
-using MacroModules.App.Views.Modules;
 using System.Windows;
 using System.Windows.Input;
 
@@ -269,8 +268,8 @@ public sealed class MouseInteractionManager
                 // TODO: Open options dropdown for board
                 // TEMPORARY
                 // This is just a way to spawn in modules
-                ModuleView moduleView = new();
-                ModuleBoardVM.AddElement((ModuleViewModel)moduleView.DataContext);
+                ModuleViewModel module = new();
+                ModuleBoardVM.AddElement(module);
                 break;
 
             case InteractionState.DraggingCanvas:

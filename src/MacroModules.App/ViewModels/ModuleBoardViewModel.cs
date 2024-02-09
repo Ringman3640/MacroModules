@@ -211,10 +211,8 @@ public partial class ModuleBoardViewModel : MouseAwareViewModel
         {
             double absolutePosX = (element.Position.X * BoardScale) + BoardPosition.X;
             double absolutePosY = (element.Position.Y * BoardScale) + BoardPosition.Y;
-            //double scaledWidth = element.Width * BoardScale;
-            //double scaledHeight = element.Height * BoardScale;
-            double scaledWidth = 100 * BoardScale;
-            double scaledHeight = 100 * BoardScale;
+            double scaledWidth = element.Dimensions.Width * BoardScale;
+            double scaledHeight = element.Dimensions.Height * BoardScale;
 
             Rect elementBounds = new(absolutePosX, absolutePosY, scaledWidth, scaledHeight);
             if (elementBounds.IntersectsWith(SelectBoxRegion))

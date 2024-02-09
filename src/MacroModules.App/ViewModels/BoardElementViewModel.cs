@@ -13,6 +13,9 @@ public abstract partial class BoardElementViewModel : MouseAwareViewModel
     }
     private Point _position;
 
+    [ObservableProperty]
+    private Size _dimensions;
+
     public void LockMouseOffset()
     {
         offsetFromMouse = (Vector)MousePosition;

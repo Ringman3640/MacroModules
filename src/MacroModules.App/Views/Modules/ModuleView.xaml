@@ -12,6 +12,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <i:Interaction.Behaviors>
         <behaviors:MouseAwareBehavior MouseAwareBehaviorInstance="{Binding MouseAwareBehaviorConnector, Mode=OneWayToSource}" MousePosition="{Binding MousePosition, Mode=OneWayToSource}"/>
+        <behaviors:DimensionsAwareBehavior BoundDimensions="{Binding Dimensions, Mode=OneWayToSource}"/>
     </i:Interaction.Behaviors>
     <Canvas x:Name="cvModuleContainer" Width="100" Height="100">
         <Rectangle x:Name="rectBody" Fill="Red" Width="100" Height="100">

@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using MacroModules.App.Behaviors;
 using System.Windows;
 
 namespace MacroModules.App.ViewModels;

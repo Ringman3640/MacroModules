@@ -8,14 +8,14 @@
              xmlns:vmModules="clr-namespace:MacroModules.App.ViewModels.Modules" 
              xmlns:behaviors="clr-namespace:MacroModules.App.Behaviors" 
              mc:Ignorable="d"
-             d:DataContext="{d:DesignInstance Type=vmModules:ModuleViewModel}"
+             d:DataContext="{d:DesignInstance Type=vmModules:ModuleVM}"
              d:DesignHeight="450" d:DesignWidth="800">
     <i:Interaction.Behaviors>
         <behaviors:MouseAwareBehavior MouseAwareBehaviorInstance="{Binding MouseAwareBehaviorConnector, Mode=OneWayToSource}" MousePosition="{Binding MousePosition, Mode=OneWayToSource}"/>
         <behaviors:DimensionsAwareBehavior BoundDimensions="{Binding Dimensions, Mode=OneWayToSource}"/>
     </i:Interaction.Behaviors>
-    <Canvas x:Name="cvModuleContainer" Width="100" Height="100">
-        <Rectangle x:Name="rectBody" Fill="Red" Width="100" Height="100">
+    <Canvas x:Name="cvModuleContainer" Width="80" Height="80">
+        <Rectangle x:Name="rectBody" Fill="Red" Width="80" Height="80">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseLeftButtonDown">
                     <i:InvokeCommandAction Command="{Binding Path=Body_LeftMouseDownCommand}" PassEventArgsToCommand="True"/>

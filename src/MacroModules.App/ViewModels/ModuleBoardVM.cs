@@ -46,6 +46,15 @@ public partial class ModuleBoardVM : MouseAwareVM
     }
     private Point _boardPosition;
 
+    public Point BoardMousePosition
+    {
+        get
+        {
+            Point unscaledPosition = MousePosition - (Vector)BoardPosition;
+            return new Point(unscaledPosition.X / BoardScale, unscaledPosition.Y / BoardScale);
+        }
+    }
+
     public double MousePosX
     {
         get { return mousePosX; }
@@ -121,25 +130,23 @@ public partial class ModuleBoardVM : MouseAwareVM
 
     public void ZoomIn()
     {
-        PerformZoom(1.5);
+        SetZoom(BoardScale * 1.5);
     }
 
     public void ZoomOut()
     {
-        PerformZoom(0.75);
-    }
-
-    private void PerformZoom(double zoomFactor)
-    {
-        LockCanvasToMouse();
-        BoardScale *= zoomFactor;
-        MoveCanvasWithMouse();
+        SetZoom(BoardScale / 1.5);
     }
 
     public void ResetZoom()
     {
+        SetZoom(1);
+    }
+
+    private void SetZoom(double zoomValue)
+    {
         LockCanvasToMouse();
-        BoardScale = 1;
+        BoardScale = zoomValue;
         MoveCanvasWithMouse();
     }
 

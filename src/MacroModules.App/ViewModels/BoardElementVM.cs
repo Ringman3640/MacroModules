@@ -12,6 +12,11 @@ public abstract partial class BoardElementVM : MouseAwareVM
     }
     private Point _position;
 
+    public Point CenterPosition
+    {
+        get { return _position + new Vector(Dimensions.Width / 2, Dimensions.Height / 2); }
+    }
+
     [ObservableProperty]
     private Size _dimensions;
 
@@ -30,6 +35,17 @@ public abstract partial class BoardElementVM : MouseAwareVM
         Position += (Vector)MousePosition;
     }
 
-    protected Vector offsetFromMouse;
+    public void CenterToPoint(Point point)
+    {
+        _position = point - new Vector(Dimensions.Width / 2, Dimensions.Height / 2);
+        OnPropertyChanged(nameof(Position));
+    }
 
+    public void CenterToMouse()
+    {
+        _position += (Vector)MousePosition - new Vector(Dimensions.Width / 2, Dimensions.Height / 2);
+        OnPropertyChanged(nameof(Position));
+    }
+
+    protected Vector offsetFromMouse;
 }

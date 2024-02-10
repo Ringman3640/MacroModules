@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using MacroModules.App.ViewModels.Modules;
 using MacroModules.Model.Modules;
+using System.Windows;
 
 namespace MacroModules.App.ViewModels
 {
@@ -9,8 +10,6 @@ namespace MacroModules.App.ViewModels
         public ExitPort ExitPortModel { get; set; }
 
         public ModuleVM AttachedModule { get; private set; }
-
-        public int ExitPortNumber { get; private set; }
 
         public Module? Destination
         {
@@ -26,6 +25,9 @@ namespace MacroModules.App.ViewModels
             }
         }
 
+        [ObservableProperty]
+        private Point _wireEndPoint = new(10, 10);
+
         public string? Name
         {
             get { return ExitPortModel.Name; }
@@ -36,10 +38,9 @@ namespace MacroModules.App.ViewModels
             get { return ExitPortModel.Description; }
         }
 
-        public ExitPortVM(ExitPort exitPort, int exitPortNumber, ModuleVM attachedModule)
+        public ExitPortVM(ExitPort exitPort, ModuleVM attachedModule)
         {
             ExitPortModel = exitPort;
-            ExitPortNumber = exitPortNumber;
             AttachedModule = attachedModule;
         }
     }

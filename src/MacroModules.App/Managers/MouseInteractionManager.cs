@@ -270,6 +270,7 @@ public sealed class MouseInteractionManager
                 // This is just a way to spawn in modules
                 ModuleVM module = new();
                 ModuleBoardVM.AddElement(module);
+                module.CenterToPoint(ModuleBoardVM.BoardMousePosition);
                 break;
 
             case InteractionState.DraggingCanvas:

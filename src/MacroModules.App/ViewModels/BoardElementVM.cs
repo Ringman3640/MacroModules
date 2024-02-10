@@ -1,9 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using MacroModules.App.Behaviors;
 using System.Windows;
 
 namespace MacroModules.App.ViewModels;
 
-public abstract partial class BoardElementVM : MouseAwareVM
+public abstract partial class BoardElementVM : MouseAwareVM, ICanvasAware
 {
     public Point Position
     {

@@ -2,7 +2,7 @@
 
 namespace MacroModules.App.Behaviors;
 
-public interface ICanvasAware
+public interface IDimensionsAware
 {
     public Size Dimensions { get; set; }
 }

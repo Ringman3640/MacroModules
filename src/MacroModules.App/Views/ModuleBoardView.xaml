@@ -9,7 +9,7 @@
              xmlns:modules="clr-namespace:MacroModules.App.Views.Modules" 
              xmlns:behaviors="clr-namespace:MacroModules.App.Behaviors" 
              mc:Ignorable="d" 
-             d:DataContext="{d:DesignInstance Type=viewmodels:ModuleBoardViewModel}"
+             d:DataContext="{d:DesignInstance Type=viewmodels:ModuleBoardVM}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Canvas x:Name="cvBoardContainer" Background="Transparent">
         <i:Interaction.Behaviors>

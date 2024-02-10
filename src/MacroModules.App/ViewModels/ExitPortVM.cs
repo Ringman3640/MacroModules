@@ -4,11 +4,11 @@ using MacroModules.Model.Modules;
 
 namespace MacroModules.App.ViewModels
 {
-    public partial class ExitPortViewModel : ObservableObject
+    public partial class ExitPortVM : ObservableObject
     {
         public ExitPort ExitPortModel { get; set; }
 
-        public ModuleViewModel AttachedModule { get; private set; }
+        public ModuleVM AttachedModule { get; private set; }
 
         public int ExitPortNumber { get; private set; }
 
@@ -36,7 +36,7 @@ namespace MacroModules.App.ViewModels
             get { return ExitPortModel.Description; }
         }
 
-        public ExitPortViewModel(ExitPort exitPort, int exitPortNumber, ModuleViewModel attachedModule)
+        public ExitPortVM(ExitPort exitPort, int exitPortNumber, ModuleVM attachedModule)
         {
             ExitPortModel = exitPort;
             ExitPortNumber = exitPortNumber;

@@ -4,7 +4,7 @@ using System.Windows;
 
 namespace MacroModules.App.ViewModels
 {
-    public class MouseAwareViewModel : ObservableObject, INotifyMousePositionRequested
+    public class MouseAwareVM : ObservableObject, INotifyMousePositionRequested
     {
         public Point MousePosition
         {

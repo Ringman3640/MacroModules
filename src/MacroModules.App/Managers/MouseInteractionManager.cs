@@ -33,7 +33,7 @@ public sealed class MouseInteractionManager
         }
     }
 
-    public ModuleBoardViewModel ModuleBoardVM
+    public ModuleBoardVM ModuleBoardVM
     {
         get
         {
@@ -45,9 +45,9 @@ public sealed class MouseInteractionManager
         }
         set { _moduleBoardVM = value; }
     }
-    private ModuleBoardViewModel? _moduleBoardVM = null;
+    private ModuleBoardVM? _moduleBoardVM = null;
 
-    public void RegisterModuleBoard(ModuleBoardViewModel moduleBoard)
+    public void RegisterModuleBoard(ModuleBoardVM moduleBoard)
     {
         _moduleBoardVM = moduleBoard;
     }
@@ -67,7 +67,7 @@ public sealed class MouseInteractionManager
         switch (senderType)
         {
             case MouseInteractionItemType.Module:
-                var module = (ModuleViewModel)sender;
+                var module = (ModuleVM)sender;
                 if (ModuleBoardVM.IsSelected(module))
                 {
                     interactState = InteractionState.StartLeftHoldingSelected;
@@ -112,7 +112,7 @@ public sealed class MouseInteractionManager
         switch (senderType)
         {
             case MouseInteractionItemType.Module:
-                if (sender is ModuleViewModel module)
+                if (sender is ModuleVM module)
                 {
                     if (ModuleBoardVM.IsSelected(module))
                     {
@@ -145,7 +145,7 @@ public sealed class MouseInteractionManager
                 goto case InteractionState.DraggingSelection;
 
             case InteractionState.StartLeftHoldingModule:
-                if (startInteractItem is ModuleViewModel module)
+                if (startInteractItem is ModuleVM module)
                 {
                     ModuleBoardVM.Select(module);
                     ModuleBoardVM.LockSelectedToMouse();
@@ -198,7 +198,7 @@ public sealed class MouseInteractionManager
         {
             case InteractionState.StartLeftHoldingSelected:
             {
-                if (startInteractItem is not ModuleViewModel module)
+                if (startInteractItem is not ModuleVM module)
                 {
                     break;
                 }
@@ -221,7 +221,7 @@ public sealed class MouseInteractionManager
                 {
                     ModuleBoardVM.UnselectAll();
                 }
-                if (startInteractItem is ModuleViewModel module)
+                if (startInteractItem is ModuleVM module)
                 {
                     ModuleBoardVM.Select(module);
                     // TODO: show module on properties if its the only one focused
@@ -268,7 +268,7 @@ public sealed class MouseInteractionManager
                 // TODO: Open options dropdown for board
                 // TEMPORARY
                 // This is just a way to spawn in modules
-                ModuleViewModel module = new();
+                ModuleVM module = new();
                 ModuleBoardVM.AddElement(module);
                 break;
 

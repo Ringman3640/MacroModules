@@ -9,12 +9,12 @@ using System.Windows.Media;
 
 namespace MacroModules.App.ViewModels;
 
-public partial class ModuleBoardViewModel : MouseAwareViewModel
+public partial class ModuleBoardVM : MouseAwareVM
 {
     public ModuleBoardView ViewRef { get; private set; }
 
     [ObservableProperty]
-    private ObservableCollection<BoardElementViewModel> _elements = new();
+    private ObservableCollection<BoardElementVM> _elements = new();
 
     [ObservableProperty]
     private ScaleTransform _boardTransform = new();
@@ -82,7 +82,7 @@ public partial class ModuleBoardViewModel : MouseAwareViewModel
     }
     private double _moduleBoardPosY = 0;
 
-    public ModuleBoardViewModel(ModuleBoardView viewRef)
+    public ModuleBoardVM(ModuleBoardView viewRef)
     {
         ViewRef = viewRef;
         MouseInteractionManager.Instance.RegisterModuleBoard(this);
@@ -99,7 +99,7 @@ public partial class ModuleBoardViewModel : MouseAwareViewModel
         Mouse.Capture(null);
     }
 
-    public void AddElement(BoardElementViewModel element)
+    public void AddElement(BoardElementVM element)
     {
         if (Elements.Contains(element))
         {
@@ -109,12 +109,12 @@ public partial class ModuleBoardViewModel : MouseAwareViewModel
         Elements.Add(element);
     }
 
-    public void RemoveElement(BoardElementViewModel element)
+    public void RemoveElement(BoardElementVM element)
     {
         Elements.Remove(element);
     }
 
-    public bool ContainsElement(BoardElementViewModel element)
+    public bool ContainsElement(BoardElementVM element)
     {
         return Elements.Contains(element);
     }
@@ -143,12 +143,12 @@ public partial class ModuleBoardViewModel : MouseAwareViewModel
         MoveCanvasWithMouse();
     }
 
-    public void Select(BoardElementViewModel element)
+    public void Select(BoardElementVM element)
     {
         selectedElements.Add(element);
     }
 
-    public void Unselect(BoardElementViewModel element)
+    public void Unselect(BoardElementVM element)
     {
         selectedElements.Remove(element);
     }
@@ -158,7 +158,7 @@ public partial class ModuleBoardViewModel : MouseAwareViewModel
         selectedElements.Clear();
     }
 
-    public bool IsSelected(BoardElementViewModel element)
+    public bool IsSelected(BoardElementVM element)
     {
         return selectedElements.Contains(element);
     }
@@ -224,7 +224,7 @@ public partial class ModuleBoardViewModel : MouseAwareViewModel
         SelectBoxVisibility = Visibility.Hidden;
     }
 
-    private HashSet<BoardElementViewModel> selectedElements = new();
+    private HashSet<BoardElementVM> selectedElements = new();
 
     private Point boardOffsetFromMouse;
     private Point selectBoxPivot;

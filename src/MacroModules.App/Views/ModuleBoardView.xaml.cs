@@ -7,7 +7,7 @@ public partial class ModuleBoardView : UserControl
 {
     public ModuleBoardView()
     {
-        DataContext = new ModuleBoardViewModel(this);
+        DataContext = new ModuleBoardVM(this);
         InitializeComponent();
     }
 

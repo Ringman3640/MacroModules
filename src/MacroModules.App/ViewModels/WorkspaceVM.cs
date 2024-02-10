@@ -2,9 +2,9 @@
 
 namespace MacroModules.App.ViewModels;
 
-public partial class WorkspaceViewModel : ObservableObject
+public partial class WorkspaceVM : ObservableObject
 {
-    public WorkspaceViewModel()
+    public WorkspaceVM()
     {
         
     }

@@ -3,7 +3,7 @@ using System.Windows;
 
 namespace MacroModules.App.ViewModels;
 
-public abstract partial class BoardElementViewModel : MouseAwareViewModel
+public abstract partial class BoardElementVM : MouseAwareVM
 {
     public Point Position
     {

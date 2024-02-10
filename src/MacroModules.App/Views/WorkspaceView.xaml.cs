@@ -7,7 +7,7 @@ public partial class WorkspaceView : UserControl
 {
     public WorkspaceView()
     {
-        DataContext = new WorkspaceViewModel();
+        DataContext = new WorkspaceVM();
         InitializeComponent();
     }
 }

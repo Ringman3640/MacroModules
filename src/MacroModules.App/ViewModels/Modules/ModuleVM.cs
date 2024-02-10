@@ -6,15 +6,15 @@ using System.Windows.Input;
 
 namespace MacroModules.App.ViewModels.Modules;
 
-public partial class ModuleViewModel : BoardElementViewModel
+public partial class ModuleVM : BoardElementVM
 {
     public ModuleType Type { get; }
 
     //public Module ModuleModel { get; protected set; }
 
-    public ObservableCollection<ExitPortViewModel> ExitPorts { get; private set; } = new();
+    public ObservableCollection<ExitPortVM> ExitPorts { get; private set; } = new();
 
-    public ModuleViewModel()
+    public ModuleVM()
     {
         //ModuleModel = ModuleFactory.Create(Type);
     }

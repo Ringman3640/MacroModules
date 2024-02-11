@@ -23,10 +23,7 @@ public sealed class MouseInteractionManager
             {
                 lock (instanceLock)
                 {
-                    if (instance == null)
-                    {
-                        instance = new MouseInteractionManager();
-                    }
+                    instance ??= new MouseInteractionManager();
                 }
             }
             return instance;

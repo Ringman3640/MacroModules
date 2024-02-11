@@ -4,7 +4,6 @@ using MacroModules.App.Managers;
 using MacroModules.App.ViewModels.Modules;
 using MacroModules.Model.Modules;
 using System.Windows;
-using System.Windows.Input;
 
 namespace MacroModules.App.ViewModels
 {
@@ -106,42 +105,42 @@ namespace MacroModules.App.ViewModels
         }
 
         [RelayCommand]
-        private void Port_LeftMouseDown(MouseButtonEventArgs e)
+        private void Port_LeftMouseDown(RoutedEventArgs e)
         {
             Workspace?.MouseInteraction.ProcessMouseLeftDown(this, MouseInteractionItemType.Wire);
             e.Handled = true;
         }
 
         [RelayCommand]
-        private void Port_MouseMove(MouseEventArgs e)
+        private void Port_MouseMove(RoutedEventArgs e)
         {
             Workspace?.MouseInteraction.ProcessMouseMove(this, MouseInteractionItemType.Wire);
             e.Handled = true;
         }
 
         [RelayCommand]
-        private void Port_LeftMouseUp(MouseButtonEventArgs e)
+        private void Port_LeftMouseUp(RoutedEventArgs e)
         {
             Workspace?.MouseInteraction.ProcessMouseLeftUp(this, MouseInteractionItemType.Wire);
             e.Handled = true;
         }
 
         [RelayCommand]
-        private void Wire_LeftMouseDown(MouseButtonEventArgs e)
+        private void Wire_LeftMouseDown(RoutedEventArgs e)
         {
             Workspace?.MouseInteraction.ProcessMouseLeftDown(this, MouseInteractionItemType.Wire);
             e.Handled = true;
         }
 
         [RelayCommand]
-        private void Wire_MouseMove(MouseEventArgs e)
+        private void Wire_MouseMove(RoutedEventArgs e)
         {
             Workspace?.MouseInteraction.ProcessMouseMove(this, MouseInteractionItemType.Wire);
             e.Handled = true;
         }
 
         [RelayCommand]
-        private void Wire_LeftMouseUp(MouseButtonEventArgs e)
+        private void Wire_LeftMouseUp(RoutedEventArgs e)
         {
             Workspace?.MouseInteraction.ProcessMouseLeftUp(this, MouseInteractionItemType.Wire);
             e.Handled = true;

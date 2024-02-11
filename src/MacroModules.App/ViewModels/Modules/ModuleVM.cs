@@ -2,7 +2,7 @@
 using MacroModules.App.Managers;
 using MacroModules.Model.Modules;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
+using System.Windows;
 
 namespace MacroModules.App.ViewModels.Modules;
 
@@ -21,21 +21,21 @@ public partial class ModuleVM : BoardElementVM
     }
 
     [RelayCommand]
-    private void Body_LeftMouseDown(MouseButtonEventArgs e)
+    private void Body_LeftMouseDown(RoutedEventArgs e)
     {
         Workspace?.MouseInteraction.ProcessMouseLeftDown(this, MouseInteractionItemType.Module);
         e.Handled = true;
     }
 
     [RelayCommand]
-    private void Body_LeftMouseUp(MouseButtonEventArgs e)
+    private void Body_LeftMouseUp(RoutedEventArgs e)
     {
         Workspace?.MouseInteraction.ProcessMouseLeftUp(this, MouseInteractionItemType.Module);
         e.Handled = true;
     }
 
     [RelayCommand]
-    private void Body_MouseMove(MouseEventArgs e)
+    private void Body_MouseMove(RoutedEventArgs e)
     {
         Workspace?.MouseInteraction.ProcessMouseMove(this, MouseInteractionItemType.Module);
         e.Handled = true;

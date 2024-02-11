@@ -148,35 +148,35 @@ public partial class ModuleBoardVM : MouseAwareVM
     private Point boardOffsetFromMouse;
 
     [RelayCommand]
-    private void Board_LeftMouseDown(MouseButtonEventArgs e)
+    private void Board_LeftMouseDown(RoutedEventArgs e)
     {
         Workspace.MouseInteraction.ProcessMouseLeftDown(this, MouseInteractionItemType.Board);
         e.Handled = true;
     }
 
     [RelayCommand]
-    private void Board_RightMouseDown(MouseButtonEventArgs e)
+    private void Board_RightMouseDown(RoutedEventArgs e)
     {
         Workspace.MouseInteraction.ProcessMouseRightDown(this, MouseInteractionItemType.Board);
         e.Handled = true;
     }
 
     [RelayCommand]
-    private void Board_MouseMove(MouseEventArgs e)
+    private void Board_MouseMove(RoutedEventArgs e)
     {
         Workspace.MouseInteraction.ProcessMouseMove(this, MouseInteractionItemType.Board);
         e.Handled = true;
     }
 
     [RelayCommand]
-    private void Board_LeftMouseUp(MouseButtonEventArgs e)
+    private void Board_LeftMouseUp(RoutedEventArgs e)
     {
         Workspace.MouseInteraction.ProcessMouseLeftUp(this, MouseInteractionItemType.Board);
         e.Handled = true;
     }
 
     [RelayCommand]
-    private void Board_RightMouseUp(MouseButtonEventArgs e)
+    private void Board_RightMouseUp(RoutedEventArgs e)
     {
         Workspace.MouseInteraction.ProcessMouseRightUp(this, MouseInteractionItemType.Board);
         e.Handled = true;

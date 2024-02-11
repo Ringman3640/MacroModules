@@ -92,16 +92,6 @@ public partial class ModuleBoardVM : MouseAwareVM
         SelectBox = new(this);
     }
 
-    public void CaptureMouse()
-    {
-        Workspace.CaptureMouse();
-    }
-
-    public void UncaptureMouse()
-    {
-        Workspace.UncaptureMouse();
-    }
-
     public void AddElement(BoardElementVM element)
     {
         if (Elements.Contains(element))

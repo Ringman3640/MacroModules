@@ -7,11 +7,27 @@
              xmlns:local="clr-namespace:MacroModules.App.Views" 
              xmlns:viewmodels="clr-namespace:MacroModules.App.ViewModels" 
              mc:Ignorable="d" 
-             d:DataContext="{d:DesignInstance Type=viewmodels:WorkspaceViewModel}"
+             d:DataContext="{d:DesignInstance Type=viewmodels:WorkspaceVM}"
              d:DesignHeight="450" d:DesignWidth="800">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseRightButtonUp">
+            <i:InvokeCommandAction Command="{Binding Path=Workspace_RightMouseUpCommand}" PassEventArgsToCommand="True"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="MouseLeftButtonUp">
+            <i:InvokeCommandAction Command="{Binding Path=Workspace_LeftMouseUpCommand}" PassEventArgsToCommand="True"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="MouseMove">
+            <i:InvokeCommandAction Command="{Binding Path=Workspace_MouseMoveCommand}" PassEventArgsToCommand="True"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    
     <Grid x:Name="gdWorkspace" Background="Transparent">
-        
-        
-        <local:ModuleBoardView x:Name="mbvModuleBoard"/>
+        <ContentControl Content="{Binding ModuleBoard, Mode=OneWay}">
+            <ContentControl.ContentTemplate>
+                <DataTemplate>
+                    <local:ModuleBoardView/>
+                </DataTemplate>
+            </ContentControl.ContentTemplate>
+        </ContentControl>
     </Grid>
 </UserControl>

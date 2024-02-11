@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MacroModules.App.Managers;
-using MacroModules.App.Views;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
@@ -11,7 +10,7 @@ namespace MacroModules.App.ViewModels;
 
 public partial class ModuleBoardVM : MouseAwareVM
 {
-    public ModuleBoardView ViewRef { get; private set; }
+    public WorkspaceVM Workspace { get; private set; }
 
     [ObservableProperty]
     private ObservableCollection<BoardElementVM> _elements = new();
@@ -87,22 +86,21 @@ public partial class ModuleBoardVM : MouseAwareVM
     }
     private double _moduleBoardPosY = 0;
 
-    public ModuleBoardVM(ModuleBoardView viewRef)
+    public ModuleBoardVM(WorkspaceVM workspace)
     {
-        ViewRef = viewRef;
+        Workspace = workspace;
         SelectBox = new(this);
         MouseInteractionManager.Instance.RegisterModuleBoard(this);
     }
 
     public void CaptureMouse()
     {
-        Mouse.Capture(null);
-        Mouse.Capture(ViewRef.GetContainerCanvas(), CaptureMode.SubTree);
+        Workspace.CaptureMouse();
     }
 
     public void UncaptureMouse()
     {
-        Mouse.Capture(null);
+        Workspace.UncaptureMouse();
     }
 
     public void AddElement(BoardElementVM element)

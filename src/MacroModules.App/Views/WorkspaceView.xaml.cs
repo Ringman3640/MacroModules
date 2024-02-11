@@ -7,7 +7,12 @@ public partial class WorkspaceView : UserControl
 {
     public WorkspaceView()
     {
-        DataContext = new WorkspaceVM();
+        DataContext = new WorkspaceVM(this);
         InitializeComponent();
+    }
+
+    public Grid GetWorkspaceGrid()
+    {
+        return gdWorkspace;
     }
 }

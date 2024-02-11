@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="MacroModules.App.Views.SelectBoxView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
+             xmlns:local="clr-namespace:MacroModules.App.Views"
+             xmlns:viewmodels="clr-namespace:MacroModules.App.ViewModels" 
+             xmlns:behaviors="clr-namespace:MacroModules.App.Behaviors" 
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=viewmodels:SelectBoxVM}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <i:Interaction.Behaviors>
+        <behaviors:MouseAwareBehavior MouseAwareBehaviorInstance="{Binding MouseAwareBehaviorConnector, Mode=OneWayToSource}" MousePosition="{Binding MousePosition, Mode=OneWayToSource}"/>
+    </i:Interaction.Behaviors>
+    <Canvas IsHitTestVisible="False">
+        <Rectangle x:Name="rectSelectBox" IsHitTestVisible="False"
+                   Canvas.Left="{Binding SelectBoxRegion.Left}" Canvas.Top="{Binding SelectBoxRegion.Top}"
+                   Width="{Binding SelectBoxRegion.Width}" Height="{Binding SelectBoxRegion.Height}"
+                   Visibility="{Binding SelectBoxVisibility}" Fill="LightBlue" Stroke="RoyalBlue" Opacity="0.5"/>
+    </Canvas>
+</UserControl>

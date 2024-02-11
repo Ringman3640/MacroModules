@@ -56,9 +56,12 @@
         </ItemsControl>
         <Canvas x:Name="cvModuleBoard" Canvas.Left="{Binding ModuleBoardPosX}" Canvas.Top="{Binding ModuleBoardPosY}"/>
 
-        <Rectangle x:Name="rectSelectBox" IsHitTestVisible="False"
-                   Canvas.Left="{Binding SelectBoxRegion.Left}" Canvas.Top="{Binding SelectBoxRegion.Top}"
-                   Width="{Binding SelectBoxRegion.Width}" Height="{Binding SelectBoxRegion.Height}"
-                   Visibility="{Binding SelectBoxVisibility}" Fill="LightBlue" Stroke="RoyalBlue" Opacity="0.5"/>
+        <ContentControl Content="{Binding SelectBox, Mode=OneWay}">
+            <ContentControl.ContentTemplate>
+                <DataTemplate>
+                    <local:SelectBoxView/>
+                </DataTemplate>
+            </ContentControl.ContentTemplate>
+        </ContentControl>
     </Canvas>
 </UserControl>

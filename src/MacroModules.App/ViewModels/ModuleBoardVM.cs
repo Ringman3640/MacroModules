@@ -19,11 +19,7 @@ public partial class ModuleBoardVM : MouseAwareVM
     [ObservableProperty]
     private ScaleTransform _boardTransform = new();
 
-    [ObservableProperty]
-    private Visibility _selectBoxVisibility = Visibility.Hidden;
-
-    [ObservableProperty]
-    private Rect _selectBoxRegion;
+    public SelectBoxVM SelectBox { get; private set; }
 
     public double BoardScale
     {
@@ -94,6 +90,7 @@ public partial class ModuleBoardVM : MouseAwareVM
     public ModuleBoardVM(ModuleBoardView viewRef)
     {
         ViewRef = viewRef;
+        SelectBox = new(this);
         MouseInteractionManager.Instance.RegisterModuleBoard(this);
     }
 
@@ -150,42 +147,6 @@ public partial class ModuleBoardVM : MouseAwareVM
         MoveCanvasWithMouse();
     }
 
-    public void Select(BoardElementVM element)
-    {
-        selectedElements.Add(element);
-    }
-
-    public void Unselect(BoardElementVM element)
-    {
-        selectedElements.Remove(element);
-    }
-
-    public void UnselectAll()
-    {
-        selectedElements.Clear();
-    }
-
-    public bool IsSelected(BoardElementVM element)
-    {
-        return selectedElements.Contains(element);
-    }
-
-    public void LockSelectedToMouse()
-    {
-        foreach (var element in selectedElements)
-        {
-            element.LockMouseOffset();
-        }
-    }
-
-    public void MoveSelectedWithMouse()
-    {
-        foreach (var element in selectedElements)
-        {
-            element.MoveWithMouse();
-        }
-    }
-
     public void LockCanvasToMouse()
     {
         boardOffsetFromMouse = MousePosition - (Vector)BoardPosition;
@@ -196,45 +157,7 @@ public partial class ModuleBoardVM : MouseAwareVM
         BoardPosition = MousePosition;
     }
 
-    public void LockSelectBoxPivotToMouse()
-    {
-        selectBoxPivot = MousePosition;
-    }
-
-    public void StartSelectBox()
-    {
-        SelectBoxVisibility = Visibility.Visible;
-        MoveSelectBoxWithMouse();
-    }
-
-    public void MoveSelectBoxWithMouse()
-    {
-        SelectBoxRegion = new(MousePosition, selectBoxPivot);
-    }
-
-    public void ConfirmSelectBox()
-    {
-        foreach (var element in Elements)
-        {
-            double absolutePosX = (element.Position.X * BoardScale) + BoardPosition.X;
-            double absolutePosY = (element.Position.Y * BoardScale) + BoardPosition.Y;
-            double scaledWidth = element.Dimensions.Width * BoardScale;
-            double scaledHeight = element.Dimensions.Height * BoardScale;
-
-            Rect elementBounds = new(absolutePosX, absolutePosY, scaledWidth, scaledHeight);
-            if (elementBounds.IntersectsWith(SelectBoxRegion))
-            {
-                selectedElements.Add(element);
-            }
-        }
-
-        SelectBoxVisibility = Visibility.Hidden;
-    }
-
-    private HashSet<BoardElementVM> selectedElements = new();
-
     private Point boardOffsetFromMouse;
-    private Point selectBoxPivot;
 
     [RelayCommand]
     private void Board_LeftMouseDown(MouseButtonEventArgs e)

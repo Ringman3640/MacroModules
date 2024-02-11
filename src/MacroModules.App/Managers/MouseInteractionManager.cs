@@ -68,7 +68,7 @@ public sealed class MouseInteractionManager
         {
             case MouseInteractionItemType.Module:
                 var module = (ModuleVM)sender;
-                if (ModuleBoardVM.IsSelected(module))
+                if (ModuleBoardVM.SelectBox.IsSelected(module))
                 {
                     interactState = InteractionState.StartLeftHoldingSelected;
                 }
@@ -76,7 +76,7 @@ public sealed class MouseInteractionManager
                 {
                     if (!Keyboard.IsKeyDown(Key.LeftCtrl))
                     {
-                        ModuleBoardVM.UnselectAll();
+                        ModuleBoardVM.SelectBox.UnselectAll();
                     }
                     interactState = InteractionState.StartLeftHoldingModule;
                 }
@@ -89,9 +89,9 @@ public sealed class MouseInteractionManager
             case MouseInteractionItemType.Board:
                 if (!Keyboard.IsKeyDown(Key.LeftCtrl))
                 {
-                    ModuleBoardVM.UnselectAll();
+                    ModuleBoardVM.SelectBox.UnselectAll();
                 }
-                ModuleBoardVM.LockSelectBoxPivotToMouse();
+                ModuleBoardVM.SelectBox.LockSelectBoxPivotToMouse();
                 interactState = InteractionState.StartLeftHoldingBoard;
                 break;
         }
@@ -114,7 +114,7 @@ public sealed class MouseInteractionManager
             case MouseInteractionItemType.Module:
                 if (sender is ModuleVM module)
                 {
-                    if (ModuleBoardVM.IsSelected(module))
+                    if (ModuleBoardVM.SelectBox.IsSelected(module))
                     {
                         interactState = InteractionState.StartRightHoldingSelected;
                     }
@@ -140,7 +140,7 @@ public sealed class MouseInteractionManager
         switch (interactState)
         {
             case InteractionState.StartLeftHoldingSelected:
-                ModuleBoardVM.LockSelectedToMouse();
+                ModuleBoardVM.SelectBox.LockSelectedToMouse();
                 interactState = InteractionState.DraggingSelection;
                 goto case InteractionState.DraggingSelection;
 
@@ -148,8 +148,8 @@ public sealed class MouseInteractionManager
             {
                 if (startInteractItem is ModuleVM module)
                 {
-                    ModuleBoardVM.Select(module);
-                    ModuleBoardVM.LockSelectedToMouse();
+                    ModuleBoardVM.SelectBox.Select(module);
+                    ModuleBoardVM.SelectBox.LockSelectedToMouse();
                     interactState = InteractionState.DraggingSelection;
                 }
                 else
@@ -164,7 +164,7 @@ public sealed class MouseInteractionManager
             case InteractionState.StartLeftHoldingBoard:
                 if (MouseMovedPastThreshold())
                 {
-                    ModuleBoardVM.StartSelectBox();
+                    ModuleBoardVM.SelectBox.StartSelectBox();
                     interactState = InteractionState.DraggingSelectBox;
                     goto case InteractionState.DraggingSelectBox;
                 }
@@ -182,11 +182,11 @@ public sealed class MouseInteractionManager
                 break;
 
             case InteractionState.DraggingSelection:
-                ModuleBoardVM.MoveSelectedWithMouse();
+                ModuleBoardVM.SelectBox.MoveSelectedWithMouse();
                 break;
 
             case InteractionState.DraggingSelectBox:
-                ModuleBoardVM.MoveSelectBoxWithMouse();
+                ModuleBoardVM.SelectBox.MoveSelectBoxWithMouse();
                 break;
 
             case InteractionState.DraggingCanvas:
@@ -225,12 +225,12 @@ public sealed class MouseInteractionManager
                 }
                 if (Keyboard.IsKeyDown(Key.LeftCtrl))
                 {
-                    ModuleBoardVM.Unselect(module);
+                    ModuleBoardVM.SelectBox.Unselect(module);
                 }
                 else
                 {
-                    ModuleBoardVM.UnselectAll();
-                    ModuleBoardVM.Select(module);
+                    ModuleBoardVM.SelectBox.UnselectAll();
+                    ModuleBoardVM.SelectBox.Select(module);
                     // TODO: show single module on properties panel
                 }
                 break;
@@ -240,18 +240,18 @@ public sealed class MouseInteractionManager
             {
                 if (!Keyboard.IsKeyDown(Key.LeftCtrl))
                 {
-                    ModuleBoardVM.UnselectAll();
+                    ModuleBoardVM.SelectBox.UnselectAll();
                 }
                 if (startInteractItem is ModuleVM module)
                 {
-                    ModuleBoardVM.Select(module);
+                    ModuleBoardVM.SelectBox.Select(module);
                     // TODO: show module on properties if its the only one focused
                 }
                 break;
             }
 
             case InteractionState.StartLeftHoldingBoard:
-                ModuleBoardVM.UnselectAll();
+                ModuleBoardVM.SelectBox.UnselectAll();
                 break;
 
             case InteractionState.DraggingSelection:
@@ -261,9 +261,9 @@ public sealed class MouseInteractionManager
             case InteractionState.DraggingSelectBox:
                 if (!Keyboard.IsKeyDown(Key.LeftCtrl))
                 {
-                    ModuleBoardVM.UnselectAll();
+                    ModuleBoardVM.SelectBox.UnselectAll();
                 }
-                ModuleBoardVM.ConfirmSelectBox();
+                ModuleBoardVM.SelectBox.ConfirmSelectBox();
                 break;
 
             case InteractionState.DraggingWire:

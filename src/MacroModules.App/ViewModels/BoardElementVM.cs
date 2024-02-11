@@ -1,15 +1,25 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using MacroModules.App.Behaviors;
+using MacroModules.App.ViewModels.Events;
 using System.Windows;
 
 namespace MacroModules.App.ViewModels;
 
-public abstract partial class BoardElementVM : MouseAwareVM, IDimensionsAware
+public abstract partial class BoardElementVM : MouseAwareVM, IDimensionsAware, INotifyElementMoved
 {
     public Point Position
     {
         get { return _position; }
-        set { SetProperty(ref _position, value - offsetFromMouse); }
+        set
+        {
+            Point nextPos = value - offsetFromMouse;
+            if (nextPos != _position)
+            {
+                _position = nextPos;
+                OnPropertyChanged();
+                ElementMoved?.Invoke(this, EventArgs.Empty);
+            }
+        }
     }
     private Point _position;
 
@@ -20,6 +30,8 @@ public abstract partial class BoardElementVM : MouseAwareVM, IDimensionsAware
 
     [ObservableProperty]
     private Size _dimensions;
+
+    public event ElementMovedHandler? ElementMoved;
 
     public void LockMouseOffset()
     {

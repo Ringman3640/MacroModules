@@ -10,13 +10,14 @@ public partial class ModuleVM : BoardElementVM
 {
     public ModuleType Type { get; }
 
-    //public Module ModuleModel { get; protected set; }
+    public Module ModuleData { get; protected set; }
 
     public ObservableCollection<ExitPortVM> ExitPorts { get; private set; } = new();
 
     public ModuleVM()
     {
         //ModuleModel = ModuleFactory.Create(Type);
+        ExitPorts.Add(new ExitPortVM(new(), this)); // TODO: remove later, FOR TESTING ONLY
     }
 
     [RelayCommand]

@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
              xmlns:local="clr-namespace:MacroModules.App.Views.Modules" 
+             xmlns:views="clr-namespace:MacroModules.App.Views" 
              xmlns:vmModules="clr-namespace:MacroModules.App.ViewModels.Modules" 
              xmlns:behaviors="clr-namespace:MacroModules.App.Behaviors" 
              mc:Ignorable="d"
@@ -28,5 +29,12 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </Rectangle>
+        <ContentControl Content="{Binding ExitPorts[0]}" Canvas.Left="80" Canvas.Top="40">
+            <ContentControl.ContentTemplate>
+                <DataTemplate>
+                    <views:ExitPortView Canvas.Left="80" Canvas.Top="40"/>
+                </DataTemplate>
+            </ContentControl.ContentTemplate>
+        </ContentControl>
     </Canvas>
 </UserControl>

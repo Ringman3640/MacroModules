@@ -83,7 +83,7 @@ public sealed class MouseInteractionManager
                 break;
 
             case MouseInteractionItemType.Wire:
-                // TODO
+                interactState = InteractionState.DraggingWire;
                 break;
 
             case MouseInteractionItemType.Board:
@@ -145,6 +145,7 @@ public sealed class MouseInteractionManager
                 goto case InteractionState.DraggingSelection;
 
             case InteractionState.StartLeftHoldingModule:
+            {
                 if (startInteractItem is ModuleVM module)
                 {
                     ModuleBoardVM.Select(module);
@@ -157,6 +158,8 @@ public sealed class MouseInteractionManager
                     break;
                 }
                 goto case InteractionState.DraggingSelection;
+            }
+                
 
             case InteractionState.StartLeftHoldingBoard:
                 if (MouseMovedPastThreshold())
@@ -189,6 +192,24 @@ public sealed class MouseInteractionManager
             case InteractionState.DraggingCanvas:
                 ModuleBoardVM.MoveCanvasWithMouse();
                 break;
+
+            case InteractionState.DraggingWire:
+            {
+                if (startInteractItem is not ExitPortVM exitPort)
+                {
+                    break;
+                }
+                if (sender is ModuleVM module
+                    && !ReferenceEquals(module, exitPort.AttachedModule))
+                {
+                    exitPort.PreviewWireToModule(module);
+                }
+                else
+                {
+                    exitPort.PreviewWireToMouse();
+                }
+                break;
+            }
         }
     }
 
@@ -244,6 +265,25 @@ public sealed class MouseInteractionManager
                 }
                 ModuleBoardVM.ConfirmSelectBox();
                 break;
+
+            case InteractionState.DraggingWire:
+                {
+                    if (startInteractItem is not ExitPortVM exitPort)
+                    {
+                        break;
+                    }
+                    if (sender is ModuleVM module
+                        && !ReferenceEquals(module, exitPort.AttachedModule))
+                    {
+                        exitPort.DestinationModule = module;
+                    }
+                    else
+                    {
+                        exitPort.DestinationModule = null;
+                    }
+                    exitPort.ResetWire();
+                    break;
+                }
         }
 
         ModuleBoardVM.UncaptureMouse();
@@ -296,6 +336,7 @@ public sealed class MouseInteractionManager
         DraggingSelection,
         DraggingSelectBox,
         DraggingCanvas,
+        DraggingWire,
     }
 
     private static MouseInteractionManager? instance = null;

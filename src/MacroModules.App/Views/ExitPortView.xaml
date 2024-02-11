@@ -3,13 +3,43 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
              xmlns:local="clr-namespace:MacroModules.App.Views"
              xmlns:viewmodels="clr-namespace:MacroModules.App.ViewModels"
+             xmlns:behaviors="clr-namespace:MacroModules.App.Behaviors" 
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=viewmodels:ExitPortVM}"
              d:DesignHeight="450" d:DesignWidth="800">
+    <i:Interaction.Behaviors>
+        <behaviors:MouseAwareBehavior MouseAwareBehaviorInstance="{Binding MouseAwareBehaviorConnector, Mode=OneWayToSource}" MousePosition="{Binding MousePosition, Mode=OneWayToSource}"/>
+        <behaviors:CanvasAwareBehavior BoundPosition="{Binding PortModulePosition, Mode=OneWayToSource}"/>
+    </i:Interaction.Behaviors>
     <Canvas Width="0" Height="0">
-        <Rectangle x:Name="rectExitPort" Fill="Gray" Height="20" Width="10" Canvas.Top="-10"/>
-        <Line Stroke="Black" StrokeThickness="6" StrokeEndLineCap="Round" X1="0" X2="{Binding WireEndPoint.X}" Y1="0" Y2="{Binding WireEndPoint.Y}" Panel.ZIndex="-1"/>
+        <Rectangle x:Name="rectExitPort" Fill="Gray" Height="30" Width="10" Canvas.Top="-15">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseLeftButtonDown">
+                    <i:InvokeCommandAction Command="{Binding Path=Port_LeftMouseDownCommand}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MouseLeftButtonUp">
+                    <i:InvokeCommandAction Command="{Binding Path=Port_LeftMouseUpCommand}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MouseMove">
+                    <i:InvokeCommandAction Command="{Binding Path=Port_MouseMoveCommand}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Rectangle>
+        <Line IsHitTestVisible="{Binding WireHitTestVisible}" Visibility="{Binding WireVisibility}" Stroke="Black" StrokeThickness="6" StrokeEndLineCap="Round" X1="0" X2="{Binding WireEndPoint.X}" Y1="0" Y2="{Binding WireEndPoint.Y}" Panel.ZIndex="-1">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseLeftButtonDown">
+                    <i:InvokeCommandAction Command="{Binding Path=Wire_LeftMouseDownCommand}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MouseLeftButtonUp">
+                    <i:InvokeCommandAction Command="{Binding Path=Wire_LeftMouseUpCommand}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MouseMove">
+                    <i:InvokeCommandAction Command="{Binding Path=Wire_MouseMoveCommand}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Line>
     </Canvas>
 </UserControl>

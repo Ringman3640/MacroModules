@@ -23,21 +23,21 @@ public partial class ModuleVM : BoardElementVM
     [RelayCommand]
     private void Body_LeftMouseDown(MouseButtonEventArgs e)
     {
-        MouseInteractionManager.Instance.ProcessMouseLeftDown(this, MouseInteractionItemType.Module);
+        Workspace?.MouseInteraction.ProcessMouseLeftDown(this, MouseInteractionItemType.Module);
         e.Handled = true;
     }
 
     [RelayCommand]
     private void Body_LeftMouseUp(MouseButtonEventArgs e)
     {
-        MouseInteractionManager.Instance.ProcessMouseLeftUp(this, MouseInteractionItemType.Module);
+        Workspace?.MouseInteraction.ProcessMouseLeftUp(this, MouseInteractionItemType.Module);
         e.Handled = true;
     }
 
     [RelayCommand]
     private void Body_MouseMove(MouseEventArgs e)
     {
-        MouseInteractionManager.Instance.ProcessMouseMove(this, MouseInteractionItemType.Module);
+        Workspace?.MouseInteraction.ProcessMouseMove(this, MouseInteractionItemType.Module);
         e.Handled = true;
     }
 }

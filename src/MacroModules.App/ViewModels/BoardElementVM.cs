@@ -7,6 +7,8 @@ namespace MacroModules.App.ViewModels;
 
 public abstract partial class BoardElementVM : MouseAwareVM, IDimensionsAware, INotifyElementMoved
 {
+    public WorkspaceVM? Workspace { get; private set; } = null;
+
     public Point Position
     {
         get { return _position; }
@@ -32,6 +34,11 @@ public abstract partial class BoardElementVM : MouseAwareVM, IDimensionsAware, I
     private Size _dimensions;
 
     public event ElementMovedHandler? ElementMoved;
+
+    public virtual void Initialize(WorkspaceVM workspace)
+    {
+        Workspace = workspace;
+    }
 
     public void LockMouseOffset()
     {

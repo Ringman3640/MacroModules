@@ -11,11 +11,14 @@ public partial class WorkspaceVM : ObservableObject
 {
     public WorkspaceView ViewReference { get; private set; }
 
+    public MouseInteractionManager MouseInteraction { get; private set; }
+
     public ModuleBoardVM ModuleBoard { get; private set; }
 
     public WorkspaceVM(WorkspaceView viewRef)
     {
         ViewReference = viewRef;
+        MouseInteraction = new(this);
         ModuleBoard = new(this);
     }
 
@@ -33,21 +36,21 @@ public partial class WorkspaceVM : ObservableObject
     [RelayCommand]
     private void Workspace_RightMouseUp(RoutedEventArgs e)
     {
-        MouseInteractionManager.Instance.ProcessMouseRightUp(this, MouseInteractionItemType.None);
+        MouseInteraction.ProcessMouseRightUp(this, MouseInteractionItemType.None);
         e.Handled = true;
     }
 
     [RelayCommand]
     private void Workspace_LeftMouseUp(RoutedEventArgs e)
     {
-        MouseInteractionManager.Instance.ProcessMouseLeftUp(this, MouseInteractionItemType.None);
+        MouseInteraction.ProcessMouseLeftUp(this, MouseInteractionItemType.None);
         e.Handled = true;
     }
 
     [RelayCommand]
     private void Workspace_MouseMove(RoutedEventArgs e)
     {
-        MouseInteractionManager.Instance.ProcessMouseMove(this, MouseInteractionItemType.None);
+        MouseInteraction.ProcessMouseMove(this, MouseInteractionItemType.None);
         e.Handled = true;
     }
 }

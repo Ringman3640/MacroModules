@@ -90,7 +90,6 @@ public partial class ModuleBoardVM : MouseAwareVM
     {
         Workspace = workspace;
         SelectBox = new(this);
-        MouseInteractionManager.Instance.RegisterModuleBoard(this);
     }
 
     public void CaptureMouse()
@@ -111,6 +110,7 @@ public partial class ModuleBoardVM : MouseAwareVM
         }
 
         Elements.Add(element);
+        element.Initialize(Workspace);
     }
 
     public void RemoveElement(BoardElementVM element)
@@ -160,35 +160,35 @@ public partial class ModuleBoardVM : MouseAwareVM
     [RelayCommand]
     private void Board_LeftMouseDown(MouseButtonEventArgs e)
     {
-        MouseInteractionManager.Instance.ProcessMouseLeftDown(this, MouseInteractionItemType.Board);
+        Workspace.MouseInteraction.ProcessMouseLeftDown(this, MouseInteractionItemType.Board);
         e.Handled = true;
     }
 
     [RelayCommand]
     private void Board_RightMouseDown(MouseButtonEventArgs e)
     {
-        MouseInteractionManager.Instance.ProcessMouseRightDown(this, MouseInteractionItemType.Board);
+        Workspace.MouseInteraction.ProcessMouseRightDown(this, MouseInteractionItemType.Board);
         e.Handled = true;
     }
 
     [RelayCommand]
     private void Board_MouseMove(MouseEventArgs e)
     {
-        MouseInteractionManager.Instance.ProcessMouseMove(this, MouseInteractionItemType.Board);
+        Workspace.MouseInteraction.ProcessMouseMove(this, MouseInteractionItemType.Board);
         e.Handled = true;
     }
 
     [RelayCommand]
     private void Board_LeftMouseUp(MouseButtonEventArgs e)
     {
-        MouseInteractionManager.Instance.ProcessMouseLeftUp(this, MouseInteractionItemType.Board);
+        Workspace.MouseInteraction.ProcessMouseLeftUp(this, MouseInteractionItemType.Board);
         e.Handled = true;
     }
 
     [RelayCommand]
     private void Board_RightMouseUp(MouseButtonEventArgs e)
     {
-        MouseInteractionManager.Instance.ProcessMouseRightUp(this, MouseInteractionItemType.Board);
+        Workspace.MouseInteraction.ProcessMouseRightUp(this, MouseInteractionItemType.Board);
         e.Handled = true;
     }
 

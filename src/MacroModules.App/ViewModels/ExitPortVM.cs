@@ -38,6 +38,11 @@ namespace MacroModules.App.ViewModels
         }
         private ModuleVM? _destinationModule;
 
+        public WorkspaceVM? Workspace
+        {
+            get { return AttachedModule.Workspace; }
+        }
+
         [ObservableProperty]
         private Point _portModulePosition;
 
@@ -103,42 +108,42 @@ namespace MacroModules.App.ViewModels
         [RelayCommand]
         private void Port_LeftMouseDown(MouseButtonEventArgs e)
         {
-            MouseInteractionManager.Instance.ProcessMouseLeftDown(this, MouseInteractionItemType.Wire);
+            Workspace?.MouseInteraction.ProcessMouseLeftDown(this, MouseInteractionItemType.Wire);
             e.Handled = true;
         }
 
         [RelayCommand]
         private void Port_MouseMove(MouseEventArgs e)
         {
-            MouseInteractionManager.Instance.ProcessMouseMove(this, MouseInteractionItemType.Wire);
+            Workspace?.MouseInteraction.ProcessMouseMove(this, MouseInteractionItemType.Wire);
             e.Handled = true;
         }
 
         [RelayCommand]
         private void Port_LeftMouseUp(MouseButtonEventArgs e)
         {
-            MouseInteractionManager.Instance.ProcessMouseLeftUp(this, MouseInteractionItemType.Wire);
+            Workspace?.MouseInteraction.ProcessMouseLeftUp(this, MouseInteractionItemType.Wire);
             e.Handled = true;
         }
 
         [RelayCommand]
         private void Wire_LeftMouseDown(MouseButtonEventArgs e)
         {
-            MouseInteractionManager.Instance.ProcessMouseLeftDown(this, MouseInteractionItemType.Wire);
+            Workspace?.MouseInteraction.ProcessMouseLeftDown(this, MouseInteractionItemType.Wire);
             e.Handled = true;
         }
 
         [RelayCommand]
         private void Wire_MouseMove(MouseEventArgs e)
         {
-            MouseInteractionManager.Instance.ProcessMouseMove(this, MouseInteractionItemType.Wire);
+            Workspace?.MouseInteraction.ProcessMouseMove(this, MouseInteractionItemType.Wire);
             e.Handled = true;
         }
 
         [RelayCommand]
         private void Wire_LeftMouseUp(MouseButtonEventArgs e)
         {
-            MouseInteractionManager.Instance.ProcessMouseLeftUp(this, MouseInteractionItemType.Wire);
+            Workspace?.MouseInteraction.ProcessMouseLeftUp(this, MouseInteractionItemType.Wire);
             e.Handled = true;
         }
     }

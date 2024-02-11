@@ -34,7 +34,7 @@ public sealed class MouseInteractionManager
             return;
         }
 
-        ModuleBoard.CaptureMouse();
+        Workspace.CaptureMouse();
         startInteractItem = sender;
         startInteractItemType = senderType;
         startInteractMousePos = Mouse.GetPosition(null);
@@ -75,7 +75,7 @@ public sealed class MouseInteractionManager
             return;
         }
 
-        ModuleBoard.CaptureMouse();
+        Workspace.CaptureMouse();
         startInteractItem = sender;
         startInteractItemType = senderType;
         startInteractMousePos = Mouse.GetPosition(null);
@@ -261,7 +261,7 @@ public sealed class MouseInteractionManager
                 }
         }
 
-        ModuleBoard.UncaptureMouse();
+        Workspace.UncaptureMouse();
         startInteractItem = null;
         startInteractItemType = MouseInteractionItemType.None;
         interactState = InteractionState.Idle;
@@ -293,7 +293,7 @@ public sealed class MouseInteractionManager
                 break;
         }
 
-        ModuleBoard.UncaptureMouse();
+        Workspace.UncaptureMouse();
         startInteractItem = null;
         startInteractItemType = MouseInteractionItemType.None;
         interactState = InteractionState.Idle;

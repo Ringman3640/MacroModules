@@ -35,9 +35,9 @@ public sealed class MouseInteractionManager
         }
 
         Workspace.CaptureMouse();
-        startInteractItem = sender;
-        startInteractItemType = senderType;
-        startInteractMousePos = Mouse.GetPosition(null);
+        initialInteractItem = sender;
+        initialInteractItemType = senderType;
+        initialInteractMousePos = Mouse.GetPosition(null);
 
         switch (senderType)
         {
@@ -76,9 +76,9 @@ public sealed class MouseInteractionManager
         }
 
         Workspace.CaptureMouse();
-        startInteractItem = sender;
-        startInteractItemType = senderType;
-        startInteractMousePos = Mouse.GetPosition(null);
+        initialInteractItem = sender;
+        initialInteractItemType = senderType;
+        initialInteractMousePos = Mouse.GetPosition(null);
 
         switch (senderType)
         {
@@ -117,7 +117,7 @@ public sealed class MouseInteractionManager
 
             case InteractionState.StartLeftHoldingModule:
             {
-                if (startInteractItem is ModuleVM module)
+                if (initialInteractItem is ModuleVM module)
                 {
                     ModuleBoard.SelectBox.Select(module);
                     ModuleBoard.SelectBox.LockSelectedToMouse();
@@ -170,7 +170,7 @@ public sealed class MouseInteractionManager
 
             case InteractionState.DraggingWire:
             {
-                if (startInteractItem is not ExitPortVM exitPort)
+                if (initialInteractItem is not ExitPortVM exitPort)
                 {
                     break;
                 }
@@ -194,7 +194,7 @@ public sealed class MouseInteractionManager
         {
             case InteractionState.StartLeftHoldingSelected:
             {
-                if (startInteractItem is not ModuleVM module)
+                if (initialInteractItem is not ModuleVM module)
                 {
                     break;
                 }
@@ -217,7 +217,7 @@ public sealed class MouseInteractionManager
                 {
                     ModuleBoard.SelectBox.UnselectAll();
                 }
-                if (startInteractItem is ModuleVM module)
+                if (initialInteractItem is ModuleVM module)
                 {
                     ModuleBoard.SelectBox.Select(module);
                     // TODO: show module on properties if its the only one focused
@@ -243,7 +243,7 @@ public sealed class MouseInteractionManager
 
             case InteractionState.DraggingWire:
                 {
-                    if (startInteractItem is not ExitPortVM exitPort)
+                    if (initialInteractItem is not ExitPortVM exitPort)
                     {
                         break;
                     }
@@ -262,8 +262,8 @@ public sealed class MouseInteractionManager
         }
 
         Workspace.UncaptureMouse();
-        startInteractItem = null;
-        startInteractItemType = MouseInteractionItemType.None;
+        initialInteractItem = null;
+        initialInteractItemType = MouseInteractionItemType.None;
         interactState = InteractionState.Idle;
     }
 
@@ -294,8 +294,8 @@ public sealed class MouseInteractionManager
         }
 
         Workspace.UncaptureMouse();
-        startInteractItem = null;
-        startInteractItemType = MouseInteractionItemType.None;
+        initialInteractItem = null;
+        initialInteractItemType = MouseInteractionItemType.None;
         interactState = InteractionState.Idle;
     }
 
@@ -317,14 +317,14 @@ public sealed class MouseInteractionManager
     private static readonly double squaredMouseMoveThreshold = 10 * 10;
 
     private InteractionState interactState = InteractionState.Idle;
-    private object? startInteractItem = null;
-    private MouseInteractionItemType startInteractItemType = MouseInteractionItemType.None;
-    private Point startInteractMousePos;
+    private object? initialInteractItem = null;
+    private MouseInteractionItemType initialInteractItemType = MouseInteractionItemType.None;
+    private Point initialInteractMousePos;
 
     private bool MouseMovedPastThreshold()
     {
         Point mousePos = Mouse.GetPosition(null);
-        Vector offset = mousePos - startInteractMousePos;
+        Vector offset = mousePos - initialInteractMousePos;
         return offset.LengthSquared > squaredMouseMoveThreshold;
     }
 }

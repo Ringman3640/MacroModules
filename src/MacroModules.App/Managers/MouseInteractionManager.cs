@@ -84,10 +84,6 @@ public sealed class MouseInteractionManager
                 break;
 
             case MouseInteractionItemType.Board:
-                if (!Keyboard.IsKeyDown(Key.LeftCtrl))
-                {
-                    ModuleBoardVM.SelectBox.UnselectAll();
-                }
                 ModuleBoardVM.SelectBox.LockSelectBoxPivotToMouse();
                 interactState = InteractionState.StartLeftHoldingBoard;
                 break;
@@ -161,6 +157,10 @@ public sealed class MouseInteractionManager
             case InteractionState.StartLeftHoldingBoard:
                 if (MouseMovedPastThreshold())
                 {
+                    if (!Keyboard.IsKeyDown(Key.LeftCtrl))
+                    {
+                        ModuleBoardVM.SelectBox.UnselectAll();
+                    }
                     ModuleBoardVM.SelectBox.StartSelectBox();
                     interactState = InteractionState.DraggingSelectBox;
                     goto case InteractionState.DraggingSelectBox;

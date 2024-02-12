@@ -17,7 +17,8 @@ namespace MacroModules.Model.Modules.Concrete
         public InputTrigger? Trigger { get; set; } = null;
 
         /// <summary>
-        /// Indicates the 
+        /// Indicates the execution behavior of the connected macro as a
+        /// <see cref="MacroExecutionType"/> enum.
         /// </summary>
         public MacroExecutionType ExecutionType { get; set; } = MacroExecutionType.IgnoreOnReclick;
     }

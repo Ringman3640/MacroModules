@@ -20,8 +20,13 @@ namespace MacroModules.Model.Modules
         public abstract ModuleType Type { get; }
 
         /// <summary>
-        /// Gets whether or not other <see cref="Module"/> objects can connect to this module.
+        /// Gets whether or not other <see cref="Module"/> objects can connect to this
+        /// <see cref="Module"/>.
         /// </summary>
+        /// <remarks>
+        /// If this value is <c>false</c>, other modules should not connect to this module from an
+        /// <see cref="ExitPort"/>.
+        /// </remarks>
         public abstract bool IsConnectable { get; }
 
         /// <summary>

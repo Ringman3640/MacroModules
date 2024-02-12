@@ -71,7 +71,7 @@ namespace MacroModules.App.ViewModels
 
         public Point PortBoardPosition
         {
-            get { return AttachedModule.Position + (Vector)PortModulePosition; }
+            get { return AttachedModule.VisualPosition + (Vector)PortModulePosition; }
         }
 
         public bool PerformingCommitAction { get; set; }
@@ -90,7 +90,7 @@ namespace MacroModules.App.ViewModels
                 WireVisibility = Visibility.Collapsed;
                 return;
             }
-            WireEndPoint = DestinationModule.CenterPosition - (Vector)PortBoardPosition;
+            WireEndPoint = DestinationModule.CenterVisualPosition - (Vector)PortBoardPosition;
             WireVisibility = Visibility.Visible;
         }
 
@@ -102,7 +102,7 @@ namespace MacroModules.App.ViewModels
 
         public void PreviewWireToModule(ModuleVM module)
         {
-            WireEndPoint = module.CenterPosition - (Vector)PortBoardPosition;
+            WireEndPoint = module.CenterVisualPosition - (Vector)PortBoardPosition;
             WireVisibility = Visibility.Visible;
         }
 

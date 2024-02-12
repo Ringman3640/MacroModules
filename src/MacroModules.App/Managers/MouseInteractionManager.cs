@@ -230,7 +230,8 @@ public sealed class MouseInteractionManager
                 break;
 
             case InteractionState.DraggingSelection:
-                // TODO: Commit visual drag to model (which is also TODO)
+                ModuleBoard.SelectBox.SetActualPositionOfSelected();
+                Workspace.CommitManager.CommitSeries();
                 break;
 
             case InteractionState.DraggingSelectBox:
@@ -287,6 +288,8 @@ public sealed class MouseInteractionManager
                 ModuleVM module = new();
                 ModuleBoard.AddElement(module);
                 module.CenterToPoint(ModuleBoard.BoardMousePosition);
+                module.SetStartingActualPosition(module.VisualPosition);
+                Workspace.CommitManager.CommitSeries();
                 break;
 
             case InteractionState.DraggingCanvas:

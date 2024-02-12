@@ -36,8 +36,8 @@ public partial class SelectBoxVM : MouseAwareVM
     {
         foreach (var element in moduleBoard.Elements)
         {
-            double absolutePosX = (element.Position.X * moduleBoard.BoardScale) + moduleBoard.BoardPosition.X;
-            double absolutePosY = (element.Position.Y * moduleBoard.BoardScale) + moduleBoard.BoardPosition.Y;
+            double absolutePosX = (element.VisualPosition.X * moduleBoard.BoardScale) + moduleBoard.BoardPosition.X;
+            double absolutePosY = (element.VisualPosition.Y * moduleBoard.BoardScale) + moduleBoard.BoardPosition.Y;
             double scaledWidth = element.Dimensions.Width * moduleBoard.BoardScale;
             double scaledHeight = element.Dimensions.Height * moduleBoard.BoardScale;
 
@@ -84,6 +84,14 @@ public partial class SelectBoxVM : MouseAwareVM
         foreach (var element in selectedElements)
         {
             element.MoveWithMouse();
+        }
+    }
+
+    public void SetActualPositionOfSelected()
+    {
+        foreach (var element in selectedElements)
+        {
+            element.ActualPosition = element.VisualPosition;
         }
     }
 

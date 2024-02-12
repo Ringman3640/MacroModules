@@ -2,6 +2,7 @@
 using MacroModules.App.Behaviors;
 using MacroModules.App.Managers;
 using MacroModules.App.ViewModels.Events;
+using MacroModules.Model.BoardElements;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -12,26 +13,49 @@ public abstract partial class BoardElementVM : MouseAwareVM, IDimensionsAware, I
 {
     public WorkspaceVM? Workspace { get; private set; } = null;
 
-    public Point Position
+    public BoardElement ElementData { get; private set; }
+
+    public Point VisualPosition
     {
-        get { return _position; }
+        get { return _visualPosition; }
         set
         {
             Point nextPos = value - offsetFromMouse;
-            if (nextPos != _position)
+            if (nextPos != _visualPosition)
             {
-                _position = nextPos;
+                _visualPosition = nextPos;
                 OnPropertyChanged();
                 ElementMoved?.Invoke(this, EventArgs.Empty);
             }
         }
     }
-    private Point _position;
+    private Point _visualPosition;
 
-    public Point CenterPosition
+    public Point CenterVisualPosition
     {
-        get { return _position + new Vector(Dimensions.Width / 2, Dimensions.Height / 2); }
+        get { return _visualPosition + new Vector(Dimensions.Width / 2, Dimensions.Height / 2); }
     }
+
+    public Point ActualPosition
+    {
+        get
+        {
+            _actualPosition = new(ElementData.PositionX, ElementData.PositionY);
+            return _actualPosition;
+        }
+        set
+        {
+            if (SetAndCommitProperty(ref _actualPosition, value))
+            {
+                ElementData.PositionX = value.X;
+                ElementData.PositionY = value.Y;
+                _visualPosition = _actualPosition;
+                OnPropertyChanged(nameof(VisualPosition));
+                ElementMoved?.Invoke(this, EventArgs.Empty);
+            }
+        }
+    }
+    public Point _actualPosition;
 
     public bool PerformingCommitAction { get; set; }
 
@@ -39,6 +63,11 @@ public abstract partial class BoardElementVM : MouseAwareVM, IDimensionsAware, I
     private Size _dimensions;
 
     public event ElementMovedHandler? ElementMoved;
+
+    public BoardElementVM(BoardElement element)
+    {
+        ElementData = element;
+    }
 
     public virtual void Initialize(WorkspaceVM workspace)
     {
@@ -57,19 +86,28 @@ public abstract partial class BoardElementVM : MouseAwareVM, IDimensionsAware, I
 
     public void MoveWithMouse()
     {
-        Position += (Vector)MousePosition;
+        VisualPosition += (Vector)MousePosition;
     }
 
     public void CenterToPoint(Point point)
     {
-        _position = point - new Vector(Dimensions.Width / 2, Dimensions.Height / 2);
-        OnPropertyChanged(nameof(Position));
+        _visualPosition = point - new Vector(Dimensions.Width / 2, Dimensions.Height / 2);
+        OnPropertyChanged(nameof(VisualPosition));
     }
 
     public void CenterToMouse()
     {
-        _position += (Vector)MousePosition - new Vector(Dimensions.Width / 2, Dimensions.Height / 2);
-        OnPropertyChanged(nameof(Position));
+        _visualPosition += (Vector)MousePosition - new Vector(Dimensions.Width / 2, Dimensions.Height / 2);
+        OnPropertyChanged(nameof(VisualPosition));
+    }
+
+    public void SetStartingActualPosition(Point position)
+    {
+        _visualPosition = position;
+        _actualPosition = position;
+        ElementData.PositionX = position.X;
+        ElementData.PositionY = position.Y;
+        OnPropertyChanged(nameof(VisualPosition));
     }
 
     protected Vector offsetFromMouse;

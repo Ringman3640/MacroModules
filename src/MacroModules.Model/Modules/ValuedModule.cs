@@ -11,6 +11,9 @@ namespace MacroModules.Model.Modules
     /// </summary>
     public abstract class ValuedModule : Module
     {
+        /// <inheritdoc/>
+        public override bool IsConnectable { get; } = true;
+
         /// <summary>
         /// Gets the <see cref="ValueType"/> of the <see cref="Value"/> returned by this object from
         /// <see cref="Execute(ref object?)"/>.

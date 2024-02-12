@@ -22,7 +22,7 @@ namespace MacroModules.Model.Modules
         /// <summary>
         /// Gets whether or not other <see cref="Module"/> objects can connect to this module.
         /// </summary>
-        public bool IsConnectable { get; }
+        public abstract bool IsConnectable { get; }
 
         /// <summary>
         /// A list of all <see cref="ExitPort"/> objects that exist on this <see cref="Module"/>.

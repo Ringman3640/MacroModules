@@ -1,4 +1,5 @@
-﻿using MacroModules.Model.Modules.Responses;
+﻿using MacroModules.Model.BoardElements;
+using MacroModules.Model.Modules.Responses;
 using MacroModules.Model.Variables;
 
 namespace MacroModules.Model.Modules
@@ -6,7 +7,7 @@ namespace MacroModules.Model.Modules
     /// <summary>
     /// Represents a single executable process in a macro.
     /// </summary>
-    public abstract class Module
+    public abstract class Module : BoardElement
     {
         /// <summary>
         /// Gets the unique identifier for this <see cref="Module"/>.

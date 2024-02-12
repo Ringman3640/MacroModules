@@ -13,7 +13,7 @@ public abstract partial class BoardElementVM : MouseAwareVM, IDimensionsAware, I
 {
     public WorkspaceVM? Workspace { get; private set; } = null;
 
-    public BoardElement ElementData { get; private set; }
+    public BoardElement ElementData { get; protected set; }
 
     public Point VisualPosition
     {

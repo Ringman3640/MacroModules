@@ -6,18 +6,44 @@ using System.Windows;
 
 namespace MacroModules.App.ViewModels.Modules;
 
-public partial class ModuleVM : BoardElementVM
+public abstract partial class ModuleVM : BoardElementVM
 {
-    public ModuleType Type { get; }
+    public abstract ModuleType Type { get; }
 
-    public Module ModuleData { get; protected set; }
+    public Module ModuleData
+    {
+        get { return _moduleData!; }
+        protected set
+        {
+            _moduleData = value;
+            ElementData = value;
+        }
+    }
+    private Module? _moduleData;
 
     public ObservableCollection<ExitPortVM> ExitPorts { get; private set; } = new();
 
     public ModuleVM()
     {
-        //ModuleModel = ModuleFactory.Create(Type);
-        ExitPorts.Add(new ExitPortVM(new(), this)); // TODO: remove later, FOR TESTING ONLY
+        ModuleData = ModuleFactory.Create(Type);
+    }
+
+    public ModuleVM(Module moduleData)
+    {
+        if (moduleData.Type != Type)
+        {
+            throw new ArgumentException($"Cannot copy construct from Module of type {moduleData.Type} in ModuleVM of type {Type}");
+        }
+        ModuleData = moduleData;
+    }
+
+    public override void Initialize(WorkspaceVM workspace)
+    {
+        base.Initialize(workspace);
+        foreach (var exitPort in ModuleData.ExitPorts)
+        {
+            ExitPorts.Add(new ExitPortVM(exitPort, this));
+        }
     }
 
     [RelayCommand]

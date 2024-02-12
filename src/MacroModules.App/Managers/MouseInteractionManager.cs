@@ -285,7 +285,7 @@ public sealed class MouseInteractionManager
                 // TODO: Open options dropdown for board
                 // TEMPORARY
                 // This is just a way to spawn in modules
-                ModuleVM module = new();
+                ModuleVM module = new MoveCursorModuleVM();
                 ModuleBoard.AddElement(module);
                 module.CenterToPoint(ModuleBoard.BoardMousePosition);
                 module.SetStartingActualPosition(module.VisualPosition);

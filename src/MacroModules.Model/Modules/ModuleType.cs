@@ -4,6 +4,8 @@
 
     public enum ModuleType
     {
+        StartupEntry,
+        TriggerEntry,
         SendInput,
         // SendRawText,
         GetInputState,

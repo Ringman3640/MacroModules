@@ -5,7 +5,7 @@ using MacroModules.Model.Execution.Events;
 namespace MacroModules.Model.Execution
 {
     /// <summary>
-    /// Represents a coordinator for macro execution that executes coordinates on separate
+    /// Represents a coordinator for macro execution that executes macros on separate
     /// <see cref="MacroExecutor"/> instances.
     /// </summary>
     public class MacroDispatcher

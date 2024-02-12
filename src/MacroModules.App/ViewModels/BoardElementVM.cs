@@ -65,6 +65,8 @@ public abstract partial class BoardElementVM : MouseAwareVM, IDimensionsAware, I
     public event ElementMovedHandler? ElementMoved;
     public event ElementRemovedHandler? ElementRemoved;
 
+    public BoardElementVM() { }
+
     public BoardElementVM(BoardElement element)
     {
         ElementData = element;

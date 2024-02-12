@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using MacroModules.App.Managers;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -106,6 +107,7 @@ public partial class ModuleBoardVM : MouseAwareVM
     public void RemoveElement(BoardElementVM element)
     {
         Elements.Remove(element);
+        element.IndicateRemoved();
     }
 
     public bool ContainsElement(BoardElementVM element)
@@ -150,6 +152,7 @@ public partial class ModuleBoardVM : MouseAwareVM
     [RelayCommand]
     private void Board_LeftMouseDown(RoutedEventArgs e)
     {
+        ((UIElement)e.OriginalSource).Focus();
         Workspace.MouseInteraction.ProcessMouseLeftDown(this, MouseInteractionItemType.Board);
         e.Handled = true;
     }
@@ -157,6 +160,7 @@ public partial class ModuleBoardVM : MouseAwareVM
     [RelayCommand]
     private void Board_RightMouseDown(RoutedEventArgs e)
     {
+        ((UIElement)e.OriginalSource).Focus();
         Workspace.MouseInteraction.ProcessMouseRightDown(this, MouseInteractionItemType.Board);
         e.Handled = true;
     }
@@ -198,5 +202,16 @@ public partial class ModuleBoardVM : MouseAwareVM
         {
             ZoomOut();
         }
+    }
+
+    [RelayCommand]
+    private void Board_RemoveSelected()
+    {
+        foreach (var element in SelectBox.SelectedElementsList)
+        {
+            RemoveElement(element);
+        }
+        SelectBox.UnselectAll();
+        Workspace.CommitManager.CommitSeries();
     }
 }

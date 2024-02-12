@@ -11,6 +11,11 @@ public partial class SelectBoxVM : MouseAwareVM
     [ObservableProperty]
     private Visibility _selectBoxVisibility = Visibility.Hidden;
 
+    public List<BoardElementVM> SelectedElementsList
+    {
+        get { return selectedElements.ToList(); }
+    }
+
     public SelectBoxVM(ModuleBoardVM moduleBoard)
     {
         this.moduleBoard = moduleBoard;

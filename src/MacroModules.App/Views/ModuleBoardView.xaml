@@ -11,7 +11,11 @@
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=viewmodels:ModuleBoardVM}"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Canvas x:Name="cvBoardContainer" Background="Transparent">
+    <Canvas x:Name="cvBoardContainer" Background="Transparent" Focusable="True">
+        <Canvas.InputBindings>
+            <KeyBinding Command="{Binding Board_RemoveSelectedCommand}" Gesture="Back"/>
+            <KeyBinding Command="{Binding Board_RemoveSelectedCommand}" Gesture="Delete"/>
+        </Canvas.InputBindings>
         <i:Interaction.Behaviors>
             <behaviors:MouseAwareBehavior MouseAwareBehaviorInstance="{Binding MouseAwareBehaviorConnector, Mode=OneWayToSource}" MousePosition="{Binding MousePosition, Mode=OneWayToSource}"/>
         </i:Interaction.Behaviors>

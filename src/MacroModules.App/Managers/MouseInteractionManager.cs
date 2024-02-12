@@ -293,7 +293,6 @@ public sealed class MouseInteractionManager
                 break;
 
             case InteractionState.DraggingCanvas:
-                // TODO
                 break;
         }
 

@@ -1,15 +1,15 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MacroModules.App.Managers;
+using MacroModules.App.Managers.Commits;
 using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
 namespace MacroModules.App.ViewModels;
 
-public partial class ModuleBoardVM : MouseAwareVM
+public partial class ModuleBoardVM : MouseAwareVM, ICommittable
 {
     public WorkspaceVM Workspace { get; private set; }
 
@@ -87,6 +87,8 @@ public partial class ModuleBoardVM : MouseAwareVM
     }
     private double _moduleBoardPosY = 0;
 
+    public bool PerformingCommitAction { get; set; }
+
     public ModuleBoardVM(WorkspaceVM workspace)
     {
         Workspace = workspace;
@@ -101,12 +103,20 @@ public partial class ModuleBoardVM : MouseAwareVM
         }
 
         Elements.Add(element);
+        if (!PerformingCommitAction)
+        {
+            Workspace.CommitManager.PushToSeries(new ElementAddedCommit(this, element));
+        }
         element.Initialize(Workspace);
     }
 
     public void RemoveElement(BoardElementVM element)
     {
         Elements.Remove(element);
+        if (!PerformingCommitAction)
+        {
+            Workspace.CommitManager.PushToSeries(new ElementRemovedCommit(this, element));
+        }
         element.IndicateRemoved();
     }
 

@@ -256,6 +256,7 @@ public sealed class MouseInteractionManager
                     {
                         exitPort.DestinationModule = null;
                     }
+                    Workspace.CommitManager.CommitSeries();
                     exitPort.ResetWire();
                     break;
                 }

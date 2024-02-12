@@ -1,11 +1,14 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using MacroModules.App.Behaviors;
+using MacroModules.App.Managers;
 using MacroModules.App.ViewModels.Events;
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using System.Windows;
 
 namespace MacroModules.App.ViewModels;
 
-public abstract partial class BoardElementVM : MouseAwareVM, IDimensionsAware, INotifyElementMoved
+public abstract partial class BoardElementVM : MouseAwareVM, IDimensionsAware, INotifyElementMoved, ICommittable
 {
     public WorkspaceVM? Workspace { get; private set; } = null;
 
@@ -29,6 +32,8 @@ public abstract partial class BoardElementVM : MouseAwareVM, IDimensionsAware, I
     {
         get { return _position + new Vector(Dimensions.Width / 2, Dimensions.Height / 2); }
     }
+
+    public bool PerformingCommitAction { get; set; }
 
     [ObservableProperty]
     private Size _dimensions;
@@ -68,4 +73,25 @@ public abstract partial class BoardElementVM : MouseAwareVM, IDimensionsAware, I
     }
 
     protected Vector offsetFromMouse;
+
+    protected bool SetAndCommitProperty<T>([NotNullIfNotNull(nameof(newValue))] ref T field, T newValue, [CallerMemberName] string? propertyName = null)
+    {
+        if (EqualityComparer<T>.Default.Equals(field, newValue))
+        {
+            return false;
+        }
+
+        OnPropertyChanging(propertyName);
+
+        if (!PerformingCommitAction)
+        {
+            Workspace?.CommitManager.PushToSeries(new PropertyCommit(this, propertyName!, field, newValue));
+        }
+
+        field = newValue;
+
+        OnPropertyChanged(propertyName);
+
+        return true;
+    }
 }

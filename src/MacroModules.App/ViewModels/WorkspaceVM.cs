@@ -13,12 +13,15 @@ public partial class WorkspaceVM : ObservableObject
 
     public MouseInteractionManager MouseInteraction { get; private set; }
 
+    public CommitManager CommitManager { get; private set; }
+
     public ModuleBoardVM ModuleBoard { get; private set; }
 
     public WorkspaceVM(WorkspaceView viewRef)
     {
         ViewReference = viewRef;
         MouseInteraction = new(this);
+        CommitManager = new();
         ModuleBoard = new(this);
     }
 

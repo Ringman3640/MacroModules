@@ -3,11 +3,13 @@ using CommunityToolkit.Mvvm.Input;
 using MacroModules.App.Managers;
 using MacroModules.App.ViewModels.Modules;
 using MacroModules.Model.Modules;
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using System.Windows;
 
 namespace MacroModules.App.ViewModels
 {
-    public partial class ExitPortVM : MouseAwareVM
+    public partial class ExitPortVM : MouseAwareVM, ICommittable
     {
         public ExitPort ExitPortData { get; set; }
 
@@ -18,19 +20,22 @@ namespace MacroModules.App.ViewModels
             get { return _destinationModule; }
             set
             {
-                if (!ReferenceEquals(_destinationModule, value))
+                ModuleVM? prevModule = _destinationModule;
+                if (SetAndCommitProperty(ref _destinationModule, value))
                 {
-                    if (_destinationModule != null)
+                    if (prevModule != null)
                     {
-                        _destinationModule.ElementMoved -= Module_ElementMoved;
+                        prevModule.ElementMoved -= Module_ElementMoved;
                     }
-                    _destinationModule = value;
                     if (value != null)
                     {
                         ExitPortData.Destination = value.ModuleData;
                         value.ElementMoved += Module_ElementMoved;
                     }
-                    OnPropertyChanged();
+                    else
+                    {
+                        ExitPortData.Destination = null;
+                    }
                     ResetWire();
                 }
             }
@@ -69,6 +74,8 @@ namespace MacroModules.App.ViewModels
             get { return AttachedModule.Position + (Vector)PortModulePosition; }
         }
 
+        public bool PerformingCommitAction { get; set; }
+
         public ExitPortVM(ExitPort exitPort, ModuleVM attachedModule)
         {
             ExitPortData = exitPort;
@@ -97,6 +104,27 @@ namespace MacroModules.App.ViewModels
         {
             WireEndPoint = module.CenterPosition - (Vector)PortBoardPosition;
             WireVisibility = Visibility.Visible;
+        }
+
+        protected bool SetAndCommitProperty<T>([NotNullIfNotNull(nameof(newValue))] ref T field, T newValue, [CallerMemberName] string? propertyName = null)
+        {
+            if (EqualityComparer<T>.Default.Equals(field, newValue))
+            {
+                return false;
+            }
+
+            OnPropertyChanging(propertyName);
+
+            if (!PerformingCommitAction)
+            {
+                Workspace?.CommitManager.PushToSeries(new PropertyCommit(this, propertyName!, field, newValue));
+            }
+
+            field = newValue;
+
+            OnPropertyChanged(propertyName);
+
+            return true;
         }
 
         private void Module_ElementMoved(object sender, EventArgs e)

@@ -56,4 +56,16 @@ public partial class WorkspaceVM : ObservableObject
         MouseInteraction.ProcessMouseMove(this, MouseInteractionItemType.None);
         e.Handled = true;
     }
+
+    [RelayCommand]
+    private void Workspace_Undo()
+    {
+        CommitManager.Undo();
+    }
+
+    [RelayCommand]
+    private void Workspace_Redo()
+    {
+        CommitManager.Redo();
+    }
 }

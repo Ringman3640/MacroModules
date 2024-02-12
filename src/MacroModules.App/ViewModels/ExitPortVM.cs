@@ -90,15 +90,18 @@ namespace MacroModules.App.ViewModels
         {
             if (DestinationModule == null)
             {
+                WireHitTestVisible = false;
                 WireVisibility = Visibility.Collapsed;
                 return;
             }
             WireEndPoint = DestinationModule.CenterVisualPosition - (Vector)PortBoardPosition;
             WireVisibility = Visibility.Visible;
+            WireHitTestVisible = true;
         }
 
         public void PreviewWireToMouse()
         {
+            WireHitTestVisible = false;
             WireEndPoint = MousePosition;
             WireVisibility = Visibility.Visible;
         }
@@ -106,6 +109,7 @@ namespace MacroModules.App.ViewModels
         public void PreviewWireToModule(ModuleVM module)
         {
             WireEndPoint = module.CenterVisualPosition - (Vector)PortBoardPosition;
+            WireHitTestVisible = false;
             WireVisibility = Visibility.Visible;
         }
 

@@ -29,6 +29,9 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </Rectangle>
+        <Grid Width="80" Height="80" IsHitTestVisible="False">
+            <TextBlock Text="{Binding Type}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
         <ContentControl Content="{Binding ExitPorts[0]}" Canvas.Left="80" Canvas.Top="40">
             <ContentControl.ContentTemplate>
                 <DataTemplate>

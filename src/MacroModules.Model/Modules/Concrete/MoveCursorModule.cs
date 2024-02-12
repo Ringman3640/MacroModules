@@ -26,6 +26,8 @@ namespace MacroModules.Model.Modules.Concrete
 
         public override ModuleType Type { get; } = ModuleType.MoveCursor;
 
+        public override bool IsConnectable { get; } = true;
+
         public override void Initialize(out object? processData)
         {
             processData = new MoveCursorModuleData();

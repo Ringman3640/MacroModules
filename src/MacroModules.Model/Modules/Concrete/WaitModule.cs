@@ -15,6 +15,8 @@ namespace MacroModules.Model.Modules.Concrete
 
         public override ModuleType Type { get; } = ModuleType.Wait;
 
+        public override bool IsConnectable { get; } = true;
+
         public override void Initialize(out object? processData)
         {
             processData = false;

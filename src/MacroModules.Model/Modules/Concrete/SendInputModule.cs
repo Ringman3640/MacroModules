@@ -31,6 +31,8 @@ namespace MacroModules.Model.Modules.Concrete
 
         public override ModuleType Type { get; } = ModuleType.SendInput;
 
+        public override bool IsConnectable { get; } = true;
+
         public override IResponse Execute(ref object? processData)
         {
             switch (Action)

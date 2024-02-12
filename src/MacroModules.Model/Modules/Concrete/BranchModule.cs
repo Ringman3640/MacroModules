@@ -54,6 +54,8 @@ namespace MacroModules.Model.Modules.Concrete
 
         public override ModuleType Type { get; } = ModuleType.Branch;
 
+        public override bool IsConnectable { get; } = true;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="BranchModule"/> class that has a single
         /// default exit port.

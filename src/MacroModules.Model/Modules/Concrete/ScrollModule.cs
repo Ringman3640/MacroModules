@@ -28,6 +28,8 @@ namespace MacroModules.Model.Modules.Concrete
 
         public override ModuleType Type { get; } = ModuleType.Scroll;
 
+        public override bool IsConnectable { get; } = true;
+
         public override IResponse Execute(ref object? processData)
         {
             int scrollValue = Math.Max(ScrollTicks, 0) * scrollValuePerTick;

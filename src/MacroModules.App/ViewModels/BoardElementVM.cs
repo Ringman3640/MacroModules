@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace MacroModules.App.ViewModels;
 
-public abstract partial class BoardElementVM : MouseAwareVM, IDimensionsAware, INotifyElementMoved, ICommittable
+public abstract partial class BoardElementVM : MouseAwareVM, IDimensionsAware, INotifyElementMoved, INotifyElementRemoved, ICommittable
 {
     public WorkspaceVM? Workspace { get; private set; } = null;
 
@@ -63,6 +63,7 @@ public abstract partial class BoardElementVM : MouseAwareVM, IDimensionsAware, I
     private Size _dimensions;
 
     public event ElementMovedHandler? ElementMoved;
+    public event ElementRemovedHandler? ElementRemoved;
 
     public BoardElementVM(BoardElement element)
     {
@@ -108,6 +109,11 @@ public abstract partial class BoardElementVM : MouseAwareVM, IDimensionsAware, I
         ElementData.PositionX = position.X;
         ElementData.PositionY = position.Y;
         OnPropertyChanged(nameof(VisualPosition));
+    }
+
+    public void IndicateRemoved()
+    {
+        ElementRemoved?.Invoke(this, EventArgs.Empty);
     }
 
     protected Vector offsetFromMouse;

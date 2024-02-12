@@ -26,11 +26,13 @@ namespace MacroModules.App.ViewModels
                     if (prevModule != null)
                     {
                         prevModule.ElementMoved -= Module_ElementMoved;
+                        prevModule.ElementRemoved -= Module_ElementRemoved;
                     }
                     if (value != null)
                     {
                         ExitPortData.Destination = value.ModuleData;
                         value.ElementMoved += Module_ElementMoved;
+                        value.ElementRemoved += Module_ElementRemoved;
                     }
                     else
                     {
@@ -130,6 +132,11 @@ namespace MacroModules.App.ViewModels
         private void Module_ElementMoved(object sender, EventArgs e)
         {
             ResetWire();
+        }
+
+        private void Module_ElementRemoved(object sender, EventArgs e)
+        {
+            DestinationModule = null;
         }
 
         [RelayCommand]

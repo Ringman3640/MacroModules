@@ -1,4 +1,4 @@
-﻿namespace MacroModules.App.Managers;
+﻿namespace MacroModules.App.Managers.Commits;
 
 public abstract class Commit
 {

@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MacroModules.App.Managers;
+using MacroModules.App.Managers.Commits;
 using MacroModules.App.ViewModels.Modules;
 using MacroModules.Model.Modules;
 using System.Diagnostics.CodeAnalysis;

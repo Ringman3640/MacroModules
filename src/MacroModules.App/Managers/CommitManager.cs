@@ -1,4 +1,5 @@
-﻿using MacroModules.App.Types;
+﻿using MacroModules.App.Managers.Commits;
+using MacroModules.App.Types;
 
 namespace MacroModules.App.Managers;
 

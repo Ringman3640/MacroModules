@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace MacroModules.App.Managers;
+namespace MacroModules.App.Managers.Commits;
 
 public class PropertyCommit : Commit
 {

@@ -65,18 +65,25 @@ namespace MacroModules.Model.Execution
         /// <returns>
         /// <c>true</c> if the macro was successfully added. Otherwise <c>false</c>. This method
         /// will return <c>false</c> if the <see cref="MacroDispatcher"/> already has a macro
-        /// mapped to the given <see cref="InputTrigger"/> value.
+        /// mapped to the given <see cref="InputTrigger"/> value or if the
+        /// <see cref="InputTrigger"/> defined in <paramref name="macroInfo"/>'s
+        /// <see cref="MacroExecutionInfo.EntryModule"/> was null.
         /// </returns>
         public bool AddMacro(MacroExecutionInfo macroInfo)
         {
+            if (macroInfo.EntryModule.Trigger == null)
+            {
+                return false;
+            }
+
             lock (dispatcherLock)
             {
-                if (triggerMap.ContainsKey(macroInfo.Trigger))
+                if (triggerMap.ContainsKey(macroInfo.EntryModule.Trigger!))
                 {
                     return false;
                 }
 
-                triggerMap.Add(macroInfo.Trigger, macroInfo);
+                triggerMap.Add(macroInfo.EntryModule.Trigger!, macroInfo);
                 return true;
             }
         }
@@ -255,7 +262,7 @@ namespace MacroModules.Model.Execution
                     return true;
                 }
 
-                switch (executionInfo.ExecutionType)
+                switch (executionInfo.EntryModule.ExecutionType)
                 {
                     case MacroExecutionType.InterruptOnReclick:
                         if (executionInfo.Executor == null)
@@ -312,14 +319,14 @@ namespace MacroModules.Model.Execution
                 }
 
                 // Restart execution if toggled on
-                if (executionInfo.ExecutionType == MacroExecutionType.ToggleLoop && executionInfo.ToggledOn)
+                if (executionInfo.EntryModule.ExecutionType == MacroExecutionType.ToggleLoop && executionInfo.ToggledOn)
                 {
                     e.RestartExecution = true;
                     return;
                 }
 
                 // Restart execution if trigger input is held
-                if (executionInfo.ExecutionType == MacroExecutionType.LoopOnHold && TriggerHeld(executionInfo.Trigger))
+                if (executionInfo.EntryModule.ExecutionType == MacroExecutionType.LoopOnHold && TriggerHeld(executionInfo.EntryModule.Trigger!))
                 {
                     e.RestartExecution = true;
                     return;

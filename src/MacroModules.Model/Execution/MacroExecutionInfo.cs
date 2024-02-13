@@ -1,4 +1,5 @@
 ﻿using MacroModules.Model.Modules;
+using MacroModules.Model.Modules.Concrete;
 
 namespace MacroModules.Model.Execution
 {
@@ -8,20 +9,9 @@ namespace MacroModules.Model.Execution
     public class MacroExecutionInfo
     {
         /// <summary>
-        /// Gets the <see cref="InputTrigger"/> that triggers the macro.
+        /// Indicates the <see cref="TriggerEntryModule"/> that defines macro.
         /// </summary>
-        public InputTrigger Trigger { get; private set; }
-
-        /// <summary>
-        /// Gets the first <see cref="Module"/> of the macro.
-        /// </summary>
-        public Module EntryModule { get; private set; }
-
-        /// <summary>
-        /// Gets the <see cref="MacroExecutionType"/> that defines how the macro behaves when the
-        /// <see cref="Trigger"/> input is clicked.
-        /// </summary>
-        public MacroExecutionType ExecutionType { get; private set; }
+        public TriggerEntryModule EntryModule { get; set; }
 
         /// <summary>
         /// The <see cref="MacroExecutor"/> that is currently executing the macro.
@@ -43,23 +33,15 @@ namespace MacroModules.Model.Execution
         public bool SuppressInput {  get; set; } = false;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MacroExecutionInfo"/> class that is defined
-        /// with an <see cref="InputTrigger"/>, an entry <see cref="Module"/>, and a
-        /// <see cref="MacroExecutionType"/> type.
+        /// Initializes a new instance of the <see cref="MacroExecutionInfo"/> class that is
+        /// defined by a given <see cref="TriggerEntryModule"/>.
         /// </summary>
-        /// <param name="trigger">An <see cref="InputTrigger"/> that triggers the macro.</param>
         /// <param name="entryModule">
-        /// A <see cref="Module"/> that references the start of the macro.
+        /// The <see cref="TriggerEntryModule"/> that is used to define the macro.
         /// </param>
-        /// <param name="executionType">
-        /// A <see cref="MacroExecutionType"/> that defines the behavior of the macro when the
-        /// trigger is clicked.
-        /// </param>
-        public MacroExecutionInfo(InputTrigger trigger, Module entryModule, MacroExecutionType executionType)
+        public MacroExecutionInfo(TriggerEntryModule entryModule)
         {
-            Trigger = trigger;
             EntryModule = entryModule;
-            ExecutionType = executionType;
         }
     }
 }

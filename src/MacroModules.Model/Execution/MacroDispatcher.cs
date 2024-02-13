@@ -1,6 +1,7 @@
 ﻿using MacroModules.MacroLibrary;
 using MacroModules.MacroLibrary.Types;
 using MacroModules.Model.Execution.Events;
+using MacroModules.Model.GolbalSystems;
 using MacroModules.Model.Modules.Concrete;
 
 namespace MacroModules.Model.Execution
@@ -230,6 +231,7 @@ namespace MacroModules.Model.Execution
                 runningExecutors.Clear();
                 idleExecutors.Clear();
 
+                GloalSystemsCleanup();
                 Running = false;
             }
         }
@@ -450,6 +452,14 @@ namespace MacroModules.Model.Execution
                 runningExecutors.Add(executionInfo.Executor, executionInfo);
                 executionInfo.Executor.Start(executionInfo.EntryModule);
             }
+        }
+
+        /// <summary>
+        /// Cleans up all global systems that may have been running during execution
+        /// </summary>
+        private void GloalSystemsCleanup()
+        {
+            SoundManager.DispatchStopAll();
         }
     }
 }

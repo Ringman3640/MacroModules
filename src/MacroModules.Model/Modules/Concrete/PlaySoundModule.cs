@@ -34,7 +34,7 @@ namespace MacroModules.Model.Modules.Concrete
             if (SoundFile != "")
             {
                 Uri soundUri = new(SoundFile, UriKind.RelativeOrAbsolute);
-                SoundManager.Play(soundUri, Volume);
+                SoundManager.DispatchPlay(soundUri, Volume);
             }
 
             return new ContinueResponse();

@@ -54,6 +54,21 @@ namespace MacroModules.Model.Execution
         /// </summary>
         public MacroDispatcher() { }
 
+        public void SetStartupMacro(StartupEntryModule? entryModule)
+        {
+            lock (dispatcherLock)
+            {
+                if (entryModule == null)
+                {
+                    startupMacro = null;
+                    return;
+                }
+
+                MacroExecutionInfo executionInfo = new(entryModule);
+                startupMacro = executionInfo;
+            }
+        }
+
         /// <summary>
         /// Adds a macro to the <see cref="MacroDispatcher"/> given a
         /// <see cref="TriggerEntryModule"/>.
@@ -86,7 +101,7 @@ namespace MacroModules.Model.Execution
                 }
 
                 MacroExecutionInfo macroInfo = new(entryModule);
-                triggerMap.Add(macroInfo.EntryModule.Trigger!, macroInfo);
+                triggerMap.Add(entryModule.Trigger, macroInfo);
                 return true;
             }
         }
@@ -117,6 +132,7 @@ namespace MacroModules.Model.Execution
             lock (dispatcherLock)
             {
                 triggerMap.Clear();
+                startupMacro = null;
             }
         }
 
@@ -149,6 +165,11 @@ namespace MacroModules.Model.Execution
                 InputMonitor.FilterMouseMovements = true;
                 InputMonitor.Install();
                 Running = true;
+
+                if (startupMacro != null)
+                {
+                    StartMacro(startupMacro);
+                }
             }
         }
 
@@ -212,6 +233,12 @@ namespace MacroModules.Model.Execution
         private readonly object dispatcherLock = new();
 
         /// <summary>
+        /// The macro that executes on <see cref="Startup"/> that is defined by a
+        /// <see cref="MacroExecutionInfo"/> instance.
+        /// </summary>
+        private MacroExecutionInfo? startupMacro = null;
+
+        /// <summary>
         /// A collection of all running <see cref="MacroExecutor"/> instances that are executing a
         /// macro. Each <see cref="MacroExecutor"/> is mapped to its corresponding
         /// <see cref="MacroExecutionInfo"/>.
@@ -266,7 +293,14 @@ namespace MacroModules.Model.Execution
                     return true;
                 }
 
-                switch (executionInfo.EntryModule.ExecutionType)
+                if (executionInfo.MacroEntryModule is not TriggerEntryModule triggerEntry)
+                {
+                    // The target macro execution does not correspond to a trigger, return with
+                    // input unsuppressed
+                    return true;
+                }
+
+                switch (triggerEntry.ExecutionType)
                 {
                     case MacroExecutionType.InterruptOnReclick:
                         if (executionInfo.Executor == null)
@@ -298,7 +332,7 @@ namespace MacroModules.Model.Execution
                 }
 
                 // Return and suppress input if specified
-                return !executionInfo.EntryModule.SuppressInput;
+                return !triggerEntry.SuppressInput;
             }
         }
 
@@ -322,18 +356,21 @@ namespace MacroModules.Model.Execution
                     return;
                 }
 
-                // Restart execution if toggled on
-                if (executionInfo.EntryModule.ExecutionType == MacroExecutionType.ToggleLoop && executionInfo.ToggledOn)
+                if (executionInfo.MacroEntryModule is TriggerEntryModule triggerEntry)
                 {
-                    e.RestartExecution = true;
-                    return;
-                }
+                    // Restart execution if trigger is toggled on
+                    if (triggerEntry.ExecutionType == MacroExecutionType.ToggleLoop && executionInfo.ToggledOn)
+                    {
+                        e.RestartExecution = true;
+                        return;
+                    }
 
-                // Restart execution if trigger input is held
-                if (executionInfo.EntryModule.ExecutionType == MacroExecutionType.LoopOnHold && TriggerHeld(executionInfo.EntryModule.Trigger!))
-                {
-                    e.RestartExecution = true;
-                    return;
+                    // Restart execution if trigger input is held
+                    if (triggerEntry.ExecutionType == MacroExecutionType.LoopOnHold && TriggerHeld(triggerEntry.Trigger!))
+                    {
+                        e.RestartExecution = true;
+                        return;
+                    }
                 }
 
                 // End execution
@@ -417,7 +454,7 @@ namespace MacroModules.Model.Execution
                     executionInfo.Executor = idleExecutors.Pop();
                 }
                 runningExecutors.Add(executionInfo.Executor, executionInfo);
-                executionInfo.Executor.Start(executionInfo.EntryModule);
+                executionInfo.Executor.Start(executionInfo.MacroEntryModule);
             }
         }
 

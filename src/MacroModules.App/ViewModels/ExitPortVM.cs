@@ -21,6 +21,11 @@ namespace MacroModules.App.ViewModels
             get { return _destinationModule; }
             set
             {
+                if (value != null && !value.IsConnectable)
+                {
+                    value = null;
+                }
+
                 ModuleVM? prevModule = _destinationModule;
                 if (SetAndCommitProperty(ref _destinationModule, value))
                 {
@@ -108,6 +113,12 @@ namespace MacroModules.App.ViewModels
 
         public void PreviewWireToModule(ModuleVM module)
         {
+            if (!module.IsConnectable)
+            {
+                PreviewWireToMouse();
+                return;
+            }
+
             WireEndPoint = module.CenterVisualPosition - (Vector)PortBoardPosition;
             WireHitTestVisible = false;
             WireVisibility = Visibility.Visible;

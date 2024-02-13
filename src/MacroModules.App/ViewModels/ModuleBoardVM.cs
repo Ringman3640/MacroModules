@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using MacroModules.App.Managers;
 using MacroModules.App.Managers.Commits;
+using MacroModules.App.ViewModels.Modules;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
@@ -222,6 +223,26 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
             RemoveElement(element);
         }
         SelectBox.UnselectAll();
+        Workspace.CommitManager.CommitSeries();
+    }
+
+    [RelayCommand]
+    private void Testing_AddMoveCursorModule()
+    {
+        ModuleVM module = new MoveCursorModuleVM();
+        AddElement(module);
+        module.CenterToPoint(BoardMousePosition);
+        module.SetStartingActualPosition(module.VisualPosition);
+        Workspace.CommitManager.CommitSeries();
+    }
+
+    [RelayCommand]
+    private void Testing_AddTriggerEntryModule()
+    {
+        ModuleVM module = new TriggerEntryModuleVM();
+        AddElement(module);
+        module.CenterToPoint(BoardMousePosition);
+        module.SetStartingActualPosition(module.VisualPosition);
         Workspace.CommitManager.CommitSeries();
     }
 }

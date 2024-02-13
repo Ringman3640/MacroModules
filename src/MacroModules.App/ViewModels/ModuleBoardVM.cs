@@ -3,7 +3,9 @@ using CommunityToolkit.Mvvm.Input;
 using MacroModules.App.Managers;
 using MacroModules.App.Managers.Commits;
 using MacroModules.App.ViewModels.Modules;
+using MacroModules.MacroLibrary.Types;
 using MacroModules.Model.Execution;
+using MacroModules.Model.Modules.Concrete;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
@@ -24,6 +26,11 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
     public SelectBoxVM SelectBox { get; private set; }
 
     public StartupEntryModuleVM? StartupEntryModule { get; private set; }
+
+    public List<TriggerEntryModuleVM> TriggerModulesList
+    {
+        get { return triggerModules.ToList(); }
+    }
 
     public double BoardScale
     {
@@ -288,7 +295,8 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
     [RelayCommand]
     private void Testing_AddTriggerEntryModule()
     {
-        ModuleVM module = new TriggerEntryModuleVM();
+        TriggerEntryModuleVM module = new();
+        ((TriggerEntryModule)module.ModuleData).Trigger = new((ushort)InputCode.F1, 0);
         AddElement(module);
         module.CenterToPoint(BoardMousePosition);
         module.SetStartingActualPosition(module.VisualPosition);

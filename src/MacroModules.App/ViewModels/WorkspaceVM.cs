@@ -17,12 +17,15 @@ public partial class WorkspaceVM : ObservableObject
 
     public ModuleBoardVM ModuleBoard { get; private set; }
 
+    public ExecutionManager Executor { get; private set; }
+
     public WorkspaceVM(WorkspaceView viewRef)
     {
         ViewReference = viewRef;
         MouseInteraction = new(this);
         CommitManager = new();
         ModuleBoard = new(this);
+        Executor = new(this);
     }
 
     public void CaptureMouse()
@@ -67,5 +70,17 @@ public partial class WorkspaceVM : ObservableObject
     private void Workspace_Redo()
     {
         CommitManager.Redo();
+    }
+
+    [RelayCommand]
+    private void Testing_StartExecution()
+    {
+        Executor.Startup();
+    }
+
+    [RelayCommand]
+    private void Testing_TerminateExecution()
+    {
+        Executor.Terminate();
     }
 }

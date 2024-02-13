@@ -1,6 +1,7 @@
 ﻿using MacroModules.MacroLibrary;
 using MacroModules.MacroLibrary.Types;
 using MacroModules.Model.Execution.Events;
+using MacroModules.Model.Modules.Concrete;
 
 namespace MacroModules.Model.Execution
 {
@@ -83,6 +84,40 @@ namespace MacroModules.Model.Execution
                     return false;
                 }
 
+                triggerMap.Add(macroInfo.EntryModule.Trigger!, macroInfo);
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Adds a macro to the <see cref="MacroDispatcher"/> given a
+        /// <see cref="TriggerEntryModule"/>.
+        /// </summary>
+        /// <param name="entryModule">
+        /// A <see cref="TriggerEntryModule"/> that defines the macro to add.
+        /// </param>
+        /// <returns>
+        /// <c>true</c> if the macro was successfully added. Otherwise <c>false</c>. This method
+        /// will return <c>false</c> if the <see cref="MacroDispatcher"/> already has a macro
+        /// mapped to the given <see cref="InputTrigger"/> value or if the
+        /// <see cref="InputTrigger"/> defined in <paramref name="entryModule"/> was null.
+        /// </returns>
+        /// <inheritdoc cref="AddMacro(MacroExecutionInfo)"/>
+        public bool AddMacro(TriggerEntryModule entryModule)
+        {
+            if (entryModule.Trigger == null)
+            {
+                return false;
+            }
+
+            lock (dispatcherLock)
+            {
+                if (triggerMap.ContainsKey(entryModule.Trigger!))
+                {
+                    return false;
+                }
+
+                MacroExecutionInfo macroInfo = new(entryModule);
                 triggerMap.Add(macroInfo.EntryModule.Trigger!, macroInfo);
                 return true;
             }

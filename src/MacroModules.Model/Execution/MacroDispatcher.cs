@@ -294,7 +294,7 @@ namespace MacroModules.Model.Execution
                 }
 
                 // Return and suppress input if specified
-                return !executionInfo.SuppressInput;
+                return !executionInfo.EntryModule.SuppressInput;
             }
         }
 

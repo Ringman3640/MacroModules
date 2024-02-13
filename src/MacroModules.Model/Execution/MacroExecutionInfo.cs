@@ -28,11 +28,6 @@ namespace MacroModules.Model.Execution
         public bool ToggledOn { get; set; } = false;
 
         /// <summary>
-        /// Indicates if the <see cref="Trigger"/> input should be suppressed when clicked.
-        /// </summary>
-        public bool SuppressInput {  get; set; } = false;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="MacroExecutionInfo"/> class that is
         /// defined by a given <see cref="TriggerEntryModule"/>.
         /// </summary>

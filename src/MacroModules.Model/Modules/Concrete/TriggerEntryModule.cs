@@ -21,5 +21,11 @@ namespace MacroModules.Model.Modules.Concrete
         /// <see cref="MacroExecutionType"/> enum.
         /// </summary>
         public MacroExecutionType ExecutionType { get; set; } = MacroExecutionType.IgnoreOnReclick;
+
+        /// <summary>
+        /// Indicates if the input event corresponding to <see cref="Trigger"/> should be suppressed
+        /// when pressed.
+        /// </summary>
+        public bool SuppressInput { get; set; } = true;
     }
 }

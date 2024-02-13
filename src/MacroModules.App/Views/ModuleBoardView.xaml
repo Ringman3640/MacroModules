@@ -16,7 +16,8 @@
             <KeyBinding Command="{Binding Board_RemoveSelectedCommand}" Gesture="Back"/>
             <KeyBinding Command="{Binding Board_RemoveSelectedCommand}" Gesture="Delete"/>
             <KeyBinding Command="{Binding Testing_AddMoveCursorModuleCommand}" Key="D1"/>
-            <KeyBinding Command="{Binding Testing_AddTriggerEntryModuleCommand}" Key="D2"/>
+            <KeyBinding Command="{Binding Testing_AddStartupEntryModuleCommand}" Key="D2"/>
+            <KeyBinding Command="{Binding Testing_AddTriggerEntryModuleCommand}" Key="D3"/>
         </Canvas.InputBindings>
         <i:Interaction.Behaviors>
             <behaviors:MouseAwareBehavior MouseAwareBehaviorInstance="{Binding MouseAwareBehaviorConnector, Mode=OneWayToSource}" MousePosition="{Binding MousePosition, Mode=OneWayToSource}"/>

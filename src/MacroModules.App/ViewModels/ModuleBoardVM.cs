@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using MacroModules.App.Managers;
 using MacroModules.App.Managers.Commits;
 using MacroModules.App.ViewModels.Modules;
+using MacroModules.Model.Execution;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
@@ -21,6 +22,8 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
     private ScaleTransform _boardTransform = new();
 
     public SelectBoxVM SelectBox { get; private set; }
+
+    public StartupEntryModuleVM? StartupEntryModule { get; private set; }
 
     public double BoardScale
     {
@@ -103,7 +106,40 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
             return;
         }
 
-        Elements.Add(element);
+        if (element is StartupEntryModuleVM startupEntryModule)
+        {
+            if (StartupEntryModule != null)
+            {
+                return;
+            }
+
+            Elements.Add(element);
+            StartupEntryModule = startupEntryModule;
+        }
+        else if (element is TriggerEntryModuleVM triggerEntryModule)
+        {
+            if (triggerEntryModule.Trigger != null)
+            {
+                foreach(var triggerModule in triggerModules)
+                {
+                    if (triggerModule.Trigger == null)
+                    {
+                        continue;
+                    }
+                    if (triggerModule.Trigger.Equals(triggerEntryModule.Trigger))
+                    {
+                        return;
+                    }
+                }
+            }
+            Elements.Add(element);
+            triggerModules.Add(triggerEntryModule);
+        }
+        else
+        {
+            Elements.Add(element);
+        }
+
         if (!PerformingCommitAction)
         {
             Workspace.CommitManager.PushToSeries(new ElementAddedCommit(this, element));
@@ -113,7 +149,19 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
 
     public void RemoveElement(BoardElementVM element)
     {
-        Elements.Remove(element);
+        if (!Elements.Remove(element))
+        {
+            return;
+        }
+        if (element is StartupEntryModuleVM)
+        {
+            StartupEntryModule = null;
+        }
+        if (element is TriggerEntryModuleVM triggerEntryModule)
+        {
+            triggerModules.Remove(triggerEntryModule);
+        }
+
         if (!PerformingCommitAction)
         {
             Workspace.CommitManager.PushToSeries(new ElementRemovedCommit(this, element));
@@ -158,6 +206,7 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
         BoardPosition = MousePosition;
     }
 
+    private readonly HashSet<TriggerEntryModuleVM> triggerModules = new();
     private Point boardOffsetFromMouse;
 
     [RelayCommand]
@@ -240,6 +289,16 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
     private void Testing_AddTriggerEntryModule()
     {
         ModuleVM module = new TriggerEntryModuleVM();
+        AddElement(module);
+        module.CenterToPoint(BoardMousePosition);
+        module.SetStartingActualPosition(module.VisualPosition);
+        Workspace.CommitManager.CommitSeries();
+    }
+
+    [RelayCommand]
+    private void Testing_AddStartupEntryModule()
+    {
+        ModuleVM module = new StartupEntryModuleVM();
         AddElement(module);
         module.CenterToPoint(BoardMousePosition);
         module.SetStartingActualPosition(module.VisualPosition);

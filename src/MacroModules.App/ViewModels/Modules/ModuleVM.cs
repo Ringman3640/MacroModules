@@ -23,6 +23,11 @@ public abstract partial class ModuleVM : BoardElementVM
 
     public ObservableCollection<ExitPortVM> ExitPorts { get; private set; } = new();
 
+    public bool IsConnectable
+    {
+        get { return ModuleData.IsConnectable; }
+    }
+
     public ModuleVM()
     {
         ModuleData = ModuleFactory.Create(Type);

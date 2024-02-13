@@ -33,6 +33,8 @@ namespace MacroModules.Model.Modules
         /// </summary>
         private static Dictionary<ModuleType, Func<Module>> moduleFactories = new()
         {
+            { ModuleType.StartupEntry, () => new StartupEntryModule() },
+            { ModuleType.TriggerEntry, () => new TriggerEntryModule() },
             { ModuleType.SendInput, () => new SendInputModule() },
             { ModuleType.GetInputState, () => new GetInputStateModule() },
             { ModuleType.MoveCursor, () => new MoveCursorModule() },

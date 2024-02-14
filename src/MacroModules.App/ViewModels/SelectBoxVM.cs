@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System.Collections.ObjectModel;
 using System.Windows;
 
 namespace MacroModules.App.ViewModels;
@@ -11,9 +12,13 @@ public partial class SelectBoxVM : MouseAwareVM
     [ObservableProperty]
     private Visibility _selectBoxVisibility = Visibility.Hidden;
 
+    [ObservableProperty]
+    private ObservableCollection<BoardElementVM> _selectedElements = new();
+
+
     public List<BoardElementVM> SelectedElementsList
     {
-        get { return selectedElements.ToList(); }
+        get { return SelectedElements.ToList(); }
     }
 
     public SelectBoxVM(ModuleBoardVM moduleBoard)
@@ -49,7 +54,7 @@ public partial class SelectBoxVM : MouseAwareVM
             Rect elementBounds = new(absolutePosX, absolutePosY, scaledWidth, scaledHeight);
             if (elementBounds.IntersectsWith(SelectBoxRegion))
             {
-                selectedElements.Add(element);
+                SelectedElements.Add(element);
             }
         }
 
@@ -58,27 +63,27 @@ public partial class SelectBoxVM : MouseAwareVM
 
     public void Select(BoardElementVM element)
     {
-        selectedElements.Add(element);
+        SelectedElements.Add(element);
     }
 
     public void Unselect(BoardElementVM element)
     {
-        selectedElements.Remove(element);
+        SelectedElements.Remove(element);
     }
 
     public void UnselectAll()
     {
-        selectedElements.Clear();
+        SelectedElements.Clear();
     }
 
     public bool IsSelected(BoardElementVM element)
     {
-        return selectedElements.Contains(element);
+        return SelectedElements.Contains(element);
     }
 
     public void LockSelectedToMouse()
     {
-        foreach (var element in selectedElements)
+        foreach (var element in SelectedElements)
         {
             element.LockMouseOffset();
         }
@@ -86,7 +91,7 @@ public partial class SelectBoxVM : MouseAwareVM
 
     public void MoveSelectedWithMouse()
     {
-        foreach (var element in selectedElements)
+        foreach (var element in SelectedElements)
         {
             element.MoveWithMouse();
         }
@@ -94,13 +99,12 @@ public partial class SelectBoxVM : MouseAwareVM
 
     public void SetActualPositionOfSelected()
     {
-        foreach (var element in selectedElements)
+        foreach (var element in SelectedElements)
         {
             element.ActualPosition = element.VisualPosition;
         }
     }
 
     private ModuleBoardVM moduleBoard;
-    private HashSet<BoardElementVM> selectedElements = new();
     private Point selectBoxPivot;
 }

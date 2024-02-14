@@ -17,6 +17,8 @@ public partial class WorkspaceVM : ObservableObject
 
     public ModuleBoardVM ModuleBoard { get; private set; }
 
+    public PropertiesPanelVM PropertiesPanel { get; private set; }
+
     public ExecutionManager Executor { get; private set; }
 
     public WorkspaceVM(WorkspaceView viewRef)
@@ -25,6 +27,7 @@ public partial class WorkspaceVM : ObservableObject
         MouseInteraction = new(this);
         CommitManager = new();
         ModuleBoard = new(this);
+        PropertiesPanel = new(this);
         Executor = new(this);
     }
 

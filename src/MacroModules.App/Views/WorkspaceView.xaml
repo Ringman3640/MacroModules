@@ -36,5 +36,12 @@
                 </DataTemplate>
             </ContentControl.ContentTemplate>
         </ContentControl>
+        <ContentControl Content="{Binding PropertiesPanel, Mode=OneWay}" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <ContentControl.ContentTemplate>
+                <DataTemplate>
+                    <local:PropertiesPanelView/>
+                </DataTemplate>
+            </ContentControl.ContentTemplate>
+        </ContentControl>
     </Grid>
 </Window>

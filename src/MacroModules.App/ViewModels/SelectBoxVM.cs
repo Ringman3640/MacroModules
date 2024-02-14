@@ -15,7 +15,6 @@ public partial class SelectBoxVM : MouseAwareVM
     [ObservableProperty]
     private ObservableCollection<BoardElementVM> _selectedElements = new();
 
-
     public List<BoardElementVM> SelectedElementsList
     {
         get { return SelectedElements.ToList(); }

@@ -11,14 +11,13 @@ public partial class PositionPropertyEditor : BasePropertyEditor
         get { return (Position)GetValue(PositionPropertyProperty); }
         set { SetValue(PositionPropertyProperty, value); }
     }
-
     public static readonly DependencyProperty PositionPropertyProperty = DependencyProperty.Register(
-        nameof(PositionProperty),
-        typeof(Position),
-        typeof(PositionPropertyEditor),
-        new FrameworkPropertyMetadata(
-            default(Position),
-            FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+        name: nameof(PositionProperty),
+        propertyType: typeof(Position),
+        ownerType: typeof(PositionPropertyEditor),
+        typeMetadata: new FrameworkPropertyMetadata(
+            defaultValue: default(Position),
+            flags: FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
     public string EntryTextX
     {

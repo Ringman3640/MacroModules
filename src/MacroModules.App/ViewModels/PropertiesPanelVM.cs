@@ -8,7 +8,25 @@ public partial class PropertiesPanelVM : ObservableObject
 {
     public WorkspaceVM Workspace { get; private set; }
 
-    [ObservableProperty]
+    public ModuleVM? DisplayedModule
+    {
+        get { return _displayedModule; }
+        set
+        {
+            ModuleVM? prevModule = _displayedModule;
+            if (SetProperty(ref _displayedModule, value))
+            {
+                if (prevModule != null)
+                {
+                    prevModule.ElementRemoved -= DisplayedModule_ElementRemoved;
+                }
+                if (value != null)
+                {
+                    value.ElementRemoved += DisplayedModule_ElementRemoved;
+                }
+            }
+        }
+    }
     private ModuleVM? _displayedModule = null;
 
     public PropertiesPanelVM(WorkspaceVM worksapce)
@@ -28,5 +46,10 @@ public partial class PropertiesPanelVM : ObservableObject
         {
             DisplayedModule = null;
         }
+    }
+
+    private void DisplayedModule_ElementRemoved(object? sender, EventArgs e)
+    {
+        DisplayedModule = null;
     }
 }

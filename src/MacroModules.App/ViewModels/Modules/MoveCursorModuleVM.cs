@@ -1,6 +1,7 @@
 ﻿using MacroModules.MacroLibrary.Types;
 using MacroModules.Model.Modules;
 using MacroModules.Model.Modules.Concrete;
+using MacroModules.Model.Types;
 
 namespace MacroModules.App.ViewModels.Modules;
 
@@ -20,7 +21,7 @@ public class MoveCursorModuleVM : ModuleVM
         }
     }
 
-    public TimeSpan TransitionTime
+    public TimeDuration TransitionTime
     {
         get { return castedModuleData.TransitionTime; }
         set

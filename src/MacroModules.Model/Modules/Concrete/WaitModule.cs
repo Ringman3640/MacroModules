@@ -1,4 +1,5 @@
 ﻿using MacroModules.Model.Modules.Responses;
+using MacroModules.Model.Types;
 
 namespace MacroModules.Model.Modules.Concrete
 {
@@ -11,7 +12,7 @@ namespace MacroModules.Model.Modules.Concrete
         /// <summary>
         /// Indicates the amount of time to wait for.
         /// </summary>
-        public TimeSpan Time { get; set; } = TimeSpan.FromMilliseconds(500);
+        public TimeDuration Time { get; set; } = new(500, DurationGranularity.Ms);
 
         public override ModuleType Type { get; } = ModuleType.Wait;
 
@@ -27,7 +28,7 @@ namespace MacroModules.Model.Modules.Concrete
             if (!(bool)processData!)
             {
                 processData = true;
-                return new WaitRepeatResponse(Time);
+                return new WaitRepeatResponse(Time.TimeSpan);
             }
             return new ContinueResponse();
         }

@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\src\MacroModules.MacroLibrary\MacroModules.MacroLibrary.csproj" />
+    <ProjectReference Include="..\src\MacroModules.Model\MacroModules.Model.csproj" />
   </ItemGroup>
 
 </Project>

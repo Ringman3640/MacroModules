@@ -1,0 +1,37 @@
+﻿<local:BasePropertyEditor x:Name="durationPropertyEditor"
+                          x:Class="MacroModules.AppControls.PropertyEditors.DurationPropertyEditor"
+                          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                          xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                          xmlns:local="clr-namespace:MacroModules.AppControls.PropertyEditors"
+                          xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                          xmlns:modeltypes="clr-namespace:MacroModules.Model.Types;assembly=MacroModules.Model" 
+                          xmlns:appcontrols="clr-namespace:MacroModules.AppControls"
+                          mc:Ignorable="d" 
+                          d:DesignHeight="450" d:DesignWidth="800"
+                          Loaded="DurationPropertyEditor_Loaded">
+    <StackPanel>
+        <StackPanel.Resources>
+            <ObjectDataProvider x:Key="dataFromEnum" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="modeltypes:DurationGranularity"/>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+        </StackPanel.Resources>
+        
+        <TextBlock Text="{Binding PropertyName, ElementName=durationPropertyEditor}" ToolTip="{Binding PropertyDescription, ElementName=durationPropertyEditor}"/>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <appcontrols:FocusTextBox Text="{Binding TimeUnitsEntryText, ElementName=durationPropertyEditor}"/>
+
+            <ComboBox Grid.Column="2" ItemsSource="{Binding Source={StaticResource dataFromEnum}}" SelectedItem="{Binding SelectedGranularity, ElementName=durationPropertyEditor}"/>
+        </Grid>
+    </StackPanel>
+</local:BasePropertyEditor>

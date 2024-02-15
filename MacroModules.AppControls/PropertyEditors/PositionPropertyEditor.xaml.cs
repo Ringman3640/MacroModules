@@ -70,18 +70,9 @@ public partial class PositionPropertyEditor : BasePropertyEditor
         InitializeComponent();
     }
 
-    private int GetIntFromText(string text)
-    {
-        text = WhitespaceSelector().Replace(text, "");
-        return (text == "") ? 0 : int.Parse(text);
-    }
-
     private void PositionPropertyEditor_Loaded(object sender, RoutedEventArgs e)
     {
         OnPropertyChanged(nameof(EntryTextX));
         OnPropertyChanged(nameof(EntryTextY));
     }
-
-    [GeneratedRegex(@"\s+")]
-    private static partial Regex WhitespaceSelector();
 }

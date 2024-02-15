@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -31,4 +32,19 @@ public partial class BasePropertyEditor : UserControl, INotifyPropertyChanged
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
+
+    protected static int GetIntFromText(string text)
+    {
+        text = WhitespaceSelector().Replace(text, "");
+        return (text == "") ? 0 : int.Parse(text);
+    }
+
+    protected static double GetDoubleFromText(string text)
+    {
+        text = WhitespaceSelector().Replace(text, "");
+        return (text == "") ? 0 : double.Parse(text);
+    }
+
+    [GeneratedRegex(@"\s+")]
+    protected static partial Regex WhitespaceSelector();
 }

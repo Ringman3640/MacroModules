@@ -20,10 +20,10 @@ namespace MacroModules.Model.Modules.Concrete
         /// Indicates the transition time of the cursor to <see cref="TargetPosition"/>.
         /// </summary>
         /// <remarks>
-        /// If the given <see cref="TimeSpan"/> is equivalent to <see cref="TimeSpan.Zero"/>, the
-        /// mouse cursor will instantly teleport to <see cref="TargetPosition"/>.
+        /// If the given <see cref="TimeDuration"/> represents a duration of zero, the mouse cursor
+        /// will instantly teleport to <see cref="TargetPosition"/>.
         /// </remarks>
-        public Duration TransitionTime { get; set; }
+        public TimeDuration TransitionTime { get; set; }
 
         public override ModuleType Type { get; } = ModuleType.MoveCursor;
 

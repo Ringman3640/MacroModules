@@ -1,12 +1,14 @@
-﻿<local:BasePropertyEditor x:Class="MacroModules.AppControls.PropertyEditors.PositionPropertyEditor"
+﻿<local:BasePropertyEditor x:Name="positionPropertyEditor" 
+             x:Class="MacroModules.AppControls.PropertyEditors.PositionPropertyEditor"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MacroModules.AppControls.PropertyEditors"
+             xmlns:textboxes="clr-namespace:MacroModules.AppControls.FocusedTextBoxes"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=local:PositionPropertyEditor}" 
-             d:DesignHeight="100" d:DesignWidth="300" x:Name="positionPropertyEditor"
+             d:DesignHeight="100" d:DesignWidth="300" 
              Loaded="PositionPropertyEditor_Loaded">
     <StackPanel>
         <TextBlock Text="{Binding PropertyName, ElementName=positionPropertyEditor}" ToolTip="{Binding PropertyDescription, ElementName=positionPropertyEditor}"/>
@@ -21,10 +23,10 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="X" Padding="0, 0, 6, 0"/>
-            <TextBox Grid.Column="1" Text="{Binding EntryTextX, ElementName=positionPropertyEditor}"/>
+            <textboxes:FocusedNumericTextBox Grid.Column="1" Text="{Binding EntryTextX, ElementName=positionPropertyEditor}"/>
 
             <TextBlock Grid.Column="3" Text="Y" Padding="0, 0, 6, 0"/>
-            <TextBox Grid.Column="4" Text="{Binding EntryTextY, ElementName=positionPropertyEditor}"/>
+            <textboxes:FocusedNumericTextBox Grid.Column="4" Text="{Binding EntryTextY, ElementName=positionPropertyEditor}"/>
         </Grid>
     </StackPanel>
 </local:BasePropertyEditor>

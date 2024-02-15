@@ -1,6 +1,7 @@
 ﻿using MacroModules.MacroLibrary;
 using MacroModules.MacroLibrary.Types;
 using MacroModules.Model.Modules.Responses;
+using MacroModules.Model.Types;
 using System.Diagnostics;
 
 namespace MacroModules.Model.Modules.Concrete
@@ -22,7 +23,7 @@ namespace MacroModules.Model.Modules.Concrete
         /// If the given <see cref="TimeSpan"/> is equivalent to <see cref="TimeSpan.Zero"/>, the
         /// mouse cursor will instantly teleport to <see cref="TargetPosition"/>.
         /// </remarks>
-        public TimeSpan TransitionTime { get; set; }
+        public Duration TransitionTime { get; set; }
 
         public override ModuleType Type { get; } = ModuleType.MoveCursor;
 
@@ -37,14 +38,15 @@ namespace MacroModules.Model.Modules.Concrete
         {
             var data = (MoveCursorModuleData)processData!;
             TimeSpan elapsedTime = data.Watch.Elapsed;
+            TimeSpan transitionTimeSpan = TransitionTime.TimeSpan;
 
-            if (elapsedTime >= TransitionTime)
+            if (elapsedTime >= transitionTimeSpan)
             {
                 MouseControl.MoveCursor(TargetPosition);
                 return new ContinueResponse();
             }
 
-            double transitionPercent = elapsedTime / TransitionTime;
+            double transitionPercent = elapsedTime / transitionTimeSpan;
             double nextPosX = data.InitialPosition.X;
             double nextPosY = data.InitialPosition.Y;
             nextPosX += (TargetPosition.X - data.InitialPosition.X) * transitionPercent;

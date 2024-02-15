@@ -283,16 +283,6 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
     }
 
     [RelayCommand]
-    private void Testing_AddMoveCursorModule()
-    {
-        ModuleVM module = new MoveCursorModuleVM();
-        AddElement(module);
-        module.CenterToPoint(BoardMousePosition);
-        module.SetStartingActualPosition(module.VisualPosition);
-        Workspace.CommitManager.CommitSeries();
-    }
-
-    [RelayCommand]
     private void Testing_AddTriggerEntryModule()
     {
         TriggerEntryModuleVM module = new();
@@ -307,6 +297,26 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
     private void Testing_AddStartupEntryModule()
     {
         ModuleVM module = new StartupEntryModuleVM();
+        AddElement(module);
+        module.CenterToPoint(BoardMousePosition);
+        module.SetStartingActualPosition(module.VisualPosition);
+        Workspace.CommitManager.CommitSeries();
+    }
+
+    [RelayCommand]
+    private void Testing_AddMoveCursorModule()
+    {
+        ModuleVM module = new MoveCursorModuleVM();
+        AddElement(module);
+        module.CenterToPoint(BoardMousePosition);
+        module.SetStartingActualPosition(module.VisualPosition);
+        Workspace.CommitManager.CommitSeries();
+    }
+
+    [RelayCommand]
+    private void Testing_AddWaitModule()
+    {
+        ModuleVM module = new WaitModuleVM();
         AddElement(module);
         module.CenterToPoint(BoardMousePosition);
         module.SetStartingActualPosition(module.VisualPosition);

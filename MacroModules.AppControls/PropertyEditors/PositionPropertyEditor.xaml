@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MacroModules.AppControls.PropertyEditors"
-             xmlns:textboxes="clr-namespace:MacroModules.AppControls.FocusedTextBoxes"
+             xmlns:appcontrols="clr-namespace:MacroModules.AppControls"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=local:PositionPropertyEditor}" 
              d:DesignHeight="100" d:DesignWidth="300" 
@@ -23,10 +23,10 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="X" Padding="0, 0, 6, 0"/>
-            <textboxes:FocusedNumericTextBox Grid.Column="1" Text="{Binding EntryTextX, ElementName=positionPropertyEditor}"/>
+            <appcontrols:FocusTextBox Grid.Column="1" Text="{Binding EntryTextX, ElementName=positionPropertyEditor}" SelectAllOnFocus="True"/>
 
             <TextBlock Grid.Column="3" Text="Y" Padding="0, 0, 6, 0"/>
-            <textboxes:FocusedNumericTextBox Grid.Column="4" Text="{Binding EntryTextY, ElementName=positionPropertyEditor}"/>
+            <appcontrols:FocusTextBox Grid.Column="4" Text="{Binding EntryTextY, ElementName=positionPropertyEditor}" SelectAllOnFocus="True"/>
         </Grid>
     </StackPanel>
 </local:BasePropertyEditor>

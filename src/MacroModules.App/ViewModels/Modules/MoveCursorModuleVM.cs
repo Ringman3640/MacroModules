@@ -13,6 +13,7 @@ public class MoveCursorModuleVM : ModuleVM
         {
             if (castedModuleData.TargetPosition != value)
             {
+                CommitPropertyChange(castedModuleData.TargetPosition, value);
                 castedModuleData.TargetPosition = value;
                 OnPropertyChanged();
             }
@@ -26,6 +27,7 @@ public class MoveCursorModuleVM : ModuleVM
         {
             if (castedModuleData.TransitionTime != value)
             {
+                CommitPropertyChange(castedModuleData.TransitionTime, value);
                 castedModuleData.TransitionTime = value;
                 OnPropertyChanged();
             }

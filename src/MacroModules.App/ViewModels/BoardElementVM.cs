@@ -149,4 +149,13 @@ public abstract partial class BoardElementVM : MouseAwareVM, IDimensionsAware, I
             Workspace?.CommitManager.PushToSeries(new PropertyCommit(this, propertyName!, initialValue, newValue));
         }
     }
+
+    protected void FullCommitPropertyChange<T>(T initialValue, T newValue, [CallerMemberName] string? propertyName = null)
+    {
+        if (!PerformingCommitAction)
+        {
+            Workspace?.CommitManager.PushToSeries(new PropertyCommit(this, propertyName!, initialValue, newValue));
+            Workspace?.CommitManager.CommitSeries();
+        }
+    }
 }

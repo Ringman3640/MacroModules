@@ -28,6 +28,14 @@
         public DurationGranularity Granularity { get; set; } = DurationGranularity.Sec;
 
         /// <summary>
+        /// Gets the duration represented as a <see cref="TimeSpan"/>.
+        /// </summary>
+        public TimeSpan TimeSpan
+        {
+            get { return GetTimeSpan(); }
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Duration"/> structure that represents a
         /// default duration of zero seconds.
         /// </summary>

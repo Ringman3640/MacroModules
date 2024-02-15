@@ -1,5 +1,4 @@
 ﻿using MacroModules.MacroLibrary.Types;
-using System.Text.RegularExpressions;
 using System.Windows;
 
 namespace MacroModules.AppControls.PropertyEditors;

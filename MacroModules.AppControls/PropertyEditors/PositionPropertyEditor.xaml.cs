@@ -1,4 +1,5 @@
 ﻿using MacroModules.MacroLibrary.Types;
+using System.Text.RegularExpressions;
 using System.Windows;
 
 namespace MacroModules.AppControls.PropertyEditors;
@@ -27,7 +28,7 @@ public partial class PositionPropertyEditor : BasePropertyEditor
             int parsedXPos;
             try
             {
-                parsedXPos = int.Parse(value);
+                parsedXPos = GetIntFromText(value);
             }
             catch
             {
@@ -50,7 +51,7 @@ public partial class PositionPropertyEditor : BasePropertyEditor
             int parsedYPos;
             try
             {
-                parsedYPos = int.Parse(value);
+                parsedYPos = GetIntFromText(value);
             }
             catch
             {
@@ -70,9 +71,18 @@ public partial class PositionPropertyEditor : BasePropertyEditor
         InitializeComponent();
     }
 
+    private int GetIntFromText(string text)
+    {
+        text = WhitespaceSelector().Replace(text, "");
+        return (text == "") ? 0 : int.Parse(text);
+    }
+
     private void PositionPropertyEditor_Loaded(object sender, RoutedEventArgs e)
     {
         OnPropertyChanged(nameof(EntryTextX));
         OnPropertyChanged(nameof(EntryTextY));
     }
+
+    [GeneratedRegex(@"\s+")]
+    private static partial Regex WhitespaceSelector();
 }

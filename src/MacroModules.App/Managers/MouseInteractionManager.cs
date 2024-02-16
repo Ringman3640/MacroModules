@@ -288,7 +288,7 @@ public sealed class MouseInteractionManager
                 ModuleVM module = new MoveCursorModuleVM();
                 ModuleBoard.AddElement(module);
                 module.CenterToPoint(ModuleBoard.BoardMousePosition);
-                module.SetStartingActualPosition(module.VisualPosition);
+                module.SetStartingPosition(module.VisualPosition);
                 Workspace.CommitManager.CommitSeries();
                 break;
 

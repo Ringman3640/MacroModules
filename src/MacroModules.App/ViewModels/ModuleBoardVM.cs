@@ -289,7 +289,7 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
         ((TriggerEntryModule)module.ModuleData).Trigger = new((ushort)InputCode.F1, 0);
         AddElement(module);
         module.CenterToPoint(BoardMousePosition);
-        module.SetStartingActualPosition(module.VisualPosition);
+        module.SetStartingPosition(module.VisualPosition);
         Workspace.CommitManager.CommitSeries();
     }
 
@@ -299,7 +299,7 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
         ModuleVM module = new StartupEntryModuleVM();
         AddElement(module);
         module.CenterToPoint(BoardMousePosition);
-        module.SetStartingActualPosition(module.VisualPosition);
+        module.SetStartingPosition(module.VisualPosition);
         Workspace.CommitManager.CommitSeries();
     }
 
@@ -309,7 +309,7 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
         ModuleVM module = new MoveCursorModuleVM();
         AddElement(module);
         module.CenterToPoint(BoardMousePosition);
-        module.SetStartingActualPosition(module.VisualPosition);
+        module.SetStartingPosition(module.VisualPosition);
         Workspace.CommitManager.CommitSeries();
     }
 
@@ -319,7 +319,7 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
         ModuleVM module = new WaitModuleVM();
         AddElement(module);
         module.CenterToPoint(BoardMousePosition);
-        module.SetStartingActualPosition(module.VisualPosition);
+        module.SetStartingPosition(module.VisualPosition);
         Workspace.CommitManager.CommitSeries();
     }
 
@@ -329,7 +329,7 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
         ModuleVM module = new ScrollModuleVM();
         AddElement(module);
         module.CenterToPoint(BoardMousePosition);
-        module.SetStartingActualPosition(module.VisualPosition);
+        module.SetStartingPosition(module.VisualPosition);
         Workspace.CommitManager.CommitSeries();
     }
 }

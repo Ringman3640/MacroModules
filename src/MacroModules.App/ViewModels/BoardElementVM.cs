@@ -105,12 +105,19 @@ public abstract partial class BoardElementVM : MouseAwareVM, IDimensionsAware, I
         OnPropertyChanged(nameof(VisualPosition));
     }
 
-    public void SetStartingActualPosition(Point position)
+    public void SetStartingPosition(Point position)
     {
         _visualPosition = position;
         _actualPosition = position;
-        ElementData.PositionX = position.X;
-        ElementData.PositionY = position.Y;
+        OnPropertyChanged(nameof(VisualPosition));
+    }
+
+    public void SetCenterStartingPosition(Point position)
+    {
+        position -= (Vector)Dimensions / 2;
+
+        _visualPosition = position;
+        _actualPosition = position;
         OnPropertyChanged(nameof(VisualPosition));
     }
 

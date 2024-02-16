@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using MacroModules.App.Managers;
+using MacroModules.Model.BoardElements;
 using MacroModules.Model.Modules;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -9,6 +10,8 @@ namespace MacroModules.App.ViewModels.Modules;
 public abstract partial class ModuleVM : BoardElementVM
 {
     public abstract ModuleType Type { get; }
+
+    public override BoardElement ElementData { get; protected set; }
 
     public Module ModuleData
     {

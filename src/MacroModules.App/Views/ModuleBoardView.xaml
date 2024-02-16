@@ -11,7 +11,7 @@
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=viewmodels:ModuleBoardVM}"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Canvas x:Name="cvBoardContainer" Background="Transparent" Focusable="True">
+    <Canvas x:Name="cvBoardContainer" Background="Transparent" Focusable="True" AllowDrop="True">
         <Canvas.InputBindings>
             <KeyBinding Command="{Binding Board_RemoveSelectedCommand}" Gesture="Back"/>
             <KeyBinding Command="{Binding Board_RemoveSelectedCommand}" Gesture="Delete"/>
@@ -42,6 +42,9 @@
             </i:EventTrigger>
             <i:EventTrigger EventName="MouseWheel">
                 <i:InvokeCommandAction Command="{Binding Path=Board_MouseWheelCommand}" PassEventArgsToCommand="True"/>
+            </i:EventTrigger>
+            <i:EventTrigger EventName="Drop">
+                <i:InvokeCommandAction Command="{Binding Path=Board_DroppedCommand}" PassEventArgsToCommand="True"/>
             </i:EventTrigger>
         </i:Interaction.Triggers>
 

@@ -4,7 +4,7 @@ using MacroModules.App.Managers;
 using MacroModules.App.Managers.Commits;
 using MacroModules.App.ViewModels.Modules;
 using MacroModules.MacroLibrary.Types;
-using MacroModules.Model.Execution;
+using MacroModules.Model.Modules;
 using MacroModules.Model.Modules.Concrete;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -213,6 +213,12 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
         BoardPosition = MousePosition;
     }
 
+    public Point MapContainerPositionToBoard(Point position)
+    {
+        Point unscaledPosition = position - (Vector)BoardPosition;
+        return new Point(unscaledPosition.X / BoardScale, unscaledPosition.Y / BoardScale);
+    }
+
     private readonly HashSet<TriggerEntryModuleVM> triggerModules = new();
     private Point boardOffsetFromMouse;
 
@@ -280,6 +286,21 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
         }
         SelectBox.UnselectAll();
         Workspace.CommitManager.CommitSeries();
+    }
+
+    [RelayCommand]
+    private void Board_Dropped(RoutedEventArgs e)
+    {
+        DragEventArgs dragEvent = (DragEventArgs)e;
+        object data = dragEvent.Data.GetData(typeof(ModuleType));
+        if (data is ModuleType type)
+        {
+            ModuleVM module = ModuleVMFactory.Create(type);
+            Point containerPosition = dragEvent.GetPosition((FrameworkElement)dragEvent.Source);
+            module.SetCenterStartingPosition(MapContainerPositionToBoard(containerPosition));
+            AddElement(module);
+            Workspace.CommitManager.CommitSeries();
+        }
     }
 
     [RelayCommand]

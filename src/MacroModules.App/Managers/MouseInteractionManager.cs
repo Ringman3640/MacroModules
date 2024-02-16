@@ -2,6 +2,7 @@
 using MacroModules.App.ViewModels.Modules;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace MacroModules.App.Managers;
 
@@ -287,8 +288,7 @@ public sealed class MouseInteractionManager
                 // This is just a way to spawn in modules
                 ModuleVM module = new MoveCursorModuleVM();
                 ModuleBoard.AddElement(module);
-                module.CenterToPoint(ModuleBoard.BoardMousePosition);
-                module.SetStartingPosition(module.VisualPosition);
+                module.SetCenterStartingPosition(ModuleBoard.BoardMousePosition);
                 Workspace.CommitManager.CommitSeries();
                 break;
 

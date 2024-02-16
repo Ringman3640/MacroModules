@@ -61,7 +61,7 @@ public abstract partial class BoardElementVM : MouseAwareVM, IDimensionsAware, I
     public bool PerformingCommitAction { get; set; }
 
     [ObservableProperty]
-    private Size _dimensions;
+    private Size _dimensions = new(80, 80);
 
     public event ElementMovedHandler? ElementMoved;
     public event ElementRemovedHandler? ElementRemoved;

@@ -25,6 +25,9 @@
                     <DataTemplate DataType="{x:Type moduleviewmodels:ScrollModuleVM}">
                         <propertyviews:ScrollModulePropertiesView/>
                     </DataTemplate>
+                    <DataTemplate DataType="{x:Type moduleviewmodels:PlaySoundModuleVM}">
+                        <propertyviews:PlaySoundModulePropertiesView/>
+                    </DataTemplate>
                 </ContentControl.Resources>
             </ContentControl>
         </StackPanel>

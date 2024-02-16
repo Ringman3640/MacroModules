@@ -31,7 +31,7 @@ namespace MacroModules.App.ViewModels.Modules
             // TODO: Add Branch factory
             { ModuleType.Wait, () => new WaitModuleVM() },
             // TODO: Add WaitUntil factory
-            // TODO: Add PlaySound factory
+            { ModuleType.PlaySound, () => new PlaySoundModuleVM() },
         };
     }
 }

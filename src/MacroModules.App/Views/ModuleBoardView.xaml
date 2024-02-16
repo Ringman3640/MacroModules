@@ -19,6 +19,7 @@
             <KeyBinding Command="{Binding Testing_AddTriggerEntryModuleCommand}" Key="D2"/>
             <KeyBinding Command="{Binding Testing_AddMoveCursorModuleCommand}" Key="D3"/>
             <KeyBinding Command="{Binding Testing_AddWaitModuleCommand}" Key="D4"/>
+            <KeyBinding Command="{Binding Testing_AddScrollModuleCommand}" Key="D5"/>
         </Canvas.InputBindings>
         <i:Interaction.Behaviors>
             <behaviors:MouseAwareBehavior MouseAwareBehaviorInstance="{Binding MouseAwareBehaviorConnector, Mode=OneWayToSource}" MousePosition="{Binding MousePosition, Mode=OneWayToSource}"/>

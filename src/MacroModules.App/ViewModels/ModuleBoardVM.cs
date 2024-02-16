@@ -322,4 +322,14 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
         module.SetStartingActualPosition(module.VisualPosition);
         Workspace.CommitManager.CommitSeries();
     }
+
+    [RelayCommand]
+    private void Testing_AddScrollModule()
+    {
+        ModuleVM module = new ScrollModuleVM();
+        AddElement(module);
+        module.CenterToPoint(BoardMousePosition);
+        module.SetStartingActualPosition(module.VisualPosition);
+        Workspace.CommitManager.CommitSeries();
+    }
 }

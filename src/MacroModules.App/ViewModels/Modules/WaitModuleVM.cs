@@ -11,9 +11,12 @@ public class WaitModuleVM : ModuleVM
         get { return castedModuleData.Time; }
         set
         {
-            FullCommitPropertyChange(castedModuleData.Time, value);
-            castedModuleData.Time = value;
-            OnPropertyChanged();
+            if (castedModuleData.Time != value)
+            {
+                FullCommitPropertyChange(castedModuleData.Time, value);
+                castedModuleData.Time = value;
+                OnPropertyChanged();
+            }
         }
     }
 

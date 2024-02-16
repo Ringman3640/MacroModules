@@ -13,16 +13,7 @@ public abstract partial class ModuleVM : BoardElementVM
 
     public override BoardElement ElementData { get; protected set; }
 
-    public Module ModuleData
-    {
-        get { return _moduleData!; }
-        protected set
-        {
-            _moduleData = value;
-            ElementData = value;
-        }
-    }
-    private Module? _moduleData;
+    public Module ModuleData { get; protected set; }
 
     public ObservableCollection<ExitPortVM> ExitPorts { get; private set; } = new();
 
@@ -34,6 +25,7 @@ public abstract partial class ModuleVM : BoardElementVM
     public ModuleVM()
     {
         ModuleData = ModuleFactory.Create(Type);
+        ElementData = ModuleData;
     }
 
     public ModuleVM(Module moduleData)
@@ -43,6 +35,7 @@ public abstract partial class ModuleVM : BoardElementVM
             throw new ArgumentException($"Cannot copy construct from Module of type {moduleData.Type} in ModuleVM of type {Type}");
         }
         ModuleData = moduleData;
+        ElementData = ModuleData;
     }
 
     public override void Initialize(WorkspaceVM workspace)

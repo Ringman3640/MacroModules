@@ -84,7 +84,7 @@ namespace MacroModules.Model.GolbalSystems
             {
                 return true;
             }
-            if (Enum.IsDefined(typeof(ModifierInputCode), input.InputKeyCode))
+            if (Enum.IsDefined(typeof(ModifierInputCode), (int)input.InputKeyCode))
             {
                 return false;
             }

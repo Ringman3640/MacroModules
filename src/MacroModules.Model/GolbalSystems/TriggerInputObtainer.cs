@@ -40,7 +40,7 @@ namespace MacroModules.Model.GolbalSystems
         /// </remarks>
         public static void Start()
         {
-            if (Running ||  InputHandler != null)
+            if (Running || InputHandler == null)
             {
                 return;
             }

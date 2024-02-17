@@ -16,6 +16,9 @@
 
             <ContentControl Content="{Binding DisplayedModule, Mode=OneWay}">
                 <ContentControl.Resources>
+                    <DataTemplate DataType="{x:Type moduleviewmodels:TriggerEntryModuleVM}">
+                        <propertyviews:TriggerEntryPropertiesView/>
+                    </DataTemplate>
                     <DataTemplate DataType="{x:Type moduleviewmodels:MoveCursorModuleVM}">
                         <propertyviews:MoveCursorPropertiesView/>
                     </DataTemplate>

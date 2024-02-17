@@ -86,7 +86,7 @@ namespace MacroModules.Model.GolbalSystems
             }
             if (Enum.IsDefined(typeof(ModifierInputCode), (int)input.InputKeyCode))
             {
-                return false;
+                return true;
             }
 
             InputHandler?.Invoke(InputTrigger.CreateFrom(input)!);

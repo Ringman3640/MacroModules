@@ -6,10 +6,53 @@ namespace MacroModules.App.ViewModels.Modules;
 
 public class TriggerEntryModuleVM : ModuleVM
 {
-    public override ModuleType Type { get; } = ModuleType.TriggerEntry;
-
     public InputTrigger? Trigger
     {
-        get { return ((TriggerEntryModule)ModuleData).Trigger; }
+        get { return castedModuleData.Trigger; }
+        set
+        {
+            castedModuleData.Trigger = value;
+            OnPropertyChanged();
+        }
     }
+
+    public MacroExecutionType ExecutionType
+    {
+        get { return castedModuleData.ExecutionType; }
+        set
+        {
+            if (castedModuleData.ExecutionType != value)
+            {
+                castedModuleData.ExecutionType = value;
+                OnPropertyChanged();
+            }
+        }
+    }
+
+    public bool SuppressInput
+    {
+        get { return castedModuleData.SuppressInput; }
+        set
+        {
+            if (castedModuleData.SuppressInput != value)
+            {
+                castedModuleData.SuppressInput = value;
+                OnPropertyChanged();
+            }
+        }
+    }
+
+    public override ModuleType Type { get; } = ModuleType.TriggerEntry;
+
+    public TriggerEntryModuleVM() : base()
+    {
+        castedModuleData = (TriggerEntryModule)ModuleData;
+    }
+
+    public TriggerEntryModuleVM(TriggerEntryModule moduleData) : base(moduleData)
+    {
+        castedModuleData = moduleData;
+    }
+
+    private readonly TriggerEntryModule castedModuleData;
 }

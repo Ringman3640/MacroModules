@@ -17,7 +17,7 @@ namespace MacroModules.App.ViewModels.Modules
         {
             { ModuleType.StartupEntry, () => new StartupEntryModuleVM() },
             { ModuleType.TriggerEntry, () => new TriggerEntryModuleVM() },
-            // TODO: Add SendInput factory
+            { ModuleType.SendInput, () => new SendInputModuleVM() },
             // TODO: Add GetInputState factory
             { ModuleType.MoveCursor, () => new MoveCursorModuleVM() },
             // TODO: Add PathCursor factory

@@ -19,6 +19,9 @@
                     <DataTemplate DataType="{x:Type moduleviewmodels:TriggerEntryModuleVM}">
                         <propertyviews:TriggerEntryPropertiesView/>
                     </DataTemplate>
+                    <DataTemplate DataType="{x:Type moduleviewmodels:SendInputModuleVM}">
+                        <propertyviews:SendInputModulePropertiesView/>
+                    </DataTemplate>
                     <DataTemplate DataType="{x:Type moduleviewmodels:MoveCursorModuleVM}">
                         <propertyviews:MoveCursorPropertiesView/>
                     </DataTemplate>

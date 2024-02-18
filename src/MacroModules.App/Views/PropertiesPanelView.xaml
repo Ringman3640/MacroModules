@@ -37,6 +37,9 @@
                     <DataTemplate DataType="{x:Type moduleviewmodels:CloseProgramModuleVM}">
                         <propertyviews:CloseprogramPropertiesView/>
                     </DataTemplate>
+                    <DataTemplate DataType="{x:Type moduleviewmodels:FocusWindowModuleVM}">
+                        <propertyviews:FocusWindowPropertiesView/>
+                    </DataTemplate>
                     <DataTemplate DataType="{x:Type moduleviewmodels:PlaySoundModuleVM}">
                         <propertyviews:PlaySoundModulePropertiesView/>
                     </DataTemplate>

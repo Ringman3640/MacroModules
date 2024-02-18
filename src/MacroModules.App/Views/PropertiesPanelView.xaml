@@ -31,6 +31,9 @@
                     <DataTemplate DataType="{x:Type moduleviewmodels:ScrollModuleVM}">
                         <propertyviews:ScrollModulePropertiesView/>
                     </DataTemplate>
+                    <DataTemplate DataType="{x:Type moduleviewmodels:OpenProgramModuleVM}">
+                        <propertyviews:OpenProgramPropertiesView/>
+                    </DataTemplate>
                     <DataTemplate DataType="{x:Type moduleviewmodels:PlaySoundModuleVM}">
                         <propertyviews:PlaySoundModulePropertiesView/>
                     </DataTemplate>

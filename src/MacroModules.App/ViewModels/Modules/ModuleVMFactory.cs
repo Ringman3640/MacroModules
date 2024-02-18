@@ -23,7 +23,7 @@ namespace MacroModules.App.ViewModels.Modules
             // TODO: Add PathCursor factory
             { ModuleType.Scroll, () => new ScrollModuleVM() },
             // TODO: Add GetCursorPosition factory
-            // TODO: Add OpenProgram factory
+            { ModuleType.OpenProgram, () => new OpenProgramModuleVM() },
             // TODO: Add CloseProgram factory
             // TODO: Add FocusWindow factory
             // TODO: Add GetSnapshot factory

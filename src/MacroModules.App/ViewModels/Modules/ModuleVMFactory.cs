@@ -24,7 +24,7 @@ namespace MacroModules.App.ViewModels.Modules
             { ModuleType.Scroll, () => new ScrollModuleVM() },
             // TODO: Add GetCursorPosition factory
             { ModuleType.OpenProgram, () => new OpenProgramModuleVM() },
-            // TODO: Add CloseProgram factory
+            { ModuleType.CloseProgram, () => new CloseProgramModuleVM() },
             // TODO: Add FocusWindow factory
             // TODO: Add GetSnapshot factory
             // TODO: Add GetPixelColor factory

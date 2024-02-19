@@ -6,11 +6,13 @@
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
              xmlns:local="clr-namespace:MacroModules.App.Views" 
              xmlns:viewmodels="clr-namespace:MacroModules.App.ViewModels" 
-             xmlns:modules="clr-namespace:MacroModules.App.Views.Modules" 
              xmlns:behaviors="clr-namespace:MacroModules.App.Behaviors" 
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=viewmodels:ModuleBoardVM}"
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="/DataTemplates/ModuleViewDataTemplates.xaml"/>
+    </UserControl.Resources>
     <Canvas x:Name="cvBoardContainer" Background="Transparent" Focusable="True" AllowDrop="True">
         <Canvas.InputBindings>
             <KeyBinding Command="{Binding Board_RemoveSelectedCommand}" Gesture="Back"/>
@@ -49,7 +51,8 @@
             </i:EventTrigger>
         </i:Interaction.Triggers>
 
-        <ItemsControl ItemsSource="{Binding Elements}" RenderTransform="{Binding BoardTransform}" Canvas.Left="{Binding BoardPosition.X}" Canvas.Top="{Binding BoardPosition.Y}">
+        <ItemsControl ItemsSource="{Binding Elements}" ItemTemplate="{Binding ModuleVM}" RenderTransform="{Binding BoardTransform}"
+                      Canvas.Left="{Binding BoardPosition.X}" Canvas.Top="{Binding BoardPosition.Y}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Canvas/>
@@ -61,11 +64,6 @@
                     <Setter Property="Canvas.Top" Value="{Binding VisualPosition.Y}"/>
                 </Style>
             </ItemsControl.ItemContainerStyle>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate DataType="viewmodels:ModuleViewModel">
-                    <modules:ModuleView/>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
         </ItemsControl>
         <Canvas x:Name="cvModuleBoard" Canvas.Left="{Binding ModuleBoardPosX}" Canvas.Top="{Binding ModuleBoardPosY}"/>
 

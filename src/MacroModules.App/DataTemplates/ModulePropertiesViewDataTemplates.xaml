@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:propertyviews="clr-namespace:MacroModules.App.Views.Modules.Properties"
+                    xmlns:moduleviewmodels="clr-namespace:MacroModules.App.ViewModels.Modules">
+    <DataTemplate DataType="{x:Type moduleviewmodels:TriggerEntryModuleVM}">
+        <propertyviews:TriggerEntryPropertiesView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type moduleviewmodels:SendInputModuleVM}">
+        <propertyviews:SendInputModulePropertiesView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type moduleviewmodels:MoveCursorModuleVM}">
+        <propertyviews:MoveCursorPropertiesView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type moduleviewmodels:WaitModuleVM}">
+        <propertyviews:WaitModulePropertiesView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type moduleviewmodels:ScrollModuleVM}">
+        <propertyviews:ScrollModulePropertiesView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type moduleviewmodels:OpenProgramModuleVM}">
+        <propertyviews:OpenProgramPropertiesView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type moduleviewmodels:CloseProgramModuleVM}">
+        <propertyviews:CloseprogramPropertiesView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type moduleviewmodels:FocusWindowModuleVM}">
+        <propertyviews:FocusWindowPropertiesView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type moduleviewmodels:PlaySoundModuleVM}">
+        <propertyviews:PlaySoundModulePropertiesView/>
+    </DataTemplate>
+</ResourceDictionary>

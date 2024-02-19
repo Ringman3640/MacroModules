@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:modulevms="clr-namespace:MacroModules.App.ViewModels.Modules"
+                    xmlns:moduleviews="clr-namespace:MacroModules.App.Views.Modules">
+    <DataTemplate DataType="{x:Type modulevms:ModuleVM}">
+        <moduleviews:ModuleView/>
+    </DataTemplate>
+</ResourceDictionary>

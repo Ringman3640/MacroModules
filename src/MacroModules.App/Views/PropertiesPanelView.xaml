@@ -4,9 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MacroModules.App.Views"
-             xmlns:propertyviews="clr-namespace:MacroModules.App.Views.Modules.Properties"
              xmlns:viewmodels="clr-namespace:MacroModules.App.ViewModels"
-             xmlns:moduleviewmodels="clr-namespace:MacroModules.App.ViewModels.Modules"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=viewmodels:PropertiesPanelVM}" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -16,33 +14,7 @@
 
             <ContentControl Content="{Binding DisplayedModule, Mode=OneWay}">
                 <ContentControl.Resources>
-                    <DataTemplate DataType="{x:Type moduleviewmodels:TriggerEntryModuleVM}">
-                        <propertyviews:TriggerEntryPropertiesView/>
-                    </DataTemplate>
-                    <DataTemplate DataType="{x:Type moduleviewmodels:SendInputModuleVM}">
-                        <propertyviews:SendInputModulePropertiesView/>
-                    </DataTemplate>
-                    <DataTemplate DataType="{x:Type moduleviewmodels:MoveCursorModuleVM}">
-                        <propertyviews:MoveCursorPropertiesView/>
-                    </DataTemplate>
-                    <DataTemplate DataType="{x:Type moduleviewmodels:WaitModuleVM}">
-                        <propertyviews:WaitModulePropertiesView/>
-                    </DataTemplate>
-                    <DataTemplate DataType="{x:Type moduleviewmodels:ScrollModuleVM}">
-                        <propertyviews:ScrollModulePropertiesView/>
-                    </DataTemplate>
-                    <DataTemplate DataType="{x:Type moduleviewmodels:OpenProgramModuleVM}">
-                        <propertyviews:OpenProgramPropertiesView/>
-                    </DataTemplate>
-                    <DataTemplate DataType="{x:Type moduleviewmodels:CloseProgramModuleVM}">
-                        <propertyviews:CloseprogramPropertiesView/>
-                    </DataTemplate>
-                    <DataTemplate DataType="{x:Type moduleviewmodels:FocusWindowModuleVM}">
-                        <propertyviews:FocusWindowPropertiesView/>
-                    </DataTemplate>
-                    <DataTemplate DataType="{x:Type moduleviewmodels:PlaySoundModuleVM}">
-                        <propertyviews:PlaySoundModulePropertiesView/>
-                    </DataTemplate>
+                    <ResourceDictionary Source="/DataTemplates/ModulePropertiesViewDataTemplates.xaml"/>
                 </ContentControl.Resources>
             </ContentControl>
         </StackPanel>

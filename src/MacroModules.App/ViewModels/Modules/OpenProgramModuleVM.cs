@@ -3,7 +3,7 @@ using MacroModules.Model.Modules.Concrete;
 
 namespace MacroModules.App.ViewModels.Modules;
 
-public class OpenProgramModuleVM : ModuleVM
+public class OpenProgramModuleVM : ValuedModuleVM
 {
     public string ProgramPath
     {

@@ -3,7 +3,7 @@ using MacroModules.Model.Modules.Concrete;
 
 namespace MacroModules.App.ViewModels.Modules;
 
-public class FocusWindowModuleVM : ModuleVM
+public class FocusWindowModuleVM : ValuedModuleVM
 {
     public string SearchTerm
     {

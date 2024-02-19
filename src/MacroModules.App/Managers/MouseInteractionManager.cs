@@ -2,7 +2,6 @@
 using MacroModules.App.ViewModels.Modules;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Threading;
 
 namespace MacroModules.App.Managers;
 
@@ -36,6 +35,7 @@ public sealed class MouseInteractionManager
         }
 
         Workspace.CaptureMouse();
+        Workspace.ModuleBoard.Focus();
         initialInteractItem = sender;
         initialInteractItemType = senderType;
         initialInteractMousePos = Mouse.GetPosition(null);
@@ -77,6 +77,7 @@ public sealed class MouseInteractionManager
         }
 
         Workspace.CaptureMouse();
+        Workspace.ModuleBoard.Focus();
         initialInteractItem = sender;
         initialInteractItemType = senderType;
         initialInteractMousePos = Mouse.GetPosition(null);

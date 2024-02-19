@@ -8,6 +8,7 @@ using MacroModules.Model.Modules;
 using MacroModules.Model.Modules.Concrete;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -16,6 +17,9 @@ namespace MacroModules.App.ViewModels;
 public partial class ModuleBoardVM : MouseAwareVM, ICommittable
 {
     public WorkspaceVM Workspace { get; private set; }
+
+    [ObservableProperty]
+    private FrameworkElement? _containerViewRef;
 
     [ObservableProperty]
     private ObservableCollection<BoardElementVM> _elements = new();
@@ -104,6 +108,14 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
     {
         Workspace = workspace;
         SelectBox = new(this);
+    }
+
+    public void Focus()
+    {
+        if (ContainerViewRef is Canvas containerCanvas)
+        {
+            containerCanvas.Focus();
+        }
     }
 
     public void AddElement(BoardElementVM element)

@@ -23,6 +23,7 @@
         </Canvas.InputBindings>
         <i:Interaction.Behaviors>
             <behaviors:MouseAwareBehavior MouseAwareBehaviorInstance="{Binding MouseAwareBehaviorConnector, Mode=OneWayToSource}" MousePosition="{Binding MousePosition, Mode=OneWayToSource}"/>
+            <behaviors:ViewAwareBehavior ViewRef="{Binding ContainerViewRef, Mode=OneWayToSource}"/>
         </i:Interaction.Behaviors>
         <i:Interaction.Triggers>
             <i:EventTrigger EventName="MouseRightButtonDown">

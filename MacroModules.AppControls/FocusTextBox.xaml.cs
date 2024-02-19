@@ -53,7 +53,7 @@ public partial class FocusTextBox : UserControl
         }
         if (e.Key == Key.Enter)
         {
-            ((TextBox)sender).MoveFocus(new TraversalRequest(FocusNavigationDirection.Up));
+            focusTextBox.Focus();
         }
     }
 }

@@ -19,11 +19,9 @@
     
     <Grid>
         <ContentControl Content="{Binding Module}" IsHitTestVisible="False">
-            <ContentControl.ContentTemplate>
-                <DataTemplate>
-                    <modules:ModuleView/>
-                </DataTemplate>
-            </ContentControl.ContentTemplate>
+            <ContentControl.Resources>
+                <ResourceDictionary Source="/DataTemplates/ModuleViewDataTemplates.xaml"/>
+            </ContentControl.Resources>
         </ContentControl>
     </Grid>
 </UserControl>

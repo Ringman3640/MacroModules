@@ -10,34 +10,23 @@
              xmlns:behaviors="clr-namespace:MacroModules.App.Behaviors" 
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance Type=vmModules:ModuleVM}"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="80" d:DesignWidth="80"
+             Width="80" Height="80">
     <i:Interaction.Behaviors>
         <behaviors:MouseAwareBehavior MouseAwareBehaviorInstance="{Binding MouseAwareBehaviorConnector, Mode=OneWayToSource}" MousePosition="{Binding MousePosition, Mode=OneWayToSource}"/>
         <behaviors:DimensionsAwareBehavior BoundDimensions="{Binding Dimensions, Mode=OneWayToSource}"/>
     </i:Interaction.Behaviors>
-    <Canvas x:Name="cvModuleContainer" Width="80" Height="80">
-        <Rectangle x:Name="rectBody" Fill="Red" Width="80" Height="80">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseLeftButtonDown">
-                    <i:InvokeCommandAction Command="{Binding Path=Body_LeftMouseDownCommand}" PassEventArgsToCommand="True"/>
-                </i:EventTrigger>
-                <i:EventTrigger EventName="MouseLeftButtonUp">
-                    <i:InvokeCommandAction Command="{Binding Path=Body_LeftMouseUpCommand}" PassEventArgsToCommand="True"/>
-                </i:EventTrigger>
-                <i:EventTrigger EventName="MouseMove">
-                    <i:InvokeCommandAction Command="{Binding Path=Body_MouseMoveCommand}" PassEventArgsToCommand="True"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </Rectangle>
-        <Grid Width="80" Height="80" IsHitTestVisible="False">
-            <TextBlock Text="{Binding Type}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        </Grid>
-        <ContentControl Content="{Binding ExitPorts[0]}" Canvas.Left="80" Canvas.Top="40">
-            <ContentControl.ContentTemplate>
-                <DataTemplate>
-                    <views:ExitPortView Canvas.Left="80" Canvas.Top="40"/>
-                </DataTemplate>
-            </ContentControl.ContentTemplate>
-        </ContentControl>
-    </Canvas>
+    <Grid x:Name="gdModuleContainer">
+        <local:ModuleBodyView CornerRadius="4"/>
+        <TextBlock Text="{Binding Type}" HorizontalAlignment="Center" VerticalAlignment="Center" Panel.ZIndex="2" IsHitTestVisible="False"/>
+        <Canvas x:Name="cvAccessorySpace" Panel.ZIndex="0">
+            <ContentControl Content="{Binding ExitPorts[0]}" Canvas.Left="80" Canvas.Top="40">
+                <ContentControl.ContentTemplate>
+                    <DataTemplate>
+                        <views:ExitPortView Canvas.Left="80" Canvas.Top="40"/>
+                    </DataTemplate>
+                </ContentControl.ContentTemplate>
+            </ContentControl>
+        </Canvas>
+    </Grid>
 </UserControl>

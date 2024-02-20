@@ -40,6 +40,15 @@ public class VariableVM : ICommittable, INotifyPropertyChanged
     public Value InitialValue
     {
         get { return VariableData.InitialValue; }
+        set
+        {
+            if (VariableData.InitialValue != value)
+            {
+                FullCommitPropertyChange(VariableData.InitialValue, value);
+                VariableData.InitialValue = value;
+                OnPropertyChanged();
+            }
+        }
     }
 
     public bool PerformingCommitAction { get; set; }

@@ -71,6 +71,7 @@ public class VariableVM : ICommittable, INotifyPropertyChanged
         if (!PerformingCommitAction)
         {
             Workspace.CommitManager.PushToSeries(new PropertyCommit(this, propertyName!, originalValue, newValue));
+            Workspace.CommitManager.CommitSeries();
         }
     }
 }

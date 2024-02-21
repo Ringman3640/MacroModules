@@ -147,6 +147,7 @@ namespace MacroModules.App.ViewModels
 
         private void Module_ElementMoved(object sender, EventArgs e)
         {
+            OnPropertyChanged(nameof(PortBoardPosition));
             ResetWire();
         }
 
@@ -174,6 +175,12 @@ namespace MacroModules.App.ViewModels
         {
             Workspace?.MouseInteraction.ProcessMouseLeftUp(this, MouseInteractionItemType.Wire);
             e.Handled = true;
+        }
+
+        [RelayCommand]
+        private void Port_Loaded(RoutedEventArgs e)
+        {
+            OnPropertyChanged(nameof(PortBoardPosition));
         }
 
         [RelayCommand]

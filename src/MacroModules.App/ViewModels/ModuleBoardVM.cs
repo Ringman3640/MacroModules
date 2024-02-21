@@ -20,7 +20,10 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
     private FrameworkElement? _containerViewRef;
 
     [ObservableProperty]
-    private ObservableCollection<BoardElementVM> _elements = new();
+    private ObservableCollection<BoardElementVM> _elements = [];
+
+    [ObservableProperty]
+    private ObservableCollection<ExitPortVM> _wires = [];
 
     [ObservableProperty]
     private ScaleTransform _boardTransform = new();
@@ -94,14 +97,13 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
                 return;
             }
 
-            Elements.Add(element);
             StartupEntryModule = startupEntryModule;
         }
         else if (element is TriggerEntryModuleVM triggerEntryModule)
         {
             if (triggerEntryModule.Trigger != null)
             {
-                foreach(var triggerModule in triggerModules)
+                foreach (var triggerModule in triggerModules)
                 {
                     if (triggerModule.Trigger == null)
                     {
@@ -113,19 +115,22 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
                     }
                 }
             }
-            Elements.Add(element);
             triggerModules.Add(triggerEntryModule);
         }
-        else
-        {
-            Elements.Add(element);
-        }
 
+        Elements.Add(element);
+        element.Initialize(Workspace);
+        if (element is ModuleVM module)
+        {
+            foreach (var exitPort in module.ExitPorts)
+            {
+                Wires.Add(exitPort);
+            }
+        }
         if (!PerformingCommitAction)
         {
             Workspace.CommitManager.PushToSeries(new ElementAddedCommit(this, element));
         }
-        element.Initialize(Workspace);
     }
 
     public void RemoveElement(BoardElementVM element)
@@ -133,6 +138,13 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
         if (!Elements.Remove(element))
         {
             return;
+        }
+        if (element is ModuleVM module)
+        {
+            foreach (var exitPort in module.ExitPorts)
+            {
+                Wires.Remove(exitPort);
+            }
         }
         if (element is StartupEntryModuleVM)
         {

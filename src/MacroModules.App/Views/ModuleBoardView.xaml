@@ -47,7 +47,7 @@
         </i:Interaction.Triggers>
 
         <ItemsControl ItemsSource="{Binding Elements}" ItemTemplate="{Binding ModuleVM}" RenderTransform="{Binding BoardTransform}"
-                      Canvas.Left="{Binding BoardPosition.X}" Canvas.Top="{Binding BoardPosition.Y}">
+                      Canvas.Left="{Binding BoardPosition.X}" Canvas.Top="{Binding BoardPosition.Y}" Panel.ZIndex="1">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Canvas/>
@@ -61,6 +61,27 @@
             </ItemsControl.ItemContainerStyle>
         </ItemsControl>
         <Canvas x:Name="cvModuleBoard" Canvas.Left="{Binding ModuleBoardPosX}" Canvas.Top="{Binding ModuleBoardPosY}"/>
+
+        <ItemsControl ItemsSource="{Binding Wires}" RenderTransform="{Binding BoardTransform}"
+              Canvas.Left="{Binding BoardPosition.X}" Canvas.Top="{Binding BoardPosition.Y}" Panel.ZIndex="0">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas Background="Transparent"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemContainerStyle>
+                <Style>
+                    <Setter Property="Canvas.Left" Value="{Binding PortBoardPosition.X}"/>
+                    <Setter Property="Canvas.Top" Value="{Binding PortBoardPosition.Y}"/>
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <local:ExitPortWireView/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <Canvas x:Name="cvWireBoard" Canvas.Left="{Binding ModuleBoardPosX}" Canvas.Top="{Binding ModuleBoardPosY}"/>
 
         <ContentControl Content="{Binding SelectBox, Mode=OneWay}">
             <ContentControl.ContentTemplate>

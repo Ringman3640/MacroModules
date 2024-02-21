@@ -26,20 +26,10 @@
                 <i:EventTrigger EventName="MouseMove">
                     <i:InvokeCommandAction Command="{Binding Path=Port_MouseMoveCommand}" PassEventArgsToCommand="True"/>
                 </i:EventTrigger>
+                <i:EventTrigger EventName="Loaded">
+                    <i:InvokeCommandAction Command="{Binding Path=Port_LoadedCommand}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
             </i:Interaction.Triggers>
         </Rectangle>
-        <Line IsHitTestVisible="{Binding WireHitTestVisible}" Visibility="{Binding WireVisibility}" Stroke="Black" StrokeThickness="6" StrokeEndLineCap="Round" X1="0" X2="{Binding WireEndPoint.X}" Y1="0" Y2="{Binding WireEndPoint.Y}" Panel.ZIndex="-1">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseLeftButtonDown">
-                    <i:InvokeCommandAction Command="{Binding Path=Wire_LeftMouseDownCommand}" PassEventArgsToCommand="True"/>
-                </i:EventTrigger>
-                <i:EventTrigger EventName="MouseLeftButtonUp">
-                    <i:InvokeCommandAction Command="{Binding Path=Wire_LeftMouseUpCommand}" PassEventArgsToCommand="True"/>
-                </i:EventTrigger>
-                <i:EventTrigger EventName="MouseMove">
-                    <i:InvokeCommandAction Command="{Binding Path=Wire_MouseMoveCommand}" PassEventArgsToCommand="True"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </Line>
     </Canvas>
 </UserControl>

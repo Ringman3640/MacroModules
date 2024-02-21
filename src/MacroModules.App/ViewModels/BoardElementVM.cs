@@ -16,6 +16,9 @@ public abstract partial class BoardElementVM : MouseAwareVM, IDimensionsAware, I
 
     public abstract BoardElement ElementData { get; protected set; }
 
+    [ObservableProperty]
+    private bool _selected = false;
+
     public Point VisualPosition
     {
         get { return _visualPosition; }

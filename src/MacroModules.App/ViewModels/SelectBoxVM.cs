@@ -54,6 +54,7 @@ public partial class SelectBoxVM : MouseAwareVM
             if (elementBounds.IntersectsWith(SelectBoxRegion))
             {
                 SelectedElements.Add(element);
+                element.Selected = true;
             }
         }
 
@@ -63,15 +64,21 @@ public partial class SelectBoxVM : MouseAwareVM
     public void Select(BoardElementVM element)
     {
         SelectedElements.Add(element);
+        element.Selected = true;
     }
 
     public void Unselect(BoardElementVM element)
     {
         SelectedElements.Remove(element);
+        element.Selected = false;
     }
 
     public void UnselectAll()
     {
+        foreach (var element in SelectedElements)
+        {
+            element.Selected = false;
+        }
         SelectedElements.Clear();
     }
 

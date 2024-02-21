@@ -66,42 +66,6 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
         }
     }
 
-    public double MousePosX
-    {
-        get { return mousePosX; }
-        set { mousePosX = value; }
-    }
-    private double mousePosX;
-
-    public double MousePosY
-    {
-        get { return mousePosY; }
-        set { mousePosY = value; }
-    }
-    private double mousePosY;
-
-    public double ModuleBoardPosX
-    {
-        get { return _moduleBoardPosX; }
-        set
-        {
-            _moduleBoardPosX = value - boardOffsetFromMouse.X * BoardScale;
-            OnPropertyChanged();
-        }
-    }
-    private double _moduleBoardPosX = 0;
-
-    public double ModuleBoardPosY
-    {
-        get { return _moduleBoardPosY; }
-        set
-        {
-            _moduleBoardPosY = value - boardOffsetFromMouse.Y * BoardScale;
-            OnPropertyChanged();
-        }
-    }
-    private double _moduleBoardPosY = 0;
-
     public bool PerformingCommitAction { get; set; }
 
     public ModuleBoardVM(WorkspaceVM workspace)

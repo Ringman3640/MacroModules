@@ -67,4 +67,16 @@ public abstract partial class ModuleVM : BoardElementVM
         Workspace?.MouseInteraction.ProcessMouseMove(this, MouseInteractionItemType.Module);
         e.Handled = true;
     }
+
+    [RelayCommand]
+    private void Body_MouseEnter(RoutedEventArgs e)
+    {
+        Hovered = true;
+    }
+
+    [RelayCommand]
+    private void Body_MouseLeave(RoutedEventArgs e)
+    {
+        Hovered = false;
+    }
 }

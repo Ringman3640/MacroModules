@@ -58,9 +58,12 @@ public sealed class MouseInteractionManager
                 }
                 break;
 
+
             case MouseInteractionItemType.Wire:
+                ((ExitPortVM)sender).PreviewWireToMouse();
                 interactState = InteractionState.DraggingWire;
                 break;
+
 
             case MouseInteractionItemType.Board:
                 ModuleBoard.SelectBox.LockSelectBoxPivotToMouse();

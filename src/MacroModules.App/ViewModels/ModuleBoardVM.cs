@@ -184,14 +184,21 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
 
     private void SetZoom(double zoomValue)
     {
-        LockCanvasToMouse();
+        Point startBoardPos = BoardMousePosition;
         BoardScale = zoomValue;
-        MoveCanvasWithMouse();
+        UnlockCanvasFromMouse();
+        Vector movedOffset = ((Vector)startBoardPos - (Vector)BoardMousePosition) * BoardScale;
+        BoardPosition -= movedOffset;
     }
 
     public void LockCanvasToMouse()
     {
         boardOffsetFromMouse = MousePosition - (Vector)BoardPosition;
+    }
+
+    public void UnlockCanvasFromMouse()
+    {
+        boardOffsetFromMouse = new(0, 0);
     }
 
     public void MoveCanvasWithMouse()

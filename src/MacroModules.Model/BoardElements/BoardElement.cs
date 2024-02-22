@@ -1,8 +1,27 @@
-﻿namespace MacroModules.Model.BoardElements
+﻿using MacroModules.Model.Modules.Concrete;
+using System.Text.Json.Serialization;
+
+namespace MacroModules.Model.BoardElements
 {
     /// <summary>
     /// Represents and element on a board that has a coordinate position relative to the board.
     /// </summary>
+    [JsonDerivedType(typeof(Label), typeDiscriminator: "label")]
+    [JsonDerivedType(typeof(BranchModule), typeDiscriminator: "branchModule")]
+    [JsonDerivedType(typeof(CloseProgramModule), typeDiscriminator: "closeProgramModule")]
+    [JsonDerivedType(typeof(FocusWindowModule), typeDiscriminator: "focusWindowModule")]
+    [JsonDerivedType(typeof(GetCursorPositionModule), typeDiscriminator: "getCursorPositionModule")]
+    [JsonDerivedType(typeof(GetInputStateModule), typeDiscriminator: "getInputStateModule")]
+    [JsonDerivedType(typeof(GetPixelColorModule), typeDiscriminator: "getPixelColorModule")]
+    [JsonDerivedType(typeof(GetSnapshotModule), typeDiscriminator: "getSnapshotModule")]
+    [JsonDerivedType(typeof(MoveCursorModule), typeDiscriminator: "moveCursorModule")]
+    [JsonDerivedType(typeof(OpenProgramModule), typeDiscriminator: "openProgramModule")]
+    [JsonDerivedType(typeof(PlaySoundModule), typeDiscriminator: "playSoundModule")]
+    [JsonDerivedType(typeof(ScrollModule), typeDiscriminator: "scrollModule")]
+    [JsonDerivedType(typeof(SendInputModule), typeDiscriminator: "sendInputModule")]
+    [JsonDerivedType(typeof(StartupEntryModule), typeDiscriminator: "startupEntryModule")]
+    [JsonDerivedType(typeof(TriggerEntryModule), typeDiscriminator: "triggerEntryModule")]
+    [JsonDerivedType(typeof(WaitModule), typeDiscriminator: "waitModule")]
     public abstract class BoardElement
     {
         /// <summary>

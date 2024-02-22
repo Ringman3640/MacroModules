@@ -1,6 +1,7 @@
 ﻿using MacroModules.Model.BoardElements;
 using MacroModules.Model.Modules.Responses;
 using MacroModules.Model.Variables;
+using System.Text.Json.Serialization;
 
 namespace MacroModules.Model.Modules
 {
@@ -12,7 +13,8 @@ namespace MacroModules.Model.Modules
         /// <summary>
         /// Gets the unique identifier for this <see cref="Module"/>.
         /// </summary>
-        public Guid Id { get; } = Guid.NewGuid();
+        [JsonInclude]
+        public Guid Id { get; private set; } = Guid.NewGuid();
 
         /// <summary>
         /// Gets the type of the <see cref="Module"/> as a <see cref="ModuleType"/> enum.
@@ -44,6 +46,7 @@ namespace MacroModules.Model.Modules
         ///     position.
         /// </para>
         /// </remarks>
+        [JsonInclude]
         public List<ExitPort> ExitPorts { get; protected set; }
 
         /// <summary>

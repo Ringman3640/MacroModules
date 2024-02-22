@@ -4,6 +4,7 @@ using MacroModules.Model.Modules.Responses;
 using MacroModules.Model.Types;
 using MacroModules.Model.Values;
 using System.Drawing;
+using System.Text.Json.Serialization;
 
 namespace MacroModules.Model.Modules.Concrete
 {
@@ -21,7 +22,8 @@ namespace MacroModules.Model.Modules.Concrete
         /// Indicates the <see cref="SnapshotFilter"/> that will be applied to the resulting
         /// <see cref="Snapshot"/>.
         /// </summary>
-        public SnapshotFilter Filter { get; } = new();
+        [JsonInclude]
+        public SnapshotFilter Filter { get; private set; } = new();
 
         public override ValueDataType ReturnValueType { get; } = ValueDataType.Snapshot;
 

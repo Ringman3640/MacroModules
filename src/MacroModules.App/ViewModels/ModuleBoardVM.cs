@@ -3,8 +3,10 @@ using CommunityToolkit.Mvvm.Input;
 using MacroModules.App.Managers;
 using MacroModules.App.Managers.Commits;
 using MacroModules.App.ViewModels.Modules;
+using MacroModules.Model.BoardElements;
 using MacroModules.Model.Modules;
 using System.Collections.ObjectModel;
+using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -264,6 +266,10 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
         }
 
         Elements.Add(element);
+        if (!PerformingCommitAction)
+        {
+            SelectBox.Select(element);
+        }
         return true;
     }
 
@@ -334,6 +340,121 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
     }
 
     [RelayCommand]
+    private void Board_Cut()
+    {
+        Board_Copy();
+        Board_RemoveSelected();
+    }
+
+    [RelayCommand]
+    private void Board_Copy()
+    {
+        if (SelectBox.SelectedElements.Count == 0)
+        {
+            return;
+        }
+
+        List<BoardElement> elements = [];
+        foreach (var elementVM in SelectBox.SelectedElements)
+        {
+            elements.Add(elementVM.ElementData);
+        }
+
+        Clipboard.SetData("SerializedBoardElements", JsonSerializer.Serialize(elements));
+    }
+
+    [RelayCommand]
+    private void Board_Paste()
+    {
+        if (Clipboard.GetData("SerializedBoardElements") is not string stringData)
+        {
+            return;
+        }
+
+        // Get elements saved in clipboard data
+        List<BoardElement>? elements;
+        try
+        {
+            elements = JsonSerializer.Deserialize<List<BoardElement>>(stringData);
+        }
+        catch
+        {
+            return;
+        }
+        if (elements == null || elements.Count == 0)
+        {
+            return;
+        }
+
+        // Generate new IDs for Modules and map old IDs to corresponding Module
+        Dictionary<Guid, Module> moduleMap = [];
+        foreach (var element in elements)
+        {
+            if (element is Module module)
+            {
+                moduleMap.Add(module.Id, module);
+                module.GenerateNewId();
+            }
+        }
+
+        // Remap exit ports for modules using the created module map from above
+        foreach (var element in elements)
+        {
+            if (element is not Module module)
+            {
+                continue;
+            }
+
+            foreach (var exitPort in module.ExitPorts)
+            {
+                if (moduleMap.TryGetValue(exitPort.DestinationId, out Module? newDestination))
+                {
+                    exitPort.Destination = newDestination;
+                }
+            }
+        }
+
+        // Wrap each element in a corresponding viewmodel
+        List<BoardElementVM> elementVMs = [];
+        foreach (var elementData in elements)
+        {
+            if (elementData is Module module)
+            {
+                ModuleVM moduleVM = ModuleVMFactory.Create(module);
+                moduleVM.SetStartingPosition(moduleVM.ActualPosition);
+                elementVMs.Add(moduleVM);
+            }
+            else
+            {
+                // TODO: create label element VM
+            }
+        }
+
+        // Add elements to the board
+        SelectBox.UnselectAll();
+        AddElements(elementVMs);
+        Workspace.CommitManager.CommitSeries();
+
+        // Get the group center offset from the mouse
+        Point startingPoint = elementVMs[0].CenterVisualPosition;
+        Rect boundingRect = new(startingPoint, Size.Empty);
+        foreach (var elementVM in elementVMs)
+        {
+            boundingRect.Union(elementVM.CenterVisualPosition);
+        }
+        Point boundingRectCenter = boundingRect.TopLeft;
+        boundingRectCenter.X += boundingRect.Width / 2;
+        boundingRectCenter.Y += boundingRect.Height / 2;
+        Vector offset = (Vector)BoardMousePosition - (Vector)boundingRectCenter;
+
+        // Move elements by offset to center to mouse
+        foreach (var elementVM in elementVMs)
+        {
+            elementVM.SetStartingPosition(elementVM.ActualPosition + offset);
+        }
+    }
+
+    [RelayCommand]
     private void Board_Dropped(RoutedEventArgs e)
     {
         DragEventArgs dragEvent = (DragEventArgs)e;
@@ -343,6 +464,7 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
             ModuleVM module = ModuleVMFactory.Create(type);
             Point containerPosition = dragEvent.GetPosition((FrameworkElement)dragEvent.Source);
             module.SetCenterStartingPosition(MapContainerPositionToBoard(containerPosition));
+            SelectBox.UnselectAll();
             AddElement(module);
             Workspace.CommitManager.CommitSeries();
         }

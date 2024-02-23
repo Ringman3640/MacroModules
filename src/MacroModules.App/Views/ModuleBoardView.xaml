@@ -17,6 +17,9 @@
         <Canvas.InputBindings>
             <KeyBinding Command="{Binding Board_RemoveSelectedCommand}" Gesture="Back"/>
             <KeyBinding Command="{Binding Board_RemoveSelectedCommand}" Gesture="Delete"/>
+            <KeyBinding Command="{Binding Board_CutCommand}" Gesture="CTRL+X"/>
+            <KeyBinding Command="{Binding Board_CopyCommand}" Gesture="CTRL+C"/>
+            <KeyBinding Command="{Binding Board_PasteCommand}" Gesture="CTRL+V"/>
         </Canvas.InputBindings>
         <i:Interaction.Behaviors>
             <behaviors:MouseAwareBehavior MouseAwareBehaviorInstance="{Binding MouseAwareBehaviorConnector, Mode=OneWayToSource}" MousePosition="{Binding MousePosition, Mode=OneWayToSource}"/>

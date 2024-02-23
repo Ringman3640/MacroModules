@@ -67,6 +67,15 @@ public partial class SelectBoxVM : MouseAwareVM
         element.Selected = true;
     }
 
+    public void Select(List<BoardElementVM> elements)
+    {
+        foreach (var element in elements)
+        {
+            SelectedElements.Add(element);
+            element.Selected = true;
+        }
+    }
+
     public void Unselect(BoardElementVM element)
     {
         SelectedElements.Remove(element);

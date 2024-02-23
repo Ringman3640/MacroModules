@@ -7,6 +7,8 @@ public class CommitManager
 {
     public int MaxHistoryCount { get; set; } = 50;
 
+    public bool PerformingUndoRedo { get; private set; } = false;
+
     public CommitManager()
     {
         undoStack = new(MaxHistoryCount);
@@ -23,10 +25,12 @@ public class CommitManager
         }
 
         List<Commit> seriesToUndo = undoStack.Pop()!;
+        PerformingUndoRedo = true;
         foreach (var commit in seriesToUndo)
         {
             commit.Undo();
         }
+        PerformingUndoRedo = false;
         redoStack.Push(seriesToUndo);
     }
 
@@ -39,10 +43,12 @@ public class CommitManager
         }
 
         List<Commit> seriesToRedo = redoStack.Pop();
+        PerformingUndoRedo = true;
         foreach (var commit in seriesToRedo)
         {
             commit.Redo();
         }
+        PerformingUndoRedo = false;
         undoStack.Push(seriesToRedo);
     }
 
@@ -55,7 +61,10 @@ public class CommitManager
 
     public void PushToSeries(Commit commitItem)
     {
-        commitSeries.Add(commitItem);
+        if (!PerformingUndoRedo)
+        {
+            commitSeries.Add(commitItem);
+        }
     }
 
     public void CommitSeries()

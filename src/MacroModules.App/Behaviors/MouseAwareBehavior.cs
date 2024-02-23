@@ -6,7 +6,7 @@ namespace MacroModules.App.Behaviors;
 public class MouseAwareBehavior : Behavior<FrameworkElement>
 {
     public static readonly DependencyProperty MousePositionProperty = DependencyProperty.Register(
-        name: "MousePosition",
+        name: nameof(MousePosition),
         propertyType: typeof(Point),
         ownerType: typeof(MouseAwareBehavior),
         typeMetadata: new PropertyMetadata(default(Point)));
@@ -17,43 +17,26 @@ public class MouseAwareBehavior : Behavior<FrameworkElement>
         set { SetValue(MousePositionProperty, value); }
     }
 
-    public static readonly DependencyProperty MouseAwareBehaviorInstanceProperty =
-        DependencyProperty.Register(
-            name: "MouseAwareBehaviorInstance",
-            propertyType: typeof(MouseAwareBehavior),
-            ownerType: typeof(MouseAwareBehavior),
-            typeMetadata: new PropertyMetadata());
-
-    public MouseAwareBehavior MouseAwareBehaviorInstance
-    {
-        get { return (MouseAwareBehavior)GetValue(MouseAwareBehaviorInstanceProperty); }
-        set { SetValue(MouseAwareBehaviorInstanceProperty, value); }
-    }
-
     protected override void OnAttached()
     {
-        MouseAwareBehaviorInstance = this;
+        AssociatedObject.Loaded += AssociatedObject_Loaded;
     }
 
-    public void SetRequestEvent(INotifyMousePositionRequested targetItem)
+    private void AssociatedObject_Loaded(object sender, RoutedEventArgs e)
     {
-        targetItem.MousePositionRequested += subscribedVM_MousePositionRequested;
-        subscribedItem = targetItem;
+        if (AssociatedObject.DataContext is INotifyMousePositionRequested requester)
+        {
+            requester.MousePositionRequested += subscribedVM_MousePositionRequested;
+        }
     }
 
     protected override void OnDetaching()
     {
-        if (subscribedItem != null)
-        {
-            subscribedItem.MousePositionRequested -= subscribedVM_MousePositionRequested;
-            subscribedItem = null;
-        }
+        AssociatedObject.Loaded -= AssociatedObject_Loaded;
     }
 
     private void subscribedVM_MousePositionRequested(object sender, EventArgs e)
     {
         MousePosition = Mouse.GetPosition(AssociatedObject);
     }
-
-    private INotifyMousePositionRequested? subscribedItem;
 }

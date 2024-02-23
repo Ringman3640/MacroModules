@@ -17,11 +17,6 @@ namespace MacroModules.App.ViewModels
         }
         private Point _mousePosition;
 
-        public MouseAwareBehavior MouseAwareBehaviorConnector
-        {
-            set { value?.SetRequestEvent(this); }
-        }
-
         public event MousePositionRequestedHandler? MousePositionRequested;
     }
 }

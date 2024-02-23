@@ -22,7 +22,7 @@
             <KeyBinding Command="{Binding Board_PasteCommand}" Gesture="CTRL+V"/>
         </Canvas.InputBindings>
         <i:Interaction.Behaviors>
-            <behaviors:MouseAwareBehavior MouseAwareBehaviorInstance="{Binding MouseAwareBehaviorConnector, Mode=OneWayToSource}" MousePosition="{Binding MousePosition, Mode=OneWayToSource}"/>
+            <behaviors:MouseAwareBehavior MousePosition="{Binding MousePosition, Mode=OneWayToSource}"/>
             <behaviors:ViewAwareBehavior ViewRef="{Binding ContainerViewRef, Mode=OneWayToSource}"/>
         </i:Interaction.Behaviors>
         <i:Interaction.Triggers>

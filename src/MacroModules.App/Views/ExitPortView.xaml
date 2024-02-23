@@ -11,7 +11,7 @@
              d:DataContext="{d:DesignInstance Type=viewmodels:ExitPortVM}"
              d:DesignHeight="450" d:DesignWidth="800">
     <i:Interaction.Behaviors>
-        <behaviors:MouseAwareBehavior MouseAwareBehaviorInstance="{Binding MouseAwareBehaviorConnector, Mode=OneWayToSource}" MousePosition="{Binding MousePosition, Mode=OneWayToSource}"/>
+        <behaviors:MouseAwareBehavior MousePosition="{Binding MousePosition, Mode=OneWayToSource}"/>
         <behaviors:CanvasAwareBehavior BoundPosition="{Binding PortModulePosition, Mode=OneWayToSource}"/>
     </i:Interaction.Behaviors>
     <Canvas Width="0" Height="0">

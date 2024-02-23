@@ -13,7 +13,7 @@
              d:DesignHeight="80" d:DesignWidth="80"
              Width="80" Height="80">
     <i:Interaction.Behaviors>
-        <behaviors:MouseAwareBehavior MouseAwareBehaviorInstance="{Binding MouseAwareBehaviorConnector, Mode=OneWayToSource}" MousePosition="{Binding MousePosition, Mode=OneWayToSource}"/>
+        <behaviors:MouseAwareBehavior MousePosition="{Binding MousePosition, Mode=OneWayToSource}"/>
         <behaviors:DimensionsAwareBehavior BoundDimensions="{Binding Dimensions, Mode=OneWayToSource}"/>
     </i:Interaction.Behaviors>
     <Grid x:Name="gdModuleContainer">

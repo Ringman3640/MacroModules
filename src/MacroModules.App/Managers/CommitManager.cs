@@ -16,6 +16,7 @@ public class CommitManager
 
     public void Undo()
     {
+        CommitSeries();
         if (undoStack.Count == 0)
         {
             return;
@@ -31,6 +32,7 @@ public class CommitManager
 
     public void Redo()
     {
+        CommitSeries();
         if (redoStack.Count == 0)
         {
             return;

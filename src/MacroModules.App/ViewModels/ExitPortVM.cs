@@ -165,6 +165,11 @@ namespace MacroModules.App.ViewModels
 
         private void Module_ElementRemoved(object sender, EventArgs e)
         {
+            if (DestinationModule != null)
+            {
+                DestinationModule.ElementMoved -= Module_ElementMoved;
+                DestinationModule.ElementRemoved -= Module_ElementRemoved;
+            }
             DestinationModule = null;
         }
 

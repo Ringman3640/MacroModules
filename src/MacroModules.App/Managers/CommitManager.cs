@@ -44,6 +44,13 @@ public class CommitManager
         undoStack.Push(seriesToRedo);
     }
 
+    public void ClearCommits()
+    {
+        undoStack.Clear();
+        redoStack.Clear();
+        commitSeries.Clear();
+    }
+
     public void PushToSeries(Commit commitItem)
     {
         commitSeries.Add(commitItem);

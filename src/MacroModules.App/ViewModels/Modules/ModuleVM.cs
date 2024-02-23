@@ -47,6 +47,16 @@ public abstract partial class ModuleVM : BoardElementVM
         }
     }
 
+    public void Initialize(WorkspaceVM workspace, Dictionary<Guid, ModuleVM> moduleIdMap)
+    {
+        base.Initialize(workspace);
+        foreach (var exitPort in ModuleData.ExitPorts)
+        {
+
+            ExitPorts.Add(new ExitPortVM(exitPort, this, moduleIdMap));
+        }
+    }
+
     [RelayCommand]
     private void Body_LeftMouseDown(RoutedEventArgs e)
     {

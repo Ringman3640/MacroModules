@@ -53,6 +53,11 @@
             return stack[(topIndex > 0) ? topIndex - 1 : Capacity - 1];
         }
 
+        public void Clear()
+        {
+            Count = 0;
+        }
+
         private T[] stack;
         private int topIndex = 0;
 

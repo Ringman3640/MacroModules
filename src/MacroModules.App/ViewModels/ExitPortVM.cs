@@ -91,6 +91,18 @@ namespace MacroModules.App.ViewModels
             AttachedModule.ElementMoved += Module_ElementMoved;
         }
 
+        public ExitPortVM(ExitPort exitPort, ModuleVM attachedModule, Dictionary<Guid, ModuleVM> moduleIdMap)
+        {
+            ExitPortData = exitPort;
+            AttachedModule = attachedModule;
+            AttachedModule.ElementMoved += Module_ElementMoved;
+
+            if (moduleIdMap.TryGetValue(ExitPortData.DestinationId, out ModuleVM? moduleVM))
+            {
+                DestinationModule = moduleVM;
+            }
+        }
+
         public void ResetWire()
         {
             if (DestinationModule == null)
@@ -181,6 +193,7 @@ namespace MacroModules.App.ViewModels
         private void Port_Loaded(RoutedEventArgs e)
         {
             OnPropertyChanged(nameof(PortBoardPosition));
+            ResetWire();
         }
 
         [RelayCommand]

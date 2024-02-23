@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Xml.Linq;
 
 namespace MacroModules.App.ViewModels;
 
@@ -85,40 +86,11 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
 
     public void AddElement(BoardElementVM element)
     {
-        if (Elements.Contains(element))
+        if (!AddElementHelper(element))
         {
             return;
         }
 
-        if (element is StartupEntryModuleVM startupEntryModule)
-        {
-            if (StartupEntryModule != null)
-            {
-                return;
-            }
-
-            StartupEntryModule = startupEntryModule;
-        }
-        else if (element is TriggerEntryModuleVM triggerEntryModule)
-        {
-            if (triggerEntryModule.Trigger != null)
-            {
-                foreach (var triggerModule in triggerModules)
-                {
-                    if (triggerModule.Trigger == null)
-                    {
-                        continue;
-                    }
-                    if (triggerModule.Trigger.Equals(triggerEntryModule.Trigger))
-                    {
-                        return;
-                    }
-                }
-            }
-            triggerModules.Add(triggerEntryModule);
-        }
-
-        Elements.Add(element);
         element.Initialize(Workspace);
         if (element is ModuleVM module)
         {
@@ -130,6 +102,47 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
         if (!PerformingCommitAction)
         {
             Workspace.CommitManager.PushToSeries(new ElementAddedCommit(this, element));
+        }
+    }
+
+    public void AddElements(List<BoardElementVM> elements)
+    {
+        Dictionary<Guid, ModuleVM> moduleIdMap = [];
+        foreach (var element in elements.ToList())
+        {
+            if (!AddElementHelper(element))
+            {
+                elements.Remove(element);
+            }
+            else if (element is ModuleVM module)
+            {
+                moduleIdMap.Add(module.ModuleData.Id, module);
+
+                if (!PerformingCommitAction)
+                {
+                    Workspace.CommitManager.PushToSeries(new ElementAddedCommit(this, element));
+                }
+            }
+        }
+        
+        foreach (var element in elements)
+        {
+            if (element is ModuleVM module)
+            {
+                module.Initialize(Workspace, moduleIdMap);
+                foreach (var exitPort in module.ExitPorts)
+                {
+                    Wires.Add(exitPort);
+                }
+            }
+            else
+            {
+                element.Initialize(Workspace);
+            }
+        }
+        if (!PerformingCommitAction)
+        {
+            Workspace.CommitManager.PushToSeries(new ElementGroupAddedCommit(this, elements));
         }
     }
 
@@ -214,6 +227,45 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
 
     private readonly HashSet<TriggerEntryModuleVM> triggerModules = new();
     private Point boardOffsetFromMouse;
+
+    private bool AddElementHelper(BoardElementVM element)
+    {
+        if (Elements.Contains(element))
+        {
+            return false;
+        }
+
+        if (element is StartupEntryModuleVM startupEntryModule)
+        {
+            if (StartupEntryModule != null)
+            {
+                return false;
+            }
+
+            StartupEntryModule = startupEntryModule;
+        }
+        else if (element is TriggerEntryModuleVM triggerEntryModule)
+        {
+            if (triggerEntryModule.Trigger != null)
+            {
+                foreach (var triggerModule in triggerModules)
+                {
+                    if (triggerModule.Trigger == null)
+                    {
+                        continue;
+                    }
+                    if (triggerModule.Trigger.Equals(triggerEntryModule.Trigger))
+                    {
+                        return false;
+                    }
+                }
+            }
+            triggerModules.Add(triggerEntryModule);
+        }
+
+        Elements.Add(element);
+        return true;
+    }
 
     [RelayCommand]
     private void Board_LeftMouseDown(RoutedEventArgs e)

@@ -21,6 +21,8 @@ public partial class WorkspaceVM : ObservableObject
 
     public ModulePanelVM ModulePanel { get; private set; }
 
+    public ProjectManager Project { get; private set; }
+
     public ExecutionManager Executor { get; private set; }
 
     public WorkspaceVM(WorkspaceView viewRef)
@@ -31,6 +33,7 @@ public partial class WorkspaceVM : ObservableObject
         ModuleBoard = new(this);
         PropertiesPanel = new(this);
         ModulePanel = new(this);
+        Project = new(this);
         Executor = new(this);
     }
 
@@ -76,6 +79,20 @@ public partial class WorkspaceVM : ObservableObject
     private void Workspace_Redo()
     {
         CommitManager.Redo();
+    }
+
+    [RelayCommand]
+    private void Testing_Save()
+    {
+        Project.ProjectFilePath = "test.mmod";
+        Project.Save();
+    }
+
+    [RelayCommand]
+    private void Testing_Load()
+    {
+        Project.ProjectFilePath = "test.mmod";
+        Project.Load();
     }
 
     [RelayCommand]

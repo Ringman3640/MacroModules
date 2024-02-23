@@ -13,6 +13,8 @@
         <KeyBinding Command="{Binding Workspace_UndoCommand}" Gesture="CTRL+Z"/>
         <KeyBinding Command="{Binding Workspace_RedoCommand}" Gesture="CTRL+Y"/>
         <KeyBinding Command="{Binding Workspace_RedoCommand}" Gesture="CTRL+SHIFT+Z"/>
+        <KeyBinding Command="{Binding Testing_SaveCommand}" Gesture="CTRL+S"/>
+        <KeyBinding Command="{Binding Testing_LoadCommand}" Gesture="CTRL+L"/>
         <KeyBinding Command="{Binding Testing_StartExecutionCommand}" Key="Tab"/>
         <KeyBinding Command="{Binding Testing_TerminateExecutionCommand}" Key="Esc"/>
     </Window.InputBindings>

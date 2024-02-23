@@ -115,6 +115,8 @@ public abstract partial class BoardElementVM : MouseAwareVM, IDimensionsAware, I
     {
         _visualPosition = position;
         _actualPosition = position;
+        ElementData.PositionX = position.X;
+        ElementData.PositionY = position.Y;
         OnPropertyChanged(nameof(VisualPosition));
     }
 
@@ -122,9 +124,7 @@ public abstract partial class BoardElementVM : MouseAwareVM, IDimensionsAware, I
     {
         position -= (Vector)Dimensions / 2;
 
-        _visualPosition = position;
-        _actualPosition = position;
-        OnPropertyChanged(nameof(VisualPosition));
+        SetStartingPosition(position);
     }
 
     public void IndicateRemoved()

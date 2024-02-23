@@ -123,5 +123,17 @@ namespace MacroModules.Model.Modules
         {
             processData = null;
         }
+
+        /// <summary>
+        /// Replaces the current Id of this <see cref="Module"/> with a new Id.
+        /// </summary>
+        /// <remarks>
+        /// This method should only be called if the current module is not referenced by any other
+        /// modules. Any previous object references to this module may result in broken state.
+        /// </remarks>
+        public virtual void GenerateNewId()
+        {
+            Id = Guid.NewGuid();
+        }
     }
 }

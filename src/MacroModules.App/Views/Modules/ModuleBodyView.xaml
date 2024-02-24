@@ -9,7 +9,7 @@
              xmlns:modulevms="clr-namespace:MacroModules.App.ViewModels.Modules"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=modulevms:ModuleVM}"
-             d:DesignHeight="80" d:DesignWidth="80"
+             d:DesignWidth="{StaticResource StandardModuleWidth}" d:DesignHeight="{StaticResource StandardModuleHeight}" 
              Panel.ZIndex="1">
     <Border CornerRadius="{Binding CornerRadius, ElementName=moduleBodyView}" Background="Red">
         <i:Interaction.Triggers>

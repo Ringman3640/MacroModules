@@ -10,14 +10,14 @@
              xmlns:behaviors="clr-namespace:MacroModules.App.Behaviors"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=vmModules:ValuedModuleVM}"
-             d:DesignHeight="80" d:DesignWidth="80"
-             Width="80" Height="80">
+             d:DesignWidth="{StaticResource StandardModuleWidth}" d:DesignHeight="{StaticResource StandardModuleHeight}"
+             Width="{StaticResource StandardModuleWidth}" Height="{StaticResource StandardModuleHeight}">
     <i:Interaction.Behaviors>
         <behaviors:MouseAwareBehavior MousePosition="{Binding MousePosition, Mode=OneWayToSource}"/>
         <behaviors:DimensionsAwareBehavior BoundDimensions="{Binding Dimensions, Mode=OneWayToSource}"/>
     </i:Interaction.Behaviors>
     <Grid x:Name="gdModuleContainer">
-        <local:ModuleBodyView CornerRadius="16"/>
+        <local:ModuleBodyView CornerRadius="{StaticResource StandardLargeCornerRadius}"/>
         <TextBlock Text="{Binding Type}" HorizontalAlignment="Center" VerticalAlignment="Center" Panel.ZIndex="2" IsHitTestVisible="False"/>
         <Canvas x:Name="cvAccessorySpace" Panel.ZIndex="0">
             <Canvas.Style>

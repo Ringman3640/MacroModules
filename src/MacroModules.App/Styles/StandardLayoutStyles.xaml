@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <Thickness x:Key="StandardPadding">10</Thickness>
+    <sys:Double x:Key="StandardModuleWidth">80</sys:Double>
+    <sys:Double x:Key="StandardModuleHeight">80</sys:Double>
+    <CornerRadius x:Key="StandardSmallCornerRadius">4</CornerRadius>
+    <CornerRadius x:Key="StandardMediumCornerRadius">10</CornerRadius>
+    <CornerRadius x:Key="StandardLargeCornerRadius">16</CornerRadius>
+</ResourceDictionary>

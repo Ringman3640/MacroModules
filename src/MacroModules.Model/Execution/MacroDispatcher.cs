@@ -19,7 +19,19 @@ namespace MacroModules.Model.Execution
         /// A running <see cref="MacroDispatcher"/> is actively serving macro executions in response
         /// to input trigger events.
         /// </remarks>
-        public bool Running { get; private set; } = false;
+        public bool Running
+        {
+            get { return _running; }
+            private set
+            {
+                if (_running != value)
+                {
+                    _running = value;
+                    RunningStateChanged?.Invoke(this, EventArgs.Empty);
+                }
+            }
+        }
+        private bool _running = false;
 
         /// <summary>
         /// Indicates the maximum number of executor threads that can be initialized on
@@ -47,6 +59,12 @@ namespace MacroModules.Model.Execution
         /// as this terminating trigger, the macro will not be activated.
         /// </remarks>
         public InputTrigger? TerminateTrigger { get; set; } = null;
+
+        /// <summary>
+        /// The event that occurs when the <see cref="MacroDispatcher"/> <see cref="Running"/> state
+        /// has changed.
+        /// </summary>
+        public event RunningStateChangedEventHandler? RunningStateChanged;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MacroDispatcher"/> class with default
@@ -466,4 +484,12 @@ namespace MacroModules.Model.Execution
             SoundManager.DispatchStopAll();
         }
     }
+
+    /// <summary>
+    /// Represents the method that will handle the <see cref="MacroDispatcher.RunningStateChanged"/>
+    /// event raised.
+    /// </summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="e">A <see cref="EventArgs"/> that contains no event data.</param>
+    public delegate void RunningStateChangedEventHandler(object sender, EventArgs e);
 }

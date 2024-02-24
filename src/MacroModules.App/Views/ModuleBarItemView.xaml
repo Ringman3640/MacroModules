@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="MacroModules.App.Views.ModulePanelItemView"
+﻿<UserControl x:Class="MacroModules.App.Views.ModuleBarItemView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,12 +8,12 @@
              xmlns:viewmodels="clr-namespace:MacroModules.App.ViewModels"
              xmlns:modules="clr-namespace:MacroModules.App.Views.Modules"
              mc:Ignorable="d" 
-             d:DataContext="{d:DesignInstance Type=viewmodels:ModulePanelItemVM}"
+             d:DataContext="{d:DesignInstance Type=viewmodels:ModuleBarItemVM}"
              d:DesignHeight="450" d:DesignWidth="800"
              Width="100" Height="100" Background="Transparent">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="MouseLeftButtonDown">
-            <i:InvokeCommandAction Command="{Binding Path=ModulePanelItem_LeftMouseDownCommand}" PassEventArgsToCommand="True"/>
+            <i:InvokeCommandAction Command="{Binding Path=ModuleBarItem_LeftMouseDownCommand}" PassEventArgsToCommand="True"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     

@@ -3,13 +3,13 @@ using MacroModules.Model.Modules;
 
 namespace MacroModules.App.ViewModels;
 
-public class ModulePanelVM
+public class ModuleBarVM
 {
     public WorkspaceVM Workspace { get; private set; }
 
-    public List<ModulePanelItemVM> Items { get; } = [];
+    public List<ModuleBarItemVM> Items { get; } = [];
 
-    public ModulePanelVM(WorkspaceVM workspace)
+    public ModuleBarVM(WorkspaceVM workspace)
     {
         Workspace = workspace;
         Array modulesArray = typeof(ModuleType).GetEnumValues();
@@ -18,7 +18,7 @@ public class ModulePanelVM
             try
             {
                 ModuleVM module = ModuleVMFactory.Create(moduleType);
-                Items.Add(new ModulePanelItemVM(module));
+                Items.Add(new ModuleBarItemVM(module));
             }
             catch { }
         }

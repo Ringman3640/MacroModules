@@ -2,9 +2,9 @@
 
 namespace MacroModules.App.Views;
 
-public partial class ModulePanelView : UserControl
+public partial class ModuleBarItemView : UserControl
 {
-    public ModulePanelView()
+    public ModuleBarItemView()
     {
         InitializeComponent();
     }

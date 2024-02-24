@@ -19,7 +19,7 @@ public partial class WorkspaceVM : ObservableObject
 
     public PropertiesPanelVM PropertiesPanel { get; private set; }
 
-    public ModulePanelVM ModulePanel { get; private set; }
+    public ModuleBarVM ModuleBar { get; private set; }
 
     public ProjectManager Project { get; private set; }
 
@@ -32,7 +32,7 @@ public partial class WorkspaceVM : ObservableObject
         CommitManager = new();
         ModuleBoard = new(this);
         PropertiesPanel = new(this);
-        ModulePanel = new(this);
+        ModuleBar = new(this);
         Project = new(this);
         Executor = new(this);
     }

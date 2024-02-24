@@ -47,10 +47,10 @@
             </ContentControl.ContentTemplate>
         </ContentControl>
 
-        <ContentControl Content="{Binding ModulePanel, Mode=OneWay}" VerticalAlignment="Bottom">
+        <ContentControl Content="{Binding ModuleBar, Mode=OneWay}" VerticalAlignment="Bottom">
             <ContentControl.ContentTemplate>
                 <DataTemplate>
-                    <local:ModulePanelView/>
+                    <local:ModuleBarView/>
                 </DataTemplate>
             </ContentControl.ContentTemplate>
         </ContentControl>

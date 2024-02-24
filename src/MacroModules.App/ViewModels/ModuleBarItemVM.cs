@@ -6,17 +6,17 @@ using System.Windows.Controls;
 
 namespace MacroModules.App.ViewModels
 {
-    public partial class ModulePanelItemVM : ObservableObject
+    public partial class ModuleBarItemVM : ObservableObject
     {
         public ModuleVM Module { get; private set; }
 
-        public ModulePanelItemVM(ModuleVM module)
+        public ModuleBarItemVM(ModuleVM module)
         {
             Module = module;
         }
 
         [RelayCommand]
-        private void ModulePanelItem_LeftMouseDown(RoutedEventArgs e)
+        private void ModuleBarItem_LeftMouseDown(RoutedEventArgs e)
         {
             DragDrop.DoDragDrop((UserControl)e.Source, Module.Type, DragDropEffects.Copy);
         }

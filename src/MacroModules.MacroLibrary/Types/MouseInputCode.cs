@@ -7,7 +7,7 @@
     /// <remarks>
     /// This enum set is a subset of <see cref="InputCode"/>.
     /// </remarks>
-    public enum MouseInputCode
+    public enum MouseInputCode : ushort
     {
         MouseLeft = 0x01,
         MouseRight = 0x02,

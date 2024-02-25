@@ -67,7 +67,7 @@ namespace MacroModules.Model.Execution
         /// </returns>
         public bool IsMouseInput()
         {
-            return Enum.IsDefined(typeof(MouseInputCode), (int)InputKeyCode);
+            return Enum.IsDefined(typeof(MouseInputCode), InputKeyCode);
         }
 
         /// <inheritdoc/>

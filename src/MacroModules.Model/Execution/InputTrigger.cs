@@ -28,6 +28,16 @@ namespace MacroModules.Model.Execution
 
         /// <summary>
         /// Initializes a new instance of <see cref="InputTrigger"/> that is populated with a
+        /// virtual key code input value and no <see cref="InputModifiers"/> flags.
+        /// </summary>
+        /// <param name="inputKeyCode">The virtual key code of the trigger.</param>
+        public InputTrigger(ushort inputKeyCode)
+        {
+            InputKeyCode = inputKeyCode;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="InputTrigger"/> that is populated with a
         /// virtual key code input value and an <see cref="InputModifiers"/> flag value.
         /// </summary>
         /// <param name="inputKeyCode">The virtual key code of the trigger.</param>

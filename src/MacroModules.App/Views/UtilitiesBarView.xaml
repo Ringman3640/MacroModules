@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="MacroModules.App.Views.UtilitiesBarView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MacroModules.App.Views"
+             xmlns:viewmodels="clr-namespace:MacroModules.App.ViewModels" 
+             xmlns:buttons="clr-namespace:MacroModules.AppControls.Buttons;assembly=MacroModules.AppControls"
+             xmlns:graphics="clr-namespace:MacroModules.AppControls.Graphics;assembly=MacroModules.AppControls"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=viewmodels:UtilitiesBarVM}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Border Padding="{StaticResource StandardPadding}" Background="#E8E8E8">
+        <Border.Effect>
+            <DropShadowEffect Direction="270" Color="LightGray" ShadowDepth="2"/>
+        </Border.Effect>
+        <StackPanel Orientation="Horizontal">
+            <buttons:LargeIconButton ButtonText="Start" ButtonCommand="{Binding StartExecutionCommand}">
+                <buttons:LargeIconButton.Style>
+                    <Style TargetType="buttons:LargeIconButton">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ExecutionRunning}" Value="True">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </buttons:LargeIconButton.Style>
+                <buttons:LargeIconButton.IconContent>
+                    <Image Source="/Resources/Images/UtilitiesBar/start_icon.png"/>
+                </buttons:LargeIconButton.IconContent>
+            </buttons:LargeIconButton>
+
+            <buttons:LargeIconButton ButtonText="Stop" ButtonCommand="{Binding StopExecutionCommand}">
+                <buttons:LargeIconButton.Style>
+                    <Style TargetType="buttons:LargeIconButton">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ExecutionRunning}" Value="False">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </buttons:LargeIconButton.Style>
+                <buttons:LargeIconButton.IconContent>
+                    <Image Source="/Resources/Images/UtilitiesBar/stop_icon.png"/>
+                </buttons:LargeIconButton.IconContent>
+            </buttons:LargeIconButton>
+
+            <buttons:LargeIconButton ButtonText="Terminate" ButtonCommand="{Binding StopExecutionCommand}">
+                <buttons:LargeIconButton.IconContent>
+                    <graphics:InputTriggerGraphic InputTrigger="{Binding Workspace.Executor.TerminateTrigger}"
+                                                  FontSize="{StaticResource StandardMediumFontSize}"/>
+                </buttons:LargeIconButton.IconContent>
+            </buttons:LargeIconButton>
+        </StackPanel>
+    </Border>
+</UserControl>

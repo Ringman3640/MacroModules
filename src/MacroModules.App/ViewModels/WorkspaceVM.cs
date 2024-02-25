@@ -21,6 +21,8 @@ public partial class WorkspaceVM : ObservableObject
 
     public ModuleBarVM ModuleBar { get; private set; }
 
+    public UtilitiesBarVM UtilitiesBar { get; private set; }
+
     public ProjectManager Project { get; private set; }
 
     public ExecutionManager Executor { get; private set; }
@@ -33,6 +35,7 @@ public partial class WorkspaceVM : ObservableObject
         ModuleBoard = new(this);
         PropertiesPanel = new(this);
         ModuleBar = new(this);
+        UtilitiesBar = new(this);
         Project = new(this);
         Executor = new(this);
     }

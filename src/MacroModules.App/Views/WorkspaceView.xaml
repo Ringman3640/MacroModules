@@ -31,28 +31,43 @@
     </i:Interaction.Triggers>
     
     <Grid x:Name="gdWorkspace" Background="Transparent">
-        <ContentControl Content="{Binding ModuleBoard, Mode=OneWay}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <ContentControl Grid.Row="0" Content="{Binding UtilitiesBar, Mode=OneWay}" Panel.ZIndex="1">
             <ContentControl.ContentTemplate>
                 <DataTemplate>
-                    <local:ModuleBoardView/>
-                </DataTemplate>
-            </ContentControl.ContentTemplate>
-        </ContentControl>
-        
-        <ContentControl Content="{Binding PropertiesPanel, Mode=OneWay}" HorizontalAlignment="Right" VerticalAlignment="Top">
-            <ContentControl.ContentTemplate>
-                <DataTemplate>
-                    <local:PropertiesPanelView/>
+                    <local:UtilitiesBarView/>
                 </DataTemplate>
             </ContentControl.ContentTemplate>
         </ContentControl>
 
-        <ContentControl Content="{Binding ModuleBar, Mode=OneWay}" VerticalAlignment="Bottom">
-            <ContentControl.ContentTemplate>
-                <DataTemplate>
-                    <local:ModuleBarView/>
-                </DataTemplate>
-            </ContentControl.ContentTemplate>
-        </ContentControl>
+        <Grid Grid.Row="1">
+            <ContentControl Content="{Binding ModuleBoard, Mode=OneWay}">
+                <ContentControl.ContentTemplate>
+                    <DataTemplate>
+                        <local:ModuleBoardView/>
+                    </DataTemplate>
+                </ContentControl.ContentTemplate>
+            </ContentControl>
+
+            <ContentControl Content="{Binding PropertiesPanel, Mode=OneWay}" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <ContentControl.ContentTemplate>
+                    <DataTemplate>
+                        <local:PropertiesPanelView/>
+                    </DataTemplate>
+                </ContentControl.ContentTemplate>
+            </ContentControl>
+
+            <ContentControl Content="{Binding ModuleBar, Mode=OneWay}" VerticalAlignment="Bottom">
+                <ContentControl.ContentTemplate>
+                    <DataTemplate>
+                        <local:ModuleBarView/>
+                    </DataTemplate>
+                </ContentControl.ContentTemplate>
+            </ContentControl>
+        </Grid>
     </Grid>
 </Window>

@@ -8,8 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\key_icon.png" />
+    <None Remove="Resources\mouse_icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\src\MacroModules.MacroLibrary\MacroModules.MacroLibrary.csproj" />
     <ProjectReference Include="..\src\MacroModules.Model\MacroModules.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\key_icon.png" />
+    <Resource Include="Resources\mouse_icon.png" />
   </ItemGroup>
 
 </Project>

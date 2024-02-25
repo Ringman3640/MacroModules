@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\UtilitiesBar\start_icon.png" />
+    <None Remove="Resources\Images\UtilitiesBar\stop_icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.77" />
   </ItemGroup>
@@ -16,6 +21,11 @@
   <ItemGroup>
     <ProjectReference Include="..\..\MacroModules.AppControls\MacroModules.AppControls.csproj" />
     <ProjectReference Include="..\MacroModules.Model\MacroModules.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\UtilitiesBar\start_icon.png" />
+    <Resource Include="Resources\Images\UtilitiesBar\stop_icon.png" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Messaging;
+using MacroModules.App.Messages;
 using MacroModules.App.ViewModels;
 using MacroModules.App.ViewModels.Modules;
+using MacroModules.MacroLibrary.Types;
 using MacroModules.Model.Execution;
 using MacroModules.Model.Modules.Concrete;
 
@@ -12,9 +15,12 @@ public class ExecutionManager : ObservableObject
 
     public bool Running { get { return macroDispatcher.Running; } }
 
+    public InputTrigger TerminateTrigger { get; set; } = new InputTrigger((ushort)InputCode.Escape);
+
     public ExecutionManager(WorkspaceVM workspace)
     {
         Workspace = workspace;
+        macroDispatcher.RunningStateChanged += MacroDispatcher_RunningStateChanged;
     }
 
     public void Startup()
@@ -56,4 +62,9 @@ public class ExecutionManager : ObservableObject
     }
 
     private readonly MacroDispatcher macroDispatcher = new();
+
+    private void MacroDispatcher_RunningStateChanged(object sender, EventArgs e)
+    {
+        WeakReferenceMessenger.Default.Send(new ExecutionStateChangedMessage(Running));
+    }
 }

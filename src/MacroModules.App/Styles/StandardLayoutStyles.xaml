@@ -7,4 +7,5 @@
     <CornerRadius x:Key="StandardSmallCornerRadius">4</CornerRadius>
     <CornerRadius x:Key="StandardMediumCornerRadius">10</CornerRadius>
     <CornerRadius x:Key="StandardLargeCornerRadius">16</CornerRadius>
+    <sys:Double x:Key="StandardMediumFontSize">16</sys:Double>
 </ResourceDictionary>

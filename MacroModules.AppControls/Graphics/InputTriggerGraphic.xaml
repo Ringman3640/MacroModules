@@ -1,0 +1,37 @@
+﻿<UserControl x:Name="inputTriggerGraphic"
+             x:Class="MacroModules.AppControls.Graphics.InputTriggerGraphic"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MacroModules.AppControls.Graphics"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="100"
+             Loaded="InputTriggerGraphic_Loaded">
+    <Grid>
+        <Image Source="/MacroModules.AppControls;component/Resources/key_icon.png">
+            <Image.Style>
+                <Style TargetType="Image">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsKeyInput, ElementName=inputTriggerGraphic}" Value="False">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
+        </Image>
+        <Image Source="/MacroModules.AppControls;component/Resources/mouse_icon.png">
+            <Image.Style>
+            <Style TargetType="Image">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding IsKeyInput, ElementName=inputTriggerGraphic}" Value="True">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+            </Image.Style>
+        </Image>
+        <TextBlock Text="{Binding InputText,ElementName=inputTriggerGraphic}"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </Grid>
+</UserControl>

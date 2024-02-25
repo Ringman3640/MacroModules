@@ -58,6 +58,18 @@ namespace MacroModules.Model.Execution
             return new InputTrigger(inputData.InputKeyCode, inputData.Modifiers);
         }
 
+        /// <summary>
+        /// Gets if the <see cref="InputTrigger"/> originates from a mouse button input.
+        /// </summary>
+        /// <returns>
+        /// <c>true</c> if the <see cref="InputTrigger"/> is a mouse button input. Otherwise,
+        /// <c>false</c>.
+        /// </returns>
+        public bool IsMouseInput()
+        {
+            return Enum.IsDefined(typeof(MouseInputCode), (int)InputKeyCode);
+        }
+
         /// <inheritdoc/>
         public bool Equals(InputTrigger? other)
         {

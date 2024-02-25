@@ -23,6 +23,28 @@ namespace MacroModules.MacroLibrary
             return abbreviation ?? inputCode.ToString();
         }
 
+        /// <param name="inputCode">
+        /// The <see cref="ushort"/> representation of the <see cref="InputCode"/> to abbreviate.
+        /// </param>
+        /// <returns>
+        /// The string abbreviation of <paramref name="inputCode"/>. If there is no corresponding
+        /// abbreviation for the input code, the string representation of the input code enum is
+        /// returned. If <paramref name="inputCode"/> does not correspond to a valid
+        /// <see cref="InputCode"/> enum, <paramref name="inputCode"/> is returned prepended with
+        /// "Vk_".
+        /// </returns>
+        /// <inheritdoc cref="GetAbbreviation(InputCode)"/>
+        public static string GetAbbreviation(ushort inputCode)
+        {
+            if (Enum.IsDefined(typeof(InputCode), inputCode))
+            {
+                InputCode temp = (InputCode)inputCode;
+                abbreviationMap.TryGetValue((InputCode)inputCode, out string? abbreviation);
+                return abbreviation ?? ((InputCode)inputCode).ToString();
+            }
+            return "Vk_" + inputCode;
+        }
+
         private static Dictionary<InputCode, string?> abbreviationMap = new()
         {
             { InputCode.MouseLeft, "Left Mouse" },

@@ -19,7 +19,7 @@
     <Grid x:Name="gdModuleContainer">
         <local:ModuleBodyView CornerRadius="{StaticResource StandardSmallCornerRadius}"/>
         <TextBlock Text="{Binding Type}" HorizontalAlignment="Center" VerticalAlignment="Center" Panel.ZIndex="2" IsHitTestVisible="False"/>
-        <Canvas x:Name="cvAccessorySpace" Panel.ZIndex="0">
+        <Canvas x:Name="cvAccessorySpace" Panel.ZIndex="1">
             <ContentControl Content="{Binding ExitPorts[0]}" Canvas.Left="80" Canvas.Top="40">
                 <ContentControl.ContentTemplate>
                     <DataTemplate>

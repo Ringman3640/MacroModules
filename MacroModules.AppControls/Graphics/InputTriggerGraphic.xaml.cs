@@ -1,8 +1,7 @@
-﻿using MacroModules.AppControls.Buttons;
-using MacroModules.MacroLibrary;
+﻿using MacroModules.MacroLibrary;
+using MacroModules.MacroLibrary.Types;
 using MacroModules.Model.Execution;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -19,7 +18,10 @@ public partial class InputTriggerGraphic : UserControl, INotifyPropertyChanged
         name: nameof(InputTrigger),
         propertyType: typeof(InputTrigger),
         ownerType: typeof(InputTriggerGraphic),
-        typeMetadata: new PropertyMetadata(null));
+        typeMetadata: new FrameworkPropertyMetadata(
+            defaultValue: null,
+            flags: FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
+            new PropertyChangedCallback(InputTriggerProperty_PropertyChanged)));
 
     public bool IsKeyInput
     {
@@ -28,7 +30,30 @@ public partial class InputTriggerGraphic : UserControl, INotifyPropertyChanged
 
     public string InputText
     {
-        get { return (InputTrigger != null) ? InputCodeAbbreviation.GetAbbreviation(InputTrigger.InputKeyCode) : ""; }
+        get
+        {
+            if (InputTrigger == null)
+            {
+                return "";
+            }
+            if (InputTrigger.IsMouseInput())
+            {
+                switch ((InputCode)InputTrigger.InputKeyCode)
+                {
+                    case InputCode.MouseLeft:
+                        return "L";
+                    case InputCode.MouseRight:
+                        return "R";
+                    case InputCode.MouseMiddle:
+                        return "M";
+                    case InputCode.MouseX1:
+                        return "X1";
+                    case InputCode.MouseX2:
+                        return "X2";
+                }
+            }
+            return InputCodeAbbreviation.GetAbbreviation(InputTrigger.InputKeyCode).ToUpper();
+        }
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;
@@ -40,12 +65,18 @@ public partial class InputTriggerGraphic : UserControl, INotifyPropertyChanged
 
     private void InputTriggerGraphic_Loaded(object sender, RoutedEventArgs e)
     {
-        OnPropertyChanged(nameof(IsKeyInput));
-        OnPropertyChanged(nameof(InputText));
+        NotifyPropertyBindings();
     }
 
-    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    private static void InputTriggerProperty_PropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        var self = (InputTriggerGraphic)d;
+        self.NotifyPropertyBindings();
+    }
+
+    private void NotifyPropertyBindings()
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsKeyInput)));
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(InputText)));
     }
 }

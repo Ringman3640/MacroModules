@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.Messaging;
 using MacroModules.App.Messages;
 using MacroModules.MacroLibrary.Types;
 using MacroModules.Model.Execution;
+using MacroModules.Model.GolbalSystems;
 
 namespace MacroModules.App.ViewModels;
 
@@ -14,6 +15,7 @@ public partial class UtilitiesBarVM : ObservableObject
     [ObservableProperty]
     [NotifyCanExecuteChangedFor(nameof(StartExecutionCommand))]
     [NotifyCanExecuteChangedFor(nameof(StopExecutionCommand))]
+    [NotifyCanExecuteChangedFor(nameof(SetTerminateTriggerCommand))]
     private bool _executionRunning = false;
 
     public UtilitiesBarVM(WorkspaceVM workspace)
@@ -46,5 +48,16 @@ public partial class UtilitiesBarVM : ObservableObject
     private bool CanStopExecution()
     {
         return ExecutionRunning;
+    }
+
+    [RelayCommand(CanExecute = nameof(CanSetTerminateTrigger))]
+    private void SetTerminateTrigger()
+    {
+        TriggerInputObtainer.InputHandler = (InputTrigger trigger) => Workspace.Executor.TerminateTrigger = trigger;
+        TriggerInputObtainer.Start();
+    }
+    private bool CanSetTerminateTrigger()
+    {
+        return !ExecutionRunning;
     }
 }

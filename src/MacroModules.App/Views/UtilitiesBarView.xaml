@@ -9,12 +9,19 @@
              xmlns:graphics="clr-namespace:MacroModules.AppControls.Graphics;assembly=MacroModules.AppControls"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=viewmodels:UtilitiesBarVM}"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="120" d:DesignWidth="800">
     <Border Padding="{StaticResource StandardPadding}" Background="#E8E8E8">
         <Border.Effect>
             <DropShadowEffect Direction="270" Color="LightGray" ShadowDepth="2"/>
         </Border.Effect>
         <StackPanel Orientation="Horizontal">
+            <StackPanel.Resources>
+                <Style x:Key="InvisibleSeparator" TargetType="Separator">
+                    <Setter Property="Width" Value="20"/>
+                    <Setter Property="Visibility" Value="Hidden"/>
+                </Style>
+            </StackPanel.Resources>
+            
             <buttons:LargeIconButton ButtonText="Start" ButtonCommand="{Binding StartExecutionCommand}">
                 <buttons:LargeIconButton.Style>
                     <Style TargetType="buttons:LargeIconButton">
@@ -45,7 +52,9 @@
                 </buttons:LargeIconButton.IconContent>
             </buttons:LargeIconButton>
 
-            <buttons:LargeIconButton ButtonText="Terminate" ButtonCommand="{Binding StopExecutionCommand}">
+            <Separator Style="{StaticResource InvisibleSeparator}"/>
+
+            <buttons:LargeIconButton ButtonText="Terminate" ButtonCommand="{Binding SetTerminateTriggerCommand}">
                 <buttons:LargeIconButton.IconContent>
                     <graphics:InputTriggerGraphic InputTrigger="{Binding Workspace.Executor.TerminateTrigger}"
                                                   FontSize="{StaticResource StandardMediumFontSize}"/>

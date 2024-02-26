@@ -9,13 +9,14 @@ using MacroModules.Model.Modules.Concrete;
 
 namespace MacroModules.App.Managers;
 
-public class ExecutionManager : ObservableObject
+public partial class ExecutionManager : ObservableObject
 {
     public WorkspaceVM Workspace { get; private set; }
 
     public bool Running { get { return macroDispatcher.Running; } }
 
-    public InputTrigger TerminateTrigger { get; set; } = new InputTrigger((ushort)InputCode.Escape);
+    [ObservableProperty]
+    private InputTrigger _terminateTrigger = new InputTrigger((ushort)InputCode.Escape);
 
     public ExecutionManager(WorkspaceVM workspace)
     {
@@ -46,6 +47,7 @@ public class ExecutionManager : ObservableObject
             }
         }
 
+        macroDispatcher.TerminateTrigger = TerminateTrigger;
         macroDispatcher.Startup();
         OnPropertyChanged(nameof(Running));
     }

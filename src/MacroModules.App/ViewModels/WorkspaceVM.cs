@@ -97,16 +97,4 @@ public partial class WorkspaceVM : ObservableObject
         Project.ProjectFilePath = "test.mmod";
         Project.Load();
     }
-
-    [RelayCommand]
-    private void Testing_StartExecution()
-    {
-        Executor.Startup();
-    }
-
-    [RelayCommand]
-    private void Testing_TerminateExecution()
-    {
-        Executor.Terminate();
-    }
 }

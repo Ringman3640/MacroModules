@@ -1,4 +1,5 @@
-﻿<UserControl x:Class="MacroModules.App.Views.Modules.ModuleView"
+﻿<UserControl x:Name="baseValuedModuleView"
+             x:Class="MacroModules.App.Views.Modules.BaseValuedModuleView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -17,12 +18,10 @@
         <behaviors:DimensionsAwareBehavior BoundDimensions="{Binding Dimensions, Mode=OneWayToSource}"/>
     </i:Interaction.Behaviors>
     <Grid x:Name="gdModuleContainer">
-        <local:ModuleBodyView CornerRadius="{StaticResource StandardSmallCornerRadius}" BodyColor="Red">
-            <local:ModuleBodyView.BodyContent>
-                <Image Source="{StaticResource icon_openprogramDrawingImage}"/>
-            </local:ModuleBodyView.BodyContent>
-        </local:ModuleBodyView>
-        <Canvas x:Name="cvAccessorySpace" Panel.ZIndex="1">
+        <local:ModuleBodyView CornerRadius="{StaticResource StandardLargeCornerRadius}"
+                          BodyColor="{Binding BodyColor, ElementName=baseValuedModuleView}"
+                          BodyContent="{Binding BodyContent, ElementName=baseValuedModuleView}"/>
+        <Canvas Panel.ZIndex="1">
             <ContentControl Content="{Binding ExitPorts[0]}" Canvas.Left="80" Canvas.Top="40">
                 <ContentControl.ContentTemplate>
                     <DataTemplate>

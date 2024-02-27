@@ -1,11 +1,35 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:modulevms="clr-namespace:MacroModules.App.ViewModels.Modules"
+                    xmlns:moduleVMs="clr-namespace:MacroModules.App.ViewModels.Modules"
                     xmlns:moduleviews="clr-namespace:MacroModules.App.Views.Modules">
-    <DataTemplate DataType="{x:Type modulevms:ModuleVM}">
+    <DataTemplate DataType="{x:Type moduleVMs:ModuleVM}">
         <moduleviews:ModuleView/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type modulevms:ValuedModuleVM}">
+    <DataTemplate DataType="{x:Type moduleVMs:ValuedModuleVM}">
         <moduleviews:ValuedModuleView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type moduleVMs:SendInputModuleVM}">
+        <moduleviews:SendInputModuleView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type moduleVMs:MoveCursorModuleVM}">
+        <moduleviews:MoveCursorModuleView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type moduleVMs:ScrollModuleVM}">
+        <moduleviews:ScrollModuleView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type moduleVMs:OpenProgramModuleVM}">
+        <moduleviews:OpenProgramModuleView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type moduleVMs:CloseProgramModuleVM}">
+        <moduleviews:CloseProgramModuleView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type moduleVMs:FocusWindowModuleVM}">
+        <moduleviews:FocusWindowModuleView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type moduleVMs:WaitModuleVM}">
+        <moduleviews:WaitModuleView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type moduleVMs:PlaySoundModuleVM}">
+        <moduleviews:PlaySoundModuleView/>
     </DataTemplate>
 </ResourceDictionary>

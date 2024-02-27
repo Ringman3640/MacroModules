@@ -4,6 +4,8 @@
     <Thickness x:Key="StandardPadding">10</Thickness>
     <sys:Double x:Key="StandardModuleWidth">80</sys:Double>
     <sys:Double x:Key="StandardModuleHeight">80</sys:Double>
+    <sys:Double x:Key="StandardModuleIconWidth">50</sys:Double>
+    <sys:Double x:Key="StandardModuleIconHeight">50</sys:Double>
     <CornerRadius x:Key="StandardSmallCornerRadius">4</CornerRadius>
     <CornerRadius x:Key="StandardMediumCornerRadius">10</CornerRadius>
     <CornerRadius x:Key="StandardLargeCornerRadius">16</CornerRadius>

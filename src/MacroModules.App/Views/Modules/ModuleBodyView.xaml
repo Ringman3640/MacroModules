@@ -11,50 +11,78 @@
              d:DataContext="{d:DesignInstance Type=modulevms:ModuleVM}"
              d:DesignWidth="{StaticResource StandardModuleWidth}" d:DesignHeight="{StaticResource StandardModuleHeight}" 
              Panel.ZIndex="1">
-    <Border CornerRadius="{Binding CornerRadius, ElementName=moduleBodyView}" Background="Red">
-        <i:Interaction.Triggers>
-            <i:EventTrigger EventName="MouseLeftButtonDown">
-                <i:InvokeCommandAction Command="{Binding Path=Body_LeftMouseDownCommand}" PassEventArgsToCommand="True"/>
-            </i:EventTrigger>
-            <i:EventTrigger EventName="MouseLeftButtonUp">
-                <i:InvokeCommandAction Command="{Binding Path=Body_LeftMouseUpCommand}" PassEventArgsToCommand="True"/>
-            </i:EventTrigger>
-            <i:EventTrigger EventName="MouseMove">
-                <i:InvokeCommandAction Command="{Binding Path=Body_MouseMoveCommand}" PassEventArgsToCommand="True"/>
-            </i:EventTrigger>
-            <i:EventTrigger EventName="MouseEnter">
-                <i:InvokeCommandAction Command="{Binding Path=Body_MouseEnterCommand}" PassEventArgsToCommand="True"/>
-            </i:EventTrigger>
-            <i:EventTrigger EventName="MouseLeave">
-                <i:InvokeCommandAction Command="{Binding Path=Body_MouseLeaveCommand}" PassEventArgsToCommand="True"/>
-            </i:EventTrigger>
-        </i:Interaction.Triggers>
-        <Border.Style>
-            <Style TargetType="Border">
-                <Style.Triggers>
-                    <DataTrigger Binding="{Binding Selected}" Value="True">
-                        <Setter Property="Effect">
-                            <Setter.Value>
-                                <DropShadowEffect ShadowDepth="0" Color="LightCoral" BlurRadius="10"/>
-                            </Setter.Value>
-                        </Setter>
-                    </DataTrigger>
-                </Style.Triggers>
-            </Style>
-        </Border.Style>
-        <Border CornerRadius="{Binding CornerRadius, ElementName=moduleBodyView}" Background="White" IsHitTestVisible="False">
+    <UserControl.Resources>
+        <Style TargetType="Border">
+            <Setter Property="CornerRadius" Value="{Binding CornerRadius, ElementName=moduleBodyView}"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.OpacityMask>
+            <VisualBrush Visual="{Binding ElementName=mainBody}" Stretch="None"/>
+        </Grid.OpacityMask>
+        <Border x:Name="mainBody"
+                CornerRadius="{Binding CornerRadius, ElementName=moduleBodyView}"
+                Background="{Binding BodyColor, ElementName=moduleBodyView}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseLeftButtonDown">
+                    <i:InvokeCommandAction Command="{Binding Path=Body_LeftMouseDownCommand}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MouseLeftButtonUp">
+                    <i:InvokeCommandAction Command="{Binding Path=Body_LeftMouseUpCommand}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MouseMove">
+                    <i:InvokeCommandAction Command="{Binding Path=Body_MouseMoveCommand}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MouseEnter">
+                    <i:InvokeCommandAction Command="{Binding Path=Body_MouseEnterCommand}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MouseLeave">
+                    <i:InvokeCommandAction Command="{Binding Path=Body_MouseLeaveCommand}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
             <Border.Style>
                 <Style TargetType="Border">
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Hovered}" Value="True">
-                            <Setter Property="Opacity" Value="0.3"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Hovered}" Value="False">
-                            <Setter Property="Opacity" Value="0"/>
+                        <DataTrigger Binding="{Binding Selected}" Value="True">
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="0" Color="LightCoral" BlurRadius="10"/>
+                                </Setter.Value>
+                            </Setter>
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </Border.Style>
+            <Grid IsHitTestVisible="False">
+                <ContentControl Content="{Binding BodyContent, ElementName=moduleBodyView}" 
+                                Width="{StaticResource StandardModuleIconWidth}"
+                                Height="{StaticResource StandardModuleIconHeight}"/>
+                <Border Background="White"
+                        CornerRadius="{Binding CornerRadius, ElementName=moduleBodyView}">
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Hovered}" Value="True">
+                                    <Setter Property="Opacity" Value="0.3"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Hovered}" Value="False">
+                                    <Setter Property="Opacity" Value="0"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                </Border>
+            </Grid>
         </Border>
-    </Border>
+        <Border CornerRadius="{Binding CornerRadius, ElementName=moduleBodyView}"
+                Background="Transparent" 
+                BorderBrush="Black"
+                BorderThickness="1"
+                Margin="-4"
+                IsHitTestVisible="False">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+    </Grid>
 </UserControl>

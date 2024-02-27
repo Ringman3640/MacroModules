@@ -4,7 +4,7 @@ using System.Windows.Media;
 
 namespace MacroModules.App.Views.Modules;
 
-public partial class ModuleBodyView : UserControl
+public partial class BaseValuedModuleView : UserControl
 {
     public CornerRadius CornerRadius
     {
@@ -14,7 +14,7 @@ public partial class ModuleBodyView : UserControl
     public static readonly DependencyProperty CornerRadiusProperty = DependencyProperty.Register(
         name: nameof(CornerRadius),
         propertyType: typeof(CornerRadius),
-        ownerType: typeof(ModuleBodyView),
+        ownerType: typeof(BaseValuedModuleView),
         typeMetadata: new PropertyMetadata(default(CornerRadius)));
 
     public Brush BodyColor
@@ -25,7 +25,7 @@ public partial class ModuleBodyView : UserControl
     public static readonly DependencyProperty BodyColorProperty = DependencyProperty.Register(
         name: nameof(BodyColor),
         propertyType: typeof(Brush),
-        ownerType: typeof(ModuleBodyView),
+        ownerType: typeof(BaseValuedModuleView),
         typeMetadata: new PropertyMetadata(default(Brush)));
 
     public object BodyContent
@@ -36,10 +36,10 @@ public partial class ModuleBodyView : UserControl
     public static readonly DependencyProperty BodyContentProperty = DependencyProperty.Register(
         name: nameof(BodyContent),
         propertyType: typeof(object),
-        ownerType: typeof(ModuleBodyView),
+        ownerType: typeof(BaseValuedModuleView),
         typeMetadata: new PropertyMetadata(default(object)));
 
-    public ModuleBodyView()
+    public BaseValuedModuleView()
     {
         InitializeComponent();
     }

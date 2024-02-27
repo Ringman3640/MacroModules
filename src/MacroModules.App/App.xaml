@@ -7,6 +7,8 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Styles/StandardLayoutStyles.xaml"/>
+                <ResourceDictionary Source="/Styles/StandardThemes.xaml"/>
+                <ResourceDictionary Source="/Resources/Images/Modules/ModuleIcons.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

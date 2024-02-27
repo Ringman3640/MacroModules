@@ -24,12 +24,12 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
      showgrid="true"
-     inkscape:zoom="1.7104167"
-     inkscape:cx="37.417784"
-     inkscape:cy="-16.662607"
+     inkscape:zoom="3.4208334"
+     inkscape:cx="19.585871"
+     inkscape:cy="60.365407"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
-     inkscape:window-x="1912"
+     inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1">
@@ -52,6 +52,22 @@
   </sodipodi:namedview>
   <defs
      id="defs1">
+    <inkscape:path-effect
+       effect="mirror_symmetry"
+       start_point="45,19.896469"
+       end_point="45,55"
+       center_point="45,37.448234"
+       id="path-effect2"
+       is_visible="true"
+       lpeversion="1.2"
+       lpesatellites=""
+       mode="free"
+       discard_orig_path="false"
+       fuse_paths="false"
+       oposite_fuse="false"
+       split_items="false"
+       split_open="false"
+       link_styles="false" />
     <inkscape:path-effect
        effect="fillet_chamfer"
        id="path-effect16"
@@ -132,53 +148,28 @@
        sodipodi:nodetypes="cccc" />
     <path
        style="fill:none;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round"
-       d="M 42.994849,57.391683 9.5084762,15.916362"
+       d="M 60,50 V 14.896469"
        id="path1"
        sodipodi:nodetypes="cc" />
     <path
        style="fill:none;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round"
-       d="M 63.165435,55.096008 69.919304,28.002056"
-       id="path2"
+       d="M 73,55 90.551766,24.599451"
+       id="path1-7"
        sodipodi:nodetypes="cc" />
     <path
        style="fill:none;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round"
-       d="m 72.477467,18.854001 0.812854,-3.374222"
-       id="path2-0"
+       d="M 80,65 110.40055,47.448235"
+       id="path1-7-4"
        sodipodi:nodetypes="cc" />
     <path
        style="fill:none;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round"
-       d="M 55.469046,23.821164 53.594722,11.558584"
-       id="path2-0-9"
+       d="M 47,55 29.448234,24.599451"
+       id="path1-9"
        sodipodi:nodetypes="cc" />
     <path
        style="fill:none;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round"
-       d="m 74.256814,56.963948 1.949737,-2.444045"
-       id="path2-0-5"
-       sodipodi:nodetypes="cc" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round"
-       d="M 82.005447,46.738915 104.59324,15.916362"
-       id="path3"
-       sodipodi:nodetypes="cc" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round"
-       d="M 79.379882,67.76529 113.17154,49.712794"
-       id="path4"
-       sodipodi:nodetypes="cc" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round"
-       d="M 38.553058,69.418938 15.813009,58.911211"
-       id="path5"
-       sodipodi:nodetypes="cc" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round"
-       d="M 54.665043,60.803899 36.979294,17.685749"
-       id="path6"
-       sodipodi:nodetypes="cc" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round"
-       d="M 7.240236,54.319782 5.882677,53.839444"
-       id="path2-0-2"
+       d="M 40,65 9.59945,47.448235"
+       id="path1-9-6"
        sodipodi:nodetypes="cc" />
   </g>
 </svg>

@@ -1,9 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Brush x:Key="StandardModuleIconColor">White</Brush>
-    <Brush x:Key="StandardInputModuleColor">DarkRed</Brush>
-    <Brush x:Key="StandardMouseModuleColor">DarkOrange</Brush>
-    <Brush x:Key="StandardProgramModuleColor">DarkBlue</Brush>
-    <Brush x:Key="StandardExecutionModuleColor">Goldenrod</Brush>
-    <Brush x:Key="StandardOtherModuleColor">DarkViolet</Brush>
+    <Brush x:Key="StandardInputModuleColor">#CA2121</Brush>
+    <Brush x:Key="StandardMouseModuleColor">#CA6D21</Brush>
+    <Brush x:Key="StandardProgramModuleColor">#224187</Brush>
+    <Brush x:Key="StandardExecutionModuleColor">#CACA21</Brush>
+    <Brush x:Key="StandardOtherModuleColor">#611C87</Brush>
 </ResourceDictionary>

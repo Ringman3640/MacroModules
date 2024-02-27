@@ -26,6 +26,16 @@ public class CanvasAwareBehavior : Behavior<FrameworkElement>
 
     private void AssociatedObject_Loaded(object sender, RoutedEventArgs e)
     {
-        BoundPosition = new(Canvas.GetLeft(AssociatedObject), Canvas.GetTop(AssociatedObject));
+        double left = Canvas.GetLeft(AssociatedObject);
+        double top = Canvas.GetTop(AssociatedObject);
+        if (double.IsNaN(left))
+        {
+            left = 0;
+        }
+        if (double.IsNaN(top))
+        {
+            top = 0;
+        }
+        BoundPosition = new(left, top);
     }
 }

@@ -29,6 +29,7 @@
                     </DataTemplate>
                 </ContentControl.ContentTemplate>
             </ContentControl>
+            <views:EntryPortView Canvas.Top="40"/>
         </Canvas>
     </Grid>
 </UserControl>

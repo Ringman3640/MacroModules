@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using MacroModules.App.Managers;
 using MacroModules.Model.BoardElements;
 using MacroModules.Model.Modules;
@@ -16,6 +17,14 @@ public abstract partial class ModuleVM : BoardElementVM
     public Module ModuleData { get; protected set; }
 
     public ObservableCollection<ExitPortVM> ExitPorts { get; private set; } = new();
+
+    [ObservableProperty]
+    private Point _entryPortModulePosition;
+
+    public Point EntryPointBoardPosition
+    {
+        get { return VisualPosition + (Vector)EntryPortModulePosition; }
+    }
 
     public bool IsConnectable
     {

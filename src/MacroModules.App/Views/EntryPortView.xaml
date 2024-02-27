@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="MacroModules.App.Views.EntryPortView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
+             xmlns:local="clr-namespace:MacroModules.App.Views"
+             xmlns:moduleVMs="clr-namespace:MacroModules.App.ViewModels.Modules"
+             xmlns:behaviors="clr-namespace:MacroModules.App.Behaviors" 
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=moduleVMs:ModuleVM}"
+             d:DesignHeight="100" d:DesignWidth="100">
+    <i:Interaction.Behaviors>
+        <behaviors:CanvasAwareBehavior BoundPosition="{Binding EntryPortModulePosition, Mode=OneWayToSource}"/>
+    </i:Interaction.Behaviors>
+    <Canvas>
+        <Border Width="6" Height="14" Canvas.Left="-6" Canvas.Top="-7"
+                Background="Gray" BorderBrush="Black" BorderThickness="1, 1, 0, 1">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseLeftButtonDown">
+                    <i:InvokeCommandAction Command="{Binding Path=Body_LeftMouseDownCommand}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MouseLeftButtonUp">
+                    <i:InvokeCommandAction Command="{Binding Path=Body_LeftMouseUpCommand}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MouseMove">
+                    <i:InvokeCommandAction Command="{Binding Path=Body_MouseMoveCommand}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MouseEnter">
+                    <i:InvokeCommandAction Command="{Binding Path=Body_MouseEnterCommand}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MouseLeave">
+                    <i:InvokeCommandAction Command="{Binding Path=Body_MouseLeaveCommand}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Border>
+    </Canvas>
+</UserControl>

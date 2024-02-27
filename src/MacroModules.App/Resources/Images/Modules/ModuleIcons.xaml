@@ -85,9 +85,8 @@
   </DrawingGroup>
   <DrawingImage x:Key="icon_closeprogramDrawingImage" Drawing="{StaticResource icon_closeprogramDrawingGroup}" />
   <Geometry x:Key="icon_waitGeometry1">F1 M120,120z M0,0z M20,10L100,10 M20,110L99.999996,110</Geometry>
-  <Geometry x:Key="icon_waitGeometry2">F1 M120,120z M0,0z M25,110A79.743168,79.743168,124.99202,0,1,60,60L60,60A79.743167,79.743167,124.99202,0,0,95,10</Geometry>
-  <Geometry x:Key="icon_waitGeometry3">F1 M120,120z M0,0z M95,110A79.743168,79.743168,55.00798,0,0,60,60L60,60A79.743167,79.743167,55.00798,0,1,25,10</Geometry>
-  <Geometry x:Key="icon_waitGeometry4">F1 M120,120z M0,0z M32,103L60,103 60,86.780755 40,87C36.233013,92.223301,33.825492,97.582549,32,103z M88,103L60,103 60,86.780755 80,87C83.766987,92.223301,86.174508,97.582549,88,103z</Geometry>
+  <Geometry x:Key="icon_waitGeometry2">F1 M120,120z M0,0z M25,110C25.469706,86.894491 40.193222,66.492494 61.973775,58.766391 82.053415,50.961655 95.204957,31.542141 95,10 M95,110C94.530294,86.894491 79.806778,66.492494 58.026225,58.766391 37.946585,50.961655 24.795043,31.542141 25,10</Geometry>
+  <Geometry x:Key="icon_waitGeometry3">F1 M120,120z M0,0z M34,102L60,102 60,86.780755 40,87C37,91,34,99,34,102z M86,102L60,102 60,86.780755 80,87C83,91,86,99,86,102z</Geometry>
   <DrawingGroup x:Key="icon_waitDrawingGroup" ClipGeometry="M0,0 V120 H120 V0 H0 Z">
     <DrawingGroup Opacity="1">
       <GeometryDrawing Geometry="{StaticResource icon_waitGeometry1}">
@@ -97,15 +96,10 @@
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_waitGeometry2}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="4" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
-      <GeometryDrawing Geometry="{StaticResource icon_waitGeometry3}">
-        <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="4" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
-        </GeometryDrawing.Pen>
-      </GeometryDrawing>
-      <GeometryDrawing Brush="{StaticResource StandardModuleIconColor}" Geometry="{StaticResource icon_waitGeometry4}">
+      <GeometryDrawing Brush="{StaticResource StandardModuleIconColor}" Geometry="{StaticResource icon_waitGeometry3}">
         <GeometryDrawing.Pen>
           <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="4" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>

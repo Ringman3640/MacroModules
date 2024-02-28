@@ -21,10 +21,27 @@
     <Grid x:Name="gdModuleContainer">
         <local:ModuleBodyView CornerRadius="{StaticResource StandardSmallCornerRadius}"
                               BodyColor="{StaticResource StandardEntryModuleColor}">
-            <local:ModuleBodyView.BodyContent>
-                <Image Source="{StaticResource icon_triggerentry_noneDrawingImage}"/>
-            </local:ModuleBodyView.BodyContent>
+            <local:ModuleBodyView.Style>
+                <Style TargetType="local:ModuleBodyView">
+                    <Setter Property="local:ModuleBodyView.BodyContent">
+                        <Setter.Value>
+                            <graphics:InputTriggerGraphic InputTrigger="{Binding Trigger}"/>
+                        </Setter.Value>
+                    </Setter>
+                    
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Trigger}" Value="{x:Null}">
+                            <Setter Property="local:ModuleBodyView.BodyContent">
+                                <Setter.Value>
+                                    <Image Source="{StaticResource icon_triggerentry_noneDrawingImage}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </local:ModuleBodyView.Style>
         </local:ModuleBodyView>
+        
         <Canvas Panel.ZIndex="1">
             <ContentControl Content="{Binding ExitPorts[0]}" Canvas.Left="80" Canvas.Top="40">
                 <ContentControl.ContentTemplate>

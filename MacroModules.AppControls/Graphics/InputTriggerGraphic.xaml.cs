@@ -64,7 +64,7 @@ public partial class InputTriggerGraphic : UserControl, INotifyPropertyChanged
                         return "X2";
                 }
             }
-            return InputCodeAbbreviation.GetAbbreviation(InputTrigger.InputKeyCode).ToUpper();
+            return InputCodeAbbreviation.GetAbbreviation(InputTrigger.InputKeyCode).ToUpper().Replace(' ', '\n');
         }
     }
 

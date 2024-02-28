@@ -2,12 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:moduleVMs="clr-namespace:MacroModules.App.ViewModels.Modules"
                     xmlns:moduleviews="clr-namespace:MacroModules.App.Views.Modules">
-    <DataTemplate DataType="{x:Type moduleVMs:ModuleVM}">
-        <moduleviews:ModuleView/>
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type moduleVMs:ValuedModuleVM}">
-        <moduleviews:ValuedModuleView/>
-    </DataTemplate>
     <DataTemplate DataType="{x:Type moduleVMs:StartupEntryModuleVM}">
         <moduleviews:StartupEntryModuleView/>
     </DataTemplate>

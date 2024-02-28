@@ -233,6 +233,52 @@
     </DrawingGroup>
   </DrawingGroup>
   <DrawingImage x:Key="icon_sendinput_upDrawingImage" Drawing="{StaticResource icon_sendinput_upDrawingGroup}" />
+  <Geometry x:Key="icon_triggerentry_noneGeometry1">F1 M120,120z M0,0z M20,17.106116L20,105 110,60z</Geometry>
+  <Geometry x:Key="icon_triggerentry_noneGeometry2">F1 M120,120z M0,0z M45,10L75,10</Geometry>
+  <Geometry x:Key="icon_triggerentry_noneGeometry3">F1 M120,120z M0,0z M60,10L60,45</Geometry>
+  <DrawingGroup x:Key="icon_triggerentry_noneDrawingGroup" ClipGeometry="M0,0 V120 H120 V0 H0 Z">
+    <DrawingGroup.Transform>
+      <TranslateTransform X="5.3291" Y="5.3291" />
+    </DrawingGroup.Transform>
+    <DrawingGroup Opacity="1">
+      <GeometryDrawing>
+        <GeometryDrawing.Brush>
+          <SolidColorBrush Color="#FFFFFFFF" Opacity="0" />
+        </GeometryDrawing.Brush>
+        <GeometryDrawing.Geometry>
+          <RectangleGeometry RadiusX="0" RadiusY="0" Rect="-5.3291,-5.3291,120,120" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <DrawingGroup>
+        <DrawingGroup.ClipGeometry>
+          <PathGeometry FillRule="Nonzero" Figures="M110,25L40,25 40,55 30,55 25,30 25,25 10,25 10,115 115,115 115,25z" />
+        </DrawingGroup.ClipGeometry>
+        <DrawingGroup>
+          <DrawingGroup.ClipGeometry>
+            <PathGeometry FillRule="Nonzero" Figures="M110,25L40,25 40,55 30,55 25,30 25,25 10,25 10,115 115,115 115,25z" />
+          </DrawingGroup.ClipGeometry>
+          <GeometryDrawing Geometry="{StaticResource icon_triggerentry_noneGeometry1}">
+            <GeometryDrawing.Pen>
+              <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Square" EndLineCap="Square" LineJoin="Round" />
+            </GeometryDrawing.Pen>
+          </GeometryDrawing>
+        </DrawingGroup>
+      </DrawingGroup>
+      <DrawingGroup Opacity="1" Transform="1,0,0,1,-28,8">
+        <GeometryDrawing Geometry="{StaticResource icon_triggerentry_noneGeometry2}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Geometry="{StaticResource icon_triggerentry_noneGeometry3}">
+          <GeometryDrawing.Pen>
+            <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          </GeometryDrawing.Pen>
+        </GeometryDrawing>
+      </DrawingGroup>
+    </DrawingGroup>
+  </DrawingGroup>
+  <DrawingImage x:Key="icon_triggerentry_noneDrawingImage" Drawing="{StaticResource icon_triggerentry_noneDrawingGroup}" />
   <Geometry x:Key="icon_sendinput_clickGeometry1">F1 M120,120z M0,0z M60,32.5L30,32.5A10,10,135,0,0,20,42.5L20,82.5A10,10,45,0,0,30,92.5L90,92.5A10,10,135,0,0,100,82.5L100,42.5A10,10,45,0,0,90,32.5L60,32.5</Geometry>
   <Geometry x:Key="icon_sendinput_clickGeometry2">F1 M120,120z M0,0z M20,80L20,100A10,10,45,0,0,30,110L90,110A10,10,135,0,0,100,100L100,80</Geometry>
   <Geometry x:Key="icon_sendinput_clickGeometry3">F1 M120,120z M0,0z M60,50L60,14.896469</Geometry>

@@ -11,6 +11,9 @@
     <DataTemplate DataType="{x:Type moduleVMs:StartupEntryModuleVM}">
         <moduleviews:StartupEntryModuleView/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type moduleVMs:TriggerEntryModuleVM}">
+        <moduleviews:TriggerEntryModuleView/>
+    </DataTemplate>
     <DataTemplate DataType="{x:Type moduleVMs:SendInputModuleVM}">
         <moduleviews:SendInputModuleView/>
     </DataTemplate>

@@ -8,6 +8,9 @@
     <DataTemplate DataType="{x:Type moduleVMs:ValuedModuleVM}">
         <moduleviews:ValuedModuleView/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type moduleVMs:StartupEntryModuleVM}">
+        <moduleviews:StartupEntryModuleView/>
+    </DataTemplate>
     <DataTemplate DataType="{x:Type moduleVMs:SendInputModuleVM}">
         <moduleviews:SendInputModuleView/>
     </DataTemplate>

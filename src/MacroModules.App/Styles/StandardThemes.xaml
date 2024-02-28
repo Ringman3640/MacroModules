@@ -6,4 +6,5 @@
     <Brush x:Key="StandardProgramModuleColor">#224187</Brush>
     <Brush x:Key="StandardExecutionModuleColor">#CACA21</Brush>
     <Brush x:Key="StandardOtherModuleColor">#611C87</Brush>
+    <Brush x:Key="StandardEntryModuleColor">#1AA21A</Brush>
 </ResourceDictionary>

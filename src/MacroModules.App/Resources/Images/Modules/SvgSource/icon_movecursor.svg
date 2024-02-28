@@ -25,8 +25,8 @@
      inkscape:document-units="px"
      showgrid="true"
      inkscape:zoom="4.8377888"
-     inkscape:cx="66.145921"
-     inkscape:cy="66.662686"
+     inkscape:cx="66.145922"
+     inkscape:cy="66.455981"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="1912"
@@ -115,6 +115,14 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
+    <rect
+       style="fill:#ffffff;fill-opacity:0;stroke:none;stroke-width:8;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       id="rect3"
+       width="120"
+       height="120"
+       x="-8.8817842e-15"
+       y="-8.8817842e-15"
+       inkscape:label="TransparencyBackground" />
     <path
        style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
        d="m 23.839745,114.33013 8.660255,-5 -5,-8.66026 9.660254,-3.267947 -31.490381,-24.542939 5.509619,39.542936 7.660254,-6.73205 z"

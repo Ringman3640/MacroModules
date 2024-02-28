@@ -24,9 +24,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
      showgrid="true"
-     inkscape:zoom="1.7104167"
-     inkscape:cx="-130.37759"
-     inkscape:cy="95.590744"
+     inkscape:zoom="3.4208334"
+     inkscape:cx="24.55542"
+     inkscape:cy="61.827039"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="1912"
@@ -132,9 +132,17 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
+    <rect
+       style="fill:#ffffff;fill-opacity:0;stroke:none;stroke-width:7.99998;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       id="rect3"
+       width="120"
+       height="120"
+       x="0"
+       y="5.3290705e-15"
+       inkscape:label="TransparencyBackground" />
     <path
        style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0"
-       d="M 44.534904,11.34943 C 54.771884,9.5861503 65.0836,9.5272718 75.476121,11.311174 83.632818,12.711292 90,21.715729 90,30 V 80 A 30,30 135 0 1 60,110 30,30 45 0 1 30,80 V 30 c 0,-8.284271 6.378296,-17.245625 14.534904,-18.65057 z"
+       d="M 44.534904,11.349431 C 54.771884,9.5861503 65.0836,9.5272718 75.476121,11.311174 83.632818,12.711292 90,21.715729 90,30 V 80 A 30,30 135 0 1 60,110 30,30 45 0 1 30,80 V 30 c 0,-8.284271 6.378296,-17.245625 14.534904,-18.650569 z"
        id="path8"
        sodipodi:nodetypes="ccccc"
        inkscape:path-effect="#path-effect8"

@@ -25,7 +25,8 @@
                 <Style TargetType="local:ModuleBodyView">
                     <Setter Property="local:ModuleBodyView.BodyContent">
                         <Setter.Value>
-                            <graphics:InputTriggerGraphic InputTrigger="{Binding Trigger}"/>
+                            <graphics:InputTriggerGraphic InputTrigger="{Binding Trigger}"
+                                                          Color="{StaticResource StandardModuleIconColor}"/>
                         </Setter.Value>
                     </Setter>
                     

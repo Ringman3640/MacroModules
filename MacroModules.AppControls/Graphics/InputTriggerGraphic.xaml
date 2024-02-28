@@ -8,30 +8,99 @@
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="100"
              Loaded="InputTriggerGraphic_Loaded">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <DrawingGroup x:Key="icon_keyoutline_source_xaml">
+                <DrawingGroup.ClipGeometry>
+                    <RectangleGeometry Rect="0.0,0.0,120.0,120.0"/>
+                </DrawingGroup.ClipGeometry>
+                <DrawingGroup>
+                    <GeometryDrawing Brush="#00ffffff">
+                        <GeometryDrawing.Geometry>
+                            <RectangleGeometry Rect="0.0,0.0,120.0,120.0"/>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing>
+                        <GeometryDrawing.Pen>
+                            <Pen Brush="{Binding Color, ElementName=inputTriggerGraphic}" LineJoin="Round" Thickness="6.0" EndLineCap="Square" StartLineCap="Square"/>
+                        </GeometryDrawing.Pen>
+                        <GeometryDrawing.Geometry>
+                            <PathGeometry Figures="m 25 10 h 70 a 15 15 45 0 1 15 15 V 95 A 15 15 135 0 1 95 110 H 25 A 15 15 45 0 1 10 95 V 25 A 15 15 135 0 1 25 10 Z" FillRule="Nonzero"/>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                </DrawingGroup>
+            </DrawingGroup>
+            <DrawingImage Drawing="{StaticResource icon_keyoutline_source_xaml}" x:Key="di_icon_keyoutline_source_xaml"/>
+
+            <DrawingGroup x:Key="icon_mouseoutline_source_xaml">
+                <DrawingGroup.ClipGeometry>
+                    <RectangleGeometry Rect="0.0,0.0,120.0,120.0"/>
+                </DrawingGroup.ClipGeometry>
+                <DrawingGroup>
+                    <GeometryDrawing Brush="#00ffffff">
+                        <GeometryDrawing.Geometry>
+                            <RectangleGeometry Rect="0.0,0.0,120.0,120.0"/>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing>
+                        <GeometryDrawing.Pen>
+                            <Pen Brush="{Binding Color, ElementName=inputTriggerGraphic}" LineJoin="Round" Thickness="6.0" DashCap="Round" EndLineCap="Round" StartLineCap="Round"/>
+                        </GeometryDrawing.Pen>
+                        <GeometryDrawing.Geometry>
+                            <PathGeometry Figures="M 45 10 H 75 A 20 20 45 0 1 95 30 V 75 A 35 35 135 0 1 60 110 A 35 35 45 0 1 25 75 V 30 A 20 20 135 0 1 45 10 Z" FillRule="Nonzero"/>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing>
+                        <GeometryDrawing.Pen>
+                            <Pen Brush="{Binding Color, ElementName=inputTriggerGraphic}" LineJoin="Round" Thickness="6.0" DashCap="Round" EndLineCap="Round" StartLineCap="Round"/>
+                        </GeometryDrawing.Pen>
+                        <GeometryDrawing.Geometry>
+                            <PathGeometry Figures="m 25 35 c 20.2997 -2.79684 50.2849 -2.65921 70 0" FillRule="Nonzero"/>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing>
+                        <GeometryDrawing.Pen>
+                            <Pen Brush="{Binding Color, ElementName=inputTriggerGraphic}" LineJoin="Round" Thickness="6.0" EndLineCap="Square" StartLineCap="Square"/>
+                        </GeometryDrawing.Pen>
+                        <GeometryDrawing.Geometry>
+                            <PathGeometry Figures="M 60 10 V 30" FillRule="Nonzero"/>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                </DrawingGroup>
+            </DrawingGroup>
+            <DrawingImage Drawing="{StaticResource icon_mouseoutline_source_xaml}" x:Key="di_icon_mouseoutline_source_xaml"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
     <Grid>
-        <Image Source="/MacroModules.AppControls;component/Resources/key_icon.png">
+        <Image>
             <Image.Style>
                 <Style TargetType="Image">
                     <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsKeyInput, ElementName=inputTriggerGraphic}" Value="True">
+                            <Setter Property="Source" Value="{StaticResource di_icon_keyoutline_source_xaml}"/>
+                        </DataTrigger>
                         <DataTrigger Binding="{Binding IsKeyInput, ElementName=inputTriggerGraphic}" Value="False">
-                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Setter Property="Source" Value="{StaticResource di_icon_mouseoutline_source_xaml}"/>
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </Image.Style>
         </Image>
-        <Image Source="/MacroModules.AppControls;component/Resources/mouse_icon.png">
-            <Image.Style>
-            <Style TargetType="Image">
-                <Style.Triggers>
-                    <DataTrigger Binding="{Binding IsKeyInput, ElementName=inputTriggerGraphic}" Value="True">
-                        <Setter Property="Visibility" Value="Collapsed"/>
-                    </DataTrigger>
-                </Style.Triggers>
-            </Style>
-            </Image.Style>
-        </Image>
-        <TextBlock Text="{Binding InputText,ElementName=inputTriggerGraphic}"
-                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Viewbox>
+            <Viewbox.Style>
+                <Style TargetType="Viewbox">
+                    <Setter Property="Margin" Value="10"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsKeyInput, ElementName=inputTriggerGraphic}" Value="False">
+                            <Setter Property="Margin" Value="14"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Viewbox.Style>
+            <TextBlock Text="{Binding InputText, ElementName=inputTriggerGraphic}"
+                       Foreground="{Binding Color, ElementName=inputTriggerGraphic}"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Viewbox>
     </Grid>
 </UserControl>

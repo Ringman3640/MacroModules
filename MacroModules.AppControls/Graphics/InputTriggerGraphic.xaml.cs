@@ -4,6 +4,7 @@ using MacroModules.Model.Execution;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace MacroModules.AppControls.Graphics;
 
@@ -22,6 +23,17 @@ public partial class InputTriggerGraphic : UserControl, INotifyPropertyChanged
             defaultValue: null,
             flags: FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
             new PropertyChangedCallback(InputTriggerProperty_PropertyChanged)));
+
+    public Brush Color
+    {
+        get { return (Brush)GetValue(ColorProperty); }
+        set { SetValue(ColorProperty, value); }
+    }
+    public static readonly DependencyProperty ColorProperty = DependencyProperty.Register(
+        name: nameof(Color),
+        propertyType: typeof(Brush),
+        ownerType: typeof(InputTriggerGraphic),
+        typeMetadata: new PropertyMetadata(new SolidColorBrush(Colors.Black)));
 
     public bool IsKeyInput
     {

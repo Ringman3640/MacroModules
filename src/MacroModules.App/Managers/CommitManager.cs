@@ -1,4 +1,6 @@
-﻿using MacroModules.App.Managers.Commits;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using MacroModules.App.Managers.Commits;
+using MacroModules.App.Messages;
 using MacroModules.App.Types;
 
 namespace MacroModules.App.Managers;
@@ -18,6 +20,8 @@ public class CommitManager
 
     public void Undo()
     {
+        WeakReferenceMessenger.Default.Send(new PerformingUndoRedoMessage());
+
         CommitSeries();
         if (undoStack.Count == 0)
         {
@@ -32,10 +36,14 @@ public class CommitManager
         }
         PerformingUndoRedo = false;
         redoStack.Push(seriesToUndo);
+
+        WeakReferenceMessenger.Default.Send(new FinishedUndoRedoMessage());
     }
 
     public void Redo()
     {
+        WeakReferenceMessenger.Default.Send(new PerformingUndoRedoMessage());
+
         CommitSeries();
         if (redoStack.Count == 0)
         {
@@ -50,6 +58,8 @@ public class CommitManager
         }
         PerformingUndoRedo = false;
         undoStack.Push(seriesToRedo);
+
+        WeakReferenceMessenger.Default.Send(new FinishedUndoRedoMessage());
     }
 
     public void ClearCommits()

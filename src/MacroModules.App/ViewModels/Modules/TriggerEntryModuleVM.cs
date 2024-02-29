@@ -11,6 +11,7 @@ public class TriggerEntryModuleVM : ModuleVM
         get { return castedModuleData.Trigger; }
         set
         {
+            FullCommitPropertyChange(castedModuleData.Trigger, value);
             castedModuleData.Trigger = value;
             OnPropertyChanged();
         }
@@ -23,6 +24,7 @@ public class TriggerEntryModuleVM : ModuleVM
         {
             if (castedModuleData.ExecutionType != value)
             {
+                FullCommitPropertyChange(castedModuleData.ExecutionType, value);
                 castedModuleData.ExecutionType = value;
                 OnPropertyChanged();
             }
@@ -36,6 +38,7 @@ public class TriggerEntryModuleVM : ModuleVM
         {
             if (castedModuleData.SuppressInput != value)
             {
+                FullCommitPropertyChange(castedModuleData.SuppressInput, value);
                 castedModuleData.SuppressInput = value;
                 OnPropertyChanged();
             }

@@ -1,5 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Messaging;
+using MacroModules.App.Messages;
 using MacroModules.App.ViewModels.Modules;
+using MacroModules.AppControls.Messages;
 using System.Collections.Specialized;
 
 namespace MacroModules.App.ViewModels;
@@ -33,6 +36,11 @@ public partial class PropertiesPanelVM : ObservableObject
     {
         Workspace = worksapce;
         Workspace.ModuleBoard.SelectBox.SelectedElements.CollectionChanged += SelectedElements_CollectionChanged;
+
+        WeakReferenceMessenger.Default.Register<FinishedUndoRedoMessage>(this, (recipient, message) =>
+        {
+            StrongReferenceMessenger.Default.Send(new ReloadPropertyEditorsMessage());
+        });
     }
 
     public void SelectedElements_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)

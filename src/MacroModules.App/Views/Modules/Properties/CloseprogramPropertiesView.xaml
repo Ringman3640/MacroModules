@@ -26,6 +26,6 @@
 
         <propeditors:BoolPropertyEditor PropertyName="Close Child Programs"
                                         PropertyDescription="Indicates if the child programs of matches should be closed."
-                                        BoolProperty="{Binding CloseAllMatches}"/>
+                                        BoolProperty="{Binding CloseChildren}"/>
     </StackPanel>
 </UserControl>

@@ -1,4 +1,6 @@
-﻿using MacroModules.MacroLibrary.Types;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using MacroModules.AppControls.Messages;
+using MacroModules.MacroLibrary.Types;
 using MacroModules.Model.Execution;
 using MacroModules.Model.GolbalSystems;
 using System.Windows;
@@ -61,13 +63,9 @@ public partial class InputTriggerPropertyEditor : BasePropertyEditor
         InitializeComponent();
     }
 
-    private void InputTriggerPropertyEditor_Loaded(object sender, System.Windows.RoutedEventArgs e)
+    protected override void PropertyEditor_Unloaded(object sender, RoutedEventArgs e)
     {
-        OnPropertyChanged(nameof(InputTriggerDisplay));
-    }
-
-    private void InputTriggerPropertyEditor_Unloaded(object sender, System.Windows.RoutedEventArgs e)
-    {
+        base.PropertyEditor_Unloaded(sender, e);
         TriggerInputObtainer.Stop();
     }
 }

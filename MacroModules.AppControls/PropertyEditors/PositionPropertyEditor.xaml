@@ -9,7 +9,7 @@
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=local:PositionPropertyEditor}" 
              d:DesignHeight="100" d:DesignWidth="300" 
-             Loaded="PositionPropertyEditor_Loaded">
+             Loaded="PropertyEditor_Loaded" Unloaded="PropertyEditor_Unloaded">
     <StackPanel>
         <TextBlock Text="{Binding PropertyName, ElementName=positionPropertyEditor}" ToolTip="{Binding PropertyDescription, ElementName=positionPropertyEditor}"/>
         

@@ -30,14 +30,9 @@ namespace MacroModules.AppControls.PropertyEditors
             }
         }
 
-        public BoolPropertyEditor()
+        public BoolPropertyEditor() : base()
         {
             InitializeComponent();
-        }
-
-        private void BoolPropertyEditor_Loaded(object sender, RoutedEventArgs e)
-        {
-            OnPropertyChanged(nameof(IsSet));
         }
     }
 }

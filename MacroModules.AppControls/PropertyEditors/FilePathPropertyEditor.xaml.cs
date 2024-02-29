@@ -46,15 +46,9 @@ public partial class FilePathPropertyEditor : BasePropertyEditor
         }
     }
 
-    public FilePathPropertyEditor()
+    public FilePathPropertyEditor() : base()
     {
         InitializeComponent();
-    }
-
-    private void FilePathPropertyEditor_Loaded(object sender, System.Windows.RoutedEventArgs e)
-    {
-        if (File.Exists(FilePathProperty))
-        OnPropertyChanged(nameof(FileNamePreview));
     }
 
     private void Button_Click(object sender, RoutedEventArgs e)
@@ -72,7 +66,7 @@ public partial class FilePathPropertyEditor : BasePropertyEditor
         if (dialog.ShowDialog() == true)
         {
             FilePathProperty = dialog.FileName;
-            OnPropertyChanged(nameof(FileNamePreview));
+            ReloadProperties();
         }
     }
 }

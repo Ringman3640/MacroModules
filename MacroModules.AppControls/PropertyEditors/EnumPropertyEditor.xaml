@@ -8,7 +8,7 @@
                           xmlns:appcontrols="clr-namespace:MacroModules.AppControls"
                           mc:Ignorable="d" 
                           d:DesignHeight="450" d:DesignWidth="800"
-                          Loaded="EnumPropertyEditor_Loaded">
+                          Loaded="PropertyEditor_Loaded" Unloaded="PropertyEditor_Unloaded">
     <StackPanel>
         <TextBlock Text="{Binding PropertyName, ElementName=enumPropertyEditor}" ToolTip="{Binding PropertyDescription, ElementName=enumPropertyEditor}"/>
 

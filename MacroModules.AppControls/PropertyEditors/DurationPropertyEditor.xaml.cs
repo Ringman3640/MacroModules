@@ -51,14 +51,8 @@ public partial class DurationPropertyEditor : BasePropertyEditor
         }
     }
 
-    public DurationPropertyEditor()
+    public DurationPropertyEditor() : base()
     {
         InitializeComponent();
-    }
-
-    private void DurationPropertyEditor_Loaded(object sender, RoutedEventArgs e)
-    {
-        OnPropertyChanged(nameof(SelectedGranularity));
-        OnPropertyChanged(nameof(TimeUnitsEntryText));
     }
 }

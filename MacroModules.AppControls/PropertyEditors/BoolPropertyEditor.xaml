@@ -7,7 +7,7 @@
                           xmlns:local="clr-namespace:MacroModules.AppControls.PropertyEditors"
                           mc:Ignorable="d" 
                           d:DesignHeight="450" d:DesignWidth="800"
-                          Loaded="BoolPropertyEditor_Loaded">
+                          Loaded="PropertyEditor_Loaded" Unloaded="PropertyEditor_Unloaded">
     <StackPanel>
         <TextBlock Text="{Binding PropertyName, ElementName=boolPropertyEditor}" ToolTip="{Binding PropertyDescription, ElementName=boolPropertyEditor}"/>
 

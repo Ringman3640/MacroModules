@@ -47,14 +47,8 @@ public partial class EnumPropertyEditor : BasePropertyEditor
         }
     }
 
-    public EnumPropertyEditor()
+    public EnumPropertyEditor() : base()
     {
         InitializeComponent();
-    }
-
-    private void EnumPropertyEditor_Loaded(object sender, RoutedEventArgs e)
-    {
-        OnPropertyChanged(nameof(EnumArray));
-        OnPropertyChanged(nameof(SelectedEnum));
     }
 }

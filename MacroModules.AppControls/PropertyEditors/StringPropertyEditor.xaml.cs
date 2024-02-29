@@ -31,13 +31,8 @@ public partial class StringPropertyEditor : BasePropertyEditor
         }
     }
 
-    public StringPropertyEditor()
+    public StringPropertyEditor() : base()
     {
         InitializeComponent();
-    }
-
-    private void StringPropertyEditor_Loaded(object sender, System.Windows.RoutedEventArgs e)
-    {
-        OnPropertyChanged(nameof(StringEntry));
     }
 }

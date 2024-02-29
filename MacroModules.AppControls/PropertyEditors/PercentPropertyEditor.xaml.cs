@@ -36,14 +36,8 @@ public partial class PercentPropertyEditor : BasePropertyEditor
         get { return Math.Round(PercentProperty * 100).ToString() + "%"; }
     }
 
-    public PercentPropertyEditor()
+    public PercentPropertyEditor() : base()
     {
         InitializeComponent();
-    }
-
-    private void PercentPropertyEditor_Loaded(object sender, RoutedEventArgs e)
-    {
-        OnPropertyChanged(nameof(SliderValue));
-        OnPropertyChanged(nameof(PercentDisplay));
     }
 }

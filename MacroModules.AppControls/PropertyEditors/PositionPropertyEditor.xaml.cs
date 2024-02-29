@@ -64,14 +64,8 @@ public partial class PositionPropertyEditor : BasePropertyEditor
         }
     }
 
-    public PositionPropertyEditor()
+    public PositionPropertyEditor() : base()
     {
         InitializeComponent();
-    }
-
-    private void PositionPropertyEditor_Loaded(object sender, RoutedEventArgs e)
-    {
-        OnPropertyChanged(nameof(EntryTextX));
-        OnPropertyChanged(nameof(EntryTextY));
     }
 }

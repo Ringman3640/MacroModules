@@ -48,13 +48,8 @@ public partial class NumberPropertyEditor : BasePropertyEditor
         }
     }
 
-    public NumberPropertyEditor()
+    public NumberPropertyEditor() : base()
     {
         InitializeComponent();
-    }
-
-    private void NumberPropertyEditor_Loaded(object sender, RoutedEventArgs e)
-    {
-        OnPropertyChanged(nameof(NumberEntryText));
     }
 }

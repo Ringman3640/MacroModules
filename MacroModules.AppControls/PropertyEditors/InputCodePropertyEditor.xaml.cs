@@ -35,7 +35,7 @@ public partial class InputCodePropertyEditor : BasePropertyEditor
         }
     }
 
-    public InputCodePropertyEditor()
+    public InputCodePropertyEditor() : base()
     {
         InitializeComponent();
     }
@@ -58,11 +58,6 @@ public partial class InputCodePropertyEditor : BasePropertyEditor
     {
         InputMonitor.CollectInput = false;
         InputMonitor.Uninstall();
-    }
-
-    private void InputCodePropertyEditor_Loaded(object sender, RoutedEventArgs e)
-    {
-        OnPropertyChanged(nameof(InputCodeDisplay));
     }
 
     private bool InputMonitor_HandleInput(InputData input)

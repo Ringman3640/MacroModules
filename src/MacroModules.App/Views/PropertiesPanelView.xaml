@@ -25,6 +25,21 @@
                 </TextBlock.Style>
             </TextBlock>
 
+            <TextBlock Text="{Binding ModuleTitle}"
+                       FontSize="{StaticResource StandardMediumFontSize}"
+                       HorizontalAlignment="Center"
+                       Margin="0, 0, 0, 15">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding DisplayedModule}" Value="{x:Null}">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            
             <ContentControl Content="{Binding DisplayedModule, Mode=OneWay}">
                 <ContentControl.Resources>
                     <ResourceDictionary Source="/DataTemplates/ModulePropertiesViewDataTemplates.xaml"/>

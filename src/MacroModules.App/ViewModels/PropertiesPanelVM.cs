@@ -27,10 +27,23 @@ public partial class PropertiesPanelVM : ObservableObject
                 {
                     value.ElementRemoved += DisplayedModule_ElementRemoved;
                 }
+                OnPropertyChanged(nameof(ModuleTitle));
             }
         }
     }
     private ModuleVM? _displayedModule = null;
+
+    public string ModuleTitle
+    {
+        get
+        {
+            if (DisplayedModule != null)
+            {
+                return DisplayedModule.ElementTitle + " Module";
+            }
+            return "";
+        }
+    }
 
     public PropertiesPanelVM(WorkspaceVM worksapce)
     {

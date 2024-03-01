@@ -17,10 +17,10 @@
                 <Setter Property="Opacity" TargetName="border" Value="0.56"/>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBoxMouseOverBorder}"/>
+                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.BorderColor}"/>
             </Trigger>
             <Trigger Property="IsKeyboardFocused" Value="true">
-                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBoxFocusBorder}"/>
+                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.BorderColor}"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

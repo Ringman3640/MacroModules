@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=moduleVMs:SendInputModuleVM}"
              d:DesignHeight="450" d:DesignWidth="800">
-    <local:BaseModuleView BodyColor="{StaticResource StandardMouseModuleColor}">
+    <local:BaseModuleView BodyColor="{StaticResource Module.MouseType.BodyColor}">
         <local:BaseModuleView.BodyContent>
             <Image Source="{StaticResource icon_movecursorDrawingImage}"/>
         </local:BaseModuleView.BodyContent>

@@ -1,12 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Brush x:Key="StandardModuleIconColor">White</Brush>
-    <Brush x:Key="StandardInputModuleColor">#CA2121</Brush>
-    <Brush x:Key="StandardMouseModuleColor">#CA6D21</Brush>
-    <Brush x:Key="StandardProgramModuleColor">#224187</Brush>
-    <Brush x:Key="StandardExecutionModuleColor">#CACA21</Brush>
-    <Brush x:Key="StandardOtherModuleColor">#611C87</Brush>
-    <Brush x:Key="StandardEntryModuleColor">#1AA21A</Brush>
-    <Brush x:Key="TextBoxMouseOverBorder">#FF7EB4EA</Brush>
-    <Brush x:Key="TextBoxFocusBorder">#FF569DE5</Brush>
+    <Brush x:Key="Module.Icon.Color">White</Brush>
+    <Brush x:Key="Module.InputType.BodyColor">#CA2121</Brush>
+    <Brush x:Key="Module.MouseType.BodyColor">#CA6D21</Brush>
+    <Brush x:Key="Module.ProgramType.BodyColor">#224187</Brush>
+    <Brush x:Key="Module.ExecutionType.BodyColor">#CACA21</Brush>
+    <Brush x:Key="Module.OtherType.BodyColor">#611C87</Brush>
+    <Brush x:Key="Module.EntryType.BodyColor">#1AA21A</Brush>
+    <Brush x:Key="TextBox.MouseOver.BorderColor">#FF7EB4EA</Brush>
+    <Brush x:Key="TextBox.Focus.BorderColor">#FF569DE5</Brush>
 </ResourceDictionary>

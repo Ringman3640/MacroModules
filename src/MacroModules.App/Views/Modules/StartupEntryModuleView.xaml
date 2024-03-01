@@ -19,7 +19,7 @@
     </i:Interaction.Behaviors>
     <Grid x:Name="gdModuleContainer">
         <local:ModuleBodyView CornerRadius="{StaticResource StandardSmallCornerRadius}"
-                              BodyColor="{StaticResource StandardEntryModuleColor}">
+                              BodyColor="{StaticResource Module.EntryType.BodyColor}">
             <local:ModuleBodyView.BodyContent>
                 <Image Source="{StaticResource icon_startupentryDrawingImage}"/>
             </local:ModuleBodyView.BodyContent>

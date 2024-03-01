@@ -18,22 +18,22 @@
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_openprogramGeometry1}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Miter" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Miter" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_openprogramGeometry2}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Square" EndLineCap="Square" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Square" EndLineCap="Square" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_openprogramGeometry3}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_openprogramGeometry4}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
     </DrawingGroup>
@@ -57,17 +57,17 @@
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_movecursorGeometry1}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="4" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="4" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
-      <GeometryDrawing Brush="{StaticResource StandardModuleIconColor}" Geometry="{StaticResource icon_movecursorGeometry2}">
+      <GeometryDrawing Brush="{StaticResource Module.Icon.Color}" Geometry="{StaticResource icon_movecursorGeometry2}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="4" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="4" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_movecursorGeometry3}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="6" StartLineCap="Round" EndLineCap="Round" DashCap="Flat" LineJoin="Round">
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="6" StartLineCap="Round" EndLineCap="Round" DashCap="Flat" LineJoin="Round">
             <Pen.DashStyle>
               <DashStyle Offset="0" Dashes="1 2" />
             </Pen.DashStyle>
@@ -96,22 +96,22 @@
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_closeprogramGeometry1}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Miter" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Miter" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_closeprogramGeometry2}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Square" EndLineCap="Square" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Square" EndLineCap="Square" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_closeprogramGeometry3}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_closeprogramGeometry4}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
     </DrawingGroup>
@@ -132,17 +132,17 @@
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_waitGeometry1}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_waitGeometry2}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
-      <GeometryDrawing Brush="{StaticResource StandardModuleIconColor}" Geometry="{StaticResource icon_waitGeometry3}">
+      <GeometryDrawing Brush="{StaticResource Module.Icon.Color}" Geometry="{StaticResource icon_waitGeometry3}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="4" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="4" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
     </DrawingGroup>
@@ -165,24 +165,24 @@
           <RectangleGeometry RadiusX="0" RadiusY="0" Rect="1.4211,-8.8818,120,120" />
         </GeometryDrawing.Geometry>
       </GeometryDrawing>
-      <GeometryDrawing Brush="{StaticResource StandardModuleIconColor}" Geometry="{StaticResource icon_playsoundGeometry1}">
+      <GeometryDrawing Brush="{StaticResource Module.Icon.Color}" Geometry="{StaticResource icon_playsoundGeometry1}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="4" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="4" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_playsoundGeometry2}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_playsoundGeometry3}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_playsoundGeometry4}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
     </DrawingGroup>
@@ -206,28 +206,28 @@
       <DrawingGroup Transform="1,0,0,1,0,2.5">
         <GeometryDrawing Geometry="{StaticResource icon_sendinput_upGeometry1}">
           <GeometryDrawing.Pen>
-            <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+            <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
           </GeometryDrawing.Pen>
         </GeometryDrawing>
       </DrawingGroup>
       <GeometryDrawing Geometry="{StaticResource icon_sendinput_upGeometry2}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_sendinput_upGeometry3}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_sendinput_upGeometry4}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_sendinput_upGeometry5}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
     </DrawingGroup>
@@ -259,7 +259,7 @@
           </DrawingGroup.ClipGeometry>
           <GeometryDrawing Geometry="{StaticResource icon_triggerentry_noneGeometry1}">
             <GeometryDrawing.Pen>
-              <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Square" EndLineCap="Square" LineJoin="Round" />
+              <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Square" EndLineCap="Square" LineJoin="Round" />
             </GeometryDrawing.Pen>
           </GeometryDrawing>
         </DrawingGroup>
@@ -267,12 +267,12 @@
       <DrawingGroup Opacity="1" Transform="1,0,0,1,-28,8">
         <GeometryDrawing Geometry="{StaticResource icon_triggerentry_noneGeometry2}">
           <GeometryDrawing.Pen>
-            <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+            <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
           </GeometryDrawing.Pen>
         </GeometryDrawing>
         <GeometryDrawing Geometry="{StaticResource icon_triggerentry_noneGeometry3}">
           <GeometryDrawing.Pen>
-            <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+            <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
           </GeometryDrawing.Pen>
         </GeometryDrawing>
       </DrawingGroup>
@@ -299,38 +299,38 @@
       <DrawingGroup Transform="1,0,0,1,0,2.5">
         <GeometryDrawing Geometry="{StaticResource icon_sendinput_clickGeometry1}">
           <GeometryDrawing.Pen>
-            <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+            <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
           </GeometryDrawing.Pen>
         </GeometryDrawing>
       </DrawingGroup>
       <GeometryDrawing Geometry="{StaticResource icon_sendinput_clickGeometry2}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_sendinput_clickGeometry3}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_sendinput_clickGeometry4}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_sendinput_clickGeometry5}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_sendinput_clickGeometry6}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_sendinput_clickGeometry7}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
     </DrawingGroup>
@@ -354,28 +354,28 @@
       <DrawingGroup Transform="1,0,0,1,0,7.5">
         <GeometryDrawing Geometry="{StaticResource icon_sendinput_downGeometry1}">
           <GeometryDrawing.Pen>
-            <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+            <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
           </GeometryDrawing.Pen>
         </GeometryDrawing>
       </DrawingGroup>
       <GeometryDrawing Geometry="{StaticResource icon_sendinput_downGeometry2}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_sendinput_downGeometry3}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_sendinput_downGeometry4}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_sendinput_downGeometry5}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
     </DrawingGroup>
@@ -396,17 +396,17 @@
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_scrollGeometry1}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_scrollGeometry2}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_scrollGeometry3}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="4" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="4" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
     </DrawingGroup>
@@ -425,7 +425,7 @@
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_startupentryGeometry}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Square" EndLineCap="Square" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Square" EndLineCap="Square" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
     </DrawingGroup>
@@ -449,32 +449,32 @@
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_focuswindowGeometry1}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Miter" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Miter" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_focuswindowGeometry2}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Square" EndLineCap="Square" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Square" EndLineCap="Square" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_focuswindowGeometry3}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_focuswindowGeometry4}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_focuswindowGeometry5}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
       <GeometryDrawing Geometry="{StaticResource icon_focuswindowGeometry6}">
         <GeometryDrawing.Pen>
-          <Pen Brush="{StaticResource StandardModuleIconColor}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+          <Pen Brush="{StaticResource Module.Icon.Color}" Thickness="8" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
         </GeometryDrawing.Pen>
       </GeometryDrawing>
     </DrawingGroup>

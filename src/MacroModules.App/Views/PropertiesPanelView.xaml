@@ -11,7 +11,7 @@
     <Border CornerRadius="5" Padding="10" Margin="10" MinWidth="200" Background="LightBlue">
         <StackPanel>
             <TextBlock Text="Select a Module to edit"
-                       FontSize="{StaticResource StandardMediumFontSize}"
+                       FontSize="{StaticResource FontSize.Medium}"
                        HorizontalAlignment="Center">
                 <TextBlock.Style>
                     <Style TargetType="TextBlock">
@@ -26,7 +26,7 @@
             </TextBlock>
 
             <TextBlock Text="{Binding ModuleTitle}"
-                       FontSize="{StaticResource StandardMediumFontSize}"
+                       FontSize="{StaticResource FontSize.Medium}"
                        HorizontalAlignment="Center"
                        Margin="0, 0, 0, 15">
                 <TextBlock.Style>

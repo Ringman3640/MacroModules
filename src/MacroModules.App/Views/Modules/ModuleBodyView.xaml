@@ -9,7 +9,7 @@
              xmlns:modulevms="clr-namespace:MacroModules.App.ViewModels.Modules"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=modulevms:ModuleVM}"
-             d:DesignWidth="{StaticResource StandardModuleWidth}" d:DesignHeight="{StaticResource StandardModuleHeight}" 
+             d:DesignWidth="{StaticResource Module.Width}" d:DesignHeight="{StaticResource Module.Height}" 
              Panel.ZIndex="1">
     <UserControl.Resources>
         <Style TargetType="Border">
@@ -55,8 +55,8 @@
             </Border.Style>
             <Grid IsHitTestVisible="False">
                 <ContentControl Content="{Binding BodyContent, ElementName=moduleBodyView}" 
-                                Width="{StaticResource StandardModuleIconWidth}"
-                                Height="{StaticResource StandardModuleIconHeight}"/>
+                                Width="{StaticResource Module.Icon.Width}"
+                                Height="{StaticResource Module.Icon.Height}"/>
                 <Border Background="White"
                         CornerRadius="{Binding CornerRadius, ElementName=moduleBodyView}">
                     <Border.Style>

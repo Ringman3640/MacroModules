@@ -5,7 +5,7 @@
                 Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
-                CornerRadius="{StaticResource StandardSmallCornerRadius}"
+                CornerRadius="{StaticResource CornerRadius.Small}"
                 SnapsToDevicePixels="True">
             <ScrollViewer x:Name="PART_ContentHost"
                           Focusable="false"

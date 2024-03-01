@@ -2,12 +2,12 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <Thickness x:Key="StandardPadding">10</Thickness>
-    <sys:Double x:Key="StandardModuleWidth">80</sys:Double>
-    <sys:Double x:Key="StandardModuleHeight">80</sys:Double>
-    <sys:Double x:Key="StandardModuleIconWidth">50</sys:Double>
-    <sys:Double x:Key="StandardModuleIconHeight">50</sys:Double>
-    <CornerRadius x:Key="StandardSmallCornerRadius">4</CornerRadius>
-    <CornerRadius x:Key="StandardMediumCornerRadius">10</CornerRadius>
-    <CornerRadius x:Key="StandardLargeCornerRadius">16</CornerRadius>
-    <sys:Double x:Key="StandardMediumFontSize">16</sys:Double>
+    <sys:Double x:Key="Module.Width">80</sys:Double>
+    <sys:Double x:Key="Module.Height">80</sys:Double>
+    <sys:Double x:Key="Module.Icon.Width">50</sys:Double>
+    <sys:Double x:Key="Module.Icon.Height">50</sys:Double>
+    <CornerRadius x:Key="CornerRadius.Small">4</CornerRadius>
+    <CornerRadius x:Key="CornerRadius.Medium">10</CornerRadius>
+    <CornerRadius x:Key="CornerRadius.Large">16</CornerRadius>
+    <sys:Double x:Key="FontSize.Medium">16</sys:Double>
 </ResourceDictionary>

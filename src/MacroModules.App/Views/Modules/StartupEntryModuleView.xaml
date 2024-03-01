@@ -11,14 +11,14 @@
              xmlns:behaviors="clr-namespace:MacroModules.App.Behaviors" 
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance Type=vmModules:ModuleVM}"
-             d:DesignWidth="{StaticResource StandardModuleWidth}" d:DesignHeight="{StaticResource StandardModuleHeight}"
-             Width="{StaticResource StandardModuleWidth}" Height="{StaticResource StandardModuleHeight}">
+             d:DesignWidth="{StaticResource Module.Width}" d:DesignHeight="{StaticResource Module.Height}"
+             Width="{StaticResource Module.Width}" Height="{StaticResource Module.Height}">
     <i:Interaction.Behaviors>
         <behaviors:MouseAwareBehavior MousePosition="{Binding MousePosition, Mode=OneWayToSource}"/>
         <behaviors:DimensionsAwareBehavior BoundDimensions="{Binding Dimensions, Mode=OneWayToSource}"/>
     </i:Interaction.Behaviors>
     <Grid x:Name="gdModuleContainer">
-        <local:ModuleBodyView CornerRadius="{StaticResource StandardSmallCornerRadius}"
+        <local:ModuleBodyView CornerRadius="{StaticResource CornerRadius.Small}"
                               BodyColor="{StaticResource Module.EntryType.BodyColor}">
             <local:ModuleBodyView.BodyContent>
                 <Image Source="{StaticResource icon_startupentryDrawingImage}"/>

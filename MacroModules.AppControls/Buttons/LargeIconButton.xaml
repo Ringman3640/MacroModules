@@ -14,7 +14,7 @@
                             Content="{Binding IconContent, ElementName=largeIconButton}"/>
             <TextBlock Grid.Row="1" HorizontalAlignment="Center" TextTrimming="CharacterEllipsis"
                        Text="{Binding ButtonText, ElementName=largeIconButton}"
-                       FontSize="{StaticResource StandardMediumFontSize}"/>
+                       FontSize="{StaticResource FontSize.Medium}"/>
         </StackPanel>
     </Button>
 </UserControl>

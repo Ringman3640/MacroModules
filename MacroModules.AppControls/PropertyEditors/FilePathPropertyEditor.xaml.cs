@@ -46,9 +46,12 @@ public partial class FilePathPropertyEditor : BasePropertyEditor
         }
     }
 
+    public override UIElement LabelTarget { get; }
+
     public FilePathPropertyEditor() : base()
     {
         InitializeComponent();
+        LabelTarget = labelTarget;
     }
 
     private void Button_Click(object sender, RoutedEventArgs e)

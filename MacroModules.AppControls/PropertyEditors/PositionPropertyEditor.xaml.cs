@@ -64,8 +64,11 @@ public partial class PositionPropertyEditor : BasePropertyEditor
         }
     }
 
+    public override UIElement LabelTarget { get; }
+
     public PositionPropertyEditor() : base()
     {
         InitializeComponent();
+        LabelTarget = labelTarget;
     }
 }

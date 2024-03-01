@@ -31,8 +31,11 @@ public partial class StringPropertyEditor : BasePropertyEditor
         }
     }
 
+    public override UIElement LabelTarget { get; }
+
     public StringPropertyEditor() : base()
     {
         InitializeComponent();
+        LabelTarget = labelTarget;
     }
 }

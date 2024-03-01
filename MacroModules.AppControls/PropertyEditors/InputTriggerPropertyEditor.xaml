@@ -9,10 +9,10 @@
                           d:DesignHeight="450" d:DesignWidth="800"
                           Loaded="PropertyEditor_Loaded" Unloaded="PropertyEditor_Unloaded">
     <StackPanel>
-        <TextBlock Text="{Binding PropertyName, ElementName=inputTriggerPropertyEditor}" ToolTip="{Binding PropertyDescription, ElementName=inputTriggerPropertyEditor}"/>
-
         <TextBlock Text="{Binding InputTriggerDisplay, ElementName=inputTriggerPropertyEditor}"/>
 
-        <Button Content="Set Trigger" Click="SetTrigger_Click"/>
+        <Button x:Name="labelTarget"
+                Content="Set Trigger"
+                Click="SetTrigger_Click"/>
     </StackPanel>
 </local:BasePropertyEditor>

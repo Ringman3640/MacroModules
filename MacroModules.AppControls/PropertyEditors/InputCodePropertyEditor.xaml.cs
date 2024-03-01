@@ -35,9 +35,12 @@ public partial class InputCodePropertyEditor : BasePropertyEditor
         }
     }
 
+    public override UIElement LabelTarget { get; }
+
     public InputCodePropertyEditor() : base()
     {
         InitializeComponent();
+        LabelTarget = labelTarget;
     }
 
     private void SetInput_Click(object sender, RoutedEventArgs e)

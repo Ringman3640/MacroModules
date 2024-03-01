@@ -1,5 +1,4 @@
-﻿using MacroModules.Model.Types;
-using System.Windows;
+﻿using System.Windows;
 
 namespace MacroModules.AppControls.PropertyEditors;
 
@@ -47,8 +46,11 @@ public partial class EnumPropertyEditor : BasePropertyEditor
         }
     }
 
+    public override UIElement LabelTarget { get; }
+
     public EnumPropertyEditor() : base()
     {
         InitializeComponent();
+        LabelTarget = labelTarget;
     }
 }

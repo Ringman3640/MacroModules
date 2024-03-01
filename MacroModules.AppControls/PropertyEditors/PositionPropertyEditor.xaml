@@ -10,23 +10,22 @@
              d:DataContext="{d:DesignInstance Type=local:PositionPropertyEditor}" 
              d:DesignHeight="100" d:DesignWidth="300" 
              Loaded="PropertyEditor_Loaded" Unloaded="PropertyEditor_Unloaded">
-    <StackPanel>
-        <TextBlock Text="{Binding PropertyName, ElementName=positionPropertyEditor}" ToolTip="{Binding PropertyDescription, ElementName=positionPropertyEditor}"/>
-        
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-            <TextBlock Text="X" Padding="0, 0, 6, 0"/>
-            <appcontrols:FocusTextBox Grid.Column="1" Text="{Binding EntryTextX, ElementName=positionPropertyEditor}" SelectAllOnFocus="True"/>
+        <TextBlock Grid.Column="0" Text="X" Padding="0, 0, 6, 0"/>
+        <appcontrols:FocusTextBox x:Name="labelTarget"
+                                  Grid.Column="1"
+                                  Text="{Binding EntryTextX, ElementName=positionPropertyEditor}" SelectAllOnFocus="True"/>
 
-            <TextBlock Grid.Column="3" Text="Y" Padding="0, 0, 6, 0"/>
-            <appcontrols:FocusTextBox Grid.Column="4" Text="{Binding EntryTextY, ElementName=positionPropertyEditor}" SelectAllOnFocus="True"/>
-        </Grid>
-    </StackPanel>
+        <TextBlock Grid.Column="3" Text="Y" Padding="0, 0, 6, 0"/>
+        <appcontrols:FocusTextBox Grid.Column="4"
+                                  Text="{Binding EntryTextY, ElementName=positionPropertyEditor}" SelectAllOnFocus="True"/>
+    </Grid>
 </local:BasePropertyEditor>

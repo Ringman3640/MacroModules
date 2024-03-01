@@ -9,10 +9,13 @@
                           d:DesignHeight="450" d:DesignWidth="800"
                           Loaded="PropertyEditor_Loaded" Unloaded="PropertyEditor_Unloaded">
     <StackPanel>
-        <TextBlock Text="{Binding PropertyName, ElementName=filePathPropertyEditor}" ToolTip="{Binding PropertyDescription, ElementName=filePathPropertyEditor}"/>
-
         <TextBlock Text="{Binding FileNamePreview, ElementName=filePathPropertyEditor}"/>
 
-        <Button Content="Select File" Click="Button_Click" Margin="0, 5, 0, 0" HorizontalAlignment="Right"/>
+        <Button
+            x:Name="labelTarget"
+            Content="Select File"
+            Click="Button_Click"
+            Margin="0, 5, 0, 0"
+            HorizontalAlignment="Right"/>
     </StackPanel>
 </local:BasePropertyEditor>

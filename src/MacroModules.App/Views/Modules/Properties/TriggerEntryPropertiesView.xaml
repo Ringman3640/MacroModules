@@ -11,17 +11,26 @@
              d:DataContext="{d:DesignInstance Type=moduleviewmodels:TriggerEntryModuleVM}" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
-        <propeditors:InputTriggerPropertyEditor PropertyName="Trigger"
-                                                PropertyDescription="The input that triggers the macro execution."
+        <Label Target="{Binding LabelTarget, ElementName=triggerProperty}"
+               Content="Trigger"
+               ToolTip="The input that triggers the macro execution."
+               Style="{StaticResource PropertyLabel}"/>
+        <propeditors:InputTriggerPropertyEditor x:Name="triggerProperty"
                                                 InputTriggerProperty="{Binding Trigger}"/>
 
-        <propeditors:EnumPropertyEditor PropertyName="Execution Mode"
-                                        PropertyDescription="The mode used to trigger macro execution."
+        <Label Target="{Binding LabelTarget, ElementName=executionModeProperty}"
+               Content="Execution Mode"
+               ToolTip="The mode used to trigger macro execution."
+               Style="{StaticResource PropertyLabel}"/>
+        <propeditors:EnumPropertyEditor x:Name="executionModeProperty"
                                         EnumType="moduleexecution:MacroExecutionType"
                                         EnumProperty="{Binding ExecutionType}"/>
 
-        <propeditors:BoolPropertyEditor PropertyName="Suppress Input"
-                                        PropertyDescription="Indicates if the trigger input should be ignored by the system."
+        <Label Target="{Binding LabelTarget, ElementName=suppressInputProperty}"
+               Content="Suppress Input"
+               ToolTip="Indicates if the trigger input should be ignored by the system."
+               Style="{StaticResource PropertyLabel}"/>
+        <propeditors:BoolPropertyEditor x:Name="suppressInputProperty"
                                         BoolProperty="{Binding SuppressInput}"/>
     </StackPanel>
 </UserControl>

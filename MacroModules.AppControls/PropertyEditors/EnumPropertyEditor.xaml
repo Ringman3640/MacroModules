@@ -9,9 +9,7 @@
                           mc:Ignorable="d" 
                           d:DesignHeight="450" d:DesignWidth="800"
                           Loaded="PropertyEditor_Loaded" Unloaded="PropertyEditor_Unloaded">
-    <StackPanel>
-        <TextBlock Text="{Binding PropertyName, ElementName=enumPropertyEditor}" ToolTip="{Binding PropertyDescription, ElementName=enumPropertyEditor}"/>
-
-        <ComboBox ItemsSource="{Binding EnumArray, ElementName=enumPropertyEditor}" SelectedItem="{Binding SelectedEnum, ElementName=enumPropertyEditor}"/>
-    </StackPanel>
+    <ComboBox x:Name="labelTarget"
+              ItemsSource="{Binding EnumArray, ElementName=enumPropertyEditor}"
+              SelectedItem="{Binding SelectedEnum, ElementName=enumPropertyEditor}"/>
 </local:BasePropertyEditor>

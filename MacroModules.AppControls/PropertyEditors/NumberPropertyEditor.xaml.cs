@@ -48,8 +48,11 @@ public partial class NumberPropertyEditor : BasePropertyEditor
         }
     }
 
+    public override UIElement LabelTarget { get; }
+
     public NumberPropertyEditor() : base()
     {
         InitializeComponent();
+        LabelTarget = labelTarget;
     }
 }

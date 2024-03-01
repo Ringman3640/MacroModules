@@ -11,12 +11,18 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
-        <propeditors:NumberPropertyEditor PropertyName="Scroll Ticks"
-                                    PropertyDescription="The amount to scroll ticks to send."
-                                    NumberProperty="{Binding ScrollTicks, Mode=TwoWay}"/>
+        <Label Target="{Binding LabelTarget, ElementName=scrollTicksProperty}"
+               Content="Scroll Ticks"
+               ToolTip="The amount to scroll ticks to send."
+               Style="{StaticResource PropertyLabel}"/>
+        <propeditors:NumberPropertyEditor x:Name="scrollTicksProperty"
+                                          NumberProperty="{Binding ScrollTicks, Mode=TwoWay}"/>
 
-        <propeditors:EnumPropertyEditor PropertyName="Scroll Direction"
-                                        PropertyDescription="The direction that will be scrolled."
+        <Label Target="{Binding LabelTarget, ElementName=scrollDirectionProperty}"
+               Content="Scroll Direction"
+               ToolTip="The direction that will be scrolled."
+               Style="{StaticResource PropertyLabel}"/>
+        <propeditors:EnumPropertyEditor x:Name="scrollDirectionProperty"
                                         EnumType="{x:Type modules:ScrollDirection}"
                                         EnumProperty="{Binding Direction, Mode=TwoWay}"/>
     </StackPanel>

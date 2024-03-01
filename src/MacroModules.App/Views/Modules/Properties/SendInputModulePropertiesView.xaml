@@ -11,12 +11,18 @@
              d:DataContext="{d:DesignInstance Type=moduleviewmodels:SendInputModuleVM}" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
-        <propeditors:InputCodePropertyEditor PropertyName="Input"
-                                             PropertyDescription="The input to send."
+        <Label Target="{Binding LabelTarget, ElementName=inputProperty}"
+               Content="Input"
+               ToolTip="The input to send. This can be a key input or a mouse button input."
+               Style="{StaticResource PropertyLabel}"/>
+        <propeditors:InputCodePropertyEditor x:Name="inputProperty"
                                              InputCodeProperty="{Binding InputCode}"/>
 
-        <propeditors:EnumPropertyEditor PropertyName="Input Action"
-                                        PropertyDescription="Indicates the action that will be performed using the specified input."
+        <Label Target="{Binding LabelTarget, ElementName=inputActionProperty}"
+               Content="Input Action"
+               ToolTip="Indicates the action that will be performed using the specified input."
+               Style="{StaticResource PropertyLabel}"/>
+        <propeditors:EnumPropertyEditor x:Name="inputActionProperty"
                                         EnumType="{x:Type modules:SendInputAction}"
                                         EnumProperty="{Binding Action}"/>
     </StackPanel>

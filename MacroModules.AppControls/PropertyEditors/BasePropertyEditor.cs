@@ -29,6 +29,8 @@ public partial class BasePropertyEditor : UserControl, INotifyPropertyChanged
         set { SetValue(PropertyDescriptionProperty, value); }
     }
 
+    public virtual UIElement? LabelTarget { get; }
+
     public event PropertyChangedEventHandler? PropertyChanged;
 
     public BasePropertyEditor()

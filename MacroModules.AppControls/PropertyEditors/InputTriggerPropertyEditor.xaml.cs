@@ -48,6 +48,14 @@ public partial class InputTriggerPropertyEditor : BasePropertyEditor
         }
     }
 
+    public override UIElement LabelTarget { get; }
+
+    public InputTriggerPropertyEditor()
+    {
+        InitializeComponent();
+        LabelTarget = labelTarget;
+    }
+
     private void SetTrigger_Click(object sender, RoutedEventArgs e)
     {
         TriggerInputObtainer.InputHandler = new Action<InputTrigger>((InputTrigger) =>
@@ -56,11 +64,6 @@ public partial class InputTriggerPropertyEditor : BasePropertyEditor
             OnPropertyChanged(nameof(InputTriggerDisplay));
         });
         TriggerInputObtainer.Start();
-    }
-
-    public InputTriggerPropertyEditor()
-    {
-        InitializeComponent();
     }
 
     protected override void PropertyEditor_Unloaded(object sender, RoutedEventArgs e)

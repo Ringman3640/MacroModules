@@ -8,17 +8,17 @@
                           mc:Ignorable="d" 
                           d:DesignHeight="450" d:DesignWidth="800"
                           Loaded="PropertyEditor_Loaded" Unloaded="PropertyEditor_Unloaded">
-    <StackPanel>
-        <TextBlock Text="{Binding PropertyName, ElementName=percentPropertyEditor}" ToolTip="{Binding PropertyDescription, ElementName=percentPropertyEditor}"/>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <TextBlock Width="30" Text="{Binding PercentDisplay, ElementName=percentPropertyEditor}"/>
-            <Slider Grid.Column="1" Minimum="0" Maximum="100" Value="{Binding SliderValue, ElementName=percentPropertyEditor}"/>
-        </Grid>
-    </StackPanel>
+        <TextBlock Width="30" Text="{Binding PercentDisplay, ElementName=percentPropertyEditor}"/>
+        <Slider x:Name="labelTarget"
+                Grid.Column="1"
+                Minimum="0"
+                Maximum="100"
+                Value="{Binding SliderValue, ElementName=percentPropertyEditor}"/>
+    </Grid>
 </local:BasePropertyEditor>

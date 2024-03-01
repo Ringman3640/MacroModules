@@ -11,27 +11,23 @@
                           mc:Ignorable="d" 
                           d:DesignHeight="450" d:DesignWidth="800"
                           Loaded="PropertyEditor_Loaded" Unloaded="PropertyEditor_Unloaded">
-    <StackPanel>
-        <StackPanel.Resources>
+    <Grid>
+        <Grid.Resources>
             <ObjectDataProvider x:Key="dataFromEnum" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
                 <ObjectDataProvider.MethodParameters>
                     <x:Type TypeName="modeltypes:DurationGranularity"/>
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
-        </StackPanel.Resources>
+        </Grid.Resources>
         
-        <TextBlock Text="{Binding PropertyName, ElementName=durationPropertyEditor}" ToolTip="{Binding PropertyDescription, ElementName=durationPropertyEditor}"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
 
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
+        <appcontrols:FocusTextBox x:Name="labelTarget" Text="{Binding TimeUnitsEntryText, ElementName=durationPropertyEditor}"/>
 
-            <appcontrols:FocusTextBox Text="{Binding TimeUnitsEntryText, ElementName=durationPropertyEditor}"/>
-
-            <ComboBox Grid.Column="2" ItemsSource="{Binding Source={StaticResource dataFromEnum}}" SelectedItem="{Binding SelectedGranularity, ElementName=durationPropertyEditor}"/>
-        </Grid>
-    </StackPanel>
+        <ComboBox Grid.Column="2" ItemsSource="{Binding Source={StaticResource dataFromEnum}}" SelectedItem="{Binding SelectedGranularity, ElementName=durationPropertyEditor}"/>
+    </Grid>
 </local:BasePropertyEditor>

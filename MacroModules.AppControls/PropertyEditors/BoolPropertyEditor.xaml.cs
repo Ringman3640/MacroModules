@@ -17,6 +17,8 @@ namespace MacroModules.AppControls.PropertyEditors
                 defaultValue: false,
                 flags: FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
+        public override UIElement LabelTarget { get; }
+
         public bool IsSet
         {
             get { return BoolProperty; }
@@ -33,6 +35,7 @@ namespace MacroModules.AppControls.PropertyEditors
         public BoolPropertyEditor() : base()
         {
             InitializeComponent();
+            LabelTarget = labelTarget;
         }
     }
 }

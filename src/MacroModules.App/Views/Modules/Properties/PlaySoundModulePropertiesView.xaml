@@ -10,13 +10,19 @@
              d:DataContext="{d:DesignInstance Type=moduleviewmodels:PlaySoundModuleVM}" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
-        <propeditors:FilePathPropertyEditor PropertyName="Sound File"
-                                            PropertyDescription="The sound file that will be played."
+        <Label Target="{Binding LabelTarget, ElementName=soundFileProperty}"
+               Content="Sound File"
+               ToolTip="The sound file that will be played."
+               Style="{StaticResource PropertyLabel}"/>
+        <propeditors:FilePathPropertyEditor x:Name="soundFileProperty"
                                             FilePathProperty="{Binding SoundFile}"
                                             Filter="Sound files (*.mp3;*.wav)|*.mp3;*.wav"/>
 
-        <propeditors:PercentPropertyEditor PropertyName="Volume"
-                                           PropertyDescription="The percentage volume the sound file will be played at."
+        <Label Target="{Binding LabelTarget, ElementName=volumeProperty}"
+               Content="Volume"
+               ToolTip="The percentage volume the sound file will be played at."
+               Style="{StaticResource PropertyLabel}"/>
+        <propeditors:PercentPropertyEditor x:Name="volumeProperty"
                                            PercentProperty="{Binding Volume}"/>
     </StackPanel>
 </UserControl>

@@ -9,10 +9,10 @@
                           d:DesignHeight="450" d:DesignWidth="800"
                           Loaded="PropertyEditor_Loaded" Unloaded="PropertyEditor_Unloaded">
     <StackPanel>
-        <TextBlock Text="{Binding PropertyName, ElementName=inputCodePropertyEditor}" ToolTip="{Binding PropertyDescription, ElementName=inputCodePropertyEditor}"/>
-
         <TextBlock Text="{Binding InputCodeDisplay, ElementName=inputCodePropertyEditor}"/>
 
-        <Button Content="Set Input" Click="SetInput_Click"/>
+        <Button x:Name="labelTarget"
+                Content="Set Input"
+                Click="SetInput_Click"/>
     </StackPanel>
 </local:BasePropertyEditor>

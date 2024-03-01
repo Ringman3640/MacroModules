@@ -9,9 +9,6 @@
                           mc:Ignorable="d" 
                           d:DesignHeight="450" d:DesignWidth="800"
                           Loaded="PropertyEditor_Loaded" Unloaded="PropertyEditor_Unloaded">
-    <StackPanel>
-        <TextBlock Text="{Binding PropertyName, ElementName=numberPropertyEditor}" ToolTip="{Binding PropertyDescription, ElementName=numberPropertyEditor}"/>
-
-        <appcontrols:FocusTextBox Text="{Binding NumberEntryText, ElementName=numberPropertyEditor}"/>
-    </StackPanel>
+    <appcontrols:FocusTextBox x:Name="labelTarget"
+                              Text="{Binding NumberEntryText, ElementName=numberPropertyEditor}"/>
 </local:BasePropertyEditor>

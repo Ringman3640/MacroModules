@@ -10,13 +10,19 @@
              d:DataContext="{d:DesignInstance Type=moduleviewmodels:OpenProgramModuleVM}" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
-        <propeditors:FilePathPropertyEditor PropertyName="Program Path"
-                                            PropertyDescription="The path to the program to open."
+        <Label Target="{Binding LabelTarget, ElementName=programPathProperty}"
+               Content="Program Path"
+               ToolTip="The path to the program to open."
+               Style="{StaticResource PropertyLabel}"/>
+        <propeditors:FilePathPropertyEditor x:Name="programPathProperty"
                                             FilePathProperty="{Binding ProgramPath}"
                                             Filter="Executable files(*.exe)|*.exe"/>
 
-        <propeditors:StringPropertyEditor PropertyName="Arguments"
-                                          PropertyDescription="The string arguments that will be passed to the program."
+        <Label Target="{Binding LabelTarget, ElementName=argumentsProperty}"
+               Content="Arguments"
+               ToolTip="The string arguments that will be passed to the program."
+               Style="{StaticResource PropertyLabel}"/>
+        <propeditors:StringPropertyEditor x:Name="argumentsProperty"
                                           StringProperty="{Binding Arguments}"/>
     </StackPanel>
 </UserControl>

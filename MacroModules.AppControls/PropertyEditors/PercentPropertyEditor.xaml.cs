@@ -36,8 +36,11 @@ public partial class PercentPropertyEditor : BasePropertyEditor
         get { return Math.Round(PercentProperty * 100).ToString() + "%"; }
     }
 
+    public override UIElement LabelTarget { get; }
+
     public PercentPropertyEditor() : base()
     {
         InitializeComponent();
+        LabelTarget = labelTarget;
     }
 }

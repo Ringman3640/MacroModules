@@ -5,8 +5,6 @@ namespace MacroModules.App.ViewModels.Modules;
 
 public class SendInputModuleVM : ModuleVM
 {
-    public override ModuleType Type { get; } = ModuleType.SendInput;
-
     public ushort InputCode
     {
         get { return castedModuleData.InputCode; }
@@ -34,6 +32,10 @@ public class SendInputModuleVM : ModuleVM
             }
         }
     }
+
+    public override ModuleType Type { get; } = ModuleType.SendInput;
+
+    public override string ElementTitle { get; } = "Send Input";
 
     public SendInputModuleVM() : base()
     {

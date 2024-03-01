@@ -49,6 +49,8 @@ public class FocusWindowModuleVM : ValuedModuleVM
 
     public override ModuleType Type { get; } = ModuleType.FocusWindow;
 
+    public override string ElementTitle { get; } = "Focus Window";
+
     public FocusWindowModuleVM() : base()
     {
         castedModuleData = (FocusWindowModule)ModuleData;

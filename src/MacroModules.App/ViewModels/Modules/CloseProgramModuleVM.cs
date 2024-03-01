@@ -63,6 +63,8 @@ public class CloseProgramModuleVM : ValuedModuleVM
 
     public override ModuleType Type { get; } = ModuleType.CloseProgram;
 
+    public override string ElementTitle { get; } = "Close Program";
+
     public CloseProgramModuleVM() : base()
     {
         castedModuleData = (CloseProgramModule)ModuleData;

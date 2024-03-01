@@ -35,6 +35,8 @@ public class ScrollModuleVM : ModuleVM
 
     public override ModuleType Type { get; } = ModuleType.Scroll;
 
+    public override string ElementTitle { get; } = "Scroll";
+
     public ScrollModuleVM() : base()
     {
         castedModuleData = (ScrollModule)ModuleData;

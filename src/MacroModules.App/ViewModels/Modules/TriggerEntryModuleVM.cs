@@ -47,6 +47,8 @@ public class TriggerEntryModuleVM : ModuleVM
 
     public override ModuleType Type { get; } = ModuleType.TriggerEntry;
 
+    public override string ElementTitle { get; } = "Trigger Entry";
+
     public TriggerEntryModuleVM() : base()
     {
         castedModuleData = (TriggerEntryModule)ModuleData;

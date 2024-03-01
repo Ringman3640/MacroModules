@@ -35,6 +35,8 @@ public class PlaySoundModuleVM : ModuleVM
 
     public override ModuleType Type { get; } = ModuleType.PlaySound;
 
+    public override string ElementTitle { get; } = "Play Sound";
+
     public PlaySoundModuleVM() : base()
     {
         castedModuleData = (PlaySoundModule)ModuleData;

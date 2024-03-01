@@ -35,6 +35,8 @@ public class OpenProgramModuleVM : ValuedModuleVM
 
     public override ModuleType Type { get; } = ModuleType.OpenProgram;
 
+    public override string ElementTitle { get; } = "Open Program";
+
     public OpenProgramModuleVM() : base()
     {
         castedModuleData = (OpenProgramModule)ModuleData;

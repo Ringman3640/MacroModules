@@ -37,6 +37,8 @@ public class MoveCursorModuleVM : ModuleVM
 
     public override ModuleType Type { get; } = ModuleType.MoveCursor;
 
+    public override string ElementTitle { get; } = "Move Cursor";
+
     public MoveCursorModuleVM() : base()
     {
         castedModuleData = (MoveCursorModule)ModuleData;

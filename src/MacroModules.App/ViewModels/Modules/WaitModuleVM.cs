@@ -22,6 +22,8 @@ public class WaitModuleVM : ModuleVM
 
     public override ModuleType Type { get; } = ModuleType.Wait;
 
+    public override string ElementTitle { get; } = "Wait";
+
     public WaitModuleVM() : base()
     {
         castedModuleData = (WaitModule)ModuleData;

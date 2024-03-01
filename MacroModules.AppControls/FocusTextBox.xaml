@@ -10,6 +10,7 @@
              Focusable="True">
     <TextBox Template="{DynamicResource FocusTextBoxTemplate}"
              Text="{Binding Text, ElementName=focusTextBox}"
+             FontSize="{StaticResource FontSize.Normal}"
              GotFocus="TextBox_GotFocus"
              KeyDown="TextBox_KeyDown"/>
 </UserControl>

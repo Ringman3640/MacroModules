@@ -10,7 +10,7 @@
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=viewmodels:UtilitiesBarVM}"
              d:DesignHeight="120" d:DesignWidth="800">
-    <Border Padding="{StaticResource StandardPadding}" Background="#E8E8E8">
+    <Border Padding="{StaticResource Padding.Normal}" Background="#E8E8E8">
         <Border.Effect>
             <DropShadowEffect Direction="270" Color="LightGray" ShadowDepth="2"/>
         </Border.Effect>

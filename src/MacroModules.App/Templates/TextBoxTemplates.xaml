@@ -2,12 +2,14 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ControlTemplate x:Key="FocusTextBoxTemplate" TargetType="{x:Type TextBoxBase}">
         <Border x:Name="border"
-                Background="{TemplateBinding Background}"
-                BorderBrush="{TemplateBinding BorderBrush}"
+                Background="{StaticResource FormElement.Background}"
+                BorderBrush="{StaticResource FormElement.BorderColor}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 CornerRadius="{StaticResource CornerRadius.Small}"
+                Padding="{StaticResource FormElement.Padding}"
                 SnapsToDevicePixels="True">
             <ScrollViewer x:Name="PART_ContentHost"
+                          FontSize="{StaticResource FontSize.Normal}"
                           Focusable="false"
                           HorizontalScrollBarVisibility="Hidden"
                           VerticalScrollBarVisibility="Hidden"/>
@@ -17,10 +19,10 @@
                 <Setter Property="Opacity" TargetName="border" Value="0.56"/>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.BorderColor}"/>
+                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource FormElement.MouseOver.BorderColor}"/>
             </Trigger>
             <Trigger Property="IsKeyboardFocused" Value="true">
-                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.BorderColor}"/>
+                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource FormElement.Focus.BorderColor}"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

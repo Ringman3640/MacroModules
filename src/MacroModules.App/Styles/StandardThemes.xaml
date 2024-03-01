@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <Brush x:Key="Module.Icon.Color">White</Brush>
     <Brush x:Key="Module.InputType.BodyColor">#CA2121</Brush>
     <Brush x:Key="Module.MouseType.BodyColor">#CA6D21</Brush>
@@ -7,6 +8,9 @@
     <Brush x:Key="Module.ExecutionType.BodyColor">#CACA21</Brush>
     <Brush x:Key="Module.OtherType.BodyColor">#611C87</Brush>
     <Brush x:Key="Module.EntryType.BodyColor">#1AA21A</Brush>
-    <Brush x:Key="TextBox.MouseOver.BorderColor">#FF7EB4EA</Brush>
-    <Brush x:Key="TextBox.Focus.BorderColor">#FF569DE5</Brush>
+
+    <SolidColorBrush x:Key="FormElement.Background">#20000000</SolidColorBrush>
+    <SolidColorBrush x:Key="FormElement.BorderColor">#20000000</SolidColorBrush>
+    <SolidColorBrush x:Key="FormElement.MouseOver.BorderColor">#C6D2E6</SolidColorBrush>
+    <SolidColorBrush x:Key="FormElement.Focus.BorderColor">#C6D2E6</SolidColorBrush>
 </ResourceDictionary>

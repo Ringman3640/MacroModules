@@ -7,4 +7,6 @@
     <Brush x:Key="StandardExecutionModuleColor">#CACA21</Brush>
     <Brush x:Key="StandardOtherModuleColor">#611C87</Brush>
     <Brush x:Key="StandardEntryModuleColor">#1AA21A</Brush>
+    <Brush x:Key="TextBoxMouseOverBorder">#FF7EB4EA</Brush>
+    <Brush x:Key="TextBoxFocusBorder">#FF569DE5</Brush>
 </ResourceDictionary>

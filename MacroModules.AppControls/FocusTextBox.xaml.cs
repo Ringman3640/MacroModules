@@ -19,6 +19,17 @@ public partial class FocusTextBox : UserControl
             defaultValue: "",
             flags: FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
+    public CornerRadius CornerRadius
+    {
+        get { return (CornerRadius)GetValue(TextProperty); }
+        set { SetValue(TextProperty, value); }
+    }
+    public static readonly DependencyProperty CornerRadiusProperty = DependencyProperty.Register(
+        name: nameof(CornerRadius),
+        propertyType: typeof(CornerRadius),
+        ownerType: typeof(FocusTextBox),
+        typeMetadata: new PropertyMetadata(default(CornerRadius)));
+
     public bool SelectAllOnFocus
     {
         get { return (bool)GetValue(SelectAllOnFocusProperty); }

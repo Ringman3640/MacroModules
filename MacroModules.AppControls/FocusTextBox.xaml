@@ -8,5 +8,33 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Focusable="True">
-    <TextBox Text="{Binding Text, ElementName=focusTextBox}" GotFocus="TextBox_GotFocus" KeyDown="TextBox_KeyDown"/>
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+        <ControlTemplate x:Key="FocusTextBoxTemplate" TargetType="{x:Type TextBoxBase}">
+            <Border x:Name="border"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{Binding CornerRadius, ElementName=focusTextBox}"
+                    SnapsToDevicePixels="True">
+                <ScrollViewer x:Name="PART_ContentHost"
+                              Focusable="false"
+                              HorizontalScrollBarVisibility="Hidden"
+                              VerticalScrollBarVisibility="Hidden"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
+                </Trigger>
+                <Trigger Property="IsKeyboardFocused" Value="true">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Resources>
+    <TextBox Template="{DynamicResource FocusTextBoxTemplate}" Text="{Binding Text, ElementName=focusTextBox}" GotFocus="TextBox_GotFocus" KeyDown="TextBox_KeyDown"/>
 </UserControl>

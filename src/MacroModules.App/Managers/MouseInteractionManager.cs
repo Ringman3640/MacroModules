@@ -288,12 +288,6 @@ public sealed class MouseInteractionManager
 
             case InteractionState.StartRightHoldingBoard:
                 // TODO: Open options dropdown for board
-                // TEMPORARY
-                // This is just a way to spawn in modules
-                ModuleVM module = new MoveCursorModuleVM();
-                ModuleBoard.AddElement(module);
-                module.SetCenterStartingPosition(ModuleBoard.BoardMousePosition);
-                Workspace.CommitManager.CommitSeries();
                 break;
 
             case InteractionState.DraggingCanvas:

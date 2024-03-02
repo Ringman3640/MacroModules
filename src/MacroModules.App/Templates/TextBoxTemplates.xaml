@@ -3,7 +3,7 @@
     <ControlTemplate x:Key="FocusTextBoxTemplate" TargetType="{x:Type TextBoxBase}">
         <Border x:Name="border"
                 Background="{StaticResource FormElement.Background}"
-                BorderBrush="{StaticResource FormElement.BorderColor}"
+                BorderBrush="{StaticResource FormElement.Border}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 CornerRadius="{StaticResource CornerRadius.Small}"
                 Padding="{StaticResource FormElement.Padding}"
@@ -19,10 +19,10 @@
                 <Setter Property="Opacity" TargetName="border" Value="0.56"/>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource FormElement.MouseOver.BorderColor}"/>
+                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource FormElement.MouseOver.Border}"/>
             </Trigger>
             <Trigger Property="IsKeyboardFocused" Value="true">
-                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource FormElement.Focus.BorderColor}"/>
+                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource FormElement.Focus.Border}"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

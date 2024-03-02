@@ -10,6 +10,8 @@
                           d:DesignHeight="450" d:DesignWidth="800"
                           Loaded="PropertyEditor_Loaded" Unloaded="PropertyEditor_Unloaded">
     <ComboBox x:Name="labelTarget"
+              Template="{DynamicResource ComboBoxForm}"
+              FontSize="{StaticResource FormElement.FontSize}"
               ItemsSource="{Binding EnumArray, ElementName=enumPropertyEditor}"
               SelectedItem="{Binding SelectedEnum, ElementName=enumPropertyEditor}"/>
 </local:BasePropertyEditor>

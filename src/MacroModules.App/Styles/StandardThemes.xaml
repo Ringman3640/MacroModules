@@ -9,8 +9,13 @@
     <Brush x:Key="Module.OtherType.BodyColor">#611C87</Brush>
     <Brush x:Key="Module.EntryType.BodyColor">#1AA21A</Brush>
 
-    <SolidColorBrush x:Key="FormElement.Background">#20000000</SolidColorBrush>
-    <SolidColorBrush x:Key="FormElement.BorderColor">#20000000</SolidColorBrush>
-    <SolidColorBrush x:Key="FormElement.MouseOver.BorderColor">#C6D2E6</SolidColorBrush>
-    <SolidColorBrush x:Key="FormElement.Focus.BorderColor">#C6D2E6</SolidColorBrush>
+    <SolidColorBrush x:Key="FormElement.Background">#97BDC9</SolidColorBrush>
+    <SolidColorBrush x:Key="FormElement.Border">#97BDC9</SolidColorBrush>
+    <SolidColorBrush x:Key="FormElement.MouseOver.Background">#87A6B0</SolidColorBrush>
+    <SolidColorBrush x:Key="FormElement.MouseOver.Border">#87A6B0</SolidColorBrush>
+    <SolidColorBrush x:Key="FormElement.Pressed.Background">#87A6B0</SolidColorBrush>
+    <SolidColorBrush x:Key="FormElement.Pressed.Border">#87A6B0</SolidColorBrush>
+    <SolidColorBrush x:Key="FormElement.Disabled.Background">#92A6AD</SolidColorBrush>
+    <SolidColorBrush x:Key="FormElement.Disabled.Border">#92A6AD</SolidColorBrush>
+    <SolidColorBrush x:Key="FormElement.Focus.Border">#87A6B0</SolidColorBrush>
 </ResourceDictionary>

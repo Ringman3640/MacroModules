@@ -1,6 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <SolidColorBrush x:Key="GeneralTheme.Foreground">#2B2B2B</SolidColorBrush>
+    <SolidColorBrush x:Key="GeneralTheme.Disabled.Foreground">#636262</SolidColorBrush>
+    
     <Brush x:Key="Module.Icon.Color">White</Brush>
     <Brush x:Key="Module.InputType.BodyColor">#CA2121</Brush>
     <Brush x:Key="Module.MouseType.BodyColor">#CA6D21</Brush>
@@ -18,4 +21,14 @@
     <SolidColorBrush x:Key="FormElement.Disabled.Background">#92A6AD</SolidColorBrush>
     <SolidColorBrush x:Key="FormElement.Disabled.Border">#92A6AD</SolidColorBrush>
     <SolidColorBrush x:Key="FormElement.Focus.Border">#87A6B0</SolidColorBrush>
+
+    <SolidColorBrush x:Key="FormButton.Background">Transparent</SolidColorBrush>
+    <SolidColorBrush x:Key="FormButton.Border" Color="{Binding Color, Source={StaticResource GeneralTheme.Foreground}}"/>
+    <SolidColorBrush x:Key="FormButton.MouseOver.Background">#10000000</SolidColorBrush>
+    <SolidColorBrush x:Key="FormButton.MouseOver.Border" Color="{Binding Color, Source={StaticResource GeneralTheme.Foreground}}"/>
+    <SolidColorBrush x:Key="FormButton.Pressed.Background">#20000000</SolidColorBrush>
+    <SolidColorBrush x:Key="FormButton.Pressed.Border" Color="{Binding Color, Source={StaticResource GeneralTheme.Foreground}}"/>
+    <SolidColorBrush x:Key="FormButton.Disabled.Background">Transparent</SolidColorBrush>
+    <SolidColorBrush x:Key="FormButton.Disabled.Border">#97BDC9</SolidColorBrush>
+    <SolidColorBrush x:Key="FormButton.Disabled.Foreground" Color="{Binding Color, Source={StaticResource GeneralTheme.Disabled.Foreground}}"/>
 </ResourceDictionary>

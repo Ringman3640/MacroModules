@@ -12,6 +12,8 @@
         <TextBlock Text="{Binding InputTriggerDisplay, ElementName=inputTriggerPropertyEditor}"/>
 
         <Button x:Name="labelTarget"
+                Template="{DynamicResource ButtonForm}"
+                FontSize="{StaticResource FontSize.Normal}"
                 Content="Set Trigger"
                 Click="SetTrigger_Click"/>
     </StackPanel>

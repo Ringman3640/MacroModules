@@ -15,4 +15,5 @@
     
     <sys:Double x:Key="FormElement.FontSize">14</sys:Double>
     <Thickness x:Key="FormElement.Padding">2</Thickness>
+    <Thickness x:Key="FormButton.Padding">12, 4, 12, 4</Thickness>
 </ResourceDictionary>

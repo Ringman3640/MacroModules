@@ -12,7 +12,7 @@
                               TextElement.FontSize="{StaticResource FontSize.Normal}"
                               Focusable="False"
                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                              Margin="{StaticResource FormElement.Padding}"
+                              Margin="{StaticResource FormButton.Padding}"
                               RecognizesAccessKey="True"
                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>

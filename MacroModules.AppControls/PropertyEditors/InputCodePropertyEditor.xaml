@@ -12,6 +12,7 @@
         <TextBlock Text="{Binding InputCodeDisplay, ElementName=inputCodePropertyEditor}"/>
 
         <Button x:Name="labelTarget"
+                Template="{StaticResource ButtonForm}"
                 Content="Set Input"
                 Click="SetInput_Click"/>
     </StackPanel>

@@ -9,6 +9,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
                     <converters:HalveDoubleConverter x:Key="HalveDoubleConverter"/>
+                    
                 </ResourceDictionary>
                 <ResourceDictionary Source="/Styles/StandardLayoutStyles.xaml"/>
                 <ResourceDictionary Source="/Styles/StandardThemes.xaml"/>
@@ -17,6 +18,7 @@
                 <ResourceDictionary Source="/Templates/ComboBoxTemplates.xaml"/>
                 <ResourceDictionary Source="/Templates/ButtonTemplates.xaml"/>
                 <ResourceDictionary Source="/Resources/Images/Modules/ModuleIcons.xaml"/>
+                <ResourceDictionary Source="/Styles/DefaultStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

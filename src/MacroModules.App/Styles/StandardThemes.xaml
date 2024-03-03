@@ -4,6 +4,8 @@
     <SolidColorBrush x:Key="GeneralTheme.Foreground">#484848</SolidColorBrush>
     <SolidColorBrush x:Key="GeneralTheme.Disabled.Foreground">#636262</SolidColorBrush>
     <SolidColorBrush x:Key="GeneralTheme.DropShadow.Color">#636262</SolidColorBrush>
+    <SolidColorBrush x:Key="GeneralTheme.Emphasis">#00329B</SolidColorBrush>
+    <SolidColorBrush x:Key="GeneralTheme.EmphasisLight">#A7C3FF</SolidColorBrush>
 
     <SolidColorBrush x:Key="ModuleBoard.Background">#F4F4F4</SolidColorBrush>
 

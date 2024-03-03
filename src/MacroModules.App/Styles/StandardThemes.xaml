@@ -13,7 +13,7 @@
                       Direction="270"
                       ShadowDepth="2"
                       Opacity="0.5"
-                      Color="{Binding Color, Source={StaticResource GeneralTheme.DropShadow.Color}}"/>
+                      Color="{Binding Color, Source={StaticResource ResourceKey=GeneralTheme.DropShadow.Color}}"/>
 
     <Brush x:Key="Module.Icon.Color">White</Brush>
     <Brush x:Key="Module.InputType.BodyColor">#CA2121</Brush>
@@ -23,14 +23,14 @@
     <Brush x:Key="Module.OtherType.BodyColor">#611C87</Brush>
     <Brush x:Key="Module.EntryType.BodyColor">#1AA21A</Brush>
 
-    <SolidColorBrush x:Key="FormElement.Background">#97BDC9</SolidColorBrush>
-    <SolidColorBrush x:Key="FormElement.Border">#97BDC9</SolidColorBrush>
-    <SolidColorBrush x:Key="FormElement.MouseOver.Background">#87A6B0</SolidColorBrush>
-    <SolidColorBrush x:Key="FormElement.MouseOver.Border">#87A6B0</SolidColorBrush>
-    <SolidColorBrush x:Key="FormElement.Pressed.Background">#87A6B0</SolidColorBrush>
-    <SolidColorBrush x:Key="FormElement.Pressed.Border">#87A6B0</SolidColorBrush>
-    <SolidColorBrush x:Key="FormElement.Disabled.Background">#92A6AD</SolidColorBrush>
-    <SolidColorBrush x:Key="FormElement.Disabled.Border">#92A6AD</SolidColorBrush>
+    <SolidColorBrush x:Key="FormElement.Background" Color="{Binding Color, Source={StaticResource PropertiesPanel.Background}}"/>
+    <SolidColorBrush x:Key="FormElement.Border" Color="{Binding Color, Source={StaticResource GeneralTheme.Foreground}}"/>
+    <SolidColorBrush x:Key="FormElement.MouseOver.Background">#10000000</SolidColorBrush>
+    <SolidColorBrush x:Key="FormElement.MouseOver.Border" Color="{Binding Color, Source={StaticResource GeneralTheme.Foreground}}"/>
+    <SolidColorBrush x:Key="FormElement.Pressed.Background">#20000000</SolidColorBrush>
+    <SolidColorBrush x:Key="FormElement.Pressed.Border" Color="{Binding Color, Source={StaticResource GeneralTheme.Foreground}}"/>
+    <SolidColorBrush x:Key="FormElement.Disabled.Background">Transparent</SolidColorBrush>
+    <SolidColorBrush x:Key="FormElement.Disabled.Border">#97BDC9</SolidColorBrush>
     <SolidColorBrush x:Key="FormElement.Focus.Border">#87A6B0</SolidColorBrush>
 
     <SolidColorBrush x:Key="FormButton.Background">Transparent</SolidColorBrush>

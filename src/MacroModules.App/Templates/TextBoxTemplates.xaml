@@ -3,9 +3,8 @@
     <ControlTemplate x:Key="FocusTextBoxTemplate" TargetType="{x:Type TextBoxBase}">
         <Border x:Name="border"
                 Background="{StaticResource FormElement.Background}"
-                BorderBrush="{StaticResource FormElement.Border}"
-                BorderThickness="{TemplateBinding BorderThickness}"
-                CornerRadius="{StaticResource CornerRadius.Small}"
+                BorderBrush="{StaticResource GeneralTheme.Foreground}"
+                BorderThickness="0, 0, 0, 1"
                 Padding="{StaticResource FormElement.Padding}"
                 SnapsToDevicePixels="True">
             <ScrollViewer x:Name="PART_ContentHost"
@@ -13,16 +12,17 @@
                           Focusable="false"
                           HorizontalScrollBarVisibility="Hidden"
                           VerticalScrollBarVisibility="Hidden"/>
+
         </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="IsEnabled" Value="false">
                 <Setter Property="Opacity" TargetName="border" Value="0.56"/>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource FormElement.MouseOver.Border}"/>
+                <Setter Property="Background" TargetName="border" Value="{StaticResource FormElement.MouseOver.Background}"/>
             </Trigger>
             <Trigger Property="IsKeyboardFocused" Value="true">
-                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource FormElement.Focus.Border}"/>
+                <Setter Property="Background" TargetName="border" Value="{StaticResource FormElement.Pressed.Background}"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

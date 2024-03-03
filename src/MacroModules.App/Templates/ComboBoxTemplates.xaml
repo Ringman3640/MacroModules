@@ -123,7 +123,7 @@
                         <ControlTemplate TargetType="ComboBoxItem">
                             <Border CornerRadius="{StaticResource CornerRadius.Small}"
                                     Padding="{StaticResource FormElement.Padding}"
-                                    BorderThickness="2">
+                                    BorderThickness="1">
                                 <Border.Style>
                                     <Style TargetType="Border">
                                         <Setter Property="Background" Value="{StaticResource FormElement.Background}"/>

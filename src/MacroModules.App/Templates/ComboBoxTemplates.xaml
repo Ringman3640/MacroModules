@@ -166,7 +166,7 @@
                                               MaxHeight="{TemplateBinding MaxDropDownHeight}">
                     <Border x:Name="dropDownBorder"
                             Background="{StaticResource FormElement.Background}"
-                            BorderBrush="{DynamicResource FormElement.Border}"
+                            BorderBrush="Transparent"
                             BorderThickness="1"
                             CornerRadius="{StaticResource CornerRadius.Small}">
                         <ScrollViewer x:Name="DropDownScrollViewer">

@@ -12,7 +12,8 @@
             Padding="{StaticResource Padding.Normal}"
             Margin="10"
             MinWidth="200"
-            Background="{StaticResource PropertiesPanel.Background}">
+            Background="{StaticResource PropertiesPanel.Background}"
+            Effect="{StaticResource DropShadow.HoveringItem}">
         <StackPanel>
             <TextBlock Text="Select a Module to edit"
                        FontSize="{StaticResource FontSize.Medium}"

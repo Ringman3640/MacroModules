@@ -3,11 +3,18 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <SolidColorBrush x:Key="GeneralTheme.Foreground">#484848</SolidColorBrush>
     <SolidColorBrush x:Key="GeneralTheme.Disabled.Foreground">#636262</SolidColorBrush>
+    <SolidColorBrush x:Key="GeneralTheme.DropShadow.Color">#636262</SolidColorBrush>
 
     <SolidColorBrush x:Key="ModuleBoard.Background">#F4F4F4</SolidColorBrush>
 
     <SolidColorBrush x:Key="PropertiesPanel.Background">White</SolidColorBrush>
-    
+
+    <DropShadowEffect x:Key="DropShadow.HoveringItem"
+                      Direction="270"
+                      ShadowDepth="2"
+                      Opacity="0.5"
+                      Color="{Binding Color, Source={StaticResource GeneralTheme.DropShadow.Color}}"/>
+
     <Brush x:Key="Module.Icon.Color">White</Brush>
     <Brush x:Key="Module.InputType.BodyColor">#CA2121</Brush>
     <Brush x:Key="Module.MouseType.BodyColor">#CA6D21</Brush>

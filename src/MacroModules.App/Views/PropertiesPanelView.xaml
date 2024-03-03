@@ -20,6 +20,7 @@
                        HorizontalAlignment="Center">
                 <TextBlock.Style>
                     <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="{StaticResource GeneralTheme.Disabled.Foreground}"/>
                         <Setter Property="Visibility" Value="Collapsed"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding DisplayedModule}" Value="{x:Null}">
@@ -36,6 +37,7 @@
                        Margin="0, 0, 0, 15">
                 <TextBlock.Style>
                     <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="{StaticResource GeneralTheme.Disabled.Foreground}"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding DisplayedModule}" Value="{x:Null}">
                                 <Setter Property="Visibility" Value="Collapsed"/>

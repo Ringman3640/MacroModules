@@ -3,6 +3,8 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <SolidColorBrush x:Key="GeneralTheme.Foreground">#484848</SolidColorBrush>
     <SolidColorBrush x:Key="GeneralTheme.Disabled.Foreground">#636262</SolidColorBrush>
+
+    <SolidColorBrush x:Key="ModuleBoard.Background">#F4F4F4</SolidColorBrush>
     
     <Brush x:Key="Module.Icon.Color">White</Brush>
     <Brush x:Key="Module.InputType.BodyColor">#CA2121</Brush>

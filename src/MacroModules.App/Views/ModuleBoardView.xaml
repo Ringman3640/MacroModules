@@ -13,7 +13,7 @@
     <UserControl.Resources>
         <ResourceDictionary Source="/DataTemplates/ModuleViewDataTemplates.xaml"/>
     </UserControl.Resources>
-    <Canvas x:Name="cvBoardContainer" Background="Transparent" Focusable="True" AllowDrop="True">
+    <Canvas x:Name="cvBoardContainer" Background="{StaticResource ModuleBoard.Background}" Focusable="True" AllowDrop="True">
         <Canvas.InputBindings>
             <KeyBinding Command="{Binding Board_RemoveSelectedCommand}" Gesture="Back"/>
             <KeyBinding Command="{Binding Board_RemoveSelectedCommand}" Gesture="Delete"/>

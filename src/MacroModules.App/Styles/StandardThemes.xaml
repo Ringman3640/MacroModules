@@ -5,6 +5,8 @@
     <SolidColorBrush x:Key="GeneralTheme.Disabled.Foreground">#636262</SolidColorBrush>
 
     <SolidColorBrush x:Key="ModuleBoard.Background">#F4F4F4</SolidColorBrush>
+
+    <SolidColorBrush x:Key="PropertiesPanel.Background">White</SolidColorBrush>
     
     <Brush x:Key="Module.Icon.Color">White</Brush>
     <Brush x:Key="Module.InputType.BodyColor">#CA2121</Brush>

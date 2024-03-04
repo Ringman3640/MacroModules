@@ -78,6 +78,18 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
         SelectBox = new(this);
     }
 
+    public void Reset()
+    {
+        SelectBox.UnselectAll();
+        Elements.Clear();
+        Wires.Clear();
+        triggerModules.Clear();
+        StartupEntryModule = null;
+        ResetZoom();
+        UnlockCanvasFromMouse();
+        BoardPosition = new(0, 0);
+    }
+
     public void Focus()
     {
         if (ContainerViewRef is Canvas containerCanvas)

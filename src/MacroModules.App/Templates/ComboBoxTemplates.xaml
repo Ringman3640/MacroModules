@@ -140,7 +140,7 @@
                                         </Style.Triggers>
                                     </Style>
                                 </Border.Style>
-                                <ContentPresenter/>
+                                <ContentPresenter TextElement.Foreground="{StaticResource GeneralTheme.Foreground}"/>
                             </Border>
                         </ControlTemplate>
                     </Setter.Value>
@@ -194,6 +194,7 @@
                           IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource Mode=TemplatedParent}}"
                           Style="{StaticResource ComboBoxToggleButton}"/>
             <ContentPresenter x:Name="contentPresenter"
+                              TextElement.Foreground="{StaticResource GeneralTheme.Foreground}"
                               ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"
                               ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
                               Content="{TemplateBinding SelectionBoxItem}"

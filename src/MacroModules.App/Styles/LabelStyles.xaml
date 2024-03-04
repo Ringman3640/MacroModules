@@ -3,5 +3,6 @@
     <Style TargetType="Label" x:Key="PropertyLabel">
         <Setter Property="Padding" Value="0"/>
         <Setter Property="FontSize" Value="{StaticResource FontSize.Medium}"/>
+        <Setter Property="Foreground" Value="{StaticResource GeneralTheme.Emphasis}"/>
     </Style>
 </ResourceDictionary>

@@ -1,4 +1,5 @@
 ﻿using MacroModules.MacroLibrary.Types;
+using System.Text.Json.Serialization;
 
 namespace MacroModules.Model.Execution
 {
@@ -42,6 +43,7 @@ namespace MacroModules.Model.Execution
         /// </summary>
         /// <param name="inputKeyCode">The virtual key code of the trigger.</param>
         /// <param name="modifiers">The modifier key states of the trigger.</param>
+        [JsonConstructor]
         public InputTrigger(ushort inputKeyCode, InputModifiers modifiers)
         {
             InputKeyCode = inputKeyCode;

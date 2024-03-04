@@ -21,7 +21,7 @@ public abstract partial class ModuleVM : BoardElementVM
     [ObservableProperty]
     private Point _entryPortModulePosition;
 
-    public Point EntryPointBoardPosition
+    public Point EntryPortBoardPosition
     {
         get { return VisualPosition + (Vector)EntryPortModulePosition; }
     }

@@ -111,7 +111,7 @@ namespace MacroModules.App.ViewModels
                 WireVisibility = Visibility.Collapsed;
                 return;
             }
-            WireEndPoint = DestinationModule.EntryPointBoardPosition - (Vector)PortBoardPosition;
+            WireEndPoint = DestinationModule.EntryPortBoardPosition - (Vector)PortBoardPosition;
             WireVisibility = Visibility.Visible;
             WireHitTestVisible = true;
         }
@@ -131,7 +131,7 @@ namespace MacroModules.App.ViewModels
                 return;
             }
 
-            WireEndPoint = module.EntryPointBoardPosition - (Vector)PortBoardPosition;
+            WireEndPoint = module.EntryPortBoardPosition - (Vector)PortBoardPosition;
             WireHitTestVisible = false;
             WireVisibility = Visibility.Visible;
         }

@@ -1,5 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 using MacroModules.App.Managers;
 using MacroModules.Model.BoardElements;
 using MacroModules.Model.Modules;

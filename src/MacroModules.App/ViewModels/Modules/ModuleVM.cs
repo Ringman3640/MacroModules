@@ -18,7 +18,25 @@ public abstract partial class ModuleVM : BoardElementVM
 
     public ObservableCollection<ExitPortVM> ExitPorts { get; private set; } = new();
 
-    [ObservableProperty]
+    public Point EntryPortModulePosition
+    {
+        get { return _entryPortModulePosition; }
+        set
+        {
+            _entryPortModulePosition = value;
+
+            // The ElementMoved event needs to be called if the set value is not equal to point
+            // (0, 0). This is because when a Module initially is created, the
+            // EntryPortModulePosition will be 0 since The CanvasAwareBehavior of the EntryPort is
+            // not set until the Module is loaded in the UI. This is a problem when pasting a set
+            // of modules and causes the wires to be unaligned. Calling ElementMoved will make the
+            // wires corrent themselves when the actual EntryPortModulePosition is received. 
+            if (value.X != 0 || value.Y != 0)
+            {
+                OnElementMoved();
+            }
+        }
+    }
     private Point _entryPortModulePosition;
 
     public Point EntryPortBoardPosition

@@ -34,7 +34,7 @@ public abstract partial class BoardElementVM : MouseAwareVM, IDimensionsAware, I
             {
                 _visualPosition = nextPos;
                 OnPropertyChanged();
-                ElementMoved?.Invoke(this, EventArgs.Empty);
+                OnElementMoved();
             }
         }
     }
@@ -60,7 +60,7 @@ public abstract partial class BoardElementVM : MouseAwareVM, IDimensionsAware, I
                 ElementData.PositionY = value.Y;
                 _visualPosition = _actualPosition;
                 OnPropertyChanged(nameof(VisualPosition));
-                ElementMoved?.Invoke(this, EventArgs.Empty);
+                OnElementMoved();
             }
         }
     }
@@ -172,5 +172,10 @@ public abstract partial class BoardElementVM : MouseAwareVM, IDimensionsAware, I
             Workspace?.CommitManager.PushToSeries(new PropertyCommit(this, propertyName!, initialValue, newValue));
             Workspace?.CommitManager.CommitSeries();
         }
+    }
+
+    protected void OnElementMoved()
+    {
+        ElementMoved?.Invoke(this, EventArgs.Empty);
     }
 }

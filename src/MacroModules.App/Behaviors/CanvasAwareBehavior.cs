@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xaml.Behaviors;
-using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -22,6 +21,11 @@ public class CanvasAwareBehavior : Behavior<FrameworkElement>
     protected override void OnAttached()
     {
         AssociatedObject.Loaded += AssociatedObject_Loaded;
+    }
+
+    protected override void OnDetaching()
+    {
+        AssociatedObject.Loaded -= AssociatedObject_Loaded;
     }
 
     private void AssociatedObject_Loaded(object sender, RoutedEventArgs e)

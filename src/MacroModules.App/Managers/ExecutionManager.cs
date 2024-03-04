@@ -68,5 +68,6 @@ public partial class ExecutionManager : ObservableObject
     private void MacroDispatcher_RunningStateChanged(object sender, EventArgs e)
     {
         WeakReferenceMessenger.Default.Send(new ExecutionStateChangedMessage(Running));
+        OnPropertyChanged(nameof(Running));
     }
 }

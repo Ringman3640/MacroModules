@@ -29,13 +29,30 @@
     </i:Interaction.Triggers>
 
     <Grid x:Name="gdWorkspace" Background="Transparent">
-        <ContentControl Grid.Row="0" Content="{Binding UtilitiesBar, Mode=OneWay}" Panel.ZIndex="1">
+        <ContentControl Grid.Row="0" Content="{Binding UtilitiesBar, Mode=OneWay}" Panel.ZIndex="2">
             <ContentControl.ContentTemplate>
                 <DataTemplate>
                     <local:UtilitiesBarView/>
                 </DataTemplate>
             </ContentControl.ContentTemplate>
         </ContentControl>
+
+        <Rectangle HorizontalAlignment="Stretch"
+                   VerticalAlignment="Stretch"
+                   Fill="White"
+                   Opacity="0.5"
+                   Panel.ZIndex="1">
+            <Rectangle.Style>
+                <Style TargetType="Rectangle">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Executor.Running}" Value="True">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Rectangle.Style>
+        </Rectangle>
 
         <ContentControl Content="{Binding ModuleBoard, Mode=OneWay}">
             <ContentControl.ContentTemplate>

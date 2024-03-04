@@ -10,10 +10,9 @@
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=viewmodels:UtilitiesBarVM}"
              d:DesignHeight="120" d:DesignWidth="800">
-    <Border Padding="{StaticResource Padding.Normal}" Background="#E8E8E8">
-        <Border.Effect>
-            <DropShadowEffect Direction="270" Color="LightGray" ShadowDepth="2"/>
-        </Border.Effect>
+    <Border Padding="{StaticResource Padding.Normal}"
+            Background="{StaticResource UtilitiesBar.Background}"
+            Effect="{StaticResource DropShadow.HoveringItem}">
         <StackPanel Orientation="Horizontal">
             <StackPanel.Resources>
                 <Style x:Key="InvisibleSeparator" TargetType="Separator">

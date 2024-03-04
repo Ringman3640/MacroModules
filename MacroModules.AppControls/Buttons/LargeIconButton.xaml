@@ -12,9 +12,11 @@
         <StackPanel>
             <ContentControl Width="60" Height="60"
                             Content="{Binding IconContent, ElementName=largeIconButton}"/>
-            <TextBlock Grid.Row="1" HorizontalAlignment="Center" TextTrimming="CharacterEllipsis"
+            <TextBlock Grid.Row="1" HorizontalAlignment="Center"
+                       TextTrimming="CharacterEllipsis"
                        Text="{Binding ButtonText, ElementName=largeIconButton}"
-                       FontSize="{StaticResource FontSize.Medium}"/>
+                       FontSize="{StaticResource FontSize.Medium}"
+                       Foreground="{StaticResource GeneralTheme.Foreground}"/>
         </StackPanel>
     </Button>
 </UserControl>

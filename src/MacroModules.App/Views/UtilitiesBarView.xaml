@@ -9,10 +9,14 @@
              xmlns:graphics="clr-namespace:MacroModules.AppControls.Graphics;assembly=MacroModules.AppControls"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=viewmodels:UtilitiesBarVM}"
-             d:DesignHeight="120" d:DesignWidth="800">
+             d:DesignHeight="2000" d:DesignWidth="500">
     <Border Padding="{StaticResource Padding.Normal}"
+            Margin="{StaticResource Margin.Normal}"
             Background="{StaticResource UtilitiesBar.Background}"
-            Effect="{StaticResource DropShadow.HoveringItem}">
+            Effect="{StaticResource DropShadow.HoveringItem}"
+            CornerRadius="{StaticResource CornerRadius.Large}"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top">
         <StackPanel Orientation="Horizontal">
             <StackPanel.Resources>
                 <Style x:Key="InvisibleSeparator" TargetType="Separator">

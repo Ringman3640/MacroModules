@@ -3,6 +3,8 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <Thickness x:Key="Padding.Normal">10</Thickness>
     <Thickness x:Key="Padding.Small">4</Thickness>
+    <Thickness x:Key="Margin.Normal">10</Thickness>
+    <Thickness x:Key="Margin.Small">4</Thickness>
     <sys:Double x:Key="Module.Width">80</sys:Double>
     <sys:Double x:Key="Module.Height">80</sys:Double>
     <sys:Double x:Key="Module.Icon.Width">50</sys:Double>

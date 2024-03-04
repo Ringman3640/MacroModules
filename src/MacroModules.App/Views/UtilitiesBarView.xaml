@@ -60,7 +60,8 @@
             <buttons:LargeIconButton ButtonText="Terminate" ButtonCommand="{Binding SetTerminateTriggerCommand}">
                 <buttons:LargeIconButton.IconContent>
                     <graphics:InputTriggerGraphic InputTrigger="{Binding Workspace.Executor.TerminateTrigger}"
-                                                  FontSize="{StaticResource FontSize.Medium}"/>
+                                                  FontSize="{StaticResource FontSize.Medium}"
+                                                  Color="{StaticResource GeneralTheme.Foreground}"/>
                 </buttons:LargeIconButton.IconContent>
             </buttons:LargeIconButton>
         </StackPanel>

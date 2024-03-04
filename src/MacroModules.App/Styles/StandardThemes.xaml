@@ -42,7 +42,7 @@
     <SolidColorBrush x:Key="FormElement.Pressed.Background">#20000000</SolidColorBrush>
     <SolidColorBrush x:Key="FormElement.Pressed.Border" Color="{Binding Color, Source={StaticResource GeneralTheme.Foreground}}"/>
     <SolidColorBrush x:Key="FormElement.Disabled.Background">Transparent</SolidColorBrush>
-    <SolidColorBrush x:Key="FormElement.Disabled.Border">#97BDC9</SolidColorBrush>
+    <SolidColorBrush x:Key="FormElement.Disabled.Border" Color="{Binding Color, Source={StaticResource GeneralTheme.Disabled.Foreground}}"/>
     <SolidColorBrush x:Key="FormElement.Focus.Border">#87A6B0</SolidColorBrush>
 
     <SolidColorBrush x:Key="FormButton.Background">Transparent</SolidColorBrush>

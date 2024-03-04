@@ -258,7 +258,8 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
                     }
                     if (triggerModule.Trigger.Equals(triggerEntryModule.Trigger))
                     {
-                        return false;
+                        triggerEntryModule.ClearStartingTrigger();
+                        break;
                     }
                 }
             }

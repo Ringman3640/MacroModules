@@ -59,5 +59,19 @@ public class TriggerEntryModuleVM : ModuleVM
         castedModuleData = moduleData;
     }
 
+    /// <summary>
+    /// Clears the value set for <see cref="Trigger"/> without raising a commit.
+    /// </summary>
+    /// <remarks>
+    /// This method is intended to be used when a <see cref="TriggerEntryModule"/> is duplicated
+    /// on the <see cref="ModuleBoardVM"/> that already has a <see cref="TriggerEntryModule"/> with
+    /// the same trigger.
+    /// </remarks>
+    public void ClearStartingTrigger()
+    {
+        castedModuleData.Trigger = null;
+        OnPropertyChanged(nameof(Trigger));
+    }
+
     private readonly TriggerEntryModule castedModuleData;
 }

@@ -1,9 +1,0 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Style x:Key="DefaultStyle" TargetType="{x:Type FrameworkElement}">
-        <Setter Property="TextElement.Foreground"  Value="{StaticResource GeneralTheme.Foreground}"/>
-    </Style>
-    <Style TargetType="TextBlock" BasedOn="{StaticResource DefaultStyle}"/>
-    <Style TargetType="TextBox" BasedOn="{StaticResource DefaultStyle}"/>
-    <Style TargetType="Button" BasedOn="{StaticResource DefaultStyle}"/>
-</ResourceDictionary>

@@ -8,7 +8,10 @@
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=viewmodels:ModuleBarVM}"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Border Padding="10" Background="LightGray" AllowDrop="True">
+    <Border Padding="{StaticResource Padding.Normal}"
+            Background="{StaticResource ModuleBar.Background}"
+            AllowDrop="True"
+            Effect="{StaticResource DropShadow.HoveringItemDown}">
         <Grid>
             <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Visible">
                 <ItemsControl ItemsSource="{Binding Items}">

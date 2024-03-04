@@ -11,11 +11,21 @@
 
     <SolidColorBrush x:Key="PropertiesPanel.Background">White</SolidColorBrush>
 
+    <SolidColorBrush x:Key="UtilitiesBar.Background">White</SolidColorBrush>
+    
+    <SolidColorBrush x:Key="ModuleBar.Background">White</SolidColorBrush>
+
     <DropShadowEffect x:Key="DropShadow.HoveringItem"
                       Direction="270"
                       ShadowDepth="2"
                       Opacity="0.5"
                       Color="{Binding Color, Source={StaticResource ResourceKey=GeneralTheme.DropShadow.Color}}"/>
+
+    <DropShadowEffect x:Key="DropShadow.HoveringItemDown"
+                  Direction="90"
+                  ShadowDepth="2"
+                  Opacity="0.5"
+                  Color="{Binding Color, Source={StaticResource ResourceKey=GeneralTheme.DropShadow.Color}}"/>
 
     <Brush x:Key="Module.Icon.Color">White</Brush>
     <Brush x:Key="Module.InputType.BodyColor">#CA2121</Brush>

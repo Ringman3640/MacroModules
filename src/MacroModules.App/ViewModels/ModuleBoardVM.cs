@@ -142,7 +142,7 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
                 element.Initialize(Workspace);
             }
         }
-        if (!PerformingCommitAction)
+        if (!PerformingCommitAction && elements.Count != 0)
         {
             Workspace.CommitManager.PushToSeries(new ElementGroupAddedCommit(this, elements));
         }

@@ -435,6 +435,12 @@ public partial class ModuleBoardVM : MouseAwareVM, ICommittable
         AddElements(elementVMs);
         Workspace.CommitManager.CommitSeries();
 
+        // Cancel paste if no modules were added
+        if (elementVMs.Count == 0)
+        {
+            return;
+        }
+
         // Get the group center offset from the mouse
         Point startingPoint = elementVMs[0].CenterVisualPosition;
         Rect boundingRect = new(startingPoint, Size.Empty);

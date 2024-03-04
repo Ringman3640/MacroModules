@@ -17,6 +17,8 @@
         <propeditors:PositionPropertyEditor x:Name="targetPositionProperty"
                                             PositionProperty="{Binding TargetPosition, Mode=TwoWay}"/>
 
+        <Separator Style="{StaticResource PropertiesPanelSeparator}"/>
+
         <Label Target="{Binding LabelTarget, ElementName=transitionTimeProperty}"
                Content="Transition Time"
                ToolTip="The time the cursor will take to transition from its current position to the target position."

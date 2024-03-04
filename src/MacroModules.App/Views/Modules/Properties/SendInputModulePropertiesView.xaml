@@ -18,6 +18,8 @@
         <propeditors:InputCodePropertyEditor x:Name="inputProperty"
                                              InputCodeProperty="{Binding InputCode}"/>
 
+        <Separator Style="{StaticResource PropertiesPanelSeparator}"/>
+
         <Label Target="{Binding LabelTarget, ElementName=inputActionProperty}"
                Content="Input Action"
                ToolTip="Indicates the action that will be performed using the specified input."

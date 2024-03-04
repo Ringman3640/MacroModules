@@ -18,6 +18,8 @@
         <propeditors:StringPropertyEditor x:Name="searchTermProperty"
                                           StringProperty="{Binding SearchTerm}"/>
 
+        <Separator Style="{StaticResource PropertiesPanelSeparator}"/>
+
         <Label Target="{Binding LabelTarget, ElementName=searchComponentProperty}"
                Content="Search Component"
                ToolTip="The component of the program to search against using the search term."
@@ -25,6 +27,8 @@
         <propeditors:EnumPropertyEditor x:Name="searchComponentProperty"
                                         EnumType="{x:Type modules:ProgramSearchTarget}"
                                         EnumProperty="{Binding SearchComponent}"/>
+
+        <Separator Style="{StaticResource PropertiesPanelSeparator}"/>
 
         <Label Target="{Binding LabelTarget, ElementName=focusAllMatchesProperty}"
                Content="Focus All Matches"

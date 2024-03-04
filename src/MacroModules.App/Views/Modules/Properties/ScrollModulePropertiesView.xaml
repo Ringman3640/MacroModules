@@ -18,6 +18,8 @@
         <propeditors:NumberPropertyEditor x:Name="scrollTicksProperty"
                                           NumberProperty="{Binding ScrollTicks, Mode=TwoWay}"/>
 
+        <Separator Style="{StaticResource PropertiesPanelSeparator}"/>
+
         <Label Target="{Binding LabelTarget, ElementName=scrollDirectionProperty}"
                Content="Scroll Direction"
                ToolTip="The direction that will be scrolled."

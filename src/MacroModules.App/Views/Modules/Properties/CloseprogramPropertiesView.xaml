@@ -17,7 +17,9 @@
                Style="{StaticResource PropertyLabel}"/>
         <propeditors:StringPropertyEditor x:Name="searchTermProperty"
                                           StringProperty="{Binding SearchTerm}"/>
-        
+
+        <Separator Style="{StaticResource PropertiesPanelSeparator}"/>
+
         <Label Target="{Binding LabelTarget, ElementName=searchComponentProperty}"
                Content="Search Component"
                ToolTip="The component of the program to search against using the search term."
@@ -26,12 +28,16 @@
                                         EnumType="{x:Type modules:ProgramSearchTarget}"
                                         EnumProperty="{Binding SearchComponent}"/>
 
+        <Separator Style="{StaticResource PropertiesPanelSeparator}"/>
+
         <Label Target="{Binding LabelTarget, ElementName=closeAllMatchesProperty}"
                Content="Close All Matches"
                ToolTip="Indicates if all matched programs should be closed or only the first instance found."
                Style="{StaticResource PropertyLabel}"/>
         <propeditors:BoolPropertyEditor x:Name="closeAllMatchesProperty"
                                         BoolProperty="{Binding CloseAllMatches}"/>
+
+        <Separator Style="{StaticResource PropertiesPanelSeparator}"/>
 
         <Label Target="{Binding LabelTarget, ElementName=closeChildProgramsProperty}"
                Content="Close Child Programs"

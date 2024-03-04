@@ -18,6 +18,8 @@
                                             FilePathProperty="{Binding SoundFile}"
                                             Filter="Sound files (*.mp3;*.wav)|*.mp3;*.wav"/>
 
+        <Separator Style="{StaticResource PropertiesPanelSeparator}"/>
+
         <Label Target="{Binding LabelTarget, ElementName=volumeProperty}"
                Content="Volume"
                ToolTip="The percentage volume the sound file will be played at."

@@ -18,6 +18,8 @@
         <propeditors:InputTriggerPropertyEditor x:Name="triggerProperty"
                                                 InputTriggerProperty="{Binding Trigger}"/>
 
+        <Separator Style="{StaticResource PropertiesPanelSeparator}"/>
+
         <Label Target="{Binding LabelTarget, ElementName=executionModeProperty}"
                Content="Execution Mode"
                ToolTip="The mode used to trigger macro execution."
@@ -25,6 +27,8 @@
         <propeditors:EnumPropertyEditor x:Name="executionModeProperty"
                                         EnumType="moduleexecution:MacroExecutionType"
                                         EnumProperty="{Binding ExecutionType}"/>
+
+        <Separator Style="{StaticResource PropertiesPanelSeparator}"/>
 
         <Label Target="{Binding LabelTarget, ElementName=suppressInputProperty}"
                Content="Suppress Input"

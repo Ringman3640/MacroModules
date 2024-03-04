@@ -18,6 +18,8 @@
                                             FilePathProperty="{Binding ProgramPath}"
                                             Filter="Executable files(*.exe)|*.exe"/>
 
+        <Separator Style="{StaticResource PropertiesPanelSeparator}"/>
+
         <Label Target="{Binding LabelTarget, ElementName=argumentsProperty}"
                Content="Arguments"
                ToolTip="The string arguments that will be passed to the program."

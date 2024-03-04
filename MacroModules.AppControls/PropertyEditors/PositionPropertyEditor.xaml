@@ -11,6 +11,14 @@
              d:DesignHeight="100" d:DesignWidth="300" 
              Loaded="PropertyEditor_Loaded" Unloaded="PropertyEditor_Unloaded">
     <Grid>
+        <Grid.Resources>
+            <Style x:Key="PositionComponentLabel" TargetType="Label">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="{StaticResource FontSize.Normal}"/>
+                <Setter Property="Foreground" Value="{StaticResource GeneralTheme.Emphasis}"/>
+                <Setter Property="Padding" Value="0, 0, 6, 0"/>
+            </Style>
+        </Grid.Resources>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
@@ -19,13 +27,21 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Column="0" Text="X" Padding="0, 0, 6, 0"/>
+        <Label Grid.Column="0"
+               Target="{Binding labelTarget}"
+               Style="{StaticResource PositionComponentLabel}"
+               Content="X"
+               ToolTip="The horizontal component of the position value."/>
         <appcontrols:FocusTextBox x:Name="labelTarget"
                                   Grid.Column="1"
                                   Text="{Binding EntryTextX, ElementName=positionPropertyEditor}" SelectAllOnFocus="True"/>
 
-        <TextBlock Grid.Column="3" Text="Y" Padding="0, 0, 6, 0"/>
-        <appcontrols:FocusTextBox Grid.Column="4"
+        <Label Grid.Column="3"
+               Target="{Binding positionEntryY}"
+               Style="{StaticResource PositionComponentLabel}"
+               Content="Y"
+               ToolTip="The vertical component of the position value."/>
+        <appcontrols:FocusTextBox x:Name="positionEntryY" Grid.Column="4"
                                   Text="{Binding EntryTextY, ElementName=positionPropertyEditor}" SelectAllOnFocus="True"/>
     </Grid>
 </local:BasePropertyEditor>

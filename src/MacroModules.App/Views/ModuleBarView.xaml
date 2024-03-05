@@ -15,7 +15,17 @@
             AllowDrop="True"
             Effect="{StaticResource DropShadow.HoveringItem}">
         <Grid>
-            <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
+            <ScrollViewer x:Name="scrollViewer" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
+                <ScrollViewer.Style>
+                    <Style TargetType="ScrollViewer">
+                        <Setter Property="Padding" Value="0"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ComputedHorizontalScrollBarVisibility, ElementName=scrollViewer}" Value="Visible">
+                                <Setter Property="Padding" Value="0, 0, 0, 10"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ScrollViewer.Style>
                 <ItemsControl ItemsSource="{Binding Items}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>

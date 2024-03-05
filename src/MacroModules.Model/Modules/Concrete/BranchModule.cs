@@ -62,9 +62,7 @@ namespace MacroModules.Model.Modules.Concrete
         /// </summary>
         public BranchModule()
         {
-            ExitPorts[0] = new ExitPort(
-                portName: "Default",
-                description: "Activates if no specified conditions are met.");
+            ExitPorts[0] = new ExitPort("Default");
         }
 
         /// <summary>

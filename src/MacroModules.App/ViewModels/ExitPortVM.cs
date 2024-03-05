@@ -72,11 +72,6 @@ namespace MacroModules.App.ViewModels
             get { return ExitPortData.Name; }
         }
 
-        public string? Description
-        {
-            get { return ExitPortData.Description; }
-        }
-
         public Point PortBoardPosition
         {
             get { return AttachedModule.VisualPosition + (Vector)PortModulePosition; }

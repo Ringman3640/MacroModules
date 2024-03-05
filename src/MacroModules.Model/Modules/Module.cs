@@ -68,9 +68,7 @@ namespace MacroModules.Model.Modules
         {
             ExitPorts =
             [
-                new ExitPort(
-                    portName: "Next",
-                    description: "Activates when the Module is finished executing")
+                new ExitPort("Next")
             ];
         }
 

@@ -14,12 +14,6 @@ namespace MacroModules.Model.Modules
         public string? Name { get; private set; }
 
         /// <summary>
-        /// Brief description of the exit port.
-        /// </summary>
-        [JsonInclude]
-        public string? Description { get; private set; }
-
-        /// <summary>
         /// The Id of the <see cref="Module"/> that is port leads to.
         /// </summary>
         /// <remarks>
@@ -61,23 +55,10 @@ namespace MacroModules.Model.Modules
         /// <summary>
         /// Initializes a new <see cref="ExitPort"/> instance with the given name value.
         /// </summary>
-        /// <inheritdoc cref="ExitPort(string, string)" path="/param"/>
+        /// <param name="portName">The descriptive name of the port.</param>
         public ExitPort(string portName)
         {
             Name = portName;
-            Description = null;
-        }
-
-        /// <summary>
-        /// Initializes a new <see cref="ExitPort"/> instance with the given name and description
-        /// values.
-        /// </summary>
-        /// <param name="portName">The descriptive name of the port.</param>
-        /// <param name="description">A brief description of the port.</param>
-        public ExitPort(string portName, string description)
-        {
-            Name = portName;
-            Description = description;
         }
     }
 }

@@ -8,7 +8,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Button MaxWidth="100" BorderBrush="Transparent" Background="Transparent"
-            Command="{Binding ButtonCommand, ElementName=largeIconButton}">
+            Command="{Binding ButtonCommand, ElementName=largeIconButton}"
+            AutomationProperties.Name="{Binding AutomationName, ElementName=largeIconButton}">
         <StackPanel>
             <ContentControl Width="60" Height="60"
                             Content="{Binding IconContent, ElementName=largeIconButton}"/>

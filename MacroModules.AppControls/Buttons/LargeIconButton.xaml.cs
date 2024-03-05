@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -38,6 +39,17 @@ public partial class LargeIconButton : UserControl
         propertyType: typeof(ICommand),
         ownerType: typeof(LargeIconButton),
         typeMetadata: new PropertyMetadata(default(ICommand)));
+
+    public string AutomationName
+    {
+        get { return (string)GetValue(AutomationNameProperty); }
+        set { SetValue(AutomationNameProperty, value); }
+    }
+    public static readonly DependencyProperty AutomationNameProperty = DependencyProperty.Register(
+        name: nameof(AutomationName),
+        propertyType: typeof(string),
+        ownerType: typeof(LargeIconButton),
+        typeMetadata: new PropertyMetadata(""));
 
     public LargeIconButton()
     {

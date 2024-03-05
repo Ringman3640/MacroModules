@@ -25,7 +25,9 @@
                 </Style>
             </StackPanel.Resources>
             
-            <buttons:LargeIconButton ButtonText="Start" ButtonCommand="{Binding StartExecutionCommand}">
+            <buttons:LargeIconButton ButtonText="Start"
+                                     AutomationName="Start Execution"
+                                     ButtonCommand="{Binding StartExecutionCommand}">
                 <buttons:LargeIconButton.Style>
                     <Style TargetType="buttons:LargeIconButton">
                         <Style.Triggers>
@@ -40,7 +42,9 @@
                 </buttons:LargeIconButton.IconContent>
             </buttons:LargeIconButton>
 
-            <buttons:LargeIconButton ButtonText="Stop" ButtonCommand="{Binding StopExecutionCommand}">
+            <buttons:LargeIconButton ButtonText="Stop"
+                                     AutomationName="Stop Execution"
+                                     ButtonCommand="{Binding StopExecutionCommand}">
                 <buttons:LargeIconButton.Style>
                     <Style TargetType="buttons:LargeIconButton">
                         <Style.Triggers>
@@ -57,7 +61,9 @@
 
             <Separator Style="{StaticResource InvisibleSeparator}"/>
 
-            <buttons:LargeIconButton ButtonText="Terminate" ButtonCommand="{Binding SetTerminateTriggerCommand}">
+            <buttons:LargeIconButton ButtonText="Terminate"
+                                     AutomationName="Set Terminate Trigger"
+                                     ButtonCommand="{Binding SetTerminateTriggerCommand}">
                 <buttons:LargeIconButton.IconContent>
                     <graphics:InputTriggerGraphic InputTrigger="{Binding Workspace.Executor.TerminateTrigger}"
                                                   FontSize="{StaticResource FontSize.Medium}"

@@ -21,7 +21,7 @@ public class ProjectManager
 
     public string? ProjectFilePath { get; set; } = null;
 
-    public bool SaveNeeded { get; set; } = true;
+    public bool SaveNeeded { get; set; } = false;
 
     public ProjectManager(WorkspaceVM workspace)
     {

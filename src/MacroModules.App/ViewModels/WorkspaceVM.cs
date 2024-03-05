@@ -85,16 +85,26 @@ public partial class WorkspaceVM : ObservableObject
     }
 
     [RelayCommand]
-    private void Testing_Save()
+    private void Workspace_File_New()
     {
-        Project.ProjectFilePath = "test.mmod";
+        Project.OpenNew();
+    }
+
+    [RelayCommand]
+    private void Workspace_File_Open()
+    {
+        Project.PerformOpenExisting();
+    }
+
+    [RelayCommand]
+    private void Workspace_File_Save()
+    {
         Project.Save();
     }
 
     [RelayCommand]
-    private void Testing_Load()
+    private void Workspace_File_SaveAs()
     {
-        Project.ProjectFilePath = "test.mmod";
-        Project.Load();
+        Project.PerformSaveAs();
     }
 }

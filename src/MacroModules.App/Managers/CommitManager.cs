@@ -74,6 +74,7 @@ public class CommitManager
         if (!PerformingUndoRedo)
         {
             commitSeries.Add(commitItem);
+            WeakReferenceMessenger.Default.Send(new CommitAddedMessage());
         }
     }
 

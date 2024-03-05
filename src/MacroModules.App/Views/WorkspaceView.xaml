@@ -13,8 +13,8 @@
         <KeyBinding Command="{Binding Workspace_UndoCommand}" Gesture="CTRL+Z"/>
         <KeyBinding Command="{Binding Workspace_RedoCommand}" Gesture="CTRL+Y"/>
         <KeyBinding Command="{Binding Workspace_RedoCommand}" Gesture="CTRL+SHIFT+Z"/>
-        <KeyBinding Command="{Binding Testing_SaveCommand}" Gesture="CTRL+S"/>
-        <KeyBinding Command="{Binding Testing_LoadCommand}" Gesture="CTRL+L"/>
+        <KeyBinding Command="{Binding Workspace_File_SaveCommand}" Gesture="CTRL+S"/>
+        <KeyBinding Command="{Binding Workspace_File_NewCommand}" Gesture="CTRL+O"/>
     </Window.InputBindings>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="MouseRightButtonUp">
@@ -29,7 +29,23 @@
     </i:Interaction.Triggers>
 
     <Grid x:Name="gdWorkspace" Background="Transparent">
-        <ContentControl Grid.Row="0" Content="{Binding UtilitiesBar, Mode=OneWay}" Panel.ZIndex="2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <DockPanel Grid.Row="0">
+            <Menu DockPanel.Dock="Top" FontSize="{StaticResource FontSize.Normal}">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_New" Command="{Binding Workspace_File_NewCommand}"/>
+                    <MenuItem Header="_Open" Command="{Binding Workspace_File_OpenCommand}"/>
+                    <MenuItem Header="_Save" Command="{Binding Workspace_File_SaveCommand}"/>
+                    <MenuItem Header="_Save As" Command="{Binding Workspace_File_SaveAsCommand}"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        
+        <ContentControl Grid.Row="1" Content="{Binding UtilitiesBar, Mode=OneWay}" Panel.ZIndex="2">
             <ContentControl.ContentTemplate>
                 <DataTemplate>
                     <local:UtilitiesBarView/>
@@ -37,7 +53,8 @@
             </ContentControl.ContentTemplate>
         </ContentControl>
 
-        <Rectangle HorizontalAlignment="Stretch"
+        <Rectangle Grid.Row="1"
+                   HorizontalAlignment="Stretch"
                    VerticalAlignment="Stretch"
                    Fill="White"
                    Opacity="0.5"
@@ -54,7 +71,7 @@
             </Rectangle.Style>
         </Rectangle>
 
-        <ContentControl Content="{Binding ModuleBoard, Mode=OneWay}">
+        <ContentControl Grid.Row="1" Content="{Binding ModuleBoard, Mode=OneWay}">
             <ContentControl.ContentTemplate>
                 <DataTemplate>
                     <local:ModuleBoardView/>
@@ -62,7 +79,7 @@
             </ContentControl.ContentTemplate>
         </ContentControl>
 
-        <ContentControl Content="{Binding PropertiesPanel, Mode=OneWay}" HorizontalAlignment="Right" VerticalAlignment="Top">
+        <ContentControl Grid.Row="1" Content="{Binding PropertiesPanel, Mode=OneWay}" HorizontalAlignment="Right" VerticalAlignment="Top">
             <ContentControl.ContentTemplate>
                 <DataTemplate>
                     <local:PropertiesPanelView/>
@@ -70,7 +87,7 @@
             </ContentControl.ContentTemplate>
         </ContentControl>
 
-        <ContentControl Content="{Binding ModuleBar, Mode=OneWay}" VerticalAlignment="Bottom">
+        <ContentControl Grid.Row="1" Content="{Binding ModuleBar, Mode=OneWay}" VerticalAlignment="Bottom">
             <ContentControl.ContentTemplate>
                 <DataTemplate>
                     <local:ModuleBarView/>

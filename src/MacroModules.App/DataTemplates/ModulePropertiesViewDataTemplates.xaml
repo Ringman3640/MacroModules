@@ -2,6 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:propertyviews="clr-namespace:MacroModules.App.Views.Modules.Properties"
                     xmlns:moduleviewmodels="clr-namespace:MacroModules.App.ViewModels.Modules">
+    <DataTemplate DataType="{x:Type moduleviewmodels:StartupEntryModuleVM}">
+        <propertyviews:StartupEntryPropertiesView/>
+    </DataTemplate>
     <DataTemplate DataType="{x:Type moduleviewmodels:TriggerEntryModuleVM}">
         <propertyviews:TriggerEntryPropertiesView/>
     </DataTemplate>

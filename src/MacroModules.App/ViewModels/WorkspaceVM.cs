@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using MacroModules.App.Managers;
+using MacroModules.App.Messages;
 using MacroModules.App.Views;
 using System.Windows;
 using System.Windows.Input;
@@ -27,6 +29,13 @@ public partial class WorkspaceVM : ObservableObject
 
     public ExecutionManager Executor { get; private set; }
 
+    [ObservableProperty]
+    [NotifyCanExecuteChangedFor(nameof(Workspace_File_NewCommand))]
+    [NotifyCanExecuteChangedFor(nameof(Workspace_File_OpenCommand))]
+    [NotifyCanExecuteChangedFor(nameof(Workspace_File_SaveCommand))]
+    [NotifyCanExecuteChangedFor(nameof(Workspace_File_SaveAsCommand))]
+    private bool _executionRunning = false;
+
     public WorkspaceVM(WorkspaceView viewRef)
     {
         ViewReference = viewRef;
@@ -38,6 +47,11 @@ public partial class WorkspaceVM : ObservableObject
         UtilitiesBar = new(this);
         Project = new(this);
         Executor = new(this);
+
+        WeakReferenceMessenger.Default.Register<ExecutionStateChangedMessage>(this, (recipient, message) =>
+        {
+            ExecutionRunning = message.Value;
+        });
     }
 
     public void CaptureMouse()
@@ -84,27 +98,32 @@ public partial class WorkspaceVM : ObservableObject
         CommitManager.Redo();
     }
 
-    [RelayCommand]
+    [RelayCommand(CanExecute = nameof(Workspace_CanUseFileCommands))]
     private void Workspace_File_New()
     {
         Project.OpenNew();
     }
 
-    [RelayCommand]
+    [RelayCommand(CanExecute = nameof(Workspace_CanUseFileCommands))]
     private void Workspace_File_Open()
     {
         Project.PerformOpenExisting();
     }
 
-    [RelayCommand]
+    [RelayCommand(CanExecute = nameof(Workspace_CanUseFileCommands))]
     private void Workspace_File_Save()
     {
         Project.Save();
     }
 
-    [RelayCommand]
+    [RelayCommand(CanExecute = nameof(Workspace_CanUseFileCommands))]
     private void Workspace_File_SaveAs()
     {
         Project.PerformSaveAs();
+    }
+
+    private bool Workspace_CanUseFileCommands()
+    {
+        return !ExecutionRunning;
     }
 }

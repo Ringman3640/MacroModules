@@ -9,7 +9,9 @@
              xmlns:graphics="clr-namespace:MacroModules.AppControls.Graphics;assembly=MacroModules.AppControls"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=viewmodels:UtilitiesBarVM}"
-             d:DesignHeight="2000" d:DesignWidth="500">
+             d:DesignHeight="2000" d:DesignWidth="500"
+             AutomationProperties.Name="Utilities Bar">
+    
     <Border Padding="{StaticResource Padding.Normal}"
             Margin="{StaticResource Margin.Normal}"
             Background="{StaticResource UtilitiesBar.Background}"

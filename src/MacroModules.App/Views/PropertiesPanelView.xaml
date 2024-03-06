@@ -7,7 +7,9 @@
              xmlns:viewmodels="clr-namespace:MacroModules.App.ViewModels"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=viewmodels:PropertiesPanelVM}" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             AutomationProperties.Name="Properties Panel">
+    
     <Border CornerRadius="5"
             Padding="{StaticResource Padding.Normal}"
             Margin="10"

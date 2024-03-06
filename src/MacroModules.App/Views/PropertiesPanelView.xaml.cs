@@ -1,28 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows.Automation.Peers;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace MacroModules.App.Views
+namespace MacroModules.App.Views;
+
+public partial class PropertiesPanelView : UserControl
 {
-    /// <summary>
-    /// Interaction logic for PropertiesPanelView.xaml
-    /// </summary>
-    public partial class PropertiesPanelView : UserControl
+    public PropertiesPanelView()
     {
-        public PropertiesPanelView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
+
+    protected override AutomationPeer OnCreateAutomationPeer()
+    {
+        return new PropertiesPanelAutomationPeer(this);
+    }
+}
+
+public class PropertiesPanelAutomationPeer : UserControlAutomationPeer
+{
+    public PropertiesPanelAutomationPeer(UserControl owner) : base(owner) { }
+
+    protected override AutomationControlType GetAutomationControlTypeCore()
+    {
+        return AutomationControlType.Pane;
+    }
+
+    protected override string GetClassNameCore()
+    {
+        return nameof(PropertiesPanelView);
     }
 }

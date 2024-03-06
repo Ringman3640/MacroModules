@@ -7,7 +7,9 @@
              xmlns:viewmodels="clr-namespace:MacroModules.App.ViewModels"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=viewmodels:ModuleBarVM}"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             AutomationProperties.Name="ModuleBar">
+    
     <Border Padding="{StaticResource Padding.Normal}"
             Margin="{StaticResource Margin.Normal}"
             CornerRadius="{StaticResource CornerRadius.Large}"
@@ -15,7 +17,10 @@
             AllowDrop="True"
             Effect="{StaticResource DropShadow.HoveringItem}">
         <Grid>
-            <ScrollViewer x:Name="scrollViewer" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
+            <ScrollViewer x:Name="scrollViewer"
+                          VerticalScrollBarVisibility="Disabled"
+                          HorizontalScrollBarVisibility="Auto"
+                          Focusable="False">
                 <ScrollViewer.Style>
                     <Style TargetType="ScrollViewer">
                         <Setter Property="Padding" Value="0"/>
@@ -26,7 +31,9 @@
                         </Style.Triggers>
                     </Style>
                 </ScrollViewer.Style>
-                <ItemsControl ItemsSource="{Binding Items}">
+                <ItemsControl x:Name="moduleBarItemsContainer"
+                              ItemsSource="{Binding Items}"
+                              Focusable="False">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation="Horizontal"/>

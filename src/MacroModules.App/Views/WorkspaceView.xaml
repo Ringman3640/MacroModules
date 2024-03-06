@@ -35,7 +35,9 @@
         </Grid.RowDefinitions>
         
         <DockPanel Grid.Row="0">
-            <Menu DockPanel.Dock="Top" FontSize="{StaticResource FontSize.Normal}">
+            <Menu DockPanel.Dock="Top"
+                  FontSize="{StaticResource FontSize.Normal}"
+                  AutomationProperties.Name="Project Tools Bar">
                 <MenuItem Header="_File">
                     <MenuItem Header="_New" Command="{Binding Workspace_File_NewCommand}"/>
                     <MenuItem Header="_Open" Command="{Binding Workspace_File_OpenCommand}"/>

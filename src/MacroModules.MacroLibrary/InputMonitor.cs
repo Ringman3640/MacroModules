@@ -206,8 +206,8 @@ namespace MacroModules.MacroLibrary
                     return CallNextHookEx(IntPtr.Zero, nCode, wParam, ref lParam);
                 }
 
-                // Check 4th flag bit to see if event is injected
-                if (filterInjectedInputs && (lParam.flags & 8) != 0)
+                // Check 1st flag bit to see if event is injected
+                if (filterInjectedInputs && (lParam.flags & 1) != 0)
                 {
                     return CallNextHookEx(IntPtr.Zero, nCode, wParam, ref lParam);
                 }

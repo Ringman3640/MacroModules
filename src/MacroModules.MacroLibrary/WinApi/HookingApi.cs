@@ -26,6 +26,7 @@ namespace MacroModules.MacroLibrary.WinApi
         [DllImport("Kernel32.dll")]
         public static extern IntPtr LoadLibraryA(string lpFileName);
 
+        [StructLayout(LayoutKind.Sequential)]
         public struct KeyboardHookStruct
         {
             public uint vkCode;
@@ -35,6 +36,7 @@ namespace MacroModules.MacroLibrary.WinApi
             public IntPtr dwExtraInfo;
         }
 
+        [StructLayout(LayoutKind.Sequential)]
         public struct MouseHookStruct
         {
             public Point pt;

@@ -34,7 +34,8 @@
                ToolTip="The horizontal component of the position value."/>
         <appcontrols:FocusTextBox x:Name="labelTarget"
                                   Grid.Column="1"
-                                  Text="{Binding EntryTextX, ElementName=positionPropertyEditor}" SelectAllOnFocus="True"/>
+                                  Text="{Binding EntryTextX, ElementName=positionPropertyEditor}" SelectAllOnFocus="True"
+                                  AccessibleName="{Binding AccessibleNameX, ElementName=positionPropertyEditor}"/>
 
         <Label Grid.Column="3"
                Target="{Binding positionEntryY}"
@@ -42,6 +43,7 @@
                Content="Y"
                ToolTip="The vertical component of the position value."/>
         <appcontrols:FocusTextBox x:Name="positionEntryY" Grid.Column="4"
-                                  Text="{Binding EntryTextY, ElementName=positionPropertyEditor}" SelectAllOnFocus="True"/>
+                                  Text="{Binding EntryTextY, ElementName=positionPropertyEditor}" SelectAllOnFocus="True"
+                                  AccessibleName="{Binding AccessibleNameY, ElementName=positionPropertyEditor}"/>
     </Grid>
 </local:BasePropertyEditor>

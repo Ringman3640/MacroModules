@@ -26,12 +26,15 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <appcontrols:FocusTextBox x:Name="labelTarget" Text="{Binding TimeUnitsEntryText, ElementName=durationPropertyEditor}"/>
+        <appcontrols:FocusTextBox x:Name="labelTarget"
+                                  Text="{Binding TimeUnitsEntryText, ElementName=durationPropertyEditor}"
+                                  AccessibleName="{Binding AccessibleName, ElementName=durationPropertyEditor}"/>
 
         <ComboBox Grid.Column="2"
                   Template="{DynamicResource ComboBoxForm}"
                   FontSize="{StaticResource FormElement.FontSize}"
                   ItemsSource="{Binding Source={StaticResource dataFromEnum}}"
-                  SelectedItem="{Binding SelectedGranularity, ElementName=durationPropertyEditor}"/>
+                  SelectedItem="{Binding SelectedGranularity, ElementName=durationPropertyEditor}"
+                  AutomationProperties.Name="Time Duration Granularity"/>
     </Grid>
 </local:BasePropertyEditor>

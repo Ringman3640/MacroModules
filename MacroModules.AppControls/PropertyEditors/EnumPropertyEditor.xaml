@@ -13,5 +13,6 @@
               Template="{DynamicResource ComboBoxForm}"
               FontSize="{StaticResource FormElement.FontSize}"
               ItemsSource="{Binding EnumArray, ElementName=enumPropertyEditor}"
-              SelectedItem="{Binding SelectedEnum, ElementName=enumPropertyEditor}"/>
+              SelectedItem="{Binding SelectedEnum, ElementName=enumPropertyEditor}"
+              AutomationProperties.Name="{Binding AccessibleName, ElementName=enumPropertyEditor}"/>
 </local:BasePropertyEditor>

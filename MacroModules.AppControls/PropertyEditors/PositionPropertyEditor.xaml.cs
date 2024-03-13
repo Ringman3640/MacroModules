@@ -64,6 +64,16 @@ public partial class PositionPropertyEditor : BasePropertyEditor
         }
     }
 
+    public string AccessibleNameX
+    {
+        get { return positionPropertyEditor.AccessibleName + " X Component"; }
+    }
+
+    public string AccessibleNameY
+    {
+        get { return positionPropertyEditor.AccessibleName + " Y Component"; }
+    }
+
     public override UIElement LabelTarget { get; }
 
     public PositionPropertyEditor() : base()

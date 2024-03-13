@@ -8,5 +8,7 @@
                           mc:Ignorable="d" 
                           d:DesignHeight="450" d:DesignWidth="800"
                           Loaded="PropertyEditor_Loaded" Unloaded="PropertyEditor_Unloaded">
-    <CheckBox x:Name="labelTarget" IsChecked="{Binding IsSet, ElementName=boolPropertyEditor}"/>
+    <CheckBox x:Name="labelTarget"
+              IsChecked="{Binding IsSet, ElementName=boolPropertyEditor}"
+              AutomationProperties.Name="{Binding AccessibleName, ElementName=boolPropertyEditor}"/>
 </local:BasePropertyEditor>

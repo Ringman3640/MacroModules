@@ -10,5 +10,6 @@
                           d:DesignHeight="450" d:DesignWidth="800"
                           Loaded="PropertyEditor_Loaded" Unloaded="PropertyEditor_Unloaded">
     <appcontrols:FocusTextBox x:Name="labelTarget"
-                              Text="{Binding NumberEntryText, ElementName=numberPropertyEditor}"/>
+                              Text="{Binding NumberEntryText, ElementName=numberPropertyEditor}"
+                              AccessibleName="{Binding AccessibleName, ElementName=numberPropertyEditor}"/>
 </local:BasePropertyEditor>

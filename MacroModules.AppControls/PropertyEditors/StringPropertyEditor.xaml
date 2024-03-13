@@ -9,6 +9,8 @@
                           mc:Ignorable="d" 
                           d:DesignHeight="450" d:DesignWidth="800"
                           Loaded="PropertyEditor_Loaded" Unloaded="PropertyEditor_Unloaded">
+    
     <appcontrols:FocusTextBox x:Name="labelTarget"
-                              Text="{Binding StringEntry, ElementName=stringPropertyEditor}"/>
+                              Text="{Binding StringEntry, ElementName=stringPropertyEditor}"
+                              AccessibleName="{Binding AccessibleName, ElementName=stringPropertyEditor}"/>
 </local:BasePropertyEditor>

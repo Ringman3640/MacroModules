@@ -19,6 +19,7 @@
                 Grid.Column="1"
                 Minimum="0"
                 Maximum="100"
-                Value="{Binding SliderValue, ElementName=percentPropertyEditor}"/>
+                Value="{Binding SliderValue, ElementName=percentPropertyEditor}"
+                AutomationProperties.Name="{Binding AccessibleName, ElementName=percentPropertyEditor}"/>
     </Grid>
 </local:BasePropertyEditor>

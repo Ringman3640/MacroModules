@@ -16,7 +16,8 @@
                ToolTip="The search phrase used to find the target program."
                Style="{StaticResource PropertyLabel}"/>
         <propeditors:StringPropertyEditor x:Name="searchTermProperty"
-                                          StringProperty="{Binding SearchTerm}"/>
+                                          StringProperty="{Binding SearchTerm}"
+                                          AccessibleName="Search Term"/>
 
         <Separator Style="{StaticResource PropertiesPanelSeparator}"/>
 
@@ -26,7 +27,8 @@
                Style="{StaticResource PropertyLabel}"/>
         <propeditors:EnumPropertyEditor x:Name="searchComponentProperty"
                                         EnumType="{x:Type modules:ProgramSearchTarget}"
-                                        EnumProperty="{Binding SearchComponent}"/>
+                                        EnumProperty="{Binding SearchComponent}"
+                                        AccessibleName="Search Component Target"/>
 
         <Separator Style="{StaticResource PropertiesPanelSeparator}"/>
 
@@ -35,6 +37,7 @@
                ToolTip="Indicates if all matched programs should be focused or only the first instance found."
                Style="{StaticResource PropertyLabel}"/>
         <propeditors:BoolPropertyEditor x:Name="focusAllMatchesProperty" 
-                                        BoolProperty="{Binding FocusAllMatches}"/>
+                                        BoolProperty="{Binding FocusAllMatches}"
+                                        AccessibleName="Focus All Found Matches"/>
     </StackPanel>
 </UserControl>

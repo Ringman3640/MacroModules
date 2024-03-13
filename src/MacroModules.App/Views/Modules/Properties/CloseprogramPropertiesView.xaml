@@ -16,7 +16,8 @@
                ToolTip="The search phrase used to find the target program."
                Style="{StaticResource PropertyLabel}"/>
         <propeditors:StringPropertyEditor x:Name="searchTermProperty"
-                                          StringProperty="{Binding SearchTerm}"/>
+                                          StringProperty="{Binding SearchTerm}"
+                                          AccessibleName="Search Term"/>
 
         <Separator Style="{StaticResource PropertiesPanelSeparator}"/>
 
@@ -26,7 +27,8 @@
                Style="{StaticResource PropertyLabel}"/>
         <propeditors:EnumPropertyEditor x:Name="searchComponentProperty"
                                         EnumType="{x:Type modules:ProgramSearchTarget}"
-                                        EnumProperty="{Binding SearchComponent}"/>
+                                        EnumProperty="{Binding SearchComponent}"
+                                        AccessibleName="Search Component Target"/>
 
         <Separator Style="{StaticResource PropertiesPanelSeparator}"/>
 
@@ -35,15 +37,17 @@
                ToolTip="Indicates if all matched programs should be closed or only the first instance found."
                Style="{StaticResource PropertyLabel}"/>
         <propeditors:BoolPropertyEditor x:Name="closeAllMatchesProperty"
-                                        BoolProperty="{Binding CloseAllMatches}"/>
+                                        BoolProperty="{Binding CloseAllMatches}"
+                                        AccessibleName="Close All Matches"/>
 
         <Separator Style="{StaticResource PropertiesPanelSeparator}"/>
 
-        <Label Target="{Binding LabelTarget, ElementName=closeChildProgramsProperty}"
-               Content="Close Child Programs"
-               ToolTip="Indicates if the child programs of matches should be closed."
+        <Label Target="{Binding LabelTarget, ElementName=closeChildProcessesProperty}"
+               Content="Close Child Processes"
+               ToolTip="Indicates if the child processes of matches should be closed."
                Style="{StaticResource PropertyLabel}"/>
-        <propeditors:BoolPropertyEditor x:Name="closeChildProgramsProperty"
-                                        BoolProperty="{Binding CloseChildren}"/>
+        <propeditors:BoolPropertyEditor x:Name="closeChildProcessesProperty"
+                                        BoolProperty="{Binding CloseChildren}"
+                                        AccessibleName="Close Child Processes"/>
     </StackPanel>
 </UserControl>

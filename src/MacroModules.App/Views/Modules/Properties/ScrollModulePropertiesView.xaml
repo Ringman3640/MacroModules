@@ -16,7 +16,8 @@
                ToolTip="The amount to scroll ticks to send."
                Style="{StaticResource PropertyLabel}"/>
         <propeditors:NumberPropertyEditor x:Name="scrollTicksProperty"
-                                          NumberProperty="{Binding ScrollTicks, Mode=TwoWay}"/>
+                                          NumberProperty="{Binding ScrollTicks, Mode=TwoWay}"
+                                          AccessibleName="Scroll Ticks"/>
 
         <Separator Style="{StaticResource PropertiesPanelSeparator}"/>
 
@@ -26,6 +27,7 @@
                Style="{StaticResource PropertyLabel}"/>
         <propeditors:EnumPropertyEditor x:Name="scrollDirectionProperty"
                                         EnumType="{x:Type modules:ScrollDirection}"
-                                        EnumProperty="{Binding Direction, Mode=TwoWay}"/>
+                                        EnumProperty="{Binding Direction, Mode=TwoWay}"
+                                        AccessibleName="Scroll Direction"/>
     </StackPanel>
 </UserControl>

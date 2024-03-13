@@ -25,6 +25,7 @@
                ToolTip="The string arguments that will be passed to the program."
                Style="{StaticResource PropertyLabel}"/>
         <propeditors:StringPropertyEditor x:Name="argumentsProperty"
-                                          StringProperty="{Binding Arguments}"/>
+                                          StringProperty="{Binding Arguments}"
+                                          AccessibleName="Program Arguments"/>
     </StackPanel>
 </UserControl>

@@ -15,6 +15,7 @@
                ToolTip="The amount of time to wait for."
                Style="{StaticResource PropertyLabel}"/>
         <propeditors:DurationPropertyEditor x:Name="durationProperty"
-                                            DurationProperty="{Binding Time, Mode=TwoWay}"/>
+                                            DurationProperty="{Binding Time, Mode=TwoWay}"
+                                            AccessibleName="Wait Duration"/>
     </StackPanel>
 </UserControl>

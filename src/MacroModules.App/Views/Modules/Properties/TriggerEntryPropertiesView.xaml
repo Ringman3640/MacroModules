@@ -26,7 +26,8 @@
                Style="{StaticResource PropertyLabel}"/>
         <propeditors:EnumPropertyEditor x:Name="executionModeProperty"
                                         EnumType="moduleexecution:MacroExecutionType"
-                                        EnumProperty="{Binding ExecutionType}"/>
+                                        EnumProperty="{Binding ExecutionType}"
+                                        AccessibleName="Execution Mode"/>
 
         <Separator Style="{StaticResource PropertiesPanelSeparator}"/>
 
@@ -35,6 +36,7 @@
                ToolTip="Indicates if the trigger input should be ignored by the system."
                Style="{StaticResource PropertyLabel}"/>
         <propeditors:BoolPropertyEditor x:Name="suppressInputProperty"
-                                        BoolProperty="{Binding SuppressInput}"/>
+                                        BoolProperty="{Binding SuppressInput}"
+                                        AccessibleName="Suppress Input"/>
     </StackPanel>
 </UserControl>

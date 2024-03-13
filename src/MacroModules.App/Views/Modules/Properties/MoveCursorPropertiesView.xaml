@@ -15,7 +15,8 @@
                ToolTip="The screen position the cursor will be moved to."
                Style="{StaticResource PropertyLabel}"/>
         <propeditors:PositionPropertyEditor x:Name="targetPositionProperty"
-                                            PositionProperty="{Binding TargetPosition, Mode=TwoWay}"/>
+                                            PositionProperty="{Binding TargetPosition, Mode=TwoWay}"
+                                            AccessibleName="Target Position"/>
 
         <Separator Style="{StaticResource PropertiesPanelSeparator}"/>
 
@@ -24,6 +25,7 @@
                ToolTip="The time the cursor will take to transition from its current position to the target position."
                Style="{StaticResource PropertyLabel}"/>
         <propeditors:DurationPropertyEditor x:Name="transitionTimeProperty"
-                                            DurationProperty="{Binding TransitionTime, Mode=TwoWay}"/>
+                                            DurationProperty="{Binding TransitionTime, Mode=TwoWay}"
+                                            AccessibleName="Transition Time"/>
     </StackPanel>
 </UserControl>

@@ -26,6 +26,7 @@
                Style="{StaticResource PropertyLabel}"/>
         <propeditors:EnumPropertyEditor x:Name="inputActionProperty"
                                         EnumType="{x:Type modules:SendInputAction}"
-                                        EnumProperty="{Binding Action}"/>
+                                        EnumProperty="{Binding Action}"
+                                        AccessibleName="Input Action Mode"/>
     </StackPanel>
 </UserControl>

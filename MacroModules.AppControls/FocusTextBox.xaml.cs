@@ -19,6 +19,17 @@ public partial class FocusTextBox : UserControl
             defaultValue: "",
             flags: FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
+    public string AccessibleName
+    {
+        get { return (string)GetValue(AccessibleNameProperty); }
+        set { SetValue(AccessibleNameProperty, value); }
+    }
+    public static readonly DependencyProperty AccessibleNameProperty = DependencyProperty.Register(
+        name: nameof(AccessibleName),
+        propertyType: typeof(string),
+        ownerType: typeof(FocusTextBox),
+        typeMetadata: new PropertyMetadata(""));
+
     public bool SelectAllOnFocus
     {
         get { return (bool)GetValue(SelectAllOnFocusProperty); }

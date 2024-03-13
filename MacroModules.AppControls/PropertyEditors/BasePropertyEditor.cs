@@ -14,21 +14,6 @@ public partial class BasePropertyEditor : UserControl, INotifyPropertyChanged
     public static readonly DependencyProperty PropertyNameProperty =
         DependencyProperty.Register("PropertyName", typeof(string), typeof(BasePropertyEditor), new PropertyMetadata(""));
 
-    public string PropertyName
-    {
-        get { return (string)GetValue(PropertyNameProperty); }
-        set { SetValue(PropertyNameProperty, value); }
-    }
-
-    public static readonly DependencyProperty PropertyDescriptionProperty =
-        DependencyProperty.Register("PropertyDescription", typeof(string), typeof(BasePropertyEditor), new PropertyMetadata(""));
-
-    public string PropertyDescription
-    {
-        get { return (string)GetValue(PropertyDescriptionProperty); }
-        set { SetValue(PropertyDescriptionProperty, value); }
-    }
-
     public virtual UIElement? LabelTarget { get; }
 
     public event PropertyChangedEventHandler? PropertyChanged;

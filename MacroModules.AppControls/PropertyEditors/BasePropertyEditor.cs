@@ -11,9 +11,6 @@ namespace MacroModules.AppControls.PropertyEditors;
 
 public partial class BasePropertyEditor : UserControl, INotifyPropertyChanged
 {
-    public static readonly DependencyProperty PropertyNameProperty =
-        DependencyProperty.Register("PropertyName", typeof(string), typeof(BasePropertyEditor), new PropertyMetadata(""));
-
     public virtual UIElement? LabelTarget { get; }
 
     public event PropertyChangedEventHandler? PropertyChanged;

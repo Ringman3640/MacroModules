@@ -11,6 +11,17 @@ namespace MacroModules.AppControls.PropertyEditors;
 
 public partial class BasePropertyEditor : UserControl, INotifyPropertyChanged
 {
+    public string? AccessibleName
+    {
+        get { return (string?)GetValue(AccessibleNameProperty); }
+        set { SetValue(AccessibleNameProperty, value); }
+    }
+    public static readonly DependencyProperty AccessibleNameProperty = DependencyProperty.Register(
+        name: nameof(AccessibleName),
+        propertyType: typeof(string),
+        ownerType: typeof(BasePropertyEditor),
+        typeMetadata: new PropertyMetadata(null));
+
     public virtual UIElement? LabelTarget { get; }
 
     public event PropertyChangedEventHandler? PropertyChanged;

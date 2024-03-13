@@ -64,7 +64,7 @@ public partial class FocusTextBox : UserControl
         }
         if (e.Key == Key.Enter)
         {
-            focusTextBox.Focus();
+            Keyboard.ClearFocus();
         }
     }
 }

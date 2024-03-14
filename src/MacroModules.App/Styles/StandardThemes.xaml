@@ -31,9 +31,8 @@
     <Brush x:Key="Module.InputType.BodyColor">#CA2121</Brush>
     <Brush x:Key="Module.MouseType.BodyColor">#CA6D21</Brush>
     <Brush x:Key="Module.ProgramType.BodyColor">#224187</Brush>
-    <Brush x:Key="Module.ExecutionType.BodyColor">#CACA21</Brush>
+    <Brush x:Key="Module.ExecutionType.BodyColor">#1AA21A</Brush>
     <Brush x:Key="Module.OtherType.BodyColor">#611C87</Brush>
-    <Brush x:Key="Module.EntryType.BodyColor">#1AA21A</Brush>
 
     <SolidColorBrush x:Key="FormElement.Background" Color="{Binding Color, Source={StaticResource PropertiesPanel.Background}}"/>
     <SolidColorBrush x:Key="FormElement.Border" Color="{Binding Color, Source={StaticResource GeneralTheme.Foreground}}"/>

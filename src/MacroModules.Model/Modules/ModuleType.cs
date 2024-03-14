@@ -6,6 +6,9 @@
     {
         StartupEntry,
         TriggerEntry,
+        Branch,
+        Wait,
+        //WaitUntil,
         SendInput,
         // SendRawText,
         GetInputState,
@@ -18,9 +21,6 @@
         FocusWindow,
         GetSnapshot,
         GetPixelColor,
-        Branch,
-        Wait,
-        //WaitUntil,
         PlaySound
     }
 }

@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=viewmodels:PropertiesPanelVM}" 
              d:DesignHeight="450" d:DesignWidth="800"
-             AutomationProperties.Name="Properties Panel">
+             AutomationProperties.Name="Properties Editor">
     
     <Border CornerRadius="5"
             Padding="{StaticResource Padding.Normal}"

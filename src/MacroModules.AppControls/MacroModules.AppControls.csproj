@@ -17,8 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\MacroModules.MacroLibrary\MacroModules.MacroLibrary.csproj" />
-    <ProjectReference Include="..\src\MacroModules.Model\MacroModules.Model.csproj" />
+    <ProjectReference Include="..\MacroModules.MacroLibrary\MacroModules.MacroLibrary.csproj" />
+    <ProjectReference Include="..\MacroModules.Model\MacroModules.Model.csproj" />
   </ItemGroup>
 
   <ItemGroup>

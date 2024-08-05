@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\MacroModules.AppControls\MacroModules.AppControls.csproj" />
+    <ProjectReference Include="..\MacroModules.AppControls\MacroModules.AppControls.csproj" />
     <ProjectReference Include="..\MacroModules.Model\MacroModules.Model.csproj" />
   </ItemGroup>
 

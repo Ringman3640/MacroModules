@@ -18,3 +18,13 @@ The length of a macro varies based on the complexity of the macro behavior. A ma
 <div align="center">
   <img src="/readme-images/about-screenshot-2.png" alt="A screenshot of a large macro consisting of many Modules" width="70%"/>
 </div>
+
+## Build
+An executable file cannot be provided as I do not have a code signing certificate. The application must be built from source. This is done using [Visual Studio Community 2022](https://visualstudio.microsoft.com/vs/community/). Be sure to check `.NET desktop development` during installation.
+
+1. Clone the source code
+2. Open `MacroModules.sln`
+3. Make sure the build is set to `Release` and the startup project is `MarcoModules.App`
+4. Build the project from the toolbar or using `CTRL+SHIFT+B`
+
+When built, the generated executable file can be found at `/src/MacroModules.App/bin/Release/net8.0-windows`.

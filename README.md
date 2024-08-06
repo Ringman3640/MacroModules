@@ -28,3 +28,8 @@ An executable file cannot be provided as I do not have a code signing certificat
 4. Build the project from the toolbar or using `CTRL+SHIFT+B`
 
 When built, the generated executable file can be found at `/src/MacroModules.App/bin/Release/net8.0-windows`.
+
+## Status and Future Updates
+The project is currently incomplete and is missing many key features that were originally planned. The current project architecture makes it very difficult to progress with development without doing very expensive reworks.
+
+I intend to eventually complete this project, but I do not know when that will happen. It may be in my best interest to completely rework the project as the application currently has major performance issues (it can reach more than 1 gb of RAM usage wtf). This may also be the easier option was I will need to rework a lot of the architecture anyways. 

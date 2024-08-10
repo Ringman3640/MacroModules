@@ -19,6 +19,8 @@ The length of a macro varies based on the complexity of the macro behavior. A ma
   <img src="/readme-images/about-screenshot-2.png" alt="A screenshot of a large macro consisting of many Modules" width="70%"/>
 </div>
 
+This project was created for my 2024 capstone project at UW Bothell. Information about its development can be found at the project's [drive folder](https://drive.google.com/drive/folders/1FRP3eGT4JY8pzh0u0oQeg14dNLEAfzBx?usp=sharing).
+
 ## Build
 An executable file cannot be provided as I do not have a code signing certificate. The application must be built from source. This is done using [Visual Studio Community 2022](https://visualstudio.microsoft.com/vs/community/). Be sure to check `.NET desktop development` during installation.
 
